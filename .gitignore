@@ -1,0 +1,5 @@
+# Ignore debug artifacts
+Debug/
+compile_commands.json
+.cache/
+
