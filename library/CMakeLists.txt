@@ -1,15 +1,27 @@
 cmake_minimum_required ( VERSION 3.25 ) 
 set ( CMAKE_CXX_STANDARD 17 ) 
 
-project ( SurrogateModelling CXX ) 
+project ( SurrogateModelLib CXX ) 
 
 # Add interface libraries 
-add_subdirectory ( library )
+add_subdirectory (
+
+    BasisFunctions 
+
+)
+
+# Combine interface libraries 
+add_library ( surrogatemodel INTERFACE )
+target_link_libraries ( surrogatemodel INTERFACE 
+
+    basisfunctions 
+
+)
 
 # Unit Test using Google Test 
-option ( PROJECT_TEST "Enable Google Test for whole project" ON )
+option ( SURROGATE_TEST "Enable Google Test for all libraries" ON )
 
-if ( PROJECT_TEST ) 
+if ( SURROGATE_TEST ) 
 
     if ( NOT SMSD_GTEST )
 
@@ -27,4 +39,3 @@ if ( PROJECT_TEST )
     set ( SMSD_GTEST ON )
 
 endif ()
-
