@@ -46,43 +46,43 @@ namespace BasisFunctions {
     using Marker = std::vector <bool>;
 
 
-    template < typename T >
+    template < typename Z >
     /**
       * Generate Indices of orthonormal polynomials.
       * 
-      * @tparam T a type of integer e.g. size_t.
+      * @tparam Z a type of non-negative integer e.g. size_t.
       *
       * @param   dim number of variables.
       * @param  pMax maximum order of the polynomial.
       * @return sequence of polynomial indices.
       */
-    Vector<T> MultiIndex ( T dim, T pMax );
+    Vector<Z> MultiIndex ( Z dim, Z pMax );
 
 
-    template < typename T >
+    template < typename Z >
     /**
       * Generate a unique tupple of indices for MultiIndex function. 
       * 
-      * @tparam T a type of integer e.g. size_t.
+      * @tparam Z a type of non-negative integer e.g. size_t.
       *
       * @param   nSet the tupple is generated from the first nSet integers.
       * @param Subset save the tupple here. Also contains all previous tupples.
       * @param Active track all previous tupples that have been saved.
       */
-    void MultiIndexRecursive ( T nSet, Vector<T>& Subset, Marker& Active );
+    void MultiIndexRecursive ( Z nSet, Vector<Z>& Subset, Marker& Active );
 
 
-    template < typename T >
+    template < typename Z >
     /**
       * Compute binomial coefficient / number of combinations recursively.
       *
-      * @tparam T a type of integer e.g. size_t, int.
+      * @tparam Z a type of non-negative integer e.g. size_t, int.
       *
       * @param     DimSet number of elements available.
       * @param  DimSubset number of elements to choose.
       * @return Dimset C DimSubset.
       */
-    T Binomial ( T DimSet, T DimSubset );
+    Z Binomial ( Z DimSet, Z DimSubset );
 
 
 } // BasisFunctions 

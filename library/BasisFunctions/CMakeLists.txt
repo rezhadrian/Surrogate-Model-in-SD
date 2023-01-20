@@ -6,17 +6,20 @@ project ( BasisFunctions CXX )
 # Add interface library "basisfunctions" 
 add_library ( basisfunctions INTERFACE 
 
-    MultiIndex.hpp
-    MultiIndex_imp.hpp 
-    Truncations.hpp 
-    Truncations_imp.hpp 
+    declarations/HermitePolynomials.hpp 
+    declarations/MultiIndex.hpp
+    declarations/Truncations.hpp 
+    implementations/HermitePolynomials_imp.hpp 
+    implementations/MultiIndex_imp.hpp 
+    implementations/Truncations_imp.hpp 
     utility/LibrariesLoader.hpp
 
 )
 
 target_include_directories ( basisfunctions INTERFACE 
 
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/declarations 
+    ${CMAKE_CURRENT_SOURCE_DIR}/implementations  
     ${CMAKE_CURRENT_SOURCE_DIR}/utility
 
 )
@@ -46,8 +49,9 @@ if ( BASIS_FUNCTION_TEST )
 
     add_executable ( BasisFunctions_testrunner 
 
-        test/BasisFunctions_main_test.cpp
         test/Binomial_test.cpp
+        test/HermitePolynomial_test.cpp 
+        test/HermitePolynomials_test.cpp 
 
     )
 

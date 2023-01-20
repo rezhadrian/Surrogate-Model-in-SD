@@ -43,8 +43,8 @@
 
 namespace BasisFunctions {
 
-    template < typename T >
-    Vector<T> MultiIndex ( T dim, T pMax ) {
+    template < typename Z >
+    Vector<Z> MultiIndex ( Z dim, Z pMax ) {
 
         if ( dim <= 0 ) {
 
@@ -62,12 +62,12 @@ namespace BasisFunctions {
 
         }
 
-        Vector<T> result ( dim, 0 );
-        result.reserve ( dim * Binomial<T> (pMax + dim, dim) );
+        Vector<Z> result ( dim, 0 );
+        result.reserve ( dim * Binomial<Z> (pMax + dim, dim) );
     
         for ( auto i = 0; i < pMax; i++ ) {
 
-            auto jMax = Binomial<T> ( dim + i, dim - 1 );
+            auto jMax = Binomial<Z> ( dim + i, dim - 1 );
 
             Marker Active ( dim + i, false );
             std::transform (
@@ -83,7 +83,7 @@ namespace BasisFunctions {
 
             for ( auto j = 0; j < jMax; j++ ) {
 
-                MultiIndexRecursive<T> ( dim + i, result, Active );
+                MultiIndexRecursive<Z> ( dim + i, result, Active );
 
             }
 
@@ -98,8 +98,8 @@ namespace BasisFunctions {
 
 namespace BasisFunctions {
 
-    template < typename T >
-    void MultiIndexRecursive ( T nSet, Vector<T>& Subset, Marker& Active ) {
+    template < typename Z >
+    void MultiIndexRecursive ( Z nSet, Vector<Z>& Subset, Marker& Active ) {
 
         if ( Active.size() != nSet ) {
 
@@ -109,14 +109,14 @@ namespace BasisFunctions {
 
         }
 
-        Vector<T> result;
+        Vector<Z> result;
 
-        Vector<T> Set ( nSet );
+        Vector<Z> Set ( nSet );
         std::iota ( Set.begin(), Set.end(), 1 );
 
         std::next_permutation ( Active.begin(), Active.end() );
 
-        T m = 0;
+        Z m = 0;
         for ( const auto& marker : Active ) {
 
             if ( marker ) {
@@ -149,8 +149,8 @@ namespace BasisFunctions {
 
 namespace BasisFunctions {
 
-    template < typename T >
-    T Binomial ( T DimSet, T DimSubset ) {
+    template < typename Z >
+    Z Binomial ( Z DimSet, Z DimSubset ) {
 
         if ( DimSet < 0 || DimSubset < 0 ) {
 
@@ -166,8 +166,8 @@ namespace BasisFunctions {
             return 1;
         }
 
-        return Binomial<T> ( DimSet - 1, DimSubset - 1 ) +
-               Binomial<T> ( DimSet - 1, DimSubset     );
+        return Binomial<Z> ( DimSet - 1, DimSubset - 1 ) +
+               Binomial<Z> ( DimSet - 1, DimSubset     );
 
     }
 
