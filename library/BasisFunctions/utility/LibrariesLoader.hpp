@@ -36,8 +36,6 @@
 #ifndef LIBRARIES_LOADER 
 #define LIBRARIES_LOADER 
 
-#define __STDCPP_WANT_MATH_SPEC_FUNCS__ 1
-
 #include <algorithm> 
 #include <cmath> 
 #include <complex> 
