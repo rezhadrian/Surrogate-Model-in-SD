@@ -27,7 +27,7 @@
 /**
   * @file HermitePolynomials_test.cpp
   *
-  * @brief declare functions to calculate probabilist Hermite polynomials.
+  * @brief test the function HermitePolynomials 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
