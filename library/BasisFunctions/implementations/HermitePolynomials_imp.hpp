@@ -46,7 +46,31 @@ namespace BasisFunctions {
     template < typename Z, typename C >
     Vector<C> HermitePolynomials ( Vector<Z>& indices, Vector<C>& X, Z dim ) {
 
+        if ( dim <= 0 ) {
+
+            throw std::runtime_error (
+                "HermitePolynomials: dimension must be positive"
+            );
+
+        }
+
+        if ( X.size() != dim ) {
+
+            throw std::runtime_error (
+                "HermitePolynomials: num of variables not equal to dimension"
+            );
+
+        }
+
         auto nProducts = indices.size() / dim;
+
+        if ( indices.size() - dim * nProducts != 0 ) {
+
+            throw std::runtime_error (
+                "HermitePolynomials: num of indices not multiple of dimension"
+            );
+
+        }
 
         Vector<C> result;
         result.reserve ( nProducts );
@@ -59,7 +83,7 @@ namespace BasisFunctions {
 
                 indices.begin() + i * dim,
                 indices.begin() + i * dim + dim,
-                      X.begin() + i * dim,
+                      X.begin(),
 
                  tupple.begin(),
 

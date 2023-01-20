@@ -42,7 +42,7 @@ TEST ( MultiIndex, Constant1D ) {
 
     auto result = BasisFunctions::MultiIndex ( 1, 0 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -55,7 +55,7 @@ TEST ( MultiIndex, Constant2D ) {
 
     auto result = BasisFunctions::MultiIndex ( 2, 0 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -68,7 +68,7 @@ TEST ( MultiIndex, Constant3D ) {
 
     auto result = BasisFunctions::MultiIndex ( 3, 0 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -81,7 +81,7 @@ TEST ( MultiIndex, Linear1D ) {
 
     auto result = BasisFunctions::MultiIndex ( 1, 1 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -94,7 +94,7 @@ TEST ( MultiIndex, Linear2D ) {
 
     auto result = BasisFunctions::MultiIndex ( 2, 1 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -112,7 +112,7 @@ TEST ( MultiIndex, Linear3D ) {
 
     auto result = BasisFunctions::MultiIndex ( 3, 1 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -125,7 +125,7 @@ TEST ( MultiIndex, Quadratic1D ) {
 
     auto result = BasisFunctions::MultiIndex ( 1, 2 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -145,7 +145,7 @@ TEST ( MultiIndex, Quadratic2D ) {
 
     auto result = BasisFunctions::MultiIndex ( 2, 2 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
@@ -169,7 +169,7 @@ TEST ( MultiIndex, Quadratic3D ) {
 
     auto result = BasisFunctions::MultiIndex ( 3, 2 );
 
-    EXPECT_EQ ( result.size(), expected.size() );
+    ASSERT_EQ ( result.size(), expected.size() );
     for ( auto i = 0; i < expected.size(); i++ ) {
         EXPECT_EQ ( result[i],  expected[i] );
     }
