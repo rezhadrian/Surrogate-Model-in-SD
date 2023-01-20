@@ -99,8 +99,8 @@ namespace BasisFunctions {
 
         return (
 
-                                x * HermitePolynomial ( index - 1, x ) -
-            Multiply<Z,C> ( index,  HermitePolynomial ( index - 2, x ) )
+                                    x * HermitePolynomial ( index - 1, x ) -
+            Multiply<Z,C> ( index - 1,  HermitePolynomial ( index - 2, x ) )
 
         );     
 
@@ -155,7 +155,12 @@ namespace BasisFunctions {
     template < typename Z, typename C >
     C Multiply ( Z index, C x ) {
 
-        return index * x.real() + index * x.imag();
+        C result;
+
+        result.real ( index * x.real() );
+        result.imag ( index * x.imag() );
+
+        return result;
 
     }
 

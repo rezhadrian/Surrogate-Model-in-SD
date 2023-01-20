@@ -52,6 +52,8 @@ if ( BASIS_FUNCTION_TEST )
         test/Binomial_test.cpp
         test/HermitePolynomial_test.cpp 
         test/HermitePolynomials_test.cpp 
+        test/MultiIndex_test.cpp 
+        test/TotalTruncations_test.cpp 
 
     )
 
