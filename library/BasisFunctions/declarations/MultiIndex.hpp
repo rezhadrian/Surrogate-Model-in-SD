@@ -36,7 +36,7 @@
 #ifndef MULTI_INDEX_DECLARATIONS 
 #define MULTI_INDEX_DECLARATIONS 
 
-#include "LibrariesLoader.hpp" 
+#include "LibrariesLoader_BF.hpp" 
 #include "SupplementaryMaths.hpp" 
 
 namespace BasisFunctions {

@@ -14,7 +14,7 @@ add_library ( basisfunctions INTERFACE
     implementations/MultiIndex_imp.hpp 
     implementations/SupplementaryMaths_imp.hpp 
     implementations/Truncations_imp.hpp 
-    utility/LibrariesLoader.hpp
+    utility/LibrariesLoader_BF.hpp
 
 )
 
@@ -66,7 +66,12 @@ if ( BASIS_FUNCTION_TEST )
 
     )
 
-    target_link_libraries ( BasisFunctions_testrunner PUBLIC basisfunctions GTest::gtest_main ) 
+    target_link_libraries ( BasisFunctions_testrunner PUBLIC 
+
+        basisfunctions 
+        GTest::gtest_main 
+
+    ) 
 
     include ( GoogleTest ) 
     gtest_discover_tests ( BasisFunctions_testrunner ) 

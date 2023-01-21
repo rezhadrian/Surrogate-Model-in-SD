@@ -25,23 +25,22 @@
   */ 
 
 /**
-  * @file LibrariesLoader.hpp 
+  * @file LibrariesLoader_MC.hpp
   *
-  * @brief include all required standard libraries
+  * @brief include all required standard libraries for MonteCarlo 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef LIBRARIES_LOADER 
-#define LIBRARIES_LOADER 
+#ifndef LIBRARIES_LOADER_MC 
+#define LIBRARIES_LOADER_MC 
 
 #include <algorithm> 
-#include <cmath> 
-#include <complex> 
 #include <numeric> 
+#include <random>
 #include <stdexcept> 
-#include <vector> 
+#include <vector>
 
-#endif // LIBRARIES_LOADER 
+#endif // LIBRARIES_LOADER_MC 
 

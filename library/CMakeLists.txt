@@ -4,17 +4,15 @@ set ( CMAKE_CXX_STANDARD 17 )
 project ( SurrogateModelLib CXX ) 
 
 # Add interface libraries 
-add_subdirectory (
-
-    BasisFunctions 
-
-)
+add_subdirectory ( BasisFunctions )
+add_subdirectory ( MonteCarlo )
 
 # Combine interface libraries 
 add_library ( surrogatemodel INTERFACE )
 target_link_libraries ( surrogatemodel INTERFACE 
 
     basisfunctions 
+    montecarlo
 
 )
 

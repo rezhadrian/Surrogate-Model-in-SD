@@ -36,7 +36,7 @@
 #ifndef TRUNCATIONS_DECLARATIONS 
 #define TRUNCATIONS_DECLARATIONS 
 
-#include "LibrariesLoader.hpp" 
+#include "LibrariesLoader_BF.hpp" 
 
 namespace BasisFunctions {
 

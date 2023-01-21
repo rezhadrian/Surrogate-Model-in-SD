@@ -36,7 +36,7 @@
 #ifndef SUPPLEMENTARY_MATHS_DECLARATIONS 
 #define SUPPLEMENTARY_MATHS_DECLARATIONS 
 
-#include "LibrariesLoader.hpp" 
+#include "LibrariesLoader_BF.hpp" 
 
 namespace BasisFunctions {
 
