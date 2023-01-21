@@ -25,46 +25,54 @@
   */ 
 
 /**
-  * @file Truncations.hpp
+  * @file SupplementaryMaths_imp.hpp
   *
-  * @brief declare functions to truncate indices of orthonormal polynomials.
+  * @brief implement additional maths feature not implemented in <cmath> 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef TRUNCATIONS_DECLARATIONS 
-#define TRUNCATIONS_DECLARATIONS 
+#ifndef SUPPLEMENTARY_MATHS_DECLARATIONS 
+#define SUPPLEMENTARY_MATHS_DECLARATIONS 
 
 #include "LibrariesLoader.hpp" 
 
 namespace BasisFunctions {
 
-    // Some aliases
-    template < typename T >
-    using Vector = std::vector <T>;
+
+    template < typename Z > 
+    /**
+      * Compute n! 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      */
+    Z Factorial ( const Z n ); 
+
+
+    template < typename Z, typename C >
+    /**
+      * Overload multiplication for integer and complex operand 
+      *
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam C a class comparable with std::complex 
+      */
+    C operator* ( const Z integer, const C complex );
 
 
     template < typename Z >
     /**
-      * Remove tupples with sum larger than SumPMax.
-      * 
-      * @tparam T a type of integer e.g. size_t.
+      * Compute binomial coefficient nCk recursively.
       *
-      * @param MultiIndex tupples of indices of orthonormal polynomials.
-      * @param        dim number of elements inside each tupple.
-      * @param    SumPMax largest allowable sum of indices in each tupple.
+      * @tparam Z a type of non-negative integer e.g. size_t, int.
       */
-    void TotalTruncation ( 
-        Vector<Z>& MultiIndex, const Z dim, const Z SumPMax 
-    );
+    Z Binomial ( const Z n, const Z k );
 
 
 } // BasisFunctions 
 
-#ifndef TRUNCATIONS_IMPLEMENTATIONS 
-    #include "Truncations_imp.hpp" 
+#ifndef SUPPLEMENTARY_MATHS_IMPLEMENTATIONS 
+    #include "SupplementaryMaths_imp.hpp" 
 #endif 
 
-#endif // TRUNCATIONS_DECLARATIONS 
+#endif // SUPPLEMENTARY_MATHS_DECLARATIONS 
 

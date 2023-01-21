@@ -25,15 +25,15 @@
   */ 
 
 /**
-  * @file Binomial_test.cpp
+  * @file SupplementaryMaths_test.cpp
   *
-  * @brief test output of Binomial function 
+  * @brief test supplementary maths functions implementations 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#include "MultiIndex.hpp" 
+#include "SupplementaryMaths.hpp"  
 #include <gtest/gtest.h> 
 
 TEST ( BinomialCoefficient, TypicalInput ) {

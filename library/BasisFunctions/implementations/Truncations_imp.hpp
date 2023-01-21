@@ -43,8 +43,10 @@
 
 namespace BasisFunctions {
 
-    template < typename T >
-    void TotalTruncation ( Vector<T>& MultiIndex, T dim, T SumPMax ) {
+    template < typename Z >
+    void TotalTruncation ( 
+        Vector<Z>& MultiIndex, const Z dim, const Z SumPMax 
+    ) {
 
         auto nTupple = MultiIndex.size();
 

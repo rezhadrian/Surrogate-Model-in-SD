@@ -214,6 +214,69 @@ TEST ( HermitePolynomials, H_2_1_1_2_0_3_2_ComplexInput ) {
 
 }
 
+TEST ( HermitePolynomials, H_Complex_ComplexInput ) {
+
+    std::vector<size_t> indices { 2, 1, 1, 2, 0, 3 };
+
+    std::complex<double> x1, x2, x3, x4;
+
+    x1.real(  2.0 );
+    x1.imag(  3.0 );
+
+    x2.real( -5.0 );
+    x2.imag(  2.0 );
+
+    x3.real(  1.0 );
+    x3.imag(  1.0 );
+
+    x4.real( -1.0 );
+    x4.imag(  2.0 );
+
+    std::vector<std::complex<double>> X = { x1, x2, x3, x4 };
+
+    size_t dim = 2;
+
+    auto result =
+        BasisFunctions::HermitePolynomials ( indices, X, dim );
+
+    std::vector<std::complex<double>> expected;
+
+    expected.push_back (
+        x2 * ( x1 * x1 - 1.0 ) / std::sqrt(2)
+    );
+
+    expected.push_back (
+        x1 * ( x2 * x2 - 1.0 ) / std::sqrt(2)
+    );
+
+    expected.push_back (
+        ( x2 * x2 * x2 - x2 * 3.0 ) / std::sqrt(6)
+    );
+
+    expected.push_back (
+        x4 * ( x3 * x3 - 1.0 ) / std::sqrt(2)
+    );
+
+    expected.push_back (
+        x3 * ( x4 * x4 - 1.0 ) / std::sqrt(2)
+    );
+
+    expected.push_back (
+        ( x4 * x4 * x4 - x4 * 3.0 ) / std::sqrt(6)
+    );
+
+    ASSERT_EQ ( result.size(), expected.size() );
+
+    for ( auto i = 0; i < expected.size(); i++ ) {
+        
+        EXPECT_FLOAT_EQ ( result[i].real(), expected[i].real() );
+        EXPECT_FLOAT_EQ ( result[i].imag(), expected[i].imag() );
+
+    }
+
+}
+
+
 TEST ( HermitePolynomials, WrongXSize ) {
 
     std::vector<size_t> indices { 2, 1, 1, 2, 0, 3 };
@@ -240,7 +303,7 @@ TEST ( HermitePolynomials, WrongXSize ) {
         } catch ( const std::exception& e ) {
 
             EXPECT_STREQ (
-                "HermitePolynomials: num of variables not equal to dimension",
+                "HermitePolynomials: num of samples not multiple of dimension",
                 e.what()
             );
 

@@ -8,9 +8,11 @@ add_library ( basisfunctions INTERFACE
 
     declarations/HermitePolynomials.hpp 
     declarations/MultiIndex.hpp
+    declarations/SupplementaryMaths.hpp 
     declarations/Truncations.hpp 
     implementations/HermitePolynomials_imp.hpp 
     implementations/MultiIndex_imp.hpp 
+    implementations/SupplementaryMaths_imp.hpp 
     implementations/Truncations_imp.hpp 
     utility/LibrariesLoader.hpp
 
@@ -50,10 +52,10 @@ if ( BASIS_FUNCTION_TEST )
 
     add_executable ( BasisFunctions_testrunner 
 
-        test/Binomial_test.cpp
         test/HermitePolynomial_test.cpp 
         test/HermitePolynomials_test.cpp 
         test/MultiIndex_test.cpp 
+        test/SupplementaryMaths_test.cpp 
         test/TotalTruncations_test.cpp 
 
     )

@@ -44,7 +44,9 @@
 namespace BasisFunctions {
 
     template < typename Z, typename C >
-    Vector<C> HermitePolynomials ( Vector<Z>& indices, Vector<C>& X, Z dim ) {
+    Vector<C> HermitePolynomials ( 
+        const Vector<Z>& indices, const Vector<C>& X, const Z dim 
+    ) {
 
         if ( dim <= 0 ) {
 
@@ -54,15 +56,8 @@ namespace BasisFunctions {
 
         }
 
-        if ( X.size() != dim ) {
-
-            throw std::runtime_error (
-                "HermitePolynomials: num of variables not equal to dimension"
-            );
-
-        }
-
         auto nProducts = indices.size() / dim;
+        auto nSamples  =       X.size() / dim;
 
         if ( indices.size() - dim * nProducts != 0 ) {
 
@@ -72,18 +67,27 @@ namespace BasisFunctions {
 
         }
 
+        if (       X.size() - dim * nSamples  != 0 ) {
+
+            throw std::runtime_error (
+                "HermitePolynomials: num of samples not multiple of dimension"
+            );
+
+        }
+
         Vector<C> result;
-        result.reserve ( nProducts );
+        result.reserve ( nProducts * nSamples );
 
         Vector<C> tupple ( dim );
 
-        for ( auto i = 0; i < nProducts; i++ ) {
+        for ( auto i = 0; i < nSamples ; i++ ) {
+        for ( auto j = 0; j < nProducts; j++ ) {
 
             std::transform (
 
-                indices.begin() + i * dim,
-                indices.begin() + i * dim + dim,
-                      X.begin(),
+                indices.begin() + j * dim,
+                indices.begin() + j * dim + dim,
+                      X.begin() + i * dim,
 
                  tupple.begin(),
 
@@ -105,6 +109,7 @@ namespace BasisFunctions {
             );
 
         }
+        }
 
         return result;
 
@@ -116,79 +121,21 @@ namespace BasisFunctions {
 namespace BasisFunctions {
 
     template < typename Z, typename C >
-    C HermitePolynomial ( Z index, C x ) {
+    C HermitePolynomial ( const Z index, const C x ) {
 
         if ( index == 0 ) return 1;
         if ( index == 1 ) return x;
 
         return (
 
-                                    x * HermitePolynomial ( index - 1, x ) -
-            Multiply<Z,C> ( index - 1,  HermitePolynomial ( index - 2, x ) )
+                        x * HermitePolynomial ( index - 1, x ) -
+            ( index - 1 ) * HermitePolynomial ( index - 2, x )
 
         );     
 
     }
 
 } // BasisFunctions : HermitePolynomial 
-
-
-namespace BasisFunctions {
-
-    template < typename Z, typename C > 
-    C Pow ( Z power, C x ) {
-
-        C result = 1.0;
-
-        for ( auto i = 0; i < power; i++ ) {
-            result *= x;
-        }
-
-        return result;
-
-    }
-
-} // BasisFunctions : Pow 
-
-
-namespace BasisFunctions {
-
-    template < typename Z >
-    Z Factorial ( Z n ) {
-
-        if ( n < 0 ) {
-
-            throw std::runtime_error (
-                "Factorial: does not support negative numbers"
-            );
-        }
-
-        if ( n == 0 ) {
-            return 1;
-        }
-
-        return n * Factorial ( n - 1 );
-
-    }
-
-} // BasisFunctions : Factorial 
-
-
-namespace BasisFunctions {
-
-    template < typename Z, typename C >
-    C Multiply ( Z index, C x ) {
-
-        C result;
-
-        result.real ( index * x.real() );
-        result.imag ( index * x.imag() );
-
-        return result;
-
-    }
-
-} // BasisFunctions : Multiply 
 
 
 #endif // HERMITE_POLYNOMIALS_IMPLEMENTATIONS 

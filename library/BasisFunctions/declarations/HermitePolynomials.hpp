@@ -37,6 +37,7 @@
 #define HERMITE_POLYNOMIALS_DECLARATIONS 
 
 #include "LibrariesLoader.hpp" 
+#include "SupplementaryMaths.hpp" 
 
 namespace BasisFunctions {
 
@@ -57,7 +58,9 @@ namespace BasisFunctions {
       * @param      dim define how many polynomials are multiplied together 
       * @return vector of tensor products of Hermite polynomials
       */
-    Vector<C> HermitePolynomials ( Vector<Z>& indices, Vector<C>& X, Z dim );
+    Vector<C> HermitePolynomials (
+        const Vector<Z>& indices, const Vector<C>& X, const Z dim 
+    );
 
 
     template < typename Z, typename C >
@@ -72,30 +75,8 @@ namespace BasisFunctions {
       * @param      x argument to evaluate the polynomial 
       * @return H_{idx} ( x ) 
       */
-    C HermitePolynomial ( Z index, C x );
+    C HermitePolynomial ( const Z index, const C x );
 
-    
-    template < typename Z, typename C >
-    /**
-      * Compute power function recursively instead of using std::pow.
-      * 
-      * @tparam Z a type of non-negative integer e.g. size_t
-      * @tparam C a type of floating complex number e.g. std::complex<float> 
-      * @return x^{power} 
-      */
-    C Pow ( Z power, C x );
-
-    template < typename Z >
-    /**
-      * Compute factorial function recursively.
-      *
-      * @tparam Z a type of non-negative integer e.g. size_t
-      * @return n!
-      */
-    Z Factorial ( Z n );
-
-    template < typename Z, typename C >
-    C Multiply ( Z index, C x );
 
 } // BasisFunctions 
 

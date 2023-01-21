@@ -37,6 +37,7 @@
 #define MULTI_INDEX_DECLARATIONS 
 
 #include "LibrariesLoader.hpp" 
+#include "SupplementaryMaths.hpp" 
 
 namespace BasisFunctions {
 
@@ -56,7 +57,7 @@ namespace BasisFunctions {
       * @param  pMax maximum order of the polynomial.
       * @return sequence of polynomial indices.
       */
-    Vector<Z> MultiIndex ( Z dim, Z pMax );
+    Vector<Z> MultiIndex ( const Z dim, const Z pMax );
 
 
     template < typename Z >
@@ -69,20 +70,7 @@ namespace BasisFunctions {
       * @param Subset save the tupple here. Also contains all previous tupples.
       * @param Active track all previous tupples that have been saved.
       */
-    void MultiIndexRecursive ( Z nSet, Vector<Z>& Subset, Marker& Active );
-
-
-    template < typename Z >
-    /**
-      * Compute binomial coefficient / number of combinations recursively.
-      *
-      * @tparam Z a type of non-negative integer e.g. size_t, int.
-      *
-      * @param     DimSet number of elements available.
-      * @param  DimSubset number of elements to choose.
-      * @return Dimset C DimSubset.
-      */
-    Z Binomial ( Z DimSet, Z DimSubset );
+    void MultiIndexRecursive ( const Z nSet, Vector<Z>& Subset, Marker& Active );
 
 
 } // BasisFunctions 

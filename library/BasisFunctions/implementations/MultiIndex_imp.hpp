@@ -44,7 +44,7 @@
 namespace BasisFunctions {
 
     template < typename Z >
-    Vector<Z> MultiIndex ( Z dim, Z pMax ) {
+    Vector<Z> MultiIndex ( const Z dim, const Z pMax ) {
 
         if ( dim <= 0 ) {
 
@@ -99,7 +99,9 @@ namespace BasisFunctions {
 namespace BasisFunctions {
 
     template < typename Z >
-    void MultiIndexRecursive ( Z nSet, Vector<Z>& Subset, Marker& Active ) {
+    void MultiIndexRecursive ( 
+        const Z nSet, Vector<Z>& Subset, Marker& Active 
+    ) {
 
         if ( Active.size() != nSet ) {
 
@@ -145,33 +147,6 @@ namespace BasisFunctions {
     }
 
 } // BasisFunctions : MultiIndexRecursive 
-
-
-namespace BasisFunctions {
-
-    template < typename Z >
-    Z Binomial ( Z DimSet, Z DimSubset ) {
-
-        if ( DimSet < 0 || DimSubset < 0 ) {
-
-            throw std::runtime_error (
-                "Binomial: currently doesn't support negative values"
-            );
-
-        }
-
-        if ( DimSet < DimSubset ) { return 0; }
-
-        if ( DimSet == DimSubset || DimSubset == 0 ) {
-            return 1;
-        }
-
-        return Binomial<Z> ( DimSet - 1, DimSubset - 1 ) +
-               Binomial<Z> ( DimSet - 1, DimSubset     );
-
-    }
-
-} // BasisFunctions : Binomial 
 
 
 #endif // MULTI_INDEX_IMPLEMENTATIONS 
