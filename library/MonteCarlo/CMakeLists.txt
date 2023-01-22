@@ -6,16 +6,20 @@ project ( MonteCarlo CXX )
 # Add interface library "montecarlo" 
 add_library ( montecarlo INTERFACE 
 
+    declarations/InverseCDF.hpp 
     declarations/LatinHypercubeSampling.hpp 
+    declarations/SupplementaryMaths_MC.hpp
+    implementations/InverseCDF_imp.hpp 
     implementations/LatinHypercubeSampling_imp.hpp 
+    implementations/SupplementaryMaths_imp_MC.hpp 
 
 )
 
 target_include_directories ( montecarlo INTERFACE 
 
-    declarations 
-    implementations  
-    utility
+    ${CMAKE_CURRENT_SOURCE_DIR}/declarations 
+    ${CMAKE_CURRENT_SOURCE_DIR}/implementations 
+    ${CMAKE_CURRENT_SOURCE_DIR}/utility   
 
 )
 
@@ -45,6 +49,7 @@ if ( MONTE_CARLO_TEST )
 
     add_executable ( MonteCarlo_testrunner
 
+        test/InverseCDF_test.cpp 
         test/LatinHypercubeSampling_test.cpp
 
     )
