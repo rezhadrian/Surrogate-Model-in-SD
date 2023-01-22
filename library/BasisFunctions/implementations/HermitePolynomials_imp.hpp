@@ -91,7 +91,7 @@ namespace BasisFunctions {
 
                  tupple.begin(),
 
-                 []( auto n, auto x ) {
+                 []( const auto n, const auto x ) {
                     return HermitePolynomial<Z,C> ( n, x ) /
                            std::sqrt ( Factorial<Z> ( n ) );
                  }

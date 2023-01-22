@@ -53,6 +53,28 @@
 namespace MonteCarlo {
 
     template < typename Z, typename R >
+    void InverseCDFs ( Vector<R>& UniformSamples ) {
+
+        std::transform (
+
+            UniformSamples.begin(),
+            UniformSamples.end(),
+            UniformSamples.begin(),
+
+            []( const auto m ) {
+                return InverseSingleCDF<Z,R> ( m );
+            }
+
+        );
+
+    }
+
+} // MonteCarlo : InverseCDFs 
+
+
+namespace MonteCarlo {
+
+    template < typename Z, typename R >
     R InverseSingleCDF ( const R quantile ) {
 
         if ( quantile < 0.0 ) {
@@ -119,8 +141,8 @@ namespace MonteCarlo {
             R denominator = 1.0;
 
             for ( auto i = 0; i < 4; i++ ) {
-                  numerator += a[i] * Power<Z,R> ( 2*i + 1, quantile - 0.5 ); 
-                denominator += b[i] * Power<Z,R> ( 2*i + 2, quantile - 0.5 ); 
+                  numerator += a[i] * Power<Z,R> ( quantile - 0.5, 2*i + 1 ); 
+                denominator += b[i] * Power<Z,R> ( quantile - 0.5, 2*i + 2 ); 
             }
 
             return numerator / denominator;
@@ -131,8 +153,8 @@ namespace MonteCarlo {
 
         for ( auto i = 0; i < 9; i++ ) {
             result += c[i] * Power<Z,R> (
-                i,
-                std::log ( - std::log (1-quantile) ) 
+                std::log ( - std::log (1-quantile) ),
+                i
             );
         }
 

@@ -41,8 +41,34 @@
 
 namespace MonteCarlo {
 
+    template < typename T >
+    using Vector = std::vector <T>;
+
+
     template < typename Z, typename R >
+    /**
+      * Apply Inverse CDF function to a vector of uniformly distributed RVs
+      * Results overwrite inputs 
+      *
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      *
+      * @param UniformSamples vector with elements in (0,1) 
+      */
+    void InverseCDFs ( Vector<R>& UniformSamples );
+
+
+    template < typename Z, typename R >
+    /**
+      * Compute inverse standard normal CDF of a given quantile 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      * 
+      * @return z such that CDF(z) = quantile 
+      */
     R InverseSingleCDF ( const R quantile );
+
 
 } // MonteCarlo 
 

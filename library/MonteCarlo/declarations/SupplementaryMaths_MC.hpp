@@ -41,7 +41,7 @@
 namespace MonteCarlo {
 
     template < typename Z, typename R >
-    R Power ( const Z power, const R number );
+    R Power ( const R number, const Z power );
 
 } // MonteCarlo 
 
