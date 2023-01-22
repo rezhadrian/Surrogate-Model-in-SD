@@ -78,34 +78,32 @@ namespace BasisFunctions {
         Vector<C> result;
         result.reserve ( nProducts * nSamples );
 
-        Vector<C> tupple ( dim );
-
         for ( auto i = 0; i < nSamples ; i++ ) {
         for ( auto j = 0; j < nProducts; j++ ) {
 
-            std::transform (
-
-                indices.begin() + j * dim,
-                indices.begin() + j * dim + dim,
-                      X.begin() + i * dim,
-
-                 tupple.begin(),
-
-                 []( const auto n, const auto x ) {
-                    return HermitePolynomial<Z,C> ( n, x ) /
-                           std::sqrt ( Factorial<Z> ( n ) );
-                 }
-
-            );
-
             C unity = 1.0;
 
-            result.push_back (
-                std::accumulate (
-                    tupple.begin(), tupple.end(),
+            result.push_back ( 
+                std::transform_reduce (
+                
+                    indices.begin() + j * dim,
+                    indices.begin() + j * dim + dim,
+                          X.begin() + i * dim,
+
                     unity,
-                    std::multiplies<C>()
-                )
+
+                    // resulting polynomials are multiplied
+                    []( const auto N, const auto P ) { return N * P ; },
+
+                    // polynomials with given index and variable
+                    []( const auto idx, const auto x ) {
+
+                        return HermitePolynomial<Z,C> ( idx, x ) / 
+
+                               std::sqrt ( Factorial<Z> ( idx ) );
+
+                    }
+                ) 
             );
 
         }
