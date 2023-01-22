@@ -37,7 +37,7 @@
 #define HERMITE_POLYNOMIALS_DECLARATIONS 
 
 #include "LibrariesLoader_BF.hpp" 
-#include "SupplementaryMaths.hpp" 
+#include "SupplementaryMaths_BF.hpp" 
 
 namespace BasisFunctions {
 

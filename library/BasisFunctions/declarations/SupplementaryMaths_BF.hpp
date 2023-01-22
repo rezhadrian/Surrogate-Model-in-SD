@@ -71,7 +71,7 @@ namespace BasisFunctions {
 } // BasisFunctions 
 
 #ifndef SUPPLEMENTARY_MATHS_IMPLEMENTATIONS 
-    #include "SupplementaryMaths_imp.hpp" 
+    #include "SupplementaryMaths_imp_BF.hpp" 
 #endif 
 
 #endif // SUPPLEMENTARY_MATHS_DECLARATIONS 

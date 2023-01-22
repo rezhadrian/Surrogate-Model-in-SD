@@ -33,7 +33,7 @@
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#include "SupplementaryMaths.hpp"  
+#include "SupplementaryMaths_BF.hpp"  
 #include <gtest/gtest.h> 
 
 TEST ( BinomialCoefficient, TypicalInput ) {

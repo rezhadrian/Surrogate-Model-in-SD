@@ -37,7 +37,7 @@
 #define SUPPLEMENTARY_MATHS_IMPLEMENTATIONS 
 
 #ifndef SUPPLEMENTARY_MATHS_DECLARATIONS 
-    #include "SupplementaryMaths.hpp" 
+    #include "SupplementaryMaths_BF.hpp" 
 #endif 
 
 namespace BasisFunctions {
