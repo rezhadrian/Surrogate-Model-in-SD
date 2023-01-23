@@ -25,7 +25,7 @@
   */ 
 
 /**
-  * @file InverseCDF_test.hpp
+  * @file InverseCDF_test.cpp
   *
   * @brief test functions to compute inverse CDF of standard normal dist
   *

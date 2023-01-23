@@ -8,9 +8,11 @@ add_library ( montecarlo INTERFACE
 
     declarations/InverseCDF.hpp 
     declarations/LatinHypercubeSampling.hpp 
+    declarations/SpecialMatrix.hpp 
     declarations/SupplementaryMaths_MC.hpp
     implementations/InverseCDF_imp.hpp 
     implementations/LatinHypercubeSampling_imp.hpp 
+    implementations/SpecialMatrix_imp.hpp 
     implementations/SupplementaryMaths_imp_MC.hpp 
 
 )
@@ -51,6 +53,7 @@ if ( MONTE_CARLO_TEST )
 
         test/InverseCDF_test.cpp 
         test/LatinHypercubeSampling_test.cpp
+        test/SpecialMatrix_test.cpp 
 
     )
 

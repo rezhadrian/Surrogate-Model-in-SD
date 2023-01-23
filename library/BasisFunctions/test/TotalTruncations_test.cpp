@@ -25,7 +25,7 @@
   */ 
 
 /**
-  * @file TotalTruncations_test.hpp
+  * @file TotalTruncations_test.cpp
   *
   * @brief test functions TotalTruncation 
   *
