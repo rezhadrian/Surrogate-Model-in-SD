@@ -3,4 +3,5 @@ Debug/
 compile_commands.json
 .cache/
 .DS_Store/
+.vscode 
 
