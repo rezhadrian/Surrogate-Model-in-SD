@@ -51,6 +51,7 @@ if ( MONTE_CARLO_TEST )
 
     add_executable ( MonteCarlo_testrunner
 
+        test/CholeskyDecomposition_test.cpp 
         test/InverseCDF_test.cpp 
         test/LatinHypercubeSampling_test.cpp
         test/SpecialMatrix_test.cpp 

@@ -36,9 +36,9 @@
 #include "SpecialMatrix.hpp" 
 #include <gtest/gtest.h> 
 
-TEST ( DenseLTSMatrix, LowerTriColumnAssignment ) {
+TEST ( DenseSymMatrix, LowerTriColumnAssignment ) {
 
-    typedef MonteCarlo::DenseLTSMatrix<size_t, double> Matrix;
+    typedef MonteCarlo::DenseSymMatrix<size_t, double> Matrix;
     typedef std::vector<double> Vector;
 
     Matrix A ( 3 );
@@ -66,9 +66,9 @@ TEST ( DenseLTSMatrix, LowerTriColumnAssignment ) {
 
 }
 
-TEST ( DenseLTSMatrix, UpperTriRowAssignment ) {
+TEST ( DenseSymMatrix, UpperTriRowAssignment ) {
 
-    typedef MonteCarlo::DenseLTSMatrix<size_t, double> Matrix;
+    typedef MonteCarlo::DenseSymMatrix<size_t, double> Matrix;
     typedef std::vector<double> Vector;
 
     Matrix A ( 3 );
@@ -96,3 +96,40 @@ TEST ( DenseLTSMatrix, UpperTriRowAssignment ) {
 
 }
 
+TEST ( DenseTriangularMatrix, LowerTriColumnAssignment ) {
+
+    typedef MonteCarlo::DenseTriangularMatrix<size_t, double> Matrix;
+    typedef std::vector<double> Vector;
+
+    Matrix A ( 3 );
+
+    Vector Index1 { 0, 1, 2, 1, 2, 2 };
+    Vector Index2 { 0, 0, 0, 1, 1, 2 };
+
+    Vector data { 1, 2, 3, 4, 5, 6 };
+
+
+    for ( auto i = 0; i < data.size(); i++ ) {
+
+        A( Index1[i], Index2[i] ) = data[i];
+
+    }
+
+    const Matrix& a = A;
+
+    Vector UpperRow {  0, 0, 1 };
+    Vector UpperCol {  1, 2, 2 };
+
+    for ( auto i = 0; i < data.size(); i++ ) {
+
+        EXPECT_EQ ( A( Index1[i], Index2[i] ), data[i] );
+
+    }
+
+    for ( auto i = 0; i < UpperCol.size(); i++ ) {
+
+        EXPECT_EQ ( a( UpperRow[i], UpperCol[i] ), 0.0 );
+
+    }
+
+}

@@ -45,19 +45,19 @@ namespace MonteCarlo {
 
 
     template < typename Z, typename R >
-    DenseLTSMatrix<Z,R>::DenseLTSMatrix ( const Z dim ) :
+    DenseSymMatrix<Z,R>::DenseSymMatrix ( const Z dim ) :
         dim_( dim ),
         dat_( Vector<R> ( (dim+1) * dim / 2, 0 ) )
     {}
 
 
     template < typename Z, typename R >
-    R DenseLTSMatrix<Z,R>::operator() ( const Z i, const Z j ) const {
+    R DenseSymMatrix<Z,R>::operator() ( const Z i, const Z j ) const {
 
         if ( i > dim_ - 1 || j > dim_ - 1 ) {
 
             throw std::runtime_error (
-                "DenseLTSMatrix: index exceeds dimension"
+                "DenseSymMatrix: index exceeds dimension"
             );
 
         }
@@ -72,12 +72,12 @@ namespace MonteCarlo {
 
 
     template < typename Z, typename R >
-    R& DenseLTSMatrix<Z,R>::operator() ( const Z i, const Z j ) {
+    R& DenseSymMatrix<Z,R>::operator() ( const Z i, const Z j ) {
 
         if ( i > dim_ - 1 || j > dim_ - 1 ) {
 
             throw std::runtime_error (
-                "DenseLTSMatrix: index exceeds dimension"
+                "DenseSymMatrix: index exceeds dimension"
             );
 
         }
@@ -91,7 +91,65 @@ namespace MonteCarlo {
     }
 
 
-}
+} // MonteCarlo : DenseSymMatrix 
+
+
+namespace MonteCarlo {
+
+
+    template < typename Z, typename R >
+    DenseTriangularMatrix<Z,R>::DenseTriangularMatrix ( const Z dim ) :
+        dim_( dim ),
+        dat_( Vector<R> ( (dim+1) * dim / 2, 0 ) )
+    {}
+
+
+    template < typename Z, typename R >
+    R DenseTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) const {
+
+        if ( i > dim_ - 1 || j > dim_ - 1 ) {
+
+            throw std::runtime_error (
+                "DenseTriangularMatrix: index exceeds dimension"
+            );
+
+        }
+
+        if ( j > i ) {
+            return 0.0;
+        }
+
+        return dat_[ (i+1) * i / 2 + j ];
+
+    }
+
+
+    template < typename Z, typename R >
+    R& DenseTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) {
+
+        if ( i > dim_ - 1 || j > dim_ - 1 ) {
+
+            throw std::runtime_error (
+                "DenseTriangularMatrix: index exceeds dimension"
+            );
+
+        }
+
+        if ( j > i ) {
+
+            throw std::runtime_error (
+                "DenseTriangularMatrix: cannot write to upper triangular part"
+            );
+
+        }
+
+        return dat_[ (i+1) * i / 2 + j ];
+
+    }
+
+
+} // MonteCarlo : DenseTriangularMatrix 
+
 
 #endif // SPECIAL_MATRIX_IMPLEMENTATIONS 
 

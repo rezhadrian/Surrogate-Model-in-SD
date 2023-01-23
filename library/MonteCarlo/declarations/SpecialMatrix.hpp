@@ -46,21 +46,21 @@ namespace MonteCarlo {
 
     template < typename Z, typename R >
     /**
-      * Matrix that only stores lower U or L triangular and diagonal elements 
-      * This matrix is dense i.e. it stores all elements including zeros
-      * This matrix is square and can also be used as symmetric matrix 
+      * Dense symmetric matrix 
+      * Stores only lower triangular and diagonal elements
+      * Stores zeros as well
       * 
       * @tparam Z a type of non-negative integers e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
-    class DenseLTSMatrix {
+    class DenseSymMatrix {
 
                 Z dim_;
         Vector<R> dat_;
 
         public: 
 
-            DenseLTSMatrix ( const Z dimension );
+            DenseSymMatrix ( const Z dimension );
 
             R  operator() ( const Z i, const Z j ) const;
             R& operator() ( const Z i, const Z j );
@@ -70,7 +70,36 @@ namespace MonteCarlo {
             Vector<R>& data () { return dat_; }
 
 
-    }; // CovarianceMatrix 
+    }; // DenseSymMatrix 
+
+
+    template < typename Z, typename R >
+    /**
+      * Dense triangular matrix 
+      * Stores only lower triangular and diagonal elements
+      * Stores zeros as well
+      * 
+      * @tparam Z a type of non-negative integers e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      */
+    class DenseTriangularMatrix {
+
+                Z dim_;
+        Vector<R> dat_;
+
+        public: 
+
+            DenseTriangularMatrix ( const Z dimension );
+
+            R  operator() ( const Z i, const Z j ) const;
+            R& operator() ( const Z i, const Z j );
+
+            Z dimension () const { return dim_; };
+
+            Vector<R>& data () { return dat_; }
+
+
+    }; // DenseTriangularMatrix 
 
 
 } // MonteCarlo 
