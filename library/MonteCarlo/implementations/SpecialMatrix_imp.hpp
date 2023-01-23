@@ -98,57 +98,114 @@ namespace MonteCarlo {
 
 
     template < typename Z, typename R >
-    DenseTriangularMatrix<Z,R>::DenseTriangularMatrix ( const Z dim ) :
+    DenseUTriangularMatrix<Z,R>::DenseUTriangularMatrix ( const Z dim ) :
         dim_( dim ),
         dat_( Vector<R> ( (dim+1) * dim / 2, 0 ) )
     {}
 
 
     template < typename Z, typename R >
-    R DenseTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) const {
+    R DenseUTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) const {
 
         if ( i > dim_ - 1 || j > dim_ - 1 ) {
 
             throw std::runtime_error (
-                "DenseTriangularMatrix: index exceeds dimension"
+                "DenseUTriangularMatrix: index exceeds dimension"
             );
 
         }
 
-        if ( j > i ) {
+        if ( i > j ) {
             return 0.0;
         }
 
-        return dat_[ (i+1) * i / 2 + j ];
+        return dat_[ i*dim_ - (i-1)*i/2 + j-i ];
 
     }
 
-
+    
     template < typename Z, typename R >
-    R& DenseTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) {
+    R& DenseUTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) {
 
         if ( i > dim_ - 1 || j > dim_ - 1 ) {
 
             throw std::runtime_error (
-                "DenseTriangularMatrix: index exceeds dimension"
+                "DenseUTriangularMatrix: index exceeds dimension"
             );
 
         }
 
-        if ( j > i ) {
+        if ( i > j ) {
 
             throw std::runtime_error (
-                "DenseTriangularMatrix: cannot write to upper triangular part"
+                "DenseUTriangularMatrix: cannot write to lower triangular part"
             );
 
         }
 
-        return dat_[ (i+1) * i / 2 + j ];
+        return dat_[ i*dim_ - (i-1)*i/2 + j-i ];
 
-    }
+    } 
 
 
-} // MonteCarlo : DenseTriangularMatrix 
+} // MonteCarlo : DenseUTriangularMatrix 
+
+
+// namespace MonteCarlo {
+//
+//
+//     template < typename Z, typename R >
+//     DenseLTriangularMatrix<Z,R>::DenseLTriangularMatrix ( const Z dim ) :
+//         dim_( dim ),
+//         dat_( Vector<R> ( (dim+1) * dim / 2, 0 ) )
+//     {}
+//
+//
+//     template < typename Z, typename R >
+//     R DenseLTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) const {
+//
+//         if ( i > dim_ - 1 || j > dim_ - 1 ) {
+//
+//             throw std::runtime_error (
+//                 "DenseTriangularMatrix: index exceeds dimension"
+//             );
+//
+//         }
+//
+//         if ( j > i ) {
+//             return 0.0;
+//         }
+//
+//         return dat_[ (i+1) * i / 2 + j ];
+//
+//     }
+//
+//
+//     template < typename Z, typename R >
+//     R& DenseLTriangularMatrix<Z,R>::operator() ( const Z i, const Z j ) {
+//
+//         if ( i > dim_ - 1 || j > dim_ - 1 ) {
+//
+//             throw std::runtime_error (
+//                 "DenseTriangularMatrix: index exceeds dimension"
+//             );
+//
+//         }
+//
+//         if ( j > i ) {
+//
+//             throw std::runtime_error (
+//                 "DenseTriangularMatrix: cannot write to upper triangular part"
+//             );
+//
+//         }
+//
+//         return dat_[ (i+1) * i / 2 + j ];
+//
+//     }
+//
+//
+// } // MonteCarlo : DenseTriangularMatrix 
 
 
 #endif // SPECIAL_MATRIX_IMPLEMENTATIONS 

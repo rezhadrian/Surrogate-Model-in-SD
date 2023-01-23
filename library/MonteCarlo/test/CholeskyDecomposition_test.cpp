@@ -40,7 +40,7 @@
 TEST ( CholeskyDecomposition, DenseIdentity ) {
 
     typedef MonteCarlo::DenseSymMatrix<size_t, double> Sym;
-    typedef MonteCarlo::DenseTriangularMatrix<size_t, double> Tri;
+    typedef MonteCarlo::DenseUTriangularMatrix<size_t, double> Tri;
 
     size_t dim = 30;
 
@@ -67,7 +67,7 @@ TEST ( CholeskyDecomposition, DenseIdentity ) {
 TEST ( CholeskyDecomposition, DenseSPD ) {
 
     typedef MonteCarlo::DenseSymMatrix<size_t, double> Sym;
-    typedef MonteCarlo::DenseTriangularMatrix<size_t, double> Tri;
+    typedef MonteCarlo::DenseUTriangularMatrix<size_t, double> Tri;
 
     typedef std::vector<double> Vector;
 
@@ -99,11 +99,11 @@ TEST ( CholeskyDecomposition, DenseSPD ) {
 
     Vector expected {
 
-        3, 0, 0, 0, 0,
-        1, 2, 0, 0, 0, 
-        0, 0, 4, 0, 0,
-        5, 1, 2, 3, 0,
-        0, 0, 0, 0, 1
+        3, 1, 0, 5, 0,
+        0, 2, 0, 1, 0,
+        0, 0, 4, 2, 0,
+        0, 0, 0, 3, 0,
+        0, 0, 0, 0, 1,
 
     };
 

@@ -40,8 +40,16 @@
 
 namespace MonteCarlo {
 
-    template < class TriangularMatrix, class SymMatrix >
-    TriangularMatrix CholeskyDecompose ( const SymMatrix& A );
+    template < class UTriangularMatrix, class SymMatrix >
+    /**
+      * Cholesky decomposition of SPD matrix e.d. covariance matrix 
+      *
+      * @tparam UTriangularMatrix upper triangular matrix class 
+      * @tparam SymMatrix symmetric matrix class 
+      * 
+      * @return upper triangular part of the decomposition 
+      */
+    UTriangularMatrix CholeskyDecompose ( const SymMatrix& A );
 
 } // MonteCarlo 
 

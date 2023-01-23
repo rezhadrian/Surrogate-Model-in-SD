@@ -25,6 +25,16 @@
   */ 
 
 /**
+  * Using Cholesky-Crout Algorithm but inverted to produce upper triangular
+  *
+  * Reference:
+  * Rushcel, J. (2016). 
+  * Parallel Implementation of The Cholesky Decomposition on CPUs and GPUs. 
+  * Porto Alegre. Universidade Federal do Rio Grande do Sul Instituto de 
+  * Informatica Curso de Ciencia da Computacao.
+  */
+
+/**
   * @file CholeskyDecomposition_imp.hpp
   *
   * @brief implement function to perform Cholesky decomposition 
@@ -43,17 +53,17 @@
 
 namespace MonteCarlo {
 
-    template < class TriangularMatrix, class SymMatrix >
-    TriangularMatrix CholeskyDecompose ( const SymMatrix& A ) {
+    template < class UTriangularMatrix, class SymMatrix >
+    UTriangularMatrix CholeskyDecompose ( const SymMatrix& A ) {
 
-        TriangularMatrix L ( A.dimension() );
+        UTriangularMatrix L ( A.dimension() );
 
         for ( auto j = 0; j < A.dimension(); j++ ) {
 
             auto sum = 0.0;
 
             for ( auto k = 0; k < j; k++ ) {
-                sum += L(j,k) * L(j,k);
+                sum += L(k,j) * L(k,j);
             }
 
             L(j,j) = std::sqrt ( A(j,j) - sum );
@@ -71,10 +81,10 @@ namespace MonteCarlo {
                 sum = 0.0;
 
                 for ( auto k = 0; k < j; k++ ) {
-                    sum += L(i,k) * L(j,k);
+                    sum += L(k,i) * L(k,j);
                 }
 
-                L(i,j) = 1.0 / L(j,j) * ( A(i,j) - sum );
+                L(j,i) = 1.0 / L(j,j) * ( A(j,i) - sum );
 
             }
 

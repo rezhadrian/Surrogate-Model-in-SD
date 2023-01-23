@@ -75,21 +75,21 @@ namespace MonteCarlo {
 
     template < typename Z, typename R >
     /**
-      * Dense triangular matrix 
+      * Dense upper triangular matrix 
       * Stores only lower triangular and diagonal elements
       * Stores zeros as well
       * 
       * @tparam Z a type of non-negative integers e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
-    class DenseTriangularMatrix {
+    class DenseUTriangularMatrix {
 
                 Z dim_;
         Vector<R> dat_;
 
         public: 
 
-            DenseTriangularMatrix ( const Z dimension );
+            DenseUTriangularMatrix ( const Z dim );
 
             R  operator() ( const Z i, const Z j ) const;
             R& operator() ( const Z i, const Z j );
@@ -98,8 +98,35 @@ namespace MonteCarlo {
 
             Vector<R>& data () { return dat_; }
 
+    };
 
-    }; // DenseTriangularMatrix 
+
+    // template < typename Z, typename R >
+    // /**
+    //   * Dense lower triangular matrix 
+    //   * Stores only lower triangular and diagonal elements
+    //   * Stores zeros as well
+    //   * 
+    //   * @tparam Z a type of non-negative integers e.g. size_t 
+    //   * @tparam R a type of floating point e.g. double 
+    //   */
+    // class DenseLTriangularMatrix {
+    //
+    //             Z dim_;
+    //     Vector<R> dat_;
+    //
+    //     public: 
+    //
+    //         DenseLTriangularMatrix ( const Z dimension );
+    //
+    //         R  operator() ( const Z i, const Z j ) const;
+    //         R& operator() ( const Z i, const Z j );
+    //
+    //         Z dimension () const { return dim_; };
+    //
+    //         Vector<R>& data () { return dat_; }
+    //
+    // }; // DenseLTriangularMatrix 
 
 
 } // MonteCarlo 
