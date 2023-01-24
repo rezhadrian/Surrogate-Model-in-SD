@@ -6,14 +6,13 @@ project ( BasisFunctions CXX )
 # Add interface library "basisfunctions" 
 add_library ( basisfunctions INTERFACE 
 
-    declarations/HermitePolynomials.hpp 
-    declarations/MultiIndex.hpp
-    declarations/SupplementaryMaths_BF.hpp 
-    declarations/Truncations.hpp 
+    declarations/BasisFunctions.hpp 
+
     implementations/HermitePolynomials_imp.hpp 
     implementations/MultiIndex_imp.hpp 
     implementations/SupplementaryMaths_imp_BF.hpp 
     implementations/Truncations_imp.hpp 
+
     utility/LibrariesLoader_BF.hpp
 
 )

@@ -37,6 +37,7 @@
 #define LIBRARIES_LOADER_MC 
 
 #include <algorithm> 
+#include <cmath> 
 #include <numeric> 
 #include <random>
 #include <stdexcept> 

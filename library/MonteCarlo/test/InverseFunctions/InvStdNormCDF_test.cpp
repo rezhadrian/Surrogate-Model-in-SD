@@ -1,30 +1,4 @@
 /**
-  * This file is part of a Surrogate Model library for structural dynamics. 
-  *
-  * The library is free: you can distribute it and/or modify it.
-  * The library is distributed in the hope that it can be useful and helpful,
-  * particularly for students and self - learning individuals.
-  * 
-  * The library comes WITHOUT ANY WARRANTY: without even the implied warranty 
-  * of MERCHANTIBILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  *
-  * The library is licensed under the GNU General Public License v3.0
-  *
-  *
-  * The library is based on works by:
-  * - Felix Schneider
-  * - Iason Papaioannou
-  * 
-  * Chair of Structural Mechanics 
-  * Engineering Risk Analysis Group 
-  *
-  * Technische Universitaet Muenchen
-  *
-  * www.cee.ed.tum.de/bm
-  * www.cee.ed.tum.de/era 
-  */ 
-
-/**
   * @file InverseCDF_test.cpp
   *
   * @brief test functions to compute inverse CDF of standard normal dist
@@ -33,10 +7,10 @@
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#include "InverseCDF.hpp" 
+#include "MonteCarlo.hpp" 
 #include <gtest/gtest.h> 
 
-TEST ( InverseSingleCDF, RightCentral ) {
+TEST ( InvStdNormCDF, RightCentral ) {
 
     std::vector<double> quantiles {
 
@@ -71,7 +45,7 @@ TEST ( InverseSingleCDF, RightCentral ) {
     for ( auto i = 0; i < quantiles.size(); i++ ) {
 
         auto result = 
-            MonteCarlo::InverseSingleCDF<size_t,double> ( quantiles[i] );
+            MonteCarlo::InvStdNormCDF<size_t,double> ( quantiles[i] );
 
         EXPECT_NEAR ( result, expected[i], tol);
         
@@ -79,7 +53,7 @@ TEST ( InverseSingleCDF, RightCentral ) {
 
 }
 
-TEST ( InverseSingleCDF, LeftCentral ) {
+TEST ( InvStdNormCDF, LeftCentral ) {
 
     std::vector<double> quantiles {
 
@@ -114,7 +88,7 @@ TEST ( InverseSingleCDF, LeftCentral ) {
     for ( auto i = 0; i < quantiles.size(); i++ ) {
 
         auto result = 
-            MonteCarlo::InverseSingleCDF<size_t,double> ( quantiles[i] );
+            MonteCarlo::InvStdNormCDF<size_t,double> ( quantiles[i] );
 
         EXPECT_NEAR ( result, expected[i], tol);
         
@@ -122,7 +96,7 @@ TEST ( InverseSingleCDF, LeftCentral ) {
 
 }
 
-TEST ( InverseSingleCDF, RightTail ) {
+TEST ( InvStdNormCDF, RightTail ) {
 
     std::vector<double> quantiles {
 
@@ -165,7 +139,7 @@ TEST ( InverseSingleCDF, RightTail ) {
     for ( auto i = 0; i < quantiles.size(); i++ ) {
 
         auto result = 
-            MonteCarlo::InverseSingleCDF<size_t,double> ( quantiles[i] );
+            MonteCarlo::InvStdNormCDF<size_t,double> ( quantiles[i] );
 
         EXPECT_NEAR ( result, expected[i], tol);
         
@@ -173,7 +147,7 @@ TEST ( InverseSingleCDF, RightTail ) {
 
 }
 
-TEST ( InverseSingleCDF, LeftTail ) {
+TEST ( InvStdNormCDF, LeftTail ) {
 
     std::vector<double> quantiles {
 
@@ -216,7 +190,7 @@ TEST ( InverseSingleCDF, LeftTail ) {
     for ( auto i = 0; i < quantiles.size(); i++ ) {
 
         auto result = 
-            MonteCarlo::InverseSingleCDF<size_t,double> ( quantiles[i] );
+            MonteCarlo::InvStdNormCDF<size_t,double> ( quantiles[i] );
 
         EXPECT_NEAR ( result, expected[i], tol);
         
@@ -227,7 +201,7 @@ TEST ( InverseSingleCDF, LeftTail ) {
 static void ICDF ( double quantile ) {
 
     auto result = 
-        MonteCarlo::InverseSingleCDF<size_t,double> ( quantile );
+        MonteCarlo::InvStdNormCDF<size_t,double> ( quantile );
 
 }
 

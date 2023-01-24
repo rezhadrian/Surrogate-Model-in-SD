@@ -6,14 +6,13 @@ project ( MonteCarlo CXX )
 # Add interface library "montecarlo" 
 add_library ( montecarlo INTERFACE 
 
-    declarations/InverseCDF.hpp 
-    declarations/LatinHypercubeSampling.hpp 
-    declarations/SpecialMatrix.hpp 
-    declarations/SupplementaryMaths_MC.hpp
+    declarations/MonteCarlo.hpp 
+
     implementations/InverseCDF_imp.hpp 
     implementations/LatinHypercubeSampling_imp.hpp 
     implementations/SpecialMatrix_imp.hpp 
     implementations/SupplementaryMaths_imp_MC.hpp 
+    implementations/VariableGeneration_imp.hpp 
 
 )
 
@@ -52,9 +51,12 @@ if ( MONTE_CARLO_TEST )
     add_executable ( MonteCarlo_testrunner
 
         test/CholeskyDecomposition_test.cpp 
-        test/InverseCDF_test.cpp 
+        test/InverseFunctions/InvErfc_test.cpp 
+        test/InverseFunctions/InvLogNormCDF_test.cpp 
+        test/InverseFunctions/InvStdNormCDF_test.cpp 
         test/LatinHypercubeSampling_test.cpp
         test/SpecialMatrix_test.cpp 
+        test/VariableGeneration_test.cpp 
 
     )
 

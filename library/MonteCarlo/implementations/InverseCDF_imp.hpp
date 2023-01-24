@@ -1,39 +1,4 @@
 /**
-  * This file is part of a Surrogate Model library for structural dynamics. 
-  *
-  * The library is free: you can distribute it and/or modify it.
-  * The library is distributed in the hope that it can be useful and helpful,
-  * particularly for students and self - learning individuals.
-  * 
-  * The library comes WITHOUT ANY WARRANTY: without even the implied warranty 
-  * of MERCHANTIBILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  *
-  * The library is licensed under the GNU General Public License v3.0
-  *
-  *
-  * The library is based on works by:
-  * - Felix Schneider
-  * - Iason Papaioannou
-  * 
-  * Chair of Structural Mechanics 
-  * Engineering Risk Analysis Group 
-  *
-  * Technische Universitaet Muenchen
-  *
-  * www.cee.ed.tum.de/bm
-  * www.cee.ed.tum.de/era 
-  */ 
-
-/**
-  * The algorithm used is the Beasley-Springer-Moro algorithm 
-  * 
-  * Reference:
-  *
-  * Glasserman, P. (2004). Monte Carlo methods in financial engineering. 
-  * New York, NY : Springer.
-  */
-
-/**
   * @file InverseCDF_imp.hpp
   *
   * @brief implement functions to compute inverse CDF of standard normal dist
@@ -45,8 +10,8 @@
 #ifndef INVERSE_CDF_IMPLEMENTATIONS 
 #define INVERSE_CDF_IMPLEMENTATIONS 
 
-#ifndef INVERSE_CDF_DECLARATIONS 
-    #include "InverseCDF.hpp" 
+#ifndef MONTE_CARLO_DECLARATIONS 
+    #include "MonteCarlo.hpp" 
 #endif 
 
 
@@ -62,7 +27,7 @@ namespace MonteCarlo {
             UniformSamples.begin(),
 
             []( const auto m ) {
-                return InverseSingleCDF<Z,R> ( m );
+                return InvStdNormCDF<Z,R> ( m );
             }
 
         );
@@ -75,7 +40,15 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
     template < typename Z, typename R >
-    R InverseSingleCDF ( const R quantile ) {
+    /**
+      * The algorithm used is the Beasley-Springer-Moro algorithm 
+      * 
+      * Reference:
+      *
+      * Glasserman, P. (2004). Monte Carlo methods in financial engineering. 
+      * New York, NY : Springer.
+      */
+    R InvStdNormCDF ( const R quantile ) {
 
         if ( quantile < 0.0 ) {
 
@@ -132,7 +105,7 @@ namespace MonteCarlo {
         };
 
         if ( quantile < 0.5 ) {
-            return -1.0 * InverseSingleCDF<Z,R> ( 1 - quantile );
+            return -1.0 * InvStdNormCDF<Z,R> ( 1 - quantile );
         }
 
         if ( quantile >= 0.5 && quantile <= 0.92 ) {
@@ -162,7 +135,51 @@ namespace MonteCarlo {
 
     }
 
-} // MonteCarlo : InverseSingleCDF 
+} // MonteCarlo : InvStdNormCDF 
+
+
+namespace MonteCarlo {
+
+    template < typename R >
+    R InvErfc ( const R p ) {
+
+        R x, err, t, pp;
+
+        if ( p >= 2.0 ) return -100;
+        if ( p <= 0.0 ) return  100;
+
+        pp = ( p < 1.0 )? p : 2.0 - p;
+
+        t = std::sqrt ( -2.0 * std::log ( pp / 2.0 ) );
+
+        x = -0.70711*((2.30753+t*0.27061)/(1.0+t*(0.99229+t*0.04481))-t );
+
+        for ( auto i = 0; i < 2; i++ ) {
+
+            err = std::erfc(x) - pp;
+            x  += err/(1.12837916709551257*std::exp(-x*x) - x*err);
+
+        }
+
+        return ( p < 1.0 )? x : -x;
+
+    }
+
+
+
+} // MonteCarlo : InvErfc 
+
+
+namespace MonteCarlo {
+
+    template < typename R >
+    R InvLogNormCDF ( const R quantile, const R mu, const R sig ) {
+
+        return std::exp (-1.41421356237309505*sig*InvErfc(2.0*quantile)+mu);
+
+    }
+
+} // MonteCarlo : InvLogNormCDF 
 
 
 #endif // INVERSE_CDF_IMPLEMENTATIONS 

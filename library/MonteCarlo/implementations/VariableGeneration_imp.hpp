@@ -25,29 +25,21 @@
   */ 
 
 /**
-  * @file SupplementaryMaths_MC.hpp
+  * @file VariableGeneration_imp.hpp
   *
-  * @brief declare additional maths functions for Monte Carlo
+  * @brief implement function to generate correlated random variables 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef SUPPLEMENTARY_MATHS_MC_DECLARATIONS 
-#define SUPPLEMENTARY_MATHS_MC_DECLARATIONS 
+#ifndef VARIABLE_GENERATION_IMPLEMENTATIONS 
+#define VARIABLE_GENERATION_IMPLEMENTATIONS 
 
-#include "LibrariesLoader_MC.hpp" 
-
-namespace MonteCarlo {
-
-    template < typename Z, typename R >
-    R Power ( const R number, const Z power );
-
-} // MonteCarlo 
-
-#ifndef SUPPLEMENTARY_MATHS_MC_IMPLEMENTATIONS 
-    #include "SupplementaryMaths_imp_MC.hpp" 
+#ifndef VARIABLE_GENERATION_DECLARATIONS 
+    #include "VariableGeneration.hpp" 
 #endif 
 
-#endif // SUPPLEMENTARY_MATHS_MC_DECLARATIONS 
+
+#endif // VARIABLE_GENERATION_IMPLEMENTATIONS  
 
