@@ -7,8 +7,8 @@
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef SUPPLEMENTARY_MATHS_IMPLEMENTATIONS 
-#define SUPPLEMENTARY_MATHS_IMPLEMENTATIONS 
+#ifndef SUPPLEMENTARY_MATHS_BF_IMPLEMENTATIONS 
+#define SUPPLEMENTARY_MATHS_BF_IMPLEMENTATIONS 
 
 #ifndef BASIS_FUNCTIONS_DECLARATIONS 
     #include "BasisFunctions.hpp" 
@@ -82,5 +82,5 @@ namespace BasisFunctions {
 } // BasisFunctions : Binomial 
 
 
-#endif // SUPPLEMENTARY_MATHS_IMPLEMENTATIONS 
+#endif // SUPPLEMENTARY_MATHS_BF_IMPLEMENTATIONS 
 

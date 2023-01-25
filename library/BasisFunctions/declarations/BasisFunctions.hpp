@@ -43,39 +43,11 @@ template < typename T >
 using Vector = std::vector <T>;
 
 
-// Implemented in SupplementaryMaths_imp_BF.hpp 
+// Additional functions not implemented in cmath 
 
-namespace BasisFunctions {
-
-
-    template < typename Z > 
-    /**
-      * Compute n! recursively 
-      * @tparam Z a type of non-negative integer e.g. size_t 
-      */
-    Z Factorial ( const Z n ); 
-
-
-    template < typename Z, typename C >
-    /**
-      * Overload multiplication for integer and complex operand 
-      *
-      * @tparam Z a type of non-negative integer e.g. size_t 
-      * @tparam C a class comparable with std::complex 
-      */
-    C operator* ( const Z integer, const C complex );
-
-
-    template < typename Z >
-    /**
-      * Compute binomial coefficient nCk recursively 
-      *
-      * @tparam Z a type of non-negative integer e.g. size_t 
-      */
-    Z Binomial ( const Z n, const Z k );
-
-
-} // BasisFunctions : SupplementaryMaths 
+#ifndef SUPPLEMENTARY_MATHS_BF_DECLARATIONS 
+    #include "SupplementaryMaths_BF.hpp" 
+#endif 
 
 
 // Implemented in MultiIndex_imp.hpp 
@@ -179,7 +151,7 @@ namespace BasisFunctions {
 } // BasisFunctions : HermitePolynomials 
 
 
-#ifndef SUPPLEMENTARY_MATHS_IMPLEMENTATIONS 
+#ifndef SUPPLEMENTARY_MATHS_BF_IMPLEMENTATIONS 
     #include "SupplementaryMaths_imp_BF.hpp" 
 #endif 
 

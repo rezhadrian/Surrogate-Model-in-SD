@@ -8,6 +8,8 @@ add_library ( basisfunctions INTERFACE
 
     declarations/BasisFunctions.hpp 
 
+    declarations/include/SupplementaryMaths_BF.hpp 
+
     implementations/HermitePolynomials_imp.hpp 
     implementations/MultiIndex_imp.hpp 
     implementations/SupplementaryMaths_imp_BF.hpp 
@@ -20,6 +22,7 @@ add_library ( basisfunctions INTERFACE
 target_include_directories ( basisfunctions INTERFACE 
 
     ${CMAKE_CURRENT_SOURCE_DIR}/declarations 
+    ${CMAKE_CURRENT_SOURCE_DIR}/declarations/include 
     ${CMAKE_CURRENT_SOURCE_DIR}/implementations  
     ${CMAKE_CURRENT_SOURCE_DIR}/utility
 
