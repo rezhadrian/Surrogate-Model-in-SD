@@ -61,6 +61,10 @@ namespace MonteCarlo {
     R InvLogNormCDF ( const R quantile, const R mu, const R sig );
 
 
+    template < typename R >
+    R StdNormCDF ( const R x );
+
+
 } // MonteCarlo : SupplementaryMaths 
 
 

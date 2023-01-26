@@ -43,13 +43,6 @@ template < typename T >
 using Vector = std::vector <T>;
 
 
-// Additional functions not implemented in cmath 
-
-#ifndef SUPPLEMENTARY_MATHS_BF_DECLARATIONS 
-    #include "SupplementaryMaths_BF.hpp" 
-#endif 
-
-
 // Implemented in MultiIndex_imp.hpp 
 
 namespace BasisFunctions {
@@ -63,26 +56,11 @@ namespace BasisFunctions {
       * 
       * @tparam Z a type of non-negative integer e.g. size_t 
       *
-      * @param   dim number of variables 
+      * @param  dim number of variables 
       * @param  pMax maximum order of the polynomial 
       * @return sequence of polynomial indices 
       */
     Vector<Z> MultiIndex ( const Z dim, const Z pMax );
-
-
-    template < typename Z >
-    /**
-      * Generate a unique tupple of indices for MultiIndex function. 
-      * 
-      * @tparam Z a type of non-negative integer e.g. size_t.
-      *
-      * @param   nSet the tupple is generated from the first nSet integers.
-      * @param Subset save the tupple here. Also contains all previous tupples.
-      * @param Active track all previous tupples that have been saved.
-      */
-    void MultiIndexRecursive ( 
-        const Z nSet, Vector<Z>& Subset, Marker& Active 
-    );
 
     
 } // BasisFunctions : MultiIndex 
@@ -118,7 +96,7 @@ namespace BasisFunctions {
 
     template < typename Z, typename C >
     /**
-      * Evaluate tensor products of NORMALIZED Hermite polynomials.
+      * Evaluate tensor prod. of NORMALIZED probabilist Hermite polynomials.
       *
       * @tparam Z a type of non-negative integer e.g. size_t
       * @tparam C a type of floating complex number e.g. std::complex<float> 
@@ -133,27 +111,8 @@ namespace BasisFunctions {
     );
 
 
-    template < typename Z, typename C >
-    /**
-      * Evaluate probabilist Hermite polynomial of given index at given position.
-      * The polynomial is NOT normalized.
-      *
-      * @tparam Z a type of non-negative integer e.g. size_t
-      * @tparam C a type of floating complex number e.g. std::complex<float> 
-      * 
-      * @param  index indicates which polynomial to use 
-      * @param      x argument to evaluate the polynomial 
-      * @return H_{idx} ( x ) 
-      */
-    C HermitePolynomial ( const Z index, const C x );
-
-
 } // BasisFunctions : HermitePolynomials 
 
-
-#ifndef SUPPLEMENTARY_MATHS_BF_IMPLEMENTATIONS 
-    #include "SupplementaryMaths_imp_BF.hpp" 
-#endif 
 
 #ifndef MULTI_INDEX_IMPLEMENTATIONS 
     #include "MultiIndex_imp.hpp" 

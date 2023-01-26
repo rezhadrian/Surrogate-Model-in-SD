@@ -178,5 +178,18 @@ namespace MonteCarlo {
 } // MonteCarlo : InvLogNormCDF 
 
 
+namespace MonteCarlo {
+
+    template < typename R >
+    R StdNormCDF ( const R x ) {
+
+        return 0.5 * std::erfc ( -x * std::sqrt(0.5) );
+
+    }
+
+
+} // MonteCarlo : InvStdNormCDF 
+
+
 #endif // SUPPLEMENTARY_MATHS_MC_IMPLEMENTATIONS 
 

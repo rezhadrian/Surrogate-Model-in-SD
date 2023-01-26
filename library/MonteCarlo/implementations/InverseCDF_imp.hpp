@@ -37,5 +37,27 @@ namespace MonteCarlo {
 } // MonteCarlo : InverseCDFs 
 
 
+namespace MonteCarlo {
+
+    template < typename Z, typename R, typename Function >
+    void ComputeCDFs ( Vector<R>& RandomVariables, const Function CDF ) {
+
+        std::transform (
+
+            RandomVariables.begin(),
+            RandomVariables.end(),
+            RandomVariables.begin(),
+
+            [CDF]( const auto m ) {
+                return CDF ( m );
+            }
+
+        );
+
+    }
+
+} // MonteCarlo : InverseCDFs 
+
+
 #endif // INVERSE_CDF_IMPLEMENTATIONS 
 

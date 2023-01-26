@@ -99,7 +99,7 @@ namespace MonteCarlo {
 
             Z dimension () const { return dim_; };
 
-            Vector<R>& data () { return dat_; }
+            const Vector<R>& data () { return dat_; }
 
     }; // DenseLTriangularMatrix 
 

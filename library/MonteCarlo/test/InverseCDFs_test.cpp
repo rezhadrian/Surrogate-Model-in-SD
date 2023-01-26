@@ -218,3 +218,41 @@ TEST ( InverseCDFs, StdNormLeftTail ) {
 
 }
 
+TEST ( ComputeCDFs, PositiveInput ) {
+
+    std::vector<long double> X {
+
+        0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 
+        0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 
+        2.0, 2.1, 2.2, 2.3, 2.4, 2.5 
+
+    };
+
+    std::vector<long double> expected {
+
+        0.500000000000000, 0.539827837277029, 0.579259709439103, 
+        0.617911422188953, 0.655421741610324, 0.691462461274013, 
+        0.758036347776927, 0.815939874653240, 0.864333939053617, 
+        0.903199515414390, 0.933192798731142, 0.955434537241457, 
+        0.977249868051821, 0.982135579437183, 0.986096552486501, 
+        0.989275889978324, 0.991802464075404, 0.993790334674224
+        
+    };
+
+    auto CDF = [](const auto m){
+        return MonteCarlo::StdNormCDF<long double> ( m ) ;
+    };
+
+    // apply CDF to all RVs in the vector 
+    MonteCarlo::ComputeCDFs<size_t,long double,decltype(CDF)>(X,CDF);
+
+    long double tol = 0.000000000000001; 
+
+    for ( auto i = 0; i < X.size(); i++ ) {
+
+        EXPECT_NEAR ( X[i], expected[i], tol);
+        
+    }
+
+}
+

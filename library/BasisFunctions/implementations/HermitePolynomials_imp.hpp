@@ -17,6 +17,49 @@
 
 namespace BasisFunctions {
 
+
+    template < typename Z > 
+    /**
+      * Compute n! recursively 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      */
+    Z Factorial ( const Z n ); 
+
+
+    template < typename Z, typename C >
+    /**
+      * Overload multiplication for integer and complex operand 
+      *
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam C a class comparable with std::complex 
+      */
+    C operator* ( const Z integer, const C complex );
+
+
+} // BasisFunctions : Additional math functions not in cmath 
+
+
+namespace BasisFunctions {
+
+    template < typename Z, typename C >
+    /**
+      * Evaluate probabilist Hermite polynomial of given index at given position.
+      * The polynomial is NOT normalized.
+      *
+      * @tparam Z a type of non-negative integer e.g. size_t
+      * @tparam C a type of floating complex number e.g. std::complex<float> 
+      * 
+      * @param  index indicates which polynomial to use 
+      * @param      x argument to evaluate the polynomial 
+      * @return H_{idx} ( x ) 
+      */
+    C HermitePolynomial ( const Z index, const C x );
+
+} // BasisFunctions : HermitePolynomial 
+
+
+namespace BasisFunctions {
+
     template < typename Z, typename C >
     Vector<C> HermitePolynomials ( 
         const Vector<Z>& indices, const Vector<C>& X, const Z dim 
@@ -108,6 +151,46 @@ namespace BasisFunctions {
     }
 
 } // BasisFunctions : HermitePolynomial 
+
+
+namespace BasisFunctions {
+
+    template < typename Z >
+    Z Factorial ( const Z n ) {
+
+        if ( n < 0 ) {
+
+            throw std::runtime_error (
+                "Factorial: does not support negative numbers"
+            );
+        }
+
+        if ( n == 0 ) {
+            return 1;
+        }
+
+        return n * Factorial ( n - 1 );
+
+    }
+
+} // BasisFunctions : Factorial 
+
+
+namespace BasisFunctions {
+
+    template < typename Z, typename C >
+    C operator* ( const Z integer, const C complex ) {
+
+        C result;
+
+        result.real ( integer * complex.real() );
+        result.imag ( integer * complex.imag() );
+
+        return result;
+
+    }
+
+} // BasisFunctions : integer & complex multiplication 
 
 
 #endif // HERMITE_POLYNOMIALS_IMPLEMENTATIONS 

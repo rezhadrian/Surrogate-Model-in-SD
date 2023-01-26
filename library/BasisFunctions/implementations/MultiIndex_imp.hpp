@@ -18,6 +18,38 @@
 namespace BasisFunctions {
 
     template < typename Z >
+    /**
+      * Compute binomial coefficient nCk recursively 
+      *
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      */
+    Z Binomial ( const Z n, const Z k );
+
+} // BasisFunctions : Additional math functions not in cmath 
+
+
+namespace BasisFunctions {
+
+    template < typename Z >
+    /**
+      * Generate a unique tupple of indices for MultiIndex function. 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t.
+      *
+      * @param   nSet the tupple is generated from the first nSet integers.
+      * @param Subset save the tupple here. Also contains all previous tupples.
+      * @param Active track all previous tupples that have been saved.
+      */
+    void MultiIndexRecursive ( 
+        const Z nSet, Vector<Z>& Subset, Marker& Active 
+    );
+
+} // BasisFunctions : MultiIndexRecursive 
+
+
+namespace BasisFunctions {
+
+    template < typename Z >
     Vector<Z> MultiIndex ( const Z dim, const Z pMax ) {
 
         if ( dim <= 0 ) {
@@ -121,6 +153,33 @@ namespace BasisFunctions {
     }
 
 } // BasisFunctions : MultiIndexRecursive 
+
+
+namespace BasisFunctions {
+
+    template < typename Z >
+    Z Binomial ( const Z n, const Z k ) {
+
+        if ( n < 0 || k < 0 ) {
+
+            throw std::runtime_error (
+                "Binomial: currently doesn't support negative values"
+            );
+
+        }
+
+        if ( n < k ) { return 0; }
+
+        if ( n == k || k == 0 ) {
+            return 1;
+        }
+
+        return Binomial<Z> ( n - 1, k - 1 ) +
+               Binomial<Z> ( n - 1, k     );
+
+    }
+
+} // BasisFunctions : Binomial 
 
 
 #endif // MULTI_INDEX_IMPLEMENTATIONS 

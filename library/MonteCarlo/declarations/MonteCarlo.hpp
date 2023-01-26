@@ -99,6 +99,18 @@ namespace MonteCarlo {
     void InverseCDFs ( Vector<R>& RandomVariables, const Function ICDF );
 
 
+    template < typename Z, typename R, typename Function >
+    /**
+      * Apply given CDF function to a vector of RVs
+      * Results overwrites inputs 
+      *
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      * @tparam Function takes one floating point and return another 
+      */
+    void ComputeCDFs ( Vector<R>& RandomVariables, const Function CDF );
+
+
 } // MonteCarlo : InverseCDF 
 
 
@@ -122,6 +134,33 @@ namespace MonteCarlo {
 } // MonteCarlo : CholeskyDecomposition  
 
 
+// Implemented in VariableGeneration_imp.hpp 
+
+namespace MonteCarlo {
+
+
+    template < class LTriangularMatrix, typename Z, typename R >
+    /**
+      * Combine uncorrelated RVs to generate correlated RVs 
+      *
+      * @tparam LTriangularMatrix lower triangular matrix class 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      * 
+      * @param L triangular mat. from cholesky decomp. of correlation mat.  
+      */
+    Vector<R> CombineRVs ( 
+
+        const LTriangularMatrix& L, 
+        Vector<R>& RVs,
+        const Z dim
+
+    );
+
+
+} // MonteCarlo : VariableGeneration 
+
+
 #ifndef SUPPLEMENTARY_MATHS_MC_IMPLEMENTATIONS 
     #include "SupplementaryMaths_imp_MC.hpp" 
 #endif 
@@ -140,6 +179,10 @@ namespace MonteCarlo {
 
 #ifndef CHOLESKY_DECOMPOSITION_IMPLEMENTATIONS 
     #include "CholeskyDecomposition_imp.hpp" 
+#endif 
+
+#ifndef VARIABLE_GENERATION_IMPLEMENTATIONS 
+    #include "VariableGeneration_imp.hpp" 
 #endif 
 
 #endif // MONTE_CARLO_DECLARATIONS 
