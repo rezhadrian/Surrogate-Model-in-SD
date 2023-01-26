@@ -1,36 +1,58 @@
 /**
-  * @file SupplementaryMaths_imp_MC.hpp
+  * @file StatisticDist_imp.hpp 
   *
-  * @brief implement additional maths functions for Monte Carlo
+  * @brief implementations  of available distributions to be used 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef SUPPLEMENTARY_MATHS_MC_IMPLEMENTATIONS 
-#define SUPPLEMENTARY_MATHS_MC_IMPLEMENTATIONS 
+#ifndef STATISTIC_DIST_IMPLEMENTATIONS 
+#define STATISTIC_DIST_IMPLEMENTATIONS 
 
-#ifndef MONTE_CARLO_DECLARATIONS 
-    #include "MonteCarlo.hpp" 
+#ifndef STATISTIC_DIST_DECLARATIONS 
+    #include "StatisticDist.hpp" 
 #endif 
+
+#include "LibrariesLoader_MC.hpp" 
 
 
 namespace MonteCarlo {
 
+
     template < typename Z, typename R >
-    R Power ( const R number, const Z power ) {
+    /**
+      * Raise number to given power recursively 
+      *
+      * @tparam Z a type of non-negative integers e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      */
+    R Power ( const R number, const Z power );
 
-        R result = 1.0;
 
-        for ( auto i = 0; i < power; i++ ) {
-            result *= number;
-        }
+    template < typename R >
+    /**
+      * Compute inverse of complement error function 
+      *
+      * @tparam R a type of floating point e.g. double 
+      * @return x such that erfc(z) = x  
+      */
+    R InvErfc ( const R p );
 
-        return result;
+
+} // MonteCarlo : Additional math functions not in cmath 
+
+
+namespace MonteCarlo {
+
+    template < typename R >
+    R StdNormCDF ( const R x ) {
+
+        return 0.5 * std::erfc ( -x * std::sqrt(0.5) );
 
     }
 
-} // MonteCarlo : Power 
+} // MonteCarlo : InvStdNormCDF 
 
 
 namespace MonteCarlo {
@@ -137,6 +159,36 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
     template < typename R >
+    R InvLogNormCDF ( const R quantile, const R mu, const R sig ) {
+
+        return std::exp (-1.41421356237309505*sig*InvErfc(2.0*quantile)+mu);
+
+    }
+
+} // MonteCarlo : InvLogNormCDF 
+
+
+namespace MonteCarlo {
+
+    template < typename Z, typename R >
+    R Power ( const R number, const Z power ) {
+
+        R result = 1.0;
+
+        for ( auto i = 0; i < power; i++ ) {
+            result *= number;
+        }
+
+        return result;
+
+    }
+
+} // MonteCarlo : Power 
+
+
+namespace MonteCarlo {
+
+    template < typename R >
     R InvErfc ( const R p ) {
 
         R x, err, t, pp;
@@ -161,35 +213,8 @@ namespace MonteCarlo {
 
     }
 
-
-
 } // MonteCarlo : InvErfc 
 
 
-namespace MonteCarlo {
-
-    template < typename R >
-    R InvLogNormCDF ( const R quantile, const R mu, const R sig ) {
-
-        return std::exp (-1.41421356237309505*sig*InvErfc(2.0*quantile)+mu);
-
-    }
-
-} // MonteCarlo : InvLogNormCDF 
-
-
-namespace MonteCarlo {
-
-    template < typename R >
-    R StdNormCDF ( const R x ) {
-
-        return 0.5 * std::erfc ( -x * std::sqrt(0.5) );
-
-    }
-
-
-} // MonteCarlo : InvStdNormCDF 
-
-
-#endif // SUPPLEMENTARY_MATHS_MC_IMPLEMENTATIONS 
+#endif // STATISTIC_DIST_IMPLEMENTATIONS 
 

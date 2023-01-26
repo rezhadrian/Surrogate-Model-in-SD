@@ -8,13 +8,12 @@ add_library ( montecarlo INTERFACE
 
     declarations/MonteCarlo.hpp 
 
-    declarations/include/SupplementaryMaths_MC.hpp 
-    declarations/include/SpecialMatrix.hpp 
+    declarations/include/StatisticDist.hpp 
+    declarations/include/StatisticDist_imp.hpp 
+    declarations/include/LinAlg.hpp 
+    declarations/include/LinAlg_imp.hpp 
 
-    implementations/InverseCDF_imp.hpp 
     implementations/LatinHypercubeSampling_imp.hpp 
-    implementations/SpecialMatrix_imp.hpp 
-    implementations/SupplementaryMaths_imp_MC.hpp 
     implementations/VariableGeneration_imp.hpp 
 
 )

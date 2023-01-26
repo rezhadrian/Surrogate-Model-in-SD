@@ -243,7 +243,7 @@ TEST ( ComputeCDFs, PositiveInput ) {
         return MonteCarlo::StdNormCDF<long double> ( m ) ;
     };
 
-    // apply CDF to all RVs in the vector 
+    // apply ICDF to all RVs in the vector 
     MonteCarlo::ComputeCDFs<size_t,long double,decltype(CDF)>(X,CDF);
 
     long double tol = 0.000000000000001; 

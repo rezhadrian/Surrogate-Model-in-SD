@@ -38,19 +38,14 @@
 
 #include "LibrariesLoader_MC.hpp" 
 
-// Additional math function not implemented in cmath 
-#ifndef SUPPLEMENTARY_MATHS_MC_DECLARATIONS 
-    #include "SupplementaryMaths_MC.hpp" 
+
+#ifndef STATISTIC_DIST_DECLARATIONS 
+    #include "StatisticDist.hpp" 
 #endif 
 
-// Special matrix to apply inverse theorem to sets of RVs
-#ifndef SPECIAL_MATRIX_DECLARATIONS 
-    #include "SpecialMatrix.hpp" 
+#ifndef LINALG_DECLARATIONS 
+    #include "LinAlg.hpp" 
 #endif 
-
-
-template < typename T >
-using Vector = std::vector <T>;
 
 
 // Implemented in LatinHypercubeSampling_imp.hpp 
@@ -82,103 +77,49 @@ namespace MonteCarlo {
 } // MonteCarlo : LatinHypercubeSampling 
 
 
-// Implemented in InverseCDF_imp.hpp 
-
-namespace MonteCarlo {
-
-
-    template < typename Z, typename R, typename Function >
-    /**
-      * Apply given Inverse CDF function to a vector of RVs
-      * Results overwrites inputs 
-      *
-      * @tparam Z a type of non-negative integer e.g. size_t 
-      * @tparam R a type of floating point e.g. double 
-      * @tparam Function takes one floating point and return another 
-      */
-    void InverseCDFs ( Vector<R>& RandomVariables, const Function ICDF );
-
-
-    template < typename Z, typename R, typename Function >
-    /**
-      * Apply given CDF function to a vector of RVs
-      * Results overwrites inputs 
-      *
-      * @tparam Z a type of non-negative integer e.g. size_t 
-      * @tparam R a type of floating point e.g. double 
-      * @tparam Function takes one floating point and return another 
-      */
-    void ComputeCDFs ( Vector<R>& RandomVariables, const Function CDF );
-
-
-} // MonteCarlo : InverseCDF 
-
-
-// Implemented in CholeskyDecomposition_imp.hpp 
-
-namespace MonteCarlo {
-
-
-    template < class LTriangularMatrix, class SymMatrix >
-    /**
-      * Cholesky decomposition of SPD matrix e.g. correlation matrix 
-      *
-      * @tparam LTriangularMatrix lower triangular matrix class 
-      * @tparam SymMatrix symmetric matrix class 
-      * 
-      * @return lower triangular part of the decomposition 
-      */
-    LTriangularMatrix CholeskyDecompose ( const SymMatrix& A );
-
-
-} // MonteCarlo : CholeskyDecomposition  
-
-
 // Implemented in VariableGeneration_imp.hpp 
 
 namespace MonteCarlo {
 
 
-    template < class LTriangularMatrix, typename Z, typename R >
+    template < typename Z, typename R >
     /**
-      * Combine uncorrelated RVs to generate correlated RVs 
+      * Convert LHS result to sets of standard normal random variables 
       *
-      * @tparam LTriangularMatrix lower triangular matrix class 
-      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam Z a type of non=negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
-      * 
-      * @param L triangular mat. from cholesky decomp. of correlation mat.  
       */
-    Vector<R> CombineRVs ( 
+    void ConvertLHS ( Vector<R>& LHSResult );
 
-        const LTriangularMatrix& L, 
-        Vector<R>& RVs,
+
+    template < typename Z, typename R, 
+
+        class SymMatrix,         // e.g. MonteCarlo::DenseSymMatrix 
+        class LTriangularMatrix, // e.g. MonteCarlo::DenseLTriangularMatrix 
+        class Function 
+
+    >
+    /**
+      * Convert standard normal RVs to correlated RVs of other distribution 
+      * 
+      * @tparam Z a type of non=negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      */
+    Vector<R> ConvertStdNorm ( 
+
+        const Vector<R>& StdNormRVs, 
+        const SymMatrix& Correlation, 
+        const Function & ICDF,
         const Z dim
 
     );
 
 
-} // MonteCarlo : VariableGeneration 
+} // MonteCarlo : ConvertLHS 
 
-
-#ifndef SUPPLEMENTARY_MATHS_MC_IMPLEMENTATIONS 
-    #include "SupplementaryMaths_imp_MC.hpp" 
-#endif 
 
 #ifndef LATIN_HYPERCUBE_SAMPLING_IMPLEMENTATIONS 
     #include "LatinHypercubeSampling_imp.hpp" 
-#endif 
-
-#ifndef INVERSE_CDF_IMPLEMENTATIONS 
-    #include "InverseCDF_imp.hpp" 
-#endif 
-
-#ifndef SPECIAL_MATRIX_IMPLEMENTATIONS 
-    #include "SpecialMatrix_imp.hpp" 
-#endif 
-
-#ifndef CHOLESKY_DECOMPOSITION_IMPLEMENTATIONS 
-    #include "CholeskyDecomposition_imp.hpp" 
 #endif 
 
 #ifndef VARIABLE_GENERATION_IMPLEMENTATIONS 

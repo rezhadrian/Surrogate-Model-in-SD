@@ -1,27 +1,31 @@
 /**
-  * @file SupplementaryMaths_MC.hpp
+  * @file StatisticDist.hpp 
   *
-  * @brief declarations of math functions not implemented in cmath 
+  * @brief declarations of available distributions to be used 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef SUPPLEMENTARY_MATHS_MC_DECLARATIONS 
-#define SUPPLEMENTARY_MATHS_MC_DECLARATIONS 
+#ifndef STATISTIC_DIST_DECLARATIONS 
+#define STATISTIC_DIST_DECLARATIONS 
 
+
+// Standard Normal Distribution 
 
 namespace MonteCarlo {
 
 
-    template < typename Z, typename R >
+    template < typename R >
     /**
-      * Raise number to given power recursively 
+      * Compute CDF of a given standard normal random variable 
       *
-      * @tparam Z a type of non-negative integers e.g. size_t 
       * @tparam R a type of floating point e.g. double 
+      *
+      * @param x a standard normal random variables in R 
+      * @return P( X < x ) for X ~ N( 0, 1 ) 
       */
-    R Power ( const R number, const Z power );
+    R StdNormCDF ( const R x );
 
 
     template < typename Z, typename R >
@@ -36,14 +40,12 @@ namespace MonteCarlo {
     R InvStdNormCDF ( const R quantile );
 
 
-    template < typename R >
-    /**
-      * Compute inverse of complement error function 
-      *
-      * @tparam R a type of floating point e.g. double 
-      * @return x such that erfc(z) = x  
-      */
-    R InvErfc ( const R p );
+} // MonteCarlo : Standard Normal Distribution 
+
+
+// Log Normal Distribution 
+
+namespace MonteCarlo {
 
 
     template < typename R >
@@ -61,12 +63,12 @@ namespace MonteCarlo {
     R InvLogNormCDF ( const R quantile, const R mu, const R sig );
 
 
-    template < typename R >
-    R StdNormCDF ( const R x );
+} // MonteCarlo : Log Normal Distribution 
 
 
-} // MonteCarlo : SupplementaryMaths 
+#ifndef STATISTIC_DIST_IMPLEMENTATIONS 
+    #include "StatisticDist_imp.hpp" 
+#endif 
 
-
-#endif // SUPPLEMENTARY_MATHS_MC_DECLARATIONS 
+#endif // STATISTIC_DIST_DECLARATIONS 
 

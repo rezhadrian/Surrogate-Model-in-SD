@@ -1,20 +1,22 @@
 /**
-  * @file SpecialMatrix.hpp 
+  * @file LinAlg.hpp 
   *
-  * @brief declare special matrix classes used in Monte Carlo 
+  * @brief declare linear algebra functionalities used in MonteCarlo 
   * 
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef SPECIAL_MATRIX_DECLARATIONS 
-#define SPECIAL_MATRIX_DECLARATIONS 
+#ifndef LINALG_DECLARATIONS 
+#define LINALG_DECLARATIONS 
 
 #include "LibrariesLoader_MC.hpp" 
 
 template < typename T >
 using Vector = std::vector<T>;
 
+
+// Special matrix classes 
 
 namespace MonteCarlo {
 
@@ -50,34 +52,6 @@ namespace MonteCarlo {
 
     template < typename Z, typename R >
     /**
-      * Dense upper triangular matrix 
-      * Stores only lower triangular and diagonal elements
-      * Stores zeros as well
-      * 
-      * @tparam Z a type of non-negative integers e.g. size_t 
-      * @tparam R a type of floating point e.g. double 
-      */
-    class DenseUTriangularMatrix {
-
-                Z dim_;
-        Vector<R> dat_;
-
-        public: 
-
-            DenseUTriangularMatrix ( const Z dim );
-
-            R  operator() ( const Z i, const Z j ) const;
-            R& operator() ( const Z i, const Z j );
-
-            Z dimension () const { return dim_; };
-
-            Vector<R>& data () { return dat_; }
-
-    };
-
-
-    template < typename Z, typename R >
-    /**
       * Dense lower triangular matrix 
       * Stores only lower triangular and diagonal elements
       * Stores zeros as well
@@ -104,8 +78,30 @@ namespace MonteCarlo {
     }; // DenseLTriangularMatrix 
 
 
-} // MonteCarlo : SpecialMatrix 
+} // MonteCarlo : Special Matrix Classes 
 
 
-#endif // SPECIAL_MATRIX_DECLARATIONS 
+namespace MonteCarlo {
+
+
+    template < class LTriangularMatrix, class SymMatrix >
+    /**
+      * Cholesky decomposition of SPD matrix e.g. correlation matrix 
+      *
+      * @tparam LTriangularMatrix lower triangular matrix class 
+      * @tparam SymMatrix symmetric matrix class 
+      * 
+      * @return lower triangular part of the decomposition 
+      */
+    LTriangularMatrix CholeskyDecompose ( const SymMatrix& A );
+
+
+} // MonteCarlo : CholeskyDecomposition  
+
+
+#ifndef LINALG_IMPLEMENTATIONS 
+    #include "LinAlg_imp.hpp" 
+#endif 
+
+#endif // LINALG_DECLARATIONS 
 
