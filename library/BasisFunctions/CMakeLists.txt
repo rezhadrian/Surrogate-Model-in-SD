@@ -50,17 +50,9 @@ if ( BASIS_FUNCTION_TEST )
 
     add_executable ( BasisFunctions_testrunner 
 
-        test/HermitePolynomial_test.cpp 
         test/HermitePolynomials_test.cpp 
         test/MultiIndex_test.cpp 
-        test/SupplementaryMaths_BF_test.cpp 
         test/TotalTruncations_test.cpp 
-
-    )
-
-    target_include_directories ( BasisFunctions_testrunner PUBLIC 
-
-        ${CMAKE_CURRENT_SOURCE_DIR}/test 
 
     )
 

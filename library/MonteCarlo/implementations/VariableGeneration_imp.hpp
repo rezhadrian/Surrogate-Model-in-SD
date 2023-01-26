@@ -48,7 +48,7 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
 
-    template < class LTriangularMatrix, typename Z, typename R >
+    template < typename Z, typename R, class LTriangularMatrix >
     /**
       * Combine uncorrelated RVs to generate correlated RVs 
       *
@@ -95,7 +95,7 @@ namespace MonteCarlo {
 
 
     template < typename Z, typename R >
-    void ConvertLHS ( Vector<R>& LHSResult ) {
+    void ConvertLHStoStdNorm ( Vector<R>& LHSResult ) {
 
         auto ICDF = [](const auto m){
             return MonteCarlo::InvStdNormCDF<Z,R> ( m ) ;
@@ -128,35 +128,45 @@ namespace MonteCarlo {
         class Function 
 
     >
-    Vector<R> ConvertStdNorm ( 
+    Vector<R> GenerateRVs ( 
 
-        const Vector<R>& StdNormRVs, 
+        Vector<R>& StdNormRVs, 
         const SymMatrix& Correlation, 
-        const Function & ICDF, 
+        const std::vector<std::function<R(R)>>& ICDFs,
         const Z dim 
 
     ) {
+
+        Z nSamples = StdNormRVs.size() / dim;
 
         typedef SymMatrix SM;
         typedef LTriangularMatrix LT;
 
         auto L = CholeskyDecompose<LT,SM> ( Correlation );
-        auto result = CombineRVs<LT,Z,R> ( L, StdNormRVs, dim );
+
+        auto result = CombineRVs<Z,R,LT> ( L, StdNormRVs, dim );
 
         auto CDF = [](const auto m){
-            return MonteCarlo::StdNormCDF<Z,R> ( m ) ;
+            return MonteCarlo::StdNormCDF<R> ( m ) ;
         };
 
-        std::transform (
+        for ( auto i = 0; i < nSamples; i++ ) {
 
-            result.begin(), result.end(),
-            result.begin(),
+            std::transform (
 
-            [CDF,ICDF]( const auto m ) {
-                return ICDF ( CDF ( m ) );
-            }
+                result.begin() + i * dim,
+                result.begin() + i * dim + dim, 
+                ICDFs.begin(),
 
-        );
+                result.begin() + i * dim,
+
+                [CDF]( const auto m, const auto& ICDF ) {
+                    return ICDF ( CDF ( m ) );
+                }
+
+            );
+
+        }
 
         return result; 
 
@@ -190,7 +200,7 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
 
-    template < class LTriangularMatrix, typename Z, typename R >
+    template < typename Z, typename R, class LTriangularMatrix >
     Vector<R> CombineRVs ( 
 
         const LTriangularMatrix& L, 

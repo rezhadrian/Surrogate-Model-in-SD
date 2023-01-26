@@ -89,7 +89,7 @@ namespace MonteCarlo {
       * @tparam Z a type of non=negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
-    void ConvertLHS ( Vector<R>& LHSResult );
+    void ConvertLHStoStdNorm ( Vector<R>& LHSResult );
 
 
     template < typename Z, typename R, 
@@ -105,11 +105,11 @@ namespace MonteCarlo {
       * @tparam Z a type of non=negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
-    Vector<R> ConvertStdNorm ( 
+    Vector<R> GenerateRVs ( 
 
-        const Vector<R>& StdNormRVs, 
+        Vector<R>& StdNormRVs, 
         const SymMatrix& Correlation, 
-        const Function & ICDF,
+        const std::vector<std::function<R(R)>>& ICDFs,
         const Z dim
 
     );

@@ -10,7 +10,8 @@
 #ifndef LINALG_DECLARATIONS 
 #define LINALG_DECLARATIONS 
 
-#include "LibrariesLoader_MC.hpp" 
+#include <vector> 
+#include <cmath> 
 
 template < typename T >
 using Vector = std::vector<T>;
@@ -80,6 +81,8 @@ namespace MonteCarlo {
 
 } // MonteCarlo : Special Matrix Classes 
 
+
+// Cholesky Decomposition 
 
 namespace MonteCarlo {
 

@@ -13,6 +13,7 @@ add_library ( montecarlo INTERFACE
     declarations/include/LinAlg.hpp 
     declarations/include/LinAlg_imp.hpp 
 
+    implementations/AnalyticalModel_imp.hpp 
     implementations/LatinHypercubeSampling_imp.hpp 
     implementations/VariableGeneration_imp.hpp 
 
@@ -53,20 +54,11 @@ if ( MONTE_CARLO_TEST )
 
     add_executable ( MonteCarlo_testrunner
 
-        test/CholeskyDecomposition_test.cpp 
-        test/InverseCDFs_test.cpp 
-        test/InverseFunctions/InvErfc_test.cpp 
-        test/InverseFunctions/InvLogNormCDF_test.cpp 
-        test/InverseFunctions/InvStdNormCDF_test.cpp 
         test/LatinHypercubeSampling_test.cpp
-        test/SpecialMatrix_test.cpp 
         test/VariableGeneration_test.cpp 
 
-    )
-
-    target_include_directories ( MonteCarlo_testrunner PUBLIC 
-
-        ${CMAKE_CURRENT_SOURCE_DIR}/test 
+        test/include/LinAlg_test.cpp 
+        test/include/StatisticDist_test.cpp 
 
     )
 

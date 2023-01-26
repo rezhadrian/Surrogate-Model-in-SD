@@ -1,14 +1,54 @@
 /**
-  * @file InvStdNormCDF_test.cpp
+  * @file StatisticDist_test.cpp
   *
-  * @brief test functions to compute inverse CDF of standard normal dist
+  * @brief test statistic functionalities 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #include "MonteCarlo.hpp" 
-#include <gtest/gtest.h> 
+#include <gtest/gtest.h>
+
+TEST ( StdNormCDF, TypicalInput ) {
+
+    std::vector<long double> X {
+
+        0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 
+        0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 
+        2.0, 2.1, 2.2, 2.3, 2.4, 2.5 
+
+    };
+
+    std::vector<long double> expected {
+
+        0.500000000000000, 0.539827837277029, 0.579259709439103, 
+        0.617911422188953, 0.655421741610324, 0.691462461274013, 
+        0.758036347776927, 0.815939874653240, 0.864333939053617, 
+        0.903199515414390, 0.933192798731142, 0.955434537241457, 
+        0.977249868051821, 0.982135579437183, 0.986096552486501, 
+        0.989275889978324, 0.991802464075404, 0.993790334674224
+        
+    };
+
+    std::vector<long double> result ( X.size(), 0.0 );
+
+    for ( auto i = 0; i < X.size(); i++ ) {
+
+        result[i] = MonteCarlo::StdNormCDF ( X[i] );
+
+    }
+
+
+    long double tol = 0.000000000000001; 
+
+    for ( auto i = 0; i < X.size(); i++ ) {
+
+        EXPECT_NEAR ( result[i], expected[i], tol );
+
+    }
+
+}
 
 TEST ( InvStdNormCDF, RightCentral ) {
 
@@ -255,41 +295,116 @@ TEST ( InvStdNormCDF, QuantileBeyondUnity ) {
 
 }
 
-TEST ( StdNormCDF, TypicalInput ) {
+TEST ( InvErfc, ZeroToTwo ) {
 
-    std::vector<long double> X {
+    std::vector <double> p {
 
-        0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 
-        0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 
-        2.0, 2.1, 2.2, 2.3, 2.4, 2.5 
+        0.1, 0.2, 0.3, 0.4, 0.5,
+        0.6, 0.7, 0.8, 0.9
 
     };
 
-    std::vector<long double> expected {
+    std::vector <double> xL( p.size() );
+    std::vector <double> xR ( p.size() );
 
-        0.500000000000000, 0.539827837277029, 0.579259709439103, 
-        0.617911422188953, 0.655421741610324, 0.691462461274013, 
-        0.758036347776927, 0.815939874653240, 0.864333939053617, 
-        0.903199515414390, 0.933192798731142, 0.955434537241457, 
-        0.977249868051821, 0.982135579437183, 0.986096552486501, 
-        0.989275889978324, 0.991802464075404, 0.993790334674224
-        
-    };
+    for ( auto i = 0; i < p.size(); i++ ) {
 
-    std::vector<long double> result ( X.size(), 0.0 );
-
-    for ( auto i = 0; i < X.size(); i++ ) {
-
-        result[i] = MonteCarlo::StdNormCDF ( X[i] );
+        xL[i] = MonteCarlo::InvErfc (       p[i] );
+        xR[i] = MonteCarlo::InvErfc ( 2.0 - p[i] );
 
     }
 
+    std::vector <double> expected {
 
-    long double tol = 0.000000000000001; 
+        1.163087153676674, 0.906193802436823, 0.732869077959217, 
+        0.595116081449995, 0.476936276204470, 0.370807158593558, 
+        0.272462714726754, 0.179143454621292, 0.088855990494258, 
+         
+    };
 
-    for ( auto i = 0; i < X.size(); i++ ) {
 
-        EXPECT_NEAR ( result[i], expected[i], tol );
+    double tol = 0.000000000000001;
+
+    for ( auto i = 0; i < p.size(); i++ ) {
+
+        EXPECT_NEAR ( xL[i],  expected[i], tol);
+        EXPECT_NEAR ( xR[i], -expected[i], tol);
+
+    }
+
+}
+
+TEST ( InvLogNormCDF_test, NormalInput1 ) {
+
+    double mu  = 0.0;
+    double sig = 1.0;
+
+    std::vector<double> quantiles {
+
+        0.1, 0.2, 0.3, 0.4, 0.5, 
+        0.6, 0.7, 0.8, 0.9
+
+    };
+
+    std::vector<double> results ( quantiles.size(), 0.0 );
+
+    for ( auto i = 0; i < results.size(); i++ ) {
+
+        results[i] = MonteCarlo::InvLogNormCDF ( quantiles[i], mu, sig );
+
+    }
+
+    std::vector<double> expected {
+
+        0.277606241852010, 0.431011186881839, 0.591910100609554, 
+        0.776198414156351, 1.000000000000000, 1.288330382750007, 
+        1.689445743484004, 2.320125394504318, 3.602224479279158 
+
+    };
+
+    double tol = 0.00000000000005;
+
+    for ( auto i = 0; i < results.size(); i++ ) {
+
+        EXPECT_NEAR ( results[i], expected[i], tol );
+
+    }
+
+}
+
+TEST ( InvLogNormCDF_test, NormalInput2 ) {
+
+    double mu  = 1.0;
+    double sig = 0.1;
+
+    std::vector<double> quantiles {
+
+        0.1, 0.2, 0.3, 0.4, 0.5, 
+        0.6, 0.7, 0.8, 0.9
+
+    };
+
+    std::vector<double> results ( quantiles.size(), 0.0 );
+
+    for ( auto i = 0; i < results.size(); i++ ) {
+
+        results[i] = MonteCarlo::InvLogNormCDF ( quantiles[i], mu, sig );
+
+    }
+
+    std::vector<double> expected {
+
+        2.391318394729171, 2.498868118230018, 2.579408086382776, 
+        2.650279986463947, 2.718281828459045, 2.788028486299391, 
+        2.864632447242061, 2.956961211768318, 3.089950763234730 
+
+    };
+
+    double tol = 0.00000000000005;
+
+    for ( auto i = 0; i < results.size(); i++ ) {
+
+        EXPECT_NEAR ( results[i], expected[i], tol );
 
     }
 
