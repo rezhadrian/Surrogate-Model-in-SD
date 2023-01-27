@@ -25,25 +25,26 @@
   */ 
 
 /**
-  * @file LibrariesLoader_MC.hpp
+  * @file LeastSquare.hpp
   *
-  * @brief include all required standard libraries for MonteCarlo 
+  * @brief declare functions required to solve linear least square problem
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef LIBRARIES_LOADER_MC 
-#define LIBRARIES_LOADER_MC 
+#ifndef LEAST_SQUARE_DECLARATIONS 
+#define LEAST_SQUARE_DECLARATIONS 
 
-#include <algorithm> 
-#include <cmath> 
-#include <complex> 
-#include <functional> 
-#include <numeric> 
-#include <random>
-#include <stdexcept> 
-#include <vector>
+#include "LibrariesLoader_LS.hpp" 
 
-#endif // LIBRARIES_LOADER_MC 
+
+namespace LeastSquare {
+
+
+
+} // LeastSquare 
+
+
+#endif // LEAST_SQUARE_DECLARATIONS 
 
