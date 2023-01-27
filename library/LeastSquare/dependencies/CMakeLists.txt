@@ -10,6 +10,8 @@ add_library ( linalg INTERFACE
     classes/Matrix_imp.hpp 
     classes/operations/Arithmetic.hpp 
     classes/operations/Arithmetic_imp.hpp 
+    classes/operations/InnerProducts.hpp 
+    classes/operations/InnerProducts_imp.hpp 
     classes/operations/Norms.hpp 
     classes/operations/Norms_imp.hpp 
     solvers/GaussSeidel.hpp 

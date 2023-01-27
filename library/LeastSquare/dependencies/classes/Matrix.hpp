@@ -15,46 +15,108 @@
 template < typename T >
 using Vector = std::vector<T>;
 
+
 namespace linalg {
 
+    template < typename T >
+    using Vector = std::vector<T>;
 
-    template < typename C >
+
+    template < typename T >
     /**
-      * Dense matrix store all matrix elements, including zeros.
-      * Use row major storage scheme.
+      * A class of matrix that stores all of its elements, including zeros.
       */
     class DenseMatrix {
 
-        size_t nRow_, nCol_;
-        Vector<C> data_;
+        protected: 
+
+            size_t     nRow_, nCol_;
+            Vector<T>  data_;
 
         public:
 
             /**
-              * Initialize DenseMatrix with zero elements.
+              * Construct matrix with given size and initialize elements to zero.
               */
              DenseMatrix ( size_t nRow, size_t nCol );
-            ~DenseMatrix ();
+            ~DenseMatrix () {}
 
-            size_t nRow () const;
-            size_t nCol () const;
+            size_t nRow() const { return nRow_; }
+            size_t nCol() const { return nCol_; }
 
             /**
-              * Function to access matrix element. Usable to read and write.
-              * @return reference to matrix element at given indices.
+              * Function to access matrix element. Read and write access.
+              * @return reference to matrix element.
               */
-            C& at ( size_t IndexRow, size_t IndexCol );
+            T& at ( size_t i, size_t j );
 
             /**
               * Function to access matrix element. Read only.
-              * @return value of matrix element at given indices.
+              * @return value of matrix element.
               */
-            C operator() ( size_t IndexRow, size_t IndexCol ) const;
+            T operator() ( size_t i, size_t j ) const;
+
+            /**
+              * Multiplication with vector.
+              * @return a new vector.
+              */
+            Vector<T> operator* ( const Vector<T>& v ) const;
 
     }; // DenseMatrix 
 
+} // linalg
 
-} // linalg 
+
+namespace linalg {
+
+    template < typename T >
+    using Vector = std::vector<T>;
+
+
+    template < typename T >
+    /**
+      * Special class of matrix that stores only main diagonal elements.
+      * Can be non - square matrix.
+      */
+    class DiagonalMatrix {
+
+        protected:
+
+            size_t     nRow_, nCol_;
+            Vector<T>  data_;
+
+        public:
+
+            /**
+              * Construct matrix with given size and initialize elements to zero.
+              */
+             DiagonalMatrix ( size_t nRow, size_t nCol );
+            ~DiagonalMatrix () {}
+
+            size_t nRow() const { return nRow_; }
+            size_t nCol() const { return nCol_; }
+
+            /**
+              * Function to access matrix element. Read and write access.
+              * @return reference to matrix element.
+              */
+            T& at ( size_t i, size_t j );
+
+            /**
+              * Function to access matrix element. Read only.
+              * @return value of matrix element.
+              */
+            T operator() ( size_t i, size_t j ) const;
+
+            /**
+              * Multiplication with vector.
+              * @return a new vector.
+              */
+            Vector<T> operator* ( const Vector<T>& v ) const;
+
+    }; // DiagonalMatrix 
+
+}
 
 
 #ifndef MATRIX_IMPLEMENTATIONS 
