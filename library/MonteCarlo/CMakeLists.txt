@@ -54,6 +54,7 @@ if ( MONTE_CARLO_TEST )
 
     add_executable ( MonteCarlo_testrunner
 
+        test/AnalyticalModel_test.cpp 
         test/LatinHypercubeSampling_test.cpp
         test/VariableGeneration_test.cpp 
 

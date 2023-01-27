@@ -118,12 +118,56 @@ namespace MonteCarlo {
 } // MonteCarlo : ConvertLHS 
 
 
+namespace MonteCarlo {
+
+
+    template < typename R, typename C >
+    /**
+      * Example model to evaluate FRF for a given E and Mu 
+      * 
+      * @tparam R a type of floating point e.g. double 
+      * @tparam C a type compatible with std::complex<R> 
+      * 
+      * @param omega excitation angular velocity 
+      * @param params a vector { E, Mu } 
+      */
+    C EvaluateFRF ( const R omega, const Vector<R>& params );
+
+
+    template < typename Z, typename R, typename C, class Function >
+    /**
+      * Evaluate model result for a set of parameters set 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      * @tparam C a type compatible with std::complex<R> 
+      * @tparam Function compatible with C(const R, const Vector<R>&)
+      *
+      * @param dim number of variable argument for the model
+      */
+    Vector<C> EvaluateModel ( 
+
+        const R omega, 
+        const Vector<R>& RVs, 
+        const Function& Model, 
+        const Z dim 
+
+    );
+
+
+} // MonteCarlo : EvaluateFRF 
+
+
 #ifndef LATIN_HYPERCUBE_SAMPLING_IMPLEMENTATIONS 
     #include "LatinHypercubeSampling_imp.hpp" 
 #endif 
 
 #ifndef VARIABLE_GENERATION_IMPLEMENTATIONS 
     #include "VariableGeneration_imp.hpp" 
+#endif 
+
+#ifndef ANALYTICAL_MODEL_IMPLEMENTATIONS 
+    #include "AnalyticalModel_imp.hpp" 
 #endif 
 
 #endif // MONTE_CARLO_DECLARATIONS 

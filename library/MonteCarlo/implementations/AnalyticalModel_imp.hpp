@@ -18,8 +18,75 @@
 namespace MonteCarlo {
 
 
+    template < typename R, typename C >
+    C EvaluateFRF ( const R omega, const Vector<R>& params ) {
 
-} // MonteCarlo : 
+        R I_c  = 3.976078202199582e-04;
+        R A_g  = 0.15;
+        R H    = 4;
+        R L    = 10;
+        R Zeta = 0.02;
+
+        auto E  = params[0];
+        auto Mu = params[1];
+
+        auto k = 24 * E * I_c / ( H * H * H );
+        auto m = Mu * A_g * L;
+
+        R omega_n = std::sqrt ( k / m );
+        
+        C FRF_numerator;
+        C FRF_denominator;
+
+        FRF_numerator.real ( omega * omega );
+
+        FRF_denominator.real ( omega_n * omega_n - omega * omega );
+        FRF_denominator.imag ( 2 * Zeta * omega_n * omega );
+
+        return FRF_numerator / FRF_denominator;
+
+    }
+
+
+} // MonteCarlo : EvaluateFRF 
+
+
+namespace MonteCarlo {
+
+
+    template < typename Z, typename R, typename C, class Function >
+    Vector<C> EvaluateModel ( 
+
+        const R omega, 
+        const Vector<R>& RVs, 
+        const Function& Model, 
+        const Z dim 
+
+    ) {
+
+        Z nSample = RVs.size() / dim;
+
+        Vector<C> result ( nSample );
+
+        for ( auto i = 0; i < nSample; i++ ) {
+
+            Vector<R> params ( 
+
+                RVs.begin() + i * dim, 
+                RVs.begin() + i * dim + dim 
+
+            );
+
+            result[i] = Model ( omega, params );
+
+        }
+
+        return result;
+
+    }
+
+
+} // MonteCarlo : EvaluateModel 
 
 
 #endif // ANALYTICAL_MODEL_IMPLEMENTATIONS 
