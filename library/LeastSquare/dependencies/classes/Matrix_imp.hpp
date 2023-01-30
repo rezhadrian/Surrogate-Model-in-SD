@@ -15,6 +15,7 @@
 #endif 
 
 
+
 // Implementations of DenseMatrix class 
 
 namespace linalg {
@@ -86,6 +87,88 @@ namespace linalg {
     }
 
 
+    template < typename T >
+    Vector<T> DenseMatrix<T>::TransProd ( const Vector<T>& v ) const {
+
+        if ( nRow_ != v.size() ) {
+
+            throw std::runtime_error (
+                "Matrix TransProd: sizes don't match"
+            );
+
+        }
+
+        Vector<T> result ( nCol_, 0.0 );
+
+        for ( auto j = 0; j < nCol_; j++ ) {
+        for ( auto i = 0; i < nRow_; i++ ) {
+
+            result[j] += this->operator()(i,j) * v[i];
+
+        }
+        }
+
+        return result;
+
+    }
+
+    #ifdef COMPLEX 
+    template < typename T >
+    Vector<T> DenseMatrix<T>::ConjTransProd ( const Vector<T>& v ) const {
+
+        if ( nRow_ != v.size() ) {
+
+            throw std::runtime_error (
+                "Matrix ConjTransProd: sizes don't match"
+            );
+
+        }
+
+        Vector<T> result ( nCol_, 0.0 );
+
+        for ( auto j = 0; j < nCol_; j++ ) {
+        for ( auto i = 0; i < nRow_; i++ ) {
+
+            result[j] += std::conj(this->operator()(i,j)) * v[i];
+
+        }
+        }
+
+        return result;
+
+    }
+
+    template < typename T >
+    DenseMatrix<T> DenseMatrix<T>::ConjTransProd ( 
+        const DenseMatrix<T>& other 
+    ) const {
+
+        if ( nRow_ != other.nRow() ) {
+
+            throw std::runtime_error (
+                "Matrix ConjTransProd: sizes don't match"
+            );
+
+        }
+
+        DenseMatrix<T> result ( nCol_, other.nCol() );
+
+        for ( auto i = 0; i < nCol_; i++ ) {
+        for ( auto j = 0; j < other.nCol(); j++ ) {
+        for ( auto k = 0; k < nRow_; k++ ) {
+
+            result.at (i,j) += 
+                std::conj( this->operator()(k,i) ) * other(k,j);
+
+        }
+        }
+        }
+
+        return result;
+
+    }
+
+    #endif 
 } // linalg : DenseMatrix 
 
 

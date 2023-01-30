@@ -62,6 +62,13 @@ namespace linalg {
               */
             Vector<T> operator* ( const Vector<T>& v ) const;
 
+            Vector<T> TransProd ( const Vector<T>& v ) const;
+
+            #ifdef COMPLEX 
+            Vector<T> ConjTransProd ( const Vector<T>& v ) const;
+            DenseMatrix<T> ConjTransProd ( const DenseMatrix<T>& other ) const;
+            #endif 
+
     }; // DenseMatrix 
 
 } // linalg

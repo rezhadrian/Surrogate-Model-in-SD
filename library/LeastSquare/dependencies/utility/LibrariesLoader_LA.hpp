@@ -10,6 +10,8 @@
 #ifndef LIBRARIES_LOADER_LA 
 #define LIBRARIES_LOADER_LA 
 
+#define COMPLEX 
+
 #include <cmath> 
 #include <complex> 
 #include <vector> 
