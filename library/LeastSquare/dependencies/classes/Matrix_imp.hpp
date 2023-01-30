@@ -30,6 +30,22 @@ namespace linalg {
 
 
     template < typename T >
+    DenseMatrix<T>::DenseMatrix ( size_t nRow, size_t nCol, Vector<T> data ) :
+        nRow_( nRow ),
+        nCol_( nCol ),
+        data_( std::move(data) ) 
+    {
+        if ( nRow_ * nCol_ != data_.size() ) {
+
+            throw std::runtime_error (
+                "DenseMatrix: data size does not match row and column sizes"
+        );
+
+        }
+    }
+
+
+    template < typename T >
     T& DenseMatrix<T>::at ( size_t i, size_t j ) {
 
         if ( i > nRow_ || j > nCol_ ) {

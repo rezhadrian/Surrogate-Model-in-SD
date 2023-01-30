@@ -39,6 +39,7 @@ namespace linalg {
               * Construct matrix with given size and initialize elements to zero.
               */
              DenseMatrix ( size_t nRow, size_t nCol );
+             DenseMatrix ( size_t nRow, size_t nCol, Vector<T> data );
             ~DenseMatrix () {}
 
             size_t nRow() const { return nRow_; }
