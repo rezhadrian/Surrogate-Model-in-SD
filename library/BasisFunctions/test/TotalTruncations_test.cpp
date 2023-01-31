@@ -1,7 +1,7 @@
 /**
   * @file TotalTruncations_test.cpp
   *
-  * @brief test functions TotalTruncation 
+  * @brief test functions to truncate polynomial indices 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 

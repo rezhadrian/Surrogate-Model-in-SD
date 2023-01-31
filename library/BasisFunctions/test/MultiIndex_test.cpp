@@ -1,7 +1,7 @@
 /**
   * @file MultiIndex_test.cpp
   *
-  * @brief test output of MultiIndex function 
+  * @brief test function to create multiindex of polynomial functions 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 

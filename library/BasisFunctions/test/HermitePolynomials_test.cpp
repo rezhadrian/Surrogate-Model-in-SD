@@ -1,7 +1,7 @@
 /**
   * @file HermitePolynomials_test.cpp
   *
-  * @brief test the function HermitePolynomials 
+  * @brief test functions to compute Hermite polynomial and basis functions 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
@@ -12,17 +12,14 @@
 
 TEST ( HermitePolynomial, H_0_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 0;
 
-    std::complex<double> x;
-    x.real (  3.0 );
-    x.imag (  2.0 );
+    Complex x ( 3.0, 2.0 );
+    Complex expected ( 1.0, 0.0 );
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    std::complex<double> expected;
-    expected.real ( 1.0 );
-    expected.imag ( 0.0 );
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -33,34 +30,25 @@ TEST ( HermitePolynomial, H_0_RealInput ) {
 
     size_t index = 0;
 
-    std::complex<double> x;
-    x.real (  7.0 );
-    x.imag (  0.0 );
+    double x = 7.0;
+    double expected = 1.0;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
 
-    std::complex<double> expected;
-    expected.real ( 1.0 );
-    expected.imag ( 0.0 );
-
-    EXPECT_FLOAT_EQ ( result.real(), expected.real() );
-    EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
+    EXPECT_FLOAT_EQ ( result, expected );
 
 }
 
 TEST ( HermitePolynomial, H_0_ImagInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 0;
 
-    std::complex<double> x;
-    x.real (  0.0 );
-    x.imag (  9.0 );
+    Complex x ( 0.0, 9.0 );
+    Complex expected ( 1.0, 0.0 );
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    std::complex<double> expected;
-    expected.real ( 1.0 );
-    expected.imag ( 0.0 );
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -69,17 +57,14 @@ TEST ( HermitePolynomial, H_0_ImagInput ) {
 
 TEST ( HermitePolynomial, H_0_NegInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 0;
 
-    std::complex<double> x;
-    x.real ( -1.0 );
-    x.imag (  0.0 );
+    Complex x ( -1.0, -2.0 );
+    Complex expected ( 1.0, 0.0 );
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    std::complex<double> expected;
-    expected.real ( 1.0 );
-    expected.imag ( 0.0 );
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -88,17 +73,14 @@ TEST ( HermitePolynomial, H_0_NegInput ) {
 
 TEST ( HermitePolynomial, H_0_ZeroInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 0;
 
-    std::complex<double> x;
-    x.real (  0.0 );
-    x.imag (  0.0 );
+    Complex x ( 0.0, 0.0 );
+    Complex expected ( 1.0, 0.0 );
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    std::complex<double> expected;
-    expected.real ( 1.0 );
-    expected.imag ( 0.0 );
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -107,15 +89,14 @@ TEST ( HermitePolynomial, H_0_ZeroInput ) {
 
 TEST ( HermitePolynomial, H_1_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 1;
 
-    std::complex<double> x;
-    x.real (  2.0 );
-    x.imag (  2.0 );
+    Complex x ( 2.0, 2.0 );
+    auto expected = x;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    auto expected = x;
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -126,30 +107,25 @@ TEST ( HermitePolynomial, H_1_RealInput ) {
 
     size_t index = 1;
 
-    std::complex<double> x;
-    x.real (  8.0 );
-    x.imag (  0.0 );
+    double x = 8.0;
+    double expected = x;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
 
-    auto expected = x;
-
-    EXPECT_FLOAT_EQ ( result.real(), expected.real() );
-    EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
+    EXPECT_FLOAT_EQ ( result, expected );
 
 }
 
 TEST ( HermitePolynomial, H_1_ImagInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 1;
 
-    std::complex<double> x;
-    x.real (  0.0 );
-    x.imag (  2.0 );
+    Complex x ( 0.0, 2.0 );
+    auto expected = x;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    auto expected = x;
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -158,15 +134,14 @@ TEST ( HermitePolynomial, H_1_ImagInput ) {
 
 TEST ( HermitePolynomial, H_1_NegInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 1;
 
-    std::complex<double> x;
-    x.real (  0.0 );
-    x.imag ( -5.0 );
+    Complex x ( 0.0, -5.0 );
+    auto expected = x;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    auto expected = x;
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -175,15 +150,14 @@ TEST ( HermitePolynomial, H_1_NegInput ) {
 
 TEST ( HermitePolynomial, H_1_ZeroInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 1;
 
-    std::complex<double> x;
-    x.real (  0.0 );
-    x.imag (  0.0 );
+    Complex x ( 0.0, 0.0 );
+    auto expected = x;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    auto expected = x;
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -192,15 +166,14 @@ TEST ( HermitePolynomial, H_1_ZeroInput ) {
 
 TEST ( HermitePolynomial, H_2_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 2;
 
-    std::complex<double> x;
-    x.real (  1.0 );
-    x.imag (  3.0 );
+    Complex x ( 1.0, 3.0 );
+    auto expected = x * x - 1.0;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    auto expected = x * x - 1.0;
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -209,15 +182,14 @@ TEST ( HermitePolynomial, H_2_ComplexInput ) {
 
 TEST ( HermitePolynomial, H_3_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 3;
 
-    std::complex<double> x;
-    x.real (  4.0 );
-    x.imag (  5.0 );
+    Complex x ( 4.0, 5.0 );
+    auto expected = x * x * x - x * 3.0;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    auto expected = x * x * x - x * 3.0;
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -226,15 +198,14 @@ TEST ( HermitePolynomial, H_3_ComplexInput ) {
 
 TEST ( HermitePolynomial, H_4_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+
     size_t index = 4;
 
-    std::complex<double> x;
-    x.real ( -9.0 );
-    x.imag (  2.0 );
+    Complex x ( -9.0, 2.0 );
+    auto expected = x * x * x * x - x * x * 6.0 + 3.0;
 
     auto result = BasisFunctions::HermitePolynomial ( index, x );
-
-    auto expected = x * x * x * x - x * x * 6.0 + 3.0;
 
     EXPECT_FLOAT_EQ ( result.real(), expected.real() );
     EXPECT_FLOAT_EQ ( result.imag(), expected.imag() );
@@ -243,30 +214,26 @@ TEST ( HermitePolynomial, H_4_ComplexInput ) {
 
 TEST ( HermitePolynomials, H_0_0_0_0_4_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 0, 0, 0, 0 };
 
-    std::complex<double> x1, x2, x3, x4;
+    Vector X {
 
-    x1.real(  2.0 );
-    x1.imag(  3.0 );
+        Complex (  2.0,  3.0 ), 
+        Complex ( -5.0,  2.0 ), 
+        Complex (  0.0,  2.0 ), 
+        Complex ( -5.0,  0.0 ) 
 
-    x2.real( -5.0 );
-    x2.imag(  2.0 );
-        
-    x3.real(  0.0 );
-    x3.imag(  2.0 );
-
-    x4.real( -5.0 );
-    x4.imag(  0.0 );
-
-    std::vector<std::complex<double>> X = { x1, x2, x3, x4 };
+    };
 
     size_t dim = 4;
 
     auto result =
         BasisFunctions::HermitePolynomials ( indices, X, dim );
 
-    std::complex<double> expected;
+    Complex expected;
     expected.real(  1.0 );
     expected.imag(  0.0 );
 
@@ -278,30 +245,27 @@ TEST ( HermitePolynomials, H_0_0_0_0_4_ComplexInput ) {
 
 TEST ( HermitePolynomials, H_2_0_0_0_4_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 2, 0, 0, 0 };
 
-    std::complex<double> x1, x2, x3, x4;
+    Vector X {
 
-    x1.real(  2.0 );
-    x1.imag(  3.0 );
+        Complex (  2.0,  3.0 ), 
+        Complex ( -5.0,  2.0 ), 
+        Complex (  0.0,  2.0 ), 
+        Complex ( -5.0,  0.0 ), 
 
-    x2.real( -5.0 );
-    x2.imag(  2.0 );
-        
-    x3.real(  0.0 );
-    x3.imag(  2.0 );
 
-    x4.real( -5.0 );
-    x4.imag(  0.0 );
-
-    std::vector<std::complex<double>> X = { x1, x2, x3, x4 };
+    };
 
     size_t dim = 4;
 
     auto result =
         BasisFunctions::HermitePolynomials ( indices, X, dim );
 
-    std::complex<double> expected = ( x1 * x1 - 1.0 ) / std::sqrt(2);
+    Complex expected = ( X[0] * X[0] - 1.0 ) / std::sqrt(2);
 
     ASSERT_EQ ( result.size(), 1 );
     EXPECT_FLOAT_EQ ( result[0].real(), expected.real() );
@@ -311,30 +275,27 @@ TEST ( HermitePolynomials, H_2_0_0_0_4_ComplexInput ) {
 
 TEST ( HermitePolynomials, H_1_0_1_0_4_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 1, 0, 1, 0 };
 
-    std::complex<double> x1, x2, x3, x4;
+    Vector X {
 
-    x1.real(  2.0 );
-    x1.imag(  3.0 );
+        Complex (  2.0,  3.0 ), 
+        Complex ( -5.0,  2.0 ), 
+        Complex (  0.0,  2.0 ), 
+        Complex ( -5.0,  0.0 ), 
 
-    x2.real( -5.0 );
-    x2.imag(  2.0 );
-        
-    x3.real(  0.0 );
-    x3.imag(  2.0 );
 
-    x4.real( -5.0 );
-    x4.imag(  0.0 );
-
-    std::vector<std::complex<double>> X = { x1, x2, x3, x4 };
+    };
 
     size_t dim = 4;
 
     auto result =
         BasisFunctions::HermitePolynomials ( indices, X, dim );
 
-    std::complex<double> expected = x1 * x3;
+    Complex expected = X[0] * X[2];
 
     ASSERT_EQ ( result.size(), 1 );
     EXPECT_FLOAT_EQ ( result[0].real(), expected.real() );
@@ -344,30 +305,27 @@ TEST ( HermitePolynomials, H_1_0_1_0_4_ComplexInput ) {
 
 TEST ( HermitePolynomials, H_0_0_0_3_4_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 0, 0, 0, 3 };
 
-    std::complex<double> x1, x2, x3, x4;
+    Vector X {
 
-    x1.real(  2.0 );
-    x1.imag(  3.0 );
+        Complex (  2.0,  3.0 ), 
+        Complex ( -5.0,  2.0 ), 
+        Complex (  0.0,  2.0 ), 
+        Complex ( -5.0,  0.0 ), 
 
-    x2.real( -5.0 );
-    x2.imag(  2.0 );
-        
-    x3.real(  0.0 );
-    x3.imag(  2.0 );
 
-    x4.real( -5.0 );
-    x4.imag(  0.0 );
-
-    std::vector<std::complex<double>> X = { x1, x2, x3, x4 };
+    };
 
     size_t dim = 4;
 
     auto result =
         BasisFunctions::HermitePolynomials ( indices, X, dim );
 
-    std::complex<double> expected = ( x4 * x4 * x4 - x4 * 3.0 ) / std::sqrt(6);
+    Complex expected = ( X[3] * X[3] * X[3] - X[3] * 3.0 ) / std::sqrt(6);
 
     ASSERT_EQ ( result.size(), 1 );
     EXPECT_FLOAT_EQ ( result[0].real(), expected.real() );
@@ -377,17 +335,17 @@ TEST ( HermitePolynomials, H_0_0_0_3_4_ComplexInput ) {
 
 TEST ( HermitePolynomials, H_2_1_1_2_0_3_2_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 2, 1, 1, 2, 0, 3 };
 
-    std::complex<double> x1, x2;
+    Vector X {
 
-    x1.real(  2.0 );
-    x1.imag(  3.0 );
+        Complex (  2.0,  3.0 ), 
+        Complex ( -5.0,  2.0 ) 
 
-    x2.real( -5.0 );
-    x2.imag(  2.0 );
-
-    std::vector<std::complex<double>> X = { x1, x2 };
+    };
 
     size_t dim = 2;
 
@@ -397,15 +355,15 @@ TEST ( HermitePolynomials, H_2_1_1_2_0_3_2_ComplexInput ) {
     std::vector<std::complex<double>> expected;
 
     expected.push_back (
-        x2 * ( x1 * x1 - 1.0 ) / std::sqrt(2)
+        X[1] * ( X[0] * X[0] - 1.0 ) / std::sqrt(2)
     );
 
     expected.push_back (
-        x1 * ( x2 * x2 - 1.0 ) / std::sqrt(2)
+        X[0] * ( X[1] * X[1] - 1.0 ) / std::sqrt(2)
     );
 
     expected.push_back (
-        ( x2 * x2 * x2 - x2 * 3.0 ) / std::sqrt(6)
+        ( X[1] * X[1] * X[1] - X[1] * 3.0 ) / std::sqrt(6)
     );
 
     ASSERT_EQ ( result.size(), expected.size() );
@@ -421,9 +379,12 @@ TEST ( HermitePolynomials, H_2_1_1_2_0_3_2_ComplexInput ) {
 
 TEST ( HermitePolynomials, H_Complex_ComplexInput ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 2, 1, 1, 2, 0, 3 };
 
-    std::complex<double> x1, x2, x3, x4;
+    Complex x1, x2, x3, x4;
 
     x1.real(  2.0 );
     x1.imag(  3.0 );
@@ -437,14 +398,14 @@ TEST ( HermitePolynomials, H_Complex_ComplexInput ) {
     x4.real( -1.0 );
     x4.imag(  2.0 );
 
-    std::vector<std::complex<double>> X = { x1, x2, x3, x4 };
+    Vector X = { x1, x2, x3, x4 };
 
     size_t dim = 2;
 
     auto result =
         BasisFunctions::HermitePolynomials ( indices, X, dim );
 
-    std::vector<std::complex<double>> expected;
+    Vector expected;
 
     expected.push_back (
         x2 * ( x1 * x1 - 1.0 ) / std::sqrt(2)
@@ -484,9 +445,12 @@ TEST ( HermitePolynomials, H_Complex_ComplexInput ) {
 
 TEST ( HermitePolynomials, WrongXSize ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 2, 1, 1, 2, 0, 3 };
 
-    std::complex<double> x1, x2;
+    Complex x1, x2;
 
     x1.real(  2.0 );
     x1.imag(  3.0 );
@@ -494,7 +458,7 @@ TEST ( HermitePolynomials, WrongXSize ) {
     x2.real( -5.0 );
     x2.imag(  2.0 );
 
-    std::vector<std::complex<double>> X = { x1, x2 };
+     Vector X = { x1, x2 };
 
     size_t dim = 3;
 
@@ -519,14 +483,16 @@ TEST ( HermitePolynomials, WrongXSize ) {
 
     }, std::runtime_error );
 
-
 }
 
 TEST ( HermitePolynomials, WrongIndicesSize ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 2, 1, 1, 2, 0 };
 
-    std::complex<double> x1, x2;
+    Complex x1, x2;
 
     x1.real(  2.0 );
     x1.imag(  3.0 );
@@ -534,7 +500,7 @@ TEST ( HermitePolynomials, WrongIndicesSize ) {
     x2.real( -5.0 );
     x2.imag(  2.0 );
 
-    std::vector<std::complex<double>> X = { x1, x2 };
+    Vector X = { x1, x2 };
 
     size_t dim = 2;
 
@@ -564,9 +530,12 @@ TEST ( HermitePolynomials, WrongIndicesSize ) {
 
 TEST ( HermitePolynomials, ZeroDimension ) {
 
+    typedef std::complex<double> Complex;
+    typedef std::vector<Complex> Vector;
+
     std::vector<size_t> indices { 2, 1, 1, 2, 0, 3 };
 
-    std::complex<double> x1, x2;
+    Complex x1, x2;
 
     x1.real(  2.0 );
     x1.imag(  3.0 );
@@ -574,7 +543,7 @@ TEST ( HermitePolynomials, ZeroDimension ) {
     x2.real( -5.0 );
     x2.imag(  2.0 );
 
-    std::vector<std::complex<double>> X = { x1, x2 };
+    Vector X = { x1, x2 };
 
     size_t dim = 0;
 
