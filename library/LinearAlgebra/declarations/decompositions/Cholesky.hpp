@@ -4,7 +4,7 @@
   * @brief declarations of templated Cholesky decomposition 
   *
   * @author Rezha Adrian Tanuharja
-  * Contact: rezhadr@outlook.com 
+  * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #ifndef CHOLESKY_DECLARATIONS 

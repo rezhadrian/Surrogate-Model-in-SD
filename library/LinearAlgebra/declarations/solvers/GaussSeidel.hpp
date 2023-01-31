@@ -4,7 +4,7 @@
   * @brief declarations of templated Gauss Seidel iterative solver  
   *
   * @author Rezha Adrian Tanuharja
-  * Contact: rezhadr@outlook.com 
+  * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #ifndef GAUSS_SEIDEL_DECLARATIONS 

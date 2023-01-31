@@ -4,7 +4,7 @@
   * @brief file contains implementations of templated Matrix classes.
   *
   * @author Rezha Adrian Tanuharja
-  * Contact: rezhadr@outlook.com 
+  * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #ifndef MATRIX_IMPLEMENTATIONS 

@@ -25,9 +25,9 @@
   */ 
 
 /**
-  * @file LeastSquare.hpp
+  * @file LinearAlgebra.hpp
   *
-  * @brief declare functions required to solve linear least square problem
+  * @brief hub for the lineara algebra library 
   *
   * @author Rezha Adrian Tanuharja
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 

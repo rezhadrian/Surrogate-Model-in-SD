@@ -4,7 +4,7 @@
   * @brief implementations of templated Cholesky decomposition 
   *
   * @author Rezha Adrian Tanuharja
-  * Contact: rezhadr@outlook.com 
+  * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #ifndef CHOLESKY_IMPLEMENTATIONS 
@@ -31,7 +31,7 @@ namespace linalg {
 
         if ( A.nRow() != A.nCol() ) {
             throw std::runtime_error (
-                "Cholesky: Matrix is not symmetic"
+                "Cholesky: Matrix is not square"
             );
         }
 

@@ -4,7 +4,7 @@
   * @brief implementations of templated arithmetic matrix operations .
   *
   * @author Rezha Adrian Tanuharja
-  * Contact: rezhadr@outlook.com 
+  * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #ifndef ARITHMETIC_IMPLEMENTATIONS 

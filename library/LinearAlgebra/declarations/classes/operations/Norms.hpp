@@ -4,7 +4,7 @@
   * @brief declarations of templated vector norms 
   *
   * @author Rezha Adrian Tanuharja
-  * Contact: rezhadr@outlook.com 
+  * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #ifndef NORMS_DECLARATIONS 

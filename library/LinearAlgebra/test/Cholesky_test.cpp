@@ -94,3 +94,46 @@ TEST ( CholeskyDecomposition, DenseSPD ) {
 
 }
 
+TEST ( CholeskyDecomposition, NonSquareMatrix ) {
+
+    typedef linalg::DenseMatrix<double> DM;
+    typedef linalg::DenseLTriangularMatrix<double> LT;
+
+    DM A ( 30, 40 );
+
+    try {
+
+        auto result = linalg::Cholesky<LT,DM> ( A );
+
+    } catch ( const std::exception& e ) {
+
+        EXPECT_STREQ (
+            "Cholesky: Matrix is not square", 
+            e.what()
+        );
+
+    }
+
+}
+TEST ( CholeskyDecomposition, NonSPDMatrix ) {
+
+    typedef linalg::DenseMatrix<double> DM;
+    typedef linalg::DenseLTriangularMatrix<double> LT;
+
+    DM A ( 30, 30 );
+
+    try {
+
+        auto result = linalg::Cholesky<LT,DM> ( A );
+
+    } catch ( const std::exception& e ) {
+
+        EXPECT_STREQ (
+            "Cholesky: input matrix is not pos. definite", 
+            e.what()
+        );
+
+    }
+
+}
+

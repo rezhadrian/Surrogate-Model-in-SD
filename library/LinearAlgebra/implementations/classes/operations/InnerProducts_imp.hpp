@@ -4,7 +4,7 @@
   * @brief implementations of templated vector inner products 
   *
   * @author Rezha Adrian Tanuharja
-  * Contact: rezhadr@outlook.com 
+  * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #ifndef INNER_PRODUCTS_IMPLEMENTATIONS 
