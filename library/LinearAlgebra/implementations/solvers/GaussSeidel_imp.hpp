@@ -55,7 +55,7 @@ namespace linalg {
 
         for ( auto i = 0; i < x.size(); i++ ) {
             
-            #ifdef COMPLEX
+            #ifdef LA_COMPLEX
                 auto Ax_i = std::complex<T> (0,0);
             #else
                 auto Ax_i = 0.0;

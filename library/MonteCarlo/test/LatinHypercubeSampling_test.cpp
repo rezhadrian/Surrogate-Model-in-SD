@@ -180,7 +180,7 @@ TEST ( LatinHypercubeSampling, SortedMultipleIntervalsMultipleSamples ) {
     size_t dim     = 50;
 
     auto result = 
-        MonteCarlo::LHS < size_t, double > ( nPoints, dim );
+        MonteCarlo::LHS < double > ( nPoints, dim );
 
     double range = 1.0 / nPoints;
 

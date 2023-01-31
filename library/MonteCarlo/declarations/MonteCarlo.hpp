@@ -43,10 +43,6 @@
     #include "StatisticDist.hpp" 
 #endif 
 
-#ifndef LINALG_DECLARATIONS 
-    #include "LinAlg.hpp" 
-#endif 
-
 namespace MonteCarlo {
 
     template < typename T >
@@ -59,18 +55,17 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
 
-    template < typename Z, typename R >
+    template < typename R >
     /**
       * Perform latin hypercube sampling with given sizes 
       *
-      * @tparam Z a type of non=negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       * 
       * @param nInterval number of intervals in [0,1] 
       * @param nSample   number of sampled [0,1] 
       * @return vector { Sample1, Sample2, ... } 
       */
-    Vector<R> LHS ( const Z nInterval, const Z nSample );
+    Vector<R> LHS ( const size_t nInterval, const size_t nSample );
 
 
 } // MonteCarlo : LatinHypercubeSampling 
@@ -98,9 +93,13 @@ namespace MonteCarlo {
       * @tparam R a type of floating point e.g. double 
       * @tparam LTMatrix a lower triangular matrix 
       * 
-      * L Cholesky decomposition of correlation matrix in standard normal space 
+      * @param L triangular mat. from cholesky decomp. of correlation mat.  
       */
+    #ifdef MC_COMPLEX 
+    Vector< std::complex<R> > GenerateRVs (
+    #else 
     Vector<R> GenerateRVs ( 
+    #endif
 
         Vector<R>& StdNormRVs, 
         const LTMatrix& L, 

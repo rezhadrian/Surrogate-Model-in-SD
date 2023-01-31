@@ -18,15 +18,14 @@
 namespace MonteCarlo {
 
 
-    template < typename Z, typename R >
+    template < typename R >
     /**
       * Generate random samples using latin hypercube sampling 
       * Variables from the same dimension are contiguous in memory 
       * 
-      * @tparam Z a type of non-negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
-    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim );
+    Vector<R> UnsortedLHS ( const size_t nPoints, const size_t dim );
 
 
     template < typename Z >
@@ -39,17 +38,15 @@ namespace MonteCarlo {
     Vector<Z> TransposerIndices ( const Z nPoints, const Z dim );
 
 
-    template < typename Z, typename R > 
+    template < typename R > 
     /**
       * Sort LHS result based on given indices 
-      * 
-      * @tparam Z a type of non-negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
     Vector<R> SortLHS ( 
 
         const Vector<R>& UnsortedLHS, 
-        const Vector<Z>& SorterIndices 
+        const Vector<size_t>& SorterIndices 
 
     );
 
@@ -59,13 +56,13 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
-    template < typename Z, typename R >
-    Vector<R> LHS ( const Z nPoints, const Z dim ) {
+    template < typename R >
+    Vector<R> LHS ( const size_t nPoints, const size_t dim ) {
 
-        auto Samples = UnsortedLHS<Z,R> ( nPoints, dim );
-        auto SorterIndices = TransposerIndices<Z> ( nPoints, dim );
+        auto Samples = UnsortedLHS<R> ( nPoints, dim );
+        auto SorterIndices = TransposerIndices ( nPoints, dim );
 
-        return SortLHS<Z,R> ( Samples, SorterIndices );
+        return SortLHS<R> ( Samples, SorterIndices );
 
     }
 
@@ -74,8 +71,8 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
-    template < typename Z, typename R >
-    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim ) {
+    template < typename R >
+    Vector<R> UnsortedLHS ( const size_t nPoints, const size_t dim ) {
 
         if ( nPoints < 1 ) {
 
@@ -103,7 +100,7 @@ namespace MonteCarlo {
         std::uniform_real_distribution <R> RandomVariable ( 0.0, range );
 
 
-        Vector<Z> IntervalIndices ( nPoints );
+        Vector<size_t> IntervalIndices ( nPoints );
 
         std::iota (
 
@@ -193,11 +190,11 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
-    template < typename Z, typename R > 
+    template < typename R > 
     Vector<R> SortLHS ( 
 
         const Vector<R>& UnsortedLHS, 
-        const Vector<Z>& SorterIndices 
+        const Vector<size_t>& SorterIndices 
 
     ) {
 

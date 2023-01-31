@@ -36,6 +36,8 @@
 #ifndef LIBRARIES_LOADER_MC 
 #define LIBRARIES_LOADER_MC 
 
+#define MC_COMPLEX 
+
 #include <algorithm> 
 #include <cmath> 
 #include <complex> 

@@ -33,7 +33,11 @@ namespace linalg {
 
         for ( auto i = 0; i < v1.size(); i++ ) {
 
-            result += std::conj(v1[i]) * v2[i];
+            #ifdef LA_COMPLEX 
+                result += std::conj(v1[i]) * v2[i];
+            #else 
+                result += v1[i] * v2[i];
+            #endif 
 
         }
 

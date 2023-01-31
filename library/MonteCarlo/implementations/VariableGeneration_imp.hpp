@@ -65,7 +65,11 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
     template < typename R, class LTMatrix >
-    Vector<R> GenerateRVs ( 
+    #ifdef MC_COMPLEX 
+        Vector< std::complex<R> > GenerateRVs (
+    #else 
+        Vector<R> GenerateRVs ( 
+    #endif
 
         Vector<R>& StdNormRVs, 
         const LTMatrix& L, 
@@ -78,7 +82,13 @@ namespace MonteCarlo {
 
         typedef LTMatrix LT;
 
-        auto result = CombineRVs<R,LT> ( L, StdNormRVs, dim );
+        auto CorrelatedStdNorm = CombineRVs<R,LT> ( L, StdNormRVs, dim );
+        
+        #ifdef MC_COMPLEX 
+            Vector< std::complex<R> > result ( CorrelatedStdNorm.size(), 0.0 );
+        #else 
+            Vector<R> result ( CorrelatedStdNorm.size(), 0.0 );
+        #endif 
 
         auto CDF = [](const auto m){
             return MonteCarlo::StdNormCDF<R> ( m ) ;
@@ -88,14 +98,20 @@ namespace MonteCarlo {
 
             std::transform (
 
-                result.begin() + i * dim,
-                result.begin() + i * dim + dim, 
+                CorrelatedStdNorm.begin() + i * dim,
+                CorrelatedStdNorm.begin() + i * dim + dim, 
                 ICDFs.begin(),
 
                 result.begin() + i * dim,
 
                 [CDF]( const auto m, const auto& ICDF ) {
+
+                #ifdef MC_COMPLEX 
+                    return std::complex <R> ( ICDF ( CDF ( m ) ) );
+                #else
                     return ICDF ( CDF ( m ) );
+                #endif 
+
                 }
 
             );
@@ -128,10 +144,9 @@ namespace MonteCarlo {
         for ( auto i = 0; i < dim; i++ ) {
         for ( auto j = 0; j < dim; j++ ) {
 
-            result[i+k*dim] += (
-                L(i,j) * RVs[j + k * dim]
-            );
+            result[i+k*dim] +=
 
+                L(i,j) * RVs[j + k * dim];
 
         }
         }

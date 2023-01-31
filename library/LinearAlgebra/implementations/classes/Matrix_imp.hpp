@@ -146,7 +146,7 @@ namespace linalg {
     }
 
 
-    #ifdef COMPLEX 
+    #ifdef LA_COMPLEX 
 
     template < typename T >
     Vector<T> DenseMatrix<T>::ConjTransProd ( const Vector<T>& v ) const {
@@ -200,7 +200,7 @@ namespace linalg {
         return result;
     }
 
-    #endif // COMPLEX 
+    #endif // LA_COMPLEX 
 
 } // linalg : DenseMatrix 
 

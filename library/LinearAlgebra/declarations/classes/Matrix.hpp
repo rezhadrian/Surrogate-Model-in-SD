@@ -82,7 +82,7 @@ namespace linalg {
           */
         DenseMatrix<T> TransProd ( const DenseMatrix<T>& other ) const;
 
-        #ifdef COMPLEX 
+        #ifdef LA_COMPLEX 
 
         /**
           * Multiplication of self conjugate transpose with vector 
@@ -96,7 +96,7 @@ namespace linalg {
           */
         DenseMatrix<T> ConjTransProd ( const DenseMatrix<T>& other ) const;
 
-        #endif // COMPLEX 
+        #endif // LA_COMPLEX 
 
     };
 
