@@ -33,23 +33,16 @@
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
-#ifndef LEAST_SQUARE_DECLARATIONS 
-#define LEAST_SQUARE_DECLARATIONS 
+#ifndef LINEAR_ALGEBRA_DECLARATIONS 
+#define LINEAR_ALGEBRA_DECLARATIONS 
 
-#include "LibrariesLoader_LS.hpp" 
+#include "LibrariesLoader_LA.hpp" 
 #include "Matrix.hpp" 
 #include "Norms.hpp" 
 #include "Arithmetic.hpp" 
 #include "InnerProducts.hpp" 
+#include "Cholesky.hpp" 
 #include "GaussSeidel.hpp" 
 
-
-namespace LeastSquare {
-
-
-
-} // LeastSquare 
-
-
-#endif // LEAST_SQUARE_DECLARATIONS 
+#endif // LINEAR_ALGEBRA_DECLARATIONS 
 

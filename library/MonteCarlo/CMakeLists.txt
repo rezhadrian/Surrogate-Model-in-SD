@@ -10,8 +10,6 @@ add_library ( montecarlo INTERFACE
 
     declarations/include/StatisticDist.hpp 
     declarations/include/StatisticDist_imp.hpp 
-    declarations/include/LinAlg.hpp 
-    declarations/include/LinAlg_imp.hpp 
 
     implementations/AnalyticalModel_imp.hpp 
     implementations/LatinHypercubeSampling_imp.hpp 
@@ -58,7 +56,6 @@ if ( MONTE_CARLO_TEST )
         test/LatinHypercubeSampling_test.cpp
         test/VariableGeneration_test.cpp 
 
-        test/include/LinAlg_test.cpp 
         test/include/StatisticDist_test.cpp 
 
     )

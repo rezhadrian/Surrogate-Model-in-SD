@@ -39,7 +39,7 @@ if ( PROJECT_TEST )
 
         basisfunctions 
         montecarlo 
-        leastsquare 
+        linalg  
         GTest::gtest_main 
 
     ) 

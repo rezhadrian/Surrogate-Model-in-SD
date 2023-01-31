@@ -47,6 +47,12 @@
     #include "LinAlg.hpp" 
 #endif 
 
+namespace MonteCarlo {
+
+    template < typename T >
+    using Vector = std::vector<T>;
+
+}
 
 // Implemented in LatinHypercubeSampling_imp.hpp 
 
@@ -85,25 +91,21 @@ namespace MonteCarlo {
     void ConvertLHStoStdNorm ( Vector<R>& LHSResult );
 
 
-    template < typename Z, typename R, 
-
-        class SymMatrix,         // e.g. MonteCarlo::DenseSymMatrix 
-        class LTriangularMatrix, // e.g. MonteCarlo::DenseLTriangularMatrix 
-        class Function 
-
-    >
+    template < typename R, class LTMatrix >
     /**
       * Convert standard normal RVs to correlated RVs of other distribution 
       * 
-      * @tparam Z a type of non=negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
+      * @tparam LTMatrix a lower triangular matrix 
+      * 
+      * L Cholesky decomposition of correlation matrix in standard normal space 
       */
     Vector<R> GenerateRVs ( 
 
         Vector<R>& StdNormRVs, 
-        const SymMatrix& Correlation, 
-        const std::vector<std::function<R(R)>>& ICDFs,
-        const Z dim
+        const LTMatrix& L, 
+        const Vector< std::function<R(R)> >& ICDFs,
+        const size_t dim
 
     );
 

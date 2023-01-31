@@ -10,7 +10,7 @@
 #include <gtest/gtest.h> 
 #include "BasisFunctions.hpp" 
 #include "MonteCarlo.hpp" 
-#include "LeastSquare.hpp" 
+#include "LinearAlgebra.hpp" 
 
 
 // TEST ( Overall, FirstTry ) {
