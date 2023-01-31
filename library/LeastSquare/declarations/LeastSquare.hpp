@@ -37,6 +37,11 @@
 #define LEAST_SQUARE_DECLARATIONS 
 
 #include "LibrariesLoader_LS.hpp" 
+#include "Matrix.hpp" 
+#include "Norms.hpp" 
+#include "Arithmetic.hpp" 
+#include "InnerProducts.hpp" 
+#include "GaussSeidel.hpp" 
 
 
 namespace LeastSquare {

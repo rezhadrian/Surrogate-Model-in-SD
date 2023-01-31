@@ -27,5 +27,25 @@ if ( PROJECT_TEST )
 
     set ( SMSD_GTEST ON )
 
+    enable_testing ()
+
+    add_executable ( OverallTestrunner 
+
+        test/testrunner.cpp 
+
+    )
+
+    target_link_libraries ( OverallTestrunner PUBLIC 
+
+        basisfunctions 
+        montecarlo 
+        leastsquare 
+        GTest::gtest_main 
+
+    ) 
+
+    include ( GoogleTest ) 
+    gtest_discover_tests ( OverallTestrunner ) 
+
 endif ()
 

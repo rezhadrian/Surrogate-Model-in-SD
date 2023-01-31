@@ -53,14 +53,7 @@
 namespace MonteCarlo {
 
 
-    template < typename Z, typename R,
-               
-        class RandomDevice,   // e.g. std::random_device 
-        class RandomEngine,   // e.g. std::default_random_engine 
-        class Distribution,   // e.g. std::uniform_real_distribution 
-        class Shuffler        // e.g. std::mt19937 
-
-    >
+    template < typename Z, typename R >
     /**
       * Perform latin hypercube sampling with given sizes 
       *

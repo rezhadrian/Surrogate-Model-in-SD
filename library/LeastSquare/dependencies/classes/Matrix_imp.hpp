@@ -128,6 +128,36 @@ namespace linalg {
 
     }
 
+    template < typename T >
+    DenseMatrix<T> DenseMatrix<T>::TransProd ( 
+        const DenseMatrix<T>& other 
+    ) const {
+
+        if ( nRow_ != other.nRow() ) {
+
+            throw std::runtime_error (
+                "Matrix TransProd: sizes don't match"
+            );
+
+        }
+
+        DenseMatrix<T> result ( nCol_, other.nCol() );
+
+        for ( auto i = 0; i < nCol_; i++ ) {
+        for ( auto j = 0; j < other.nCol(); j++ ) {
+        for ( auto k = 0; k < nRow_; k++ ) {
+
+            result.at (i,j) += 
+                this->operator()(k,i) * other(k,j);
+
+        }
+        }
+        }
+
+        return result;
+
+    }
+
     #ifdef COMPLEX 
     template < typename T >
     Vector<T> DenseMatrix<T>::ConjTransProd ( const Vector<T>& v ) const {

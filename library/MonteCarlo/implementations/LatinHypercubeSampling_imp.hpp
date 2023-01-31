@@ -17,45 +17,93 @@
 
 namespace MonteCarlo {
 
-    template < 
 
-        typename Z, typename R,
-               
-        class RandomDevice,
-        class RandomEngine,
-        class Distribution,
-        class Shuffler 
+    template < typename Z, typename R >
+    /**
+      * Generate random samples using latin hypercube sampling 
+      * Variables from the same dimension are contiguous in memory 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      */
+    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim );
 
-    >
-    Vector<R> LHS ( const Z nInterval, const Z nSample ) {
 
-        if ( nInterval < 1 ) {
+    template < typename Z >
+    /**
+      * Generate indices to sort UnsortedLHS 
+      * Make variables from each sample point contigous in memory 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      */
+    Vector<Z> TransposerIndices ( const Z nPoints, const Z dim );
+
+
+    template < typename Z, typename R > 
+    /**
+      * Sort LHS result based on given indices 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating point e.g. double 
+      */
+    Vector<R> SortLHS ( 
+
+        const Vector<R>& UnsortedLHS, 
+        const Vector<Z>& SorterIndices 
+
+    );
+
+
+} // MonteCarlo : LHS SubFunctions Declarations 
+
+
+namespace MonteCarlo {
+
+    template < typename Z, typename R >
+    Vector<R> LHS ( const Z nPoints, const Z dim ) {
+
+        auto Samples = UnsortedLHS<Z,R> ( nPoints, dim );
+        auto SorterIndices = TransposerIndices<Z> ( nPoints, dim );
+
+        return SortLHS<Z,R> ( Samples, SorterIndices );
+
+    }
+
+} // MonteCarlo : LHS 
+
+
+namespace MonteCarlo {
+
+    template < typename Z, typename R >
+    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim ) {
+
+        if ( nPoints < 1 ) {
 
             throw std::runtime_error (
-                "LHS: interval must be positive integer"
+                "LHS: Number of points must be positive integer"
             );
 
         }
 
-        if ( nSample < 1 ) {
+        if ( dim < 1 ) {
 
             throw std::runtime_error (
-                "LHS: number of sample must be positive integer"
+                "LHS: dimension must be positive integer"
             );
 
         }
 
-        R range = 1.0 / nInterval;
+        R range = 1.0 / nPoints;
 
-        RandomDevice device;
+        std::random_device device;
 
-        RandomEngine generator ( device () );
-        Shuffler     shuffler  ( device () );
+        std::default_random_engine generator ( device () );
+        std::mt19937 shuffler ( device () );
 
-        Distribution RandomVariable ( 0.0, range );
+        std::uniform_real_distribution <R> RandomVariable ( 0.0, range );
 
 
-        Vector<Z> IntervalIndices ( nInterval );
+        Vector<Z> IntervalIndices ( nPoints );
 
         std::iota (
 
@@ -65,9 +113,9 @@ namespace MonteCarlo {
 
         );
 
-        Vector<R> result ( nInterval * nSample );
+        Vector<R> result ( nPoints * dim );
 
-        for ( auto i = 0; i < nSample; i++ ) {
+        for ( auto i = 0; i < dim; i++ ) {
 
             std::shuffle (
 
@@ -82,7 +130,7 @@ namespace MonteCarlo {
                 IntervalIndices.begin(),
                 IntervalIndices.end(),
 
-                result.begin() + i * nInterval,
+                result.begin() + i * nPoints,
 
                 [range, &RandomVariable, &generator ]( auto m ) {
                     
@@ -98,7 +146,82 @@ namespace MonteCarlo {
 
     }
 
-} // MonteCarlo : LHS 
+} // MonteCarlo : UnsortedLHS 
+
+
+namespace MonteCarlo {
+
+    template < typename Z >
+    Vector<Z> TransposerIndices ( const Z nPoints, const Z dim ) {
+
+        Vector<Z> FirstPointIndices ( dim ); 
+
+        std::iota (
+
+            FirstPointIndices.begin(), 
+            FirstPointIndices.end(), 
+            0
+
+        );
+
+        Vector<Z> SorterIndices ( nPoints * dim );
+
+        for ( auto i = 0; i < nPoints; i++ ) {
+
+            std::transform (
+
+                FirstPointIndices.begin(), 
+                FirstPointIndices.end(), 
+                SorterIndices.begin() + i * dim, 
+
+                [i,nPoints](const auto m) {
+                    
+                    return m * nPoints + i;
+                    
+                }
+
+            );
+
+        }
+
+        return SorterIndices;
+
+    }
+
+} // MonteCarlo : TransposerIndices 
+
+
+namespace MonteCarlo {
+
+    template < typename Z, typename R > 
+    Vector<R> SortLHS ( 
+
+        const Vector<R>& UnsortedLHS, 
+        const Vector<Z>& SorterIndices 
+
+    ) {
+
+        Vector<R> SortedLHS ( UnsortedLHS.size() );
+
+        std::transform (
+
+            SorterIndices.begin(), SorterIndices.end(), 
+
+            SortedLHS.begin(), 
+
+            [&UnsortedLHS]( const auto m) {
+
+                return UnsortedLHS[m];
+
+            }
+
+        );
+
+        return SortedLHS;
+
+    }
+
+} // MonteCarlo : SortLHS 
 
 
 #endif // LATIN_HYPERCUBE_SAMPLING_IMPLEMENTATIONS 

@@ -218,7 +218,7 @@ namespace MonteCarlo {
         for ( auto j = 0; j < dim; j++ ) {
 
             result[i+k*dim] += (
-                L(i,j) * RVs[k+j*N]
+                L(i,j) * RVs[j + k * dim]
             );
 
 
