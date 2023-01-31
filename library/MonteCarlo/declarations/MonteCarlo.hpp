@@ -50,22 +50,24 @@ namespace MonteCarlo {
 
 }
 
+
 // Implemented in LatinHypercubeSampling_imp.hpp 
 
 namespace MonteCarlo {
 
 
-    template < typename R >
+    template < typename Z, typename R >
     /**
       * Perform latin hypercube sampling with given sizes 
       *
+      * @tparam Z a type of non-negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       * 
       * @param nInterval number of intervals in [0,1] 
       * @param nSample   number of sampled [0,1] 
       * @return vector { Sample1, Sample2, ... } 
       */
-    Vector<R> LHS ( const size_t nInterval, const size_t nSample );
+    Vector<R> LHS ( const Z nInterval, const Z nSample );
 
 
 } // MonteCarlo : LatinHypercubeSampling 
@@ -86,7 +88,7 @@ namespace MonteCarlo {
     void ConvertLHStoStdNorm ( Vector<R>& LHSResult );
 
 
-    template < typename R, class LTMatrix >
+    template < typename Z, typename R, class LTMatrix >
     /**
       * Convert standard normal RVs to correlated RVs of other distribution 
       * 
@@ -96,15 +98,15 @@ namespace MonteCarlo {
       * @param L triangular mat. from cholesky decomp. of correlation mat.  
       */
     #ifdef MC_COMPLEX 
-    Vector< std::complex<R> > GenerateRVs (
+        Vector< std::complex<R> > GenerateRVs (
     #else 
-    Vector<R> GenerateRVs ( 
+        Vector<R> GenerateRVs ( 
     #endif
 
         Vector<R>& StdNormRVs, 
         const LTMatrix& L, 
         const Vector< std::function<R(R)> >& ICDFs,
-        const size_t dim
+        const Z dim
 
     );
 

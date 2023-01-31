@@ -30,6 +30,18 @@ namespace MonteCarlo {
         auto E  = params[0];
         auto Mu = params[1];
 
+        if ( E <= 0.0 ) {
+            throw std::runtime_error (
+                "EvaluateFRF: Elasticity modulus must be positive"
+            );
+        }
+
+        if ( Mu <= 0.0 ) {
+            throw std::runtime_error (
+                "EvaluateFRF: Mu must be positive"
+            );
+        }
+
         auto k = 24 * E * I_c / ( H * H * H );
         auto m = Mu * A_g * L;
 
@@ -63,6 +75,12 @@ namespace MonteCarlo {
         const Z dim 
 
     ) {
+
+        if ( dim < 1 ) {
+            throw std::runtime_error (
+                "EvaluateModel: dimension must be positive"
+            );
+        }
 
         Z nSample = RVs.size() / dim;
 

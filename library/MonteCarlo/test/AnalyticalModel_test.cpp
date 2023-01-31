@@ -36,10 +36,73 @@ TEST ( EvaluateFRF, StandardEandMu ) {
     EXPECT_NEAR ( FRF.imag(), expected.imag(), tol );
 
 }
+
+TEST ( EvaluateFRF, NegativeE ) {
+
+    typedef std::complex<long double> Complex;
+    typedef std::vector<long double> Vector;
+
+    Vector params {
+
+        -3e10, 2500 
+
+    };
+
+    long double omega = 10;
+
+    Complex FRF;
+
+    try {
+
+        FRF = MonteCarlo::EvaluateFRF<long double,Complex> ( omega, params );
+
+    } catch ( const std::exception& e ) {
+
+        EXPECT_STREQ (
+            "EvaluateFRF: Elasticity modulus must be positive", 
+            e.what()
+        );
+
+    }
+
+}
+
+TEST ( EvaluateFRF, NegativeMu ) {
+
+    typedef std::complex<long double> Complex;
+    typedef std::vector<long double> Vector;
+
+    Vector params {
+
+        3e10, -2500 
+
+    };
+
+    long double omega = 10;
+
+    Complex FRF;
+
+    try {
+
+        FRF = MonteCarlo::EvaluateFRF<long double,Complex> ( omega, params );
+
+    } catch ( const std::exception& e ) {
+
+        EXPECT_STREQ (
+            "EvaluateFRF: Mu must be positive", 
+            e.what()
+        );
+
+    }
+
+}
+
 TEST ( EvaluateModel, StandardEandMu ) {
 
     typedef std::complex<long double> Complex;
     typedef std::vector<long double> Vector;
+
+    size_t dim = 2;
 
     Vector params {
 
@@ -58,7 +121,7 @@ TEST ( EvaluateModel, StandardEandMu ) {
 
 
     auto result = MonteCarlo::EvaluateModel<size_t, long double, Complex, 
-         decltype(model)> ( omega, params, model, 2 );
+         decltype(model)> ( omega, params, model, dim );
 
     std::vector<Complex> expected {
 
@@ -76,6 +139,45 @@ TEST ( EvaluateModel, StandardEandMu ) {
 
         EXPECT_NEAR ( result[i].real(), expected[i].real(), tol );
         EXPECT_NEAR ( result[i].imag(), expected[i].imag(), tol );
+
+    }
+
+}
+
+TEST ( EvaluateModel, WrongDim ) {
+
+    typedef std::complex<long double> Complex;
+    typedef std::vector<long double> Vector;
+
+    size_t dim = 0;
+
+    Vector params {
+
+        3.0e10, 2500, 
+        2.0e10, 3000, 
+        2.5e10, 2800
+
+    };
+
+    long double omega = 10;
+
+
+    auto model = []( const auto w, const auto& pars ) {
+        return MonteCarlo::EvaluateFRF<long double, Complex> ( w, pars );
+    };
+
+
+    try {
+
+        auto result = MonteCarlo::EvaluateModel<size_t, long double, 
+             Complex, decltype(model)> ( omega, params, model, dim );
+
+    } catch ( const std::exception& e ) {
+
+        EXPECT_STREQ (
+            "EvaluateModel: dimension must be positive", 
+            e.what()
+        );
 
     }
 

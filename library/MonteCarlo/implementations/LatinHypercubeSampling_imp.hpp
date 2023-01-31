@@ -18,14 +18,15 @@
 namespace MonteCarlo {
 
 
-    template < typename R >
+    template < typename Z, typename R >
     /**
       * Generate random samples using latin hypercube sampling 
       * Variables from the same dimension are contiguous in memory 
       * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
-    Vector<R> UnsortedLHS ( const size_t nPoints, const size_t dim );
+    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim );
 
 
     template < typename Z >
@@ -38,15 +39,17 @@ namespace MonteCarlo {
     Vector<Z> TransposerIndices ( const Z nPoints, const Z dim );
 
 
-    template < typename R > 
+    template < typename Z, typename R > 
     /**
       * Sort LHS result based on given indices 
+      *
+      * @tparam Z a type of non-negative integer e.g. size_t 
       * @tparam R a type of floating point e.g. double 
       */
     Vector<R> SortLHS ( 
 
         const Vector<R>& UnsortedLHS, 
-        const Vector<size_t>& SorterIndices 
+        const Vector<Z>& SorterIndices 
 
     );
 
@@ -56,13 +59,13 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
-    template < typename R >
-    Vector<R> LHS ( const size_t nPoints, const size_t dim ) {
+    template < typename Z, typename R >
+    Vector<R> LHS ( const Z nPoints, const Z dim ) {
 
-        auto Samples = UnsortedLHS<R> ( nPoints, dim );
-        auto SorterIndices = TransposerIndices ( nPoints, dim );
+        auto Samples = UnsortedLHS<Z,R> ( nPoints, dim );
+        auto SorterIndices = TransposerIndices<Z> ( nPoints, dim );
 
-        return SortLHS<R> ( Samples, SorterIndices );
+        return SortLHS<Z,R> ( Samples, SorterIndices );
 
     }
 
@@ -71,8 +74,8 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
-    template < typename R >
-    Vector<R> UnsortedLHS ( const size_t nPoints, const size_t dim ) {
+    template < typename Z, typename R >
+    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim ) {
 
         if ( nPoints < 1 ) {
 
@@ -100,7 +103,7 @@ namespace MonteCarlo {
         std::uniform_real_distribution <R> RandomVariable ( 0.0, range );
 
 
-        Vector<size_t> IntervalIndices ( nPoints );
+        Vector<Z> IntervalIndices ( nPoints );
 
         std::iota (
 
@@ -151,6 +154,18 @@ namespace MonteCarlo {
     template < typename Z >
     Vector<Z> TransposerIndices ( const Z nPoints, const Z dim ) {
 
+        if ( nPoints < 1 ) {
+            throw std::runtime_error (
+                "TransposerIndices: num of points must be greater than unity"
+            );
+        }
+
+        if ( dim < 1 ) {
+            throw std::runtime_error (
+                "TransposerIndices: dimension must be greater than unity"
+            );
+        }
+
         Vector<Z> FirstPointIndices ( dim ); 
 
         std::iota (
@@ -190,11 +205,11 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
-    template < typename R > 
+    template < typename Z, typename R > 
     Vector<R> SortLHS ( 
 
         const Vector<R>& UnsortedLHS, 
-        const Vector<size_t>& SorterIndices 
+        const Vector<Z>& SorterIndices 
 
     ) {
 
