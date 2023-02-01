@@ -1,5 +1,6 @@
 # Ignore debug artifacts
 Debug/
+build/
 compile_commands.json
 .cache/
 .DS_Store/

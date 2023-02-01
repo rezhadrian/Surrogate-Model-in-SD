@@ -17,22 +17,6 @@
 
 namespace MonteCarlo {
 
-    template < typename R, class LTMatrix >
-    /**
-      * Combine uncorrelated RVs to generate correlated RVs 
-      *
-      * @tparam R a type of floating point e.g. double 
-      * @tparam LTMatrix lower triangular matrix class 
-      * 
-      * @param L triangular mat. from cholesky decomp. of correlation mat.  
-      */
-    Vector<R> CombineRVs ( 
-
-        const LTMatrix& L, 
-        Vector<R>& RVs,
-        const size_t dim
-
-    );
 
 } // MonteCarlo : Declarations of SubFunctions 
 
@@ -107,7 +91,7 @@ namespace MonteCarlo {
                 [CDF]( const auto m, const auto& ICDF ) {
 
                 #ifdef MC_COMPLEX 
-                    return std::complex <R> ( ICDF ( CDF ( m ) ) );
+                    return std::complex <R> ( ICDF ( CDF ( m.real() ) ) );
                 #else
                     return ICDF ( CDF ( m ) );
                 #endif 
@@ -128,7 +112,7 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
     template < typename R, class LTriangularMatrix >
-    Vector<R> CombineRVs ( 
+    Vector<std::complex<R>> CombineRVs ( 
 
         const LTriangularMatrix& L, 
         Vector<R>& RVs, 
@@ -136,7 +120,7 @@ namespace MonteCarlo {
 
     ) {
 
-        Vector<R> result ( RVs.size(), 0.0 );
+        Vector<std::complex<R>> result ( RVs.size(), 0.0 );
 
         size_t N = RVs.size() / dim;
 
@@ -146,7 +130,7 @@ namespace MonteCarlo {
 
             result[i+k*dim] +=
 
-                L(i,j) * RVs[j + k * dim];
+                std::complex<R>(L(i,j) * RVs[j + k * dim]);
 
         }
         }

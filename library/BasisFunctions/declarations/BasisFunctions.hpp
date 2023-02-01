@@ -94,7 +94,7 @@ namespace BasisFunctions {
 namespace BasisFunctions {
 
 
-    template < typename Z, typename C >
+    template < typename Z, typename R, typename C >
     /**
       * Evaluate tensor prod. of NORMALIZED probabilist Hermite polynomials.
       *

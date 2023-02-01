@@ -6,6 +6,16 @@ project ( SurrogateModelling CXX )
 # Add interface libraries 
 add_subdirectory ( library )
 
+# Add executable 
+add_executable ( main driver/main.cpp ) 
+target_link_libraries ( main PUBLIC 
+
+    basisfunctions 
+    montecarlo 
+    linalg  
+
+)
+
 # Unit Test using Google Test 
 option ( PROJECT_TEST "Enable Google Test for whole project" ON )
 

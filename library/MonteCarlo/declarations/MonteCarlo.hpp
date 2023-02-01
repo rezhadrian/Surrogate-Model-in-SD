@@ -88,6 +88,24 @@ namespace MonteCarlo {
     void ConvertLHStoStdNorm ( Vector<R>& LHSResult );
 
 
+    template < typename R, class LTMatrix >
+    /**
+      * Combine uncorrelated RVs to generate correlated RVs 
+      *
+      * @tparam R a type of floating point e.g. double 
+      * @tparam LTMatrix lower triangular matrix class 
+      * 
+      * @param L triangular mat. from cholesky decomp. of correlation mat.  
+      */
+    Vector<std::complex<R>> CombineRVs ( 
+
+        const LTMatrix& L, 
+        Vector<R>& RVs,
+        const size_t dim
+
+    );
+
+
     template < typename Z, typename R, class LTMatrix >
     /**
       * Convert standard normal RVs to correlated RVs of other distribution 
@@ -127,7 +145,11 @@ namespace MonteCarlo {
       * @param omega excitation angular velocity 
       * @param params a vector { E, Mu } 
       */
-    C EvaluateFRF ( const R omega, const Vector<R>& params );
+    #ifdef MC_COMPLEX 
+        C EvaluateFRF ( const R omega, const Vector<C>& params );
+    #else 
+        C EvaluateFRF ( const R omega, const Vector<R>& params );
+    #endif 
 
 
     template < typename Z, typename R, typename C, class Function >
@@ -144,7 +166,13 @@ namespace MonteCarlo {
     Vector<C> EvaluateModel ( 
 
         const R omega, 
-        const Vector<R>& RVs, 
+
+        #ifdef MC_COMPLEX 
+            const Vector<C>& RVs, 
+        #else 
+            const Vector<R>& RVs, 
+        #endif 
+
         const Function& Model, 
         const Z dim 
 

@@ -60,7 +60,7 @@ namespace BasisFunctions {
 
 namespace BasisFunctions {
 
-    template < typename Z, typename C >
+    template < typename Z, typename R, typename C >
     Vector<C> HermitePolynomials ( 
         const Vector<Z>& indices, const Vector<C>& X, const Z dim 
     ) {
@@ -117,7 +117,7 @@ namespace BasisFunctions {
 
                         return HermitePolynomial<Z,C> ( idx, x ) / 
 
-                               std::sqrt ( Factorial<Z> ( idx ) );
+                               std::sqrt<R> ( Factorial<Z> ( idx ) );
 
                     }
                 ) 
