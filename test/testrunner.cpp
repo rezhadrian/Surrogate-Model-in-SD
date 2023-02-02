@@ -10,7 +10,6 @@
 #include <gtest/gtest.h> 
 #include "BasisFunctions.hpp" 
 #include "MonteCarlo.hpp" 
-#include "LinearAlgebra.hpp" 
 
 
 // TEST ( LA_MC, GenerateCorrelatedRVs ) {

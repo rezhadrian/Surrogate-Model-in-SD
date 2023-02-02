@@ -37,13 +37,6 @@
 #define MONTE_CARLO_DECLARATIONS 
 
 #include "LibrariesLoader_MC.hpp" 
-#include <boost/math/distributions.hpp> 
-#include <Eigen/Dense> 
-
-
-#ifndef STATISTIC_DIST_DECLARATIONS 
-    #include "StatisticDist.hpp" 
-#endif 
 
 namespace MonteCarlo {
 

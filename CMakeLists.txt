@@ -28,7 +28,6 @@ target_link_libraries ( main PUBLIC
 
     basisfunctions 
     montecarlo 
-    linalg  
     Eigen3::Eigen 
 
 )
@@ -66,7 +65,6 @@ if ( PROJECT_TEST )
 
         basisfunctions 
         montecarlo 
-        linalg  
         GTest::gtest_main 
 
     ) 

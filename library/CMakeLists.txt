@@ -6,7 +6,6 @@ project ( SurrogateModelLib CXX )
 # Add interface libraries 
 add_subdirectory ( BasisFunctions )
 add_subdirectory ( MonteCarlo )
-add_subdirectory ( LinearAlgebra )
 
 # Combine interface libraries 
 add_library ( surrogatemodel INTERFACE )
@@ -14,7 +13,6 @@ target_link_libraries ( surrogatemodel INTERFACE
 
     basisfunctions 
     montecarlo
-    linalg
 
 )
 

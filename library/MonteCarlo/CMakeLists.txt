@@ -19,9 +19,6 @@ add_library ( montecarlo INTERFACE
 
     declarations/MonteCarlo.hpp 
 
-    declarations/include/StatisticDist.hpp 
-    declarations/include/StatisticDist_imp.hpp 
-
     implementations/AnalyticalModel_imp.hpp 
     implementations/LatinHypercubeSampling_imp.hpp 
     implementations/VariableGeneration_imp.hpp 
@@ -31,7 +28,6 @@ add_library ( montecarlo INTERFACE
 target_include_directories ( montecarlo INTERFACE 
 
     ${CMAKE_CURRENT_SOURCE_DIR}/declarations 
-    ${CMAKE_CURRENT_SOURCE_DIR}/declarations/include 
     ${CMAKE_CURRENT_SOURCE_DIR}/implementations 
     ${CMAKE_CURRENT_SOURCE_DIR}/utility   
 
@@ -75,8 +71,6 @@ if ( MONTE_CARLO_TEST )
         test/AnalyticalModel_test.cpp 
         test/LatinHypercubeSampling_test.cpp
         test/VariableGeneration_test.cpp 
-
-        test/include/StatisticDist_test.cpp 
 
     )
 

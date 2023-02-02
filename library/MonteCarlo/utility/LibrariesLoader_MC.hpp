@@ -36,8 +36,6 @@
 #ifndef LIBRARIES_LOADER_MC 
 #define LIBRARIES_LOADER_MC 
 
-#define MC_COMPLEX 
-
 #include <algorithm> 
 #include <cmath> 
 #include <complex> 
@@ -46,6 +44,9 @@
 #include <random>
 #include <stdexcept> 
 #include <vector>
+
+#include <boost/math/distributions.hpp> 
+#include <Eigen/Dense> 
 
 #endif // LIBRARIES_LOADER_MC 
 
