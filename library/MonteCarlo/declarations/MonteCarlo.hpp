@@ -37,6 +37,8 @@
 #define MONTE_CARLO_DECLARATIONS 
 
 #include "LibrariesLoader_MC.hpp" 
+#include <boost/math/distributions.hpp> 
+#include <Eigen/Dense> 
 
 
 #ifndef STATISTIC_DIST_DECLARATIONS 
@@ -77,6 +79,9 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
+    template < typename T >
+    using MatrixXT = Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>;
+
 
     template < typename Z, typename R >
     /**
@@ -88,41 +93,37 @@ namespace MonteCarlo {
     void ConvertLHStoStdNorm ( Vector<R>& LHSResult );
 
 
-    template < typename R, class LTMatrix >
+    template < typename R, typename C >
     /**
       * Combine uncorrelated RVs to generate correlated RVs 
       *
       * @tparam R a type of floating point e.g. double 
       * @tparam LTMatrix lower triangular matrix class 
       * 
-      * @param L triangular mat. from cholesky decomp. of correlation mat.  
+      * @param Correl correlation matrix 
       */
-    Vector<std::complex<R>> CombineRVs ( 
+    Vector<C> CombineRVs ( 
 
-        const LTMatrix& L, 
+        const MatrixXT<R>& Correl, 
         Vector<R>& RVs,
         const size_t dim
 
     );
 
 
-    template < typename Z, typename R, class LTMatrix >
+    template < typename Z, typename R >
     /**
       * Convert standard normal RVs to correlated RVs of other distribution 
       * 
       * @tparam R a type of floating point e.g. double 
       * @tparam LTMatrix a lower triangular matrix 
       * 
-      * @param L triangular mat. from cholesky decomp. of correlation mat.  
+      * @param Correl correlation matrix 
       */
-    #ifdef MC_COMPLEX 
-        Vector< std::complex<R> > GenerateRVs (
-    #else 
-        Vector<R> GenerateRVs ( 
-    #endif
+    Vector<R> GenerateRVs (
 
         Vector<R>& StdNormRVs, 
-        const LTMatrix& L, 
+        const MatrixXT<R>& Correl, 
         const Vector< std::function<R(R)> >& ICDFs,
         const Z dim
 
@@ -145,11 +146,7 @@ namespace MonteCarlo {
       * @param omega excitation angular velocity 
       * @param params a vector { E, Mu } 
       */
-    #ifdef MC_COMPLEX 
-        C EvaluateFRF ( const R omega, const Vector<C>& params );
-    #else 
-        C EvaluateFRF ( const R omega, const Vector<R>& params );
-    #endif 
+    C EvaluateFRF ( const R omega, const Vector<R>& params );
 
 
     template < typename Z, typename R, typename C, class Function >
@@ -166,13 +163,7 @@ namespace MonteCarlo {
     Vector<C> EvaluateModel ( 
 
         const R omega, 
-
-        #ifdef MC_COMPLEX 
-            const Vector<C>& RVs, 
-        #else 
-            const Vector<R>& RVs, 
-        #endif 
-
+        const Vector<R>& RVs, 
         const Function& Model, 
         const Z dim 
 

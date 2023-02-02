@@ -3,6 +3,17 @@ set ( CMAKE_CXX_STANDARD 17 )
 
 project ( MonteCarlo CXX ) 
 
+find_package ( Eigen3 3.4 REQUIRED NO_MODULE ) 
+find_package ( Boost 1.81 REQUIRED )
+
+if     ( CMAKE_CXX_COMPILER_ID MATCHES "Clang" ) 
+    add_compile_options ( -Wno-deprecated-declarations )
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "GNU"   ) 
+    add_compile_options ( -Wno-deprecated-declarations )
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC"  )
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "INTEL" )
+endif ()
+
 # Add interface library "montecarlo" 
 add_library ( montecarlo INTERFACE 
 
@@ -23,6 +34,15 @@ target_include_directories ( montecarlo INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/declarations/include 
     ${CMAKE_CURRENT_SOURCE_DIR}/implementations 
     ${CMAKE_CURRENT_SOURCE_DIR}/utility   
+
+    ${Boost_INCLUDE_DIR} 
+
+)
+
+target_link_libraries ( montecarlo INTERFACE 
+
+    Eigen3::Eigen 
+    ${Boost_LIBRARIES} 
 
 )
 

@@ -12,7 +12,9 @@
 
 TEST ( ConvertLHStoStdNorm, MockLHSResult ) {
 
-    std::vector<double> LHSResult {
+    typedef double Float;
+
+    std::vector<Float> LHSResult {
 
         0.5000, 0.5250, 0.5500, 0.5750, 0.6000, 0.6250, 0.6500, 0.6750, 
         0.7000, 0.7250, 0.7500, 0.7750, 0.8000, 0.8250, 0.8500, 0.8750, 
@@ -28,7 +30,7 @@ TEST ( ConvertLHStoStdNorm, MockLHSResult ) {
 
     };
 
-    std::vector<double> StdNorm {
+    std::vector<Float> StdNorm {
 
          0.000000,  0.062707,  0.125661,  0.189118,  0.253347,  0.318639,
          0.385320,  0.453762,  0.524401,  0.597760,  0.674490,  0.755415,
@@ -47,17 +49,248 @@ TEST ( ConvertLHStoStdNorm, MockLHSResult ) {
 
     };
 
-    MonteCarlo::ConvertLHStoStdNorm<size_t,double> ( LHSResult );
+    MonteCarlo::ConvertLHStoStdNorm<size_t,Float> ( LHSResult );
 
-    double tol = 0.000001;
+    Float tol = 0.000001;
 
     for ( auto i = 0; i < LHSResult.size(); i++ ) {
 
         EXPECT_NEAR ( LHSResult[i], StdNorm[i], tol);
         
     }
+
 }
 
-// GenerateRVs is tested at parents level test 
-// Because it required some linear algebra functionalities 
+TEST ( CombineRVs, NoCorrelation ) {
+
+    typedef double Float;
+    typedef std::complex<Float> Complex;
+    typedef std::vector<Float> Vector; 
+    typedef Eigen::Matrix<Float, Eigen::Dynamic, Eigen::Dynamic> MatrixXF;
+    typedef Eigen::Matrix<Complex, Eigen::Dynamic, Eigen::Dynamic> MatrixXC;
+
+    size_t dim = 3;
+
+    Vector RVs {
+
+        1.0, 2.0, 3.0, 
+        4.0, 5.0, 6.0, 
+        7.0, 8.0, 9.0 
+
+    };
+
+    MatrixXF Correl ( dim, dim );
+
+    Correl ( 0, 0 ) = 1.0;
+    Correl ( 1, 1 ) = 1.0;
+    Correl ( 2, 2 ) = 1.0;
+
+    std::vector<Complex> result = MonteCarlo::CombineRVs<Float,Complex> (
+
+        Correl, 
+        RVs, 
+        dim
+
+    );
+
+
+    ASSERT_EQ ( result.size(), RVs.size() );
+
+    for ( auto i = 0; i < result.size(); i++ ) {
+
+        EXPECT_EQ ( result[i].real(), RVs[i] );
+
+    }
+
+}
+
+TEST ( CombineRVs, SomeCorrelation ) {
+
+    typedef double Float;
+    typedef std::complex<Float> Complex;
+    typedef std::vector<Float> Vector; 
+    typedef Eigen::Matrix<Float, Eigen::Dynamic, Eigen::Dynamic> MatrixXF;
+    typedef Eigen::Matrix<Complex, Eigen::Dynamic, Eigen::Dynamic> MatrixXC;
+
+    size_t dim = 3;
+
+    Vector RVs {
+
+        1.0, 2.0, 3.0, 
+        4.0, 5.0, 6.0, 
+        7.0, 8.0, 9.0 
+
+    };
+
+    MatrixXF Correl ( dim, dim );
+
+    Correl ( 0, 0 ) = 1.0;
+    Correl ( 1, 0 ) = 0.3;
+    Correl ( 1, 1 ) = 1.0;
+    Correl ( 2, 2 ) = 1.0;
+
+    std::vector<Complex> result = MonteCarlo::CombineRVs<Float,Complex> (
+
+        Correl, 
+        RVs, 
+        dim
+
+    );
+
+    Vector expected {
+
+        1.000000000000000, 2.207878402833891, 3.000000000000000, 
+        4.000000000000000, 5.969696007084728, 6.000000000000000, 
+        7.000000000000000, 9.731513611335565, 9.000000000000000 
+
+    };
+
+
+    ASSERT_EQ ( result.size(), expected.size() );
+
+    Float tol = 1e-12;
+    for ( auto i = 0; i < result.size(); i++ ) {
+
+        EXPECT_NEAR ( result[i].real(), expected[i], tol );
+
+    }
+
+}
+
+TEST ( GenerateRVs, NoCorrelationStdNorm ) {
+
+    typedef double Float;
+    typedef std::complex<Float> Complex;
+    typedef std::vector<Float> Vector; 
+    typedef Eigen::Matrix<Float, Eigen::Dynamic, Eigen::Dynamic> MatrixXF;
+    typedef Eigen::Matrix<Complex, Eigen::Dynamic, Eigen::Dynamic> MatrixXC;
+
+    size_t dim = 2;
+
+    Vector RVs {
+
+        1.0, 2.0, 
+        1.0, 2.0, 
+        1.0, 2.0
+
+    };
+
+    MatrixXF Correl ( dim, dim );
+
+    Correl ( 0, 0 ) = 1.0;
+    Correl ( 1, 1 ) = 1.0;
+
+    boost::math::normal dist ( Float(0.0), Float(1.0) );
+
+    std::vector< std::function < Float(Float) > > ICDFs;
+
+    ICDFs.emplace_back ( 
+
+        [dist](const auto m) { 
+            return quantile ( dist, m );
+        }
+
+    );
+
+    ICDFs.emplace_back ( 
+
+        [dist](const auto m) { 
+            return quantile ( dist, m );
+        }
+
+    );
+
+    auto result = MonteCarlo::GenerateRVs<size_t,Float> (
+
+        RVs, 
+        Correl, 
+        ICDFs, 
+        dim
+
+    );
+
+    ASSERT_EQ ( RVs.size(), result.size() );
+
+    Float tol = 1e-12;
+
+    for ( auto i = 0; i < result.size(); i++ ) {
+
+        EXPECT_NEAR ( RVs[i], result[i], tol );
+
+    }
+
+}
+
+TEST ( GenerateRVs, SomeCorrelationStdNorm ) {
+
+    typedef double Float;
+    typedef std::complex<Float> Complex;
+    typedef std::vector<Float> Vector; 
+    typedef Eigen::Matrix<Float, Eigen::Dynamic, Eigen::Dynamic> MatrixXF;
+    typedef Eigen::Matrix<Complex, Eigen::Dynamic, Eigen::Dynamic> MatrixXC;
+
+    size_t dim = 2;
+
+    Vector RVs {
+
+        1.0, 2.0, 
+        1.0, 2.0, 
+        1.0, 2.0
+
+    };
+
+    MatrixXF Correl ( dim, dim );
+
+    Correl ( 0, 0 ) = 1.0;
+    Correl ( 1, 0 ) = 0.3;
+    Correl ( 1, 1 ) = 1.0;
+
+    boost::math::normal dist ( Float(0.0), Float(1.0) );
+
+    std::vector< std::function < Float(Float) > > ICDFs;
+
+    ICDFs.emplace_back ( 
+
+        [dist](const auto m) { 
+            return quantile ( dist, m );
+        }
+
+    );
+
+    ICDFs.emplace_back ( 
+
+        [dist](const auto m) { 
+            return quantile ( dist, m );
+        }
+
+    );
+
+    auto result = MonteCarlo::GenerateRVs<size_t,Float> (
+
+        RVs, 
+        Correl, 
+        ICDFs, 
+        dim
+
+    );
+
+    Vector expected {
+
+        1.000000000000000, 2.207878402833891, 
+        1.000000000000000, 2.207878402833891, 
+        1.000000000000000, 2.207878402833891
+
+    };
+
+    ASSERT_EQ ( expected.size(), result.size() );
+
+    Float tol = 1e-12;
+
+    for ( auto i = 0; i < result.size(); i++ ) {
+
+        EXPECT_NEAR ( expected[i], result[i], tol );
+
+    }
+
+}
 

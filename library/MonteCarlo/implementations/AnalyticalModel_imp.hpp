@@ -19,11 +19,7 @@ namespace MonteCarlo {
 
 
     template < typename R, typename C >
-    #ifdef MC_COMPLEX 
-        C EvaluateFRF ( const R omega, const Vector<C>& params ) {
-    #else
-        C EvaluateFRF ( const R omega, const Vector<R>& params ) {
-    #endif
+    C EvaluateFRF ( const R omega, const Vector<R>& params ) {
 
         R I_c  = 3.976078202199582e-04;
         R A_g  = 0.15;
@@ -31,13 +27,8 @@ namespace MonteCarlo {
         R L    = 10;
         R Zeta = 0.02;
 
-        #ifdef MC_COMPLEX 
-            auto E  = params[0].real();
-            auto Mu = params[1].real();
-        #else 
-            auto E  = params[0];
-            auto Mu = params[1];
-        #endif
+        auto E  = params[0];
+        auto Mu = params[1];
 
         if ( E <= 0.0 ) {
             throw std::runtime_error (
@@ -79,13 +70,7 @@ namespace MonteCarlo {
     Vector<C> EvaluateModel ( 
 
         const R omega, 
-
-        #ifdef MC_COMPLEX
-            const Vector<C>& RVs, 
-        #else 
-            const Vector<R>& RVs, 
-        #endif
-
+        const Vector<R>& RVs, 
         const Function& Model, 
         const Z dim 
 
@@ -103,11 +88,7 @@ namespace MonteCarlo {
 
         for ( auto i = 0; i < nSample; i++ ) {
 
-            #ifdef MC_COMPLEX
-                Vector<C> params ( 
-            #else 
-                Vector<R> params ( 
-            #endif
+            Vector<R> params ( 
 
                 RVs.begin() + i * dim, 
                 RVs.begin() + i * dim + dim 
