@@ -3,6 +3,16 @@ set ( CMAKE_CXX_STANDARD 17 )
 
 project ( BasisFunctions CXX ) 
 
+find_package ( Boost 1.81 REQUIRED )
+
+if     ( CMAKE_CXX_COMPILER_ID MATCHES "Clang" ) 
+    add_compile_options ( -Wno-deprecated-declarations )
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "GNU"   ) 
+    add_compile_options ( -Wno-deprecated-declarations )
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC"  )
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "INTEL" )
+endif ()
+
 # Add interface library "basisfunctions" 
 add_library ( basisfunctions INTERFACE 
 
@@ -10,6 +20,7 @@ add_library ( basisfunctions INTERFACE
 
     implementations/HermitePolynomials_imp.hpp 
     implementations/MultiIndex_imp.hpp 
+    implementations/TripleHermite_imp.hpp 
     implementations/Truncations_imp.hpp 
 
     utility/LibrariesLoader_BF.hpp
@@ -21,6 +32,14 @@ target_include_directories ( basisfunctions INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/declarations 
     ${CMAKE_CURRENT_SOURCE_DIR}/implementations  
     ${CMAKE_CURRENT_SOURCE_DIR}/utility
+
+    ${Boost_INCLUDE_DIR} 
+
+)
+
+target_link_libraries ( basisfunctions INTERFACE 
+
+    ${Boost_LIBRARIES} 
 
 )
 
@@ -52,6 +71,7 @@ if ( BASIS_FUNCTION_TEST )
 
         test/HermitePolynomials_test.cpp 
         test/MultiIndex_test.cpp 
+        test/TripleHermite_test.cpp 
         test/TotalTruncations_test.cpp 
 
     )

@@ -114,6 +114,25 @@ namespace BasisFunctions {
 } // BasisFunctions : HermitePolynomials 
 
 
+// Implemented in TripleHermite_imp.hpp 
+
+namespace BasisFunctions {
+
+    template < typename Z, typename R > 
+    /**
+      * Compute expected value of products of three Hermite polynomials 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating number e.g. double 
+      * 
+      * @return E( H_i, H_j, H_k ) 
+      */
+    R ETripleHermite ( const Z i, const Z j, const Z k );
+
+
+} // BasisFunctions : TripleHermite 
+
+
 #ifndef MULTI_INDEX_IMPLEMENTATIONS 
     #include "MultiIndex_imp.hpp" 
 #endif 
@@ -124,6 +143,10 @@ namespace BasisFunctions {
 
 #ifndef HERMITE_POLYNOMIALS_IMPLEMENTATIONS 
     #include "HermitePolynomials_imp.hpp" 
+#endif 
+
+#ifndef TRIPLE_HERMITE_IMPLEMENTATIONS 
+    #include "TripleHermite_imp.hpp" 
 #endif 
 
 #endif // BASIS_FUNCTIONS_DECLARATIONS 
