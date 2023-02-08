@@ -60,3 +60,42 @@ TEST ( ETripleHermite, TypicalInput ) {
 
 }
 
+TEST ( EMultiTripleHermite, TypicalInput ) {
+
+    typedef double Float; 
+
+    size_t dim = 3; 
+    size_t k   = 0; 
+
+    std::vector<size_t> indices {
+
+        0, 1, 2, 
+        5, 4, 3 
+
+    };
+
+    auto result = BasisFunctions::EMultiTripleHermite<size_t,Float> (
+
+            indices, dim, k 
+
+    );
+
+    std::vector<Float> expected {
+
+        1.0, 0.0, 
+        0.0, 1.0 
+
+    };
+
+    ASSERT_EQ ( result.size(), expected.size() );
+
+    Float tol = 1e-12;
+
+    for ( auto i = 0; i < result.size(); i++ ) {
+
+        EXPECT_NEAR ( result[i], expected[i], tol );
+
+    }
+
+}
+

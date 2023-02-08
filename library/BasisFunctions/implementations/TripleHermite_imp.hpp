@@ -16,6 +16,7 @@
 
 #include <boost/math/special_functions/factorials.hpp> 
 
+
 namespace BasisFunctions {
 
     template < typename Z, typename R > 
@@ -44,9 +45,61 @@ namespace BasisFunctions {
 
     }
 
+} // BasisFunctions : ETripleHermite 
 
-}
 
+namespace BasisFunctions {
+
+    template < typename Z, typename R >
+    Vector<R> EMultiTripleHermite ( 
+
+        const Vector<Z>& indices, 
+        const Z dim, 
+        const Z k
+
+    ) {
+
+        auto nPoints = indices.size() / dim;
+
+        Vector<R> result;
+        result.reserve ( nPoints * nPoints );
+
+
+        for ( auto i = 0; i < nPoints; i++ ) {
+        for ( auto j = 0; j < nPoints; j++ ) {
+
+            result.push_back (
+
+                std::transform_reduce (
+
+                    indices.begin() + i * dim, 
+                    indices.begin() + i * dim + dim, 
+                    indices.begin() + j * dim, 
+
+                    1.0, 
+
+                    // Expected values are multiplied point-wise 
+                    []( const auto E1, const auto E2 ) { return E1 * E2; }, 
+
+                    // Expected value of triple Hermite product 
+                    [k]( const auto m, const auto n ) {
+
+                        return ETripleHermite<Z,R> ( m, n, k );
+
+                    }
+
+                )
+
+            );
+
+        }
+        }
+
+        return result; 
+
+    }
+
+} // BasisFunctions : EMultiTripleHermite 
 
 
 #endif // TRIPLE_HERMITE_IMPLEMENTATIONS 

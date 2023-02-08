@@ -118,6 +118,7 @@ namespace BasisFunctions {
 
 namespace BasisFunctions {
 
+
     template < typename Z, typename R > 
     /**
       * Compute expected value of products of three Hermite polynomials 
@@ -128,6 +129,25 @@ namespace BasisFunctions {
       * @return E( H_i, H_j, H_k ) 
       */
     R ETripleHermite ( const Z i, const Z j, const Z k );
+
+
+    template < typename Z, typename R > 
+    /**
+      * Compute expected value of products of three Hermite polynomials 
+      * for all triplet pairs 
+      * 
+      * @tparam Z a type of non-negative integer e.g size_t 
+      * @tparam R a type of floating number e.g. double 
+      * 
+      * @return vector containing Prod ( E(H_i,H_j,H_k) ) 
+      */
+    Vector<R> EMultiTripleHermite ( 
+
+        const Vector<Z>& indices, 
+        const Z dim, 
+        const Z k
+
+    );
 
 
 } // BasisFunctions : TripleHermite 
