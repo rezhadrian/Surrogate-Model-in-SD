@@ -1,9 +1,11 @@
 /**
   * @file LibrariesLoader_BF.hpp 
   *
-  * @brief include all required standard libraries for BasisFunctions 
+  * @brief 
+  * Include all required headers for @ref _BasisFunctions_ 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 

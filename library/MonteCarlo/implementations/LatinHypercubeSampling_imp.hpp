@@ -1,9 +1,13 @@
 /**
   * @file LatinHypercubeSampling_imp.hpp
   *
-  * @brief implement functions to produce latin hypercube sample
+  * @brief 
+  * Implementations of functions to produce latin hypercube samples 
+  * 
+  * @anchor _LatinHypercubeSampling_imp_hpp_ 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
@@ -20,31 +24,55 @@ namespace MonteCarlo {
 
     template < typename Z, typename R >
     /**
-      * Generate random samples using latin hypercube sampling 
-      * Variables from the same dimension are contiguous in memory 
+      * @private 
+      * 
+      * @brief 
+      * Generate random samples using latin hypercube sampling. 
+      * Variables from the same dimension are contiguous in memory. 
       * 
       * @tparam Z a type of non-negative integer e.g. size_t 
-      * @tparam R a type of floating point e.g. double 
+      * @tparam R a type of floating number e.g. double 
+      * 
+      * @param nPoints number of sampled points 
+      * @param Dim     dimension of each point 
+      * 
+      * @return vector { Dim1, Dim2, ... }
       */
-    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim );
+    Vector<R> UnsortedLHS ( const Z nPoints, const Z Dim );
 
 
     template < typename Z >
     /**
-      * Generate indices to sort UnsortedLHS 
-      * Make variables from each sample point contigous in memory 
+      * @private 
+      * 
+      * @brief 
+      * Generate indices to sort UnsortedLHS. 
+      * Make variables from each sample point contigous in memory. 
       * 
       * @tparam Z a type of non-negative integer e.g. size_t 
+      * 
+      * @param nPoints number of sampled points 
+      * @param Dim     dimension of each point 
+      * 
+      * @return vector of indices used to transpose LHS 
       */
-    Vector<Z> TransposerIndices ( const Z nPoints, const Z dim );
+    Vector<Z> TransposerIndices ( const Z nPoints, const Z Dim );
 
 
     template < typename Z, typename R > 
     /**
-      * Sort LHS result based on given indices 
+      * @private 
+      * 
+      * @brief 
+      * Sort LHS result based on given indices. 
       *
       * @tparam Z a type of non-negative integer e.g. size_t 
-      * @tparam R a type of floating point e.g. double 
+      * @tparam R a type of floating number e.g. double 
+      * 
+      * @param UnsortedLHS   result from UnsortedLHS 
+      * @param SorterIndices indices to sort LHS 
+      * 
+      * @return vector of sorted LHS 
       */
     Vector<R> SortLHS ( 
 
@@ -60,10 +88,10 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
     template < typename Z, typename R >
-    Vector<R> LHS ( const Z nPoints, const Z dim ) {
+    Vector<R> LHS ( const Z nPoints, const Z Dim ) {
 
-        auto Samples = UnsortedLHS<Z,R> ( nPoints, dim );
-        auto SorterIndices = TransposerIndices<Z> ( nPoints, dim );
+        auto Samples = UnsortedLHS<Z,R> ( nPoints, Dim );
+        auto SorterIndices = TransposerIndices<Z> ( nPoints, Dim );
 
         return SortLHS<Z,R> ( Samples, SorterIndices );
 
@@ -75,7 +103,7 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
     template < typename Z, typename R >
-    Vector<R> UnsortedLHS ( const Z nPoints, const Z dim ) {
+    Vector<R> UnsortedLHS ( const Z nPoints, const Z Dim ) {
 
         if ( nPoints < 1 ) {
 
@@ -85,7 +113,7 @@ namespace MonteCarlo {
 
         }
 
-        if ( dim < 1 ) {
+        if ( Dim < 1 ) {
 
             throw std::runtime_error (
                 "LHS: dimension must be positive integer"
@@ -113,9 +141,9 @@ namespace MonteCarlo {
 
         );
 
-        Vector<R> result ( nPoints * dim );
+        Vector<R> result ( nPoints * Dim );
 
-        for ( auto i = 0; i < dim; i++ ) {
+        for ( auto i = 0; i < Dim; i++ ) {
 
             std::shuffle (
 
@@ -152,7 +180,7 @@ namespace MonteCarlo {
 namespace MonteCarlo {
 
     template < typename Z >
-    Vector<Z> TransposerIndices ( const Z nPoints, const Z dim ) {
+    Vector<Z> TransposerIndices ( const Z nPoints, const Z Dim ) {
 
         if ( nPoints < 1 ) {
             throw std::runtime_error (
@@ -160,13 +188,13 @@ namespace MonteCarlo {
             );
         }
 
-        if ( dim < 1 ) {
+        if ( Dim < 1 ) {
             throw std::runtime_error (
                 "TransposerIndices: dimension must be greater than unity"
             );
         }
 
-        Vector<Z> FirstPointIndices ( dim ); 
+        Vector<Z> FirstPointIndices ( Dim ); 
 
         std::iota (
 
@@ -176,7 +204,7 @@ namespace MonteCarlo {
 
         );
 
-        Vector<Z> SorterIndices ( nPoints * dim );
+        Vector<Z> SorterIndices ( nPoints * Dim );
 
         for ( auto i = 0; i < nPoints; i++ ) {
 
@@ -184,7 +212,7 @@ namespace MonteCarlo {
 
                 FirstPointIndices.begin(), 
                 FirstPointIndices.end(), 
-                SorterIndices.begin() + i * dim, 
+                SorterIndices.begin() + i * Dim, 
 
                 [i,nPoints](const auto m) {
                     

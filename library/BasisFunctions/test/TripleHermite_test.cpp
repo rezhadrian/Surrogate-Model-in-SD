@@ -1,16 +1,18 @@
 /**
   * @file TripleHermite_test.cpp
   *
-  * @brief test function 
+  * @brief 
+  * Tests of functions to calculate exp value of Hermite triples 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
 #include "BasisFunctions.hpp" 
 #include <gtest/gtest.h> 
 
-TEST ( ETripleHermite, TypicalInput ) {
+TEST ( EHermiteTriple, TypicalInput ) {
 
     typedef double Float;
 
@@ -50,7 +52,7 @@ TEST ( ETripleHermite, TypicalInput ) {
 
     for ( auto i = 0; i < expected.size(); i++ ) {
 
-        auto result = BasisFunctions::ETripleHermite<size_t,Float> (
+        auto result = BasisFunctions::EHermiteTriple <size_t,Float> (
             input1[i], input2[i], input3[i]
         );
 
@@ -60,7 +62,7 @@ TEST ( ETripleHermite, TypicalInput ) {
 
 }
 
-TEST ( EMultiTripleHermite, TypicalInput ) {
+TEST ( EHermiteTriples, TypicalInput ) {
 
     typedef double Float; 
 
@@ -74,7 +76,7 @@ TEST ( EMultiTripleHermite, TypicalInput ) {
 
     };
 
-    auto result = BasisFunctions::EMultiTripleHermite<size_t,Float> (
+    auto result = BasisFunctions::ExpHermiteTriples <size_t,Float> (
 
             indices, dim, k 
 

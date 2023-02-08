@@ -1,9 +1,11 @@
 /**
   * @file VariableGeneration_test.cpp
   *
-  * @brief test function to generate various multivariate random variables 
+  * @brief 
+  * Tests of functions to generate correlated random variables 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 

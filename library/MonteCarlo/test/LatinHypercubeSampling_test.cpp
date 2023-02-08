@@ -1,9 +1,11 @@
 /**
   * @file LatinHypercubeSampling_test.cpp
   *
-  * @brief test functions to produce latin hypercube samples 
+  * @brief 
+  * Tests of functions to produce latin hypercube samples 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 

@@ -1,9 +1,13 @@
 /**
   * @file Truncations_imp.hpp
   *
-  * @brief implement functions to truncate indices of orthonormal polynomials.
+  * @brief 
+  * Implementations of functions to truncate indices of univariate function.
   *
-  * @author Rezha Adrian Tanuharja
+  * @anchor _Truncations_imp_hpp_ 
+  * 
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
@@ -19,12 +23,12 @@ namespace BasisFunctions {
 
     template < typename Z >
     void TotalTruncation ( 
-        Vector<Z>& MultiIndex, const Z dim, const Z SumPMax 
+        Vector<Z>& Indices, const Z SetSize, const Z MaxSum 
     ) {
 
-        auto nTupple = MultiIndex.size();
+        auto nSet = Indices.size();
 
-        if ( dim * (nTupple / dim) - nTupple != 0 ) {
+        if ( SetSize * (nSet / SetSize) - nSet != 0 ) {
 
             throw std::runtime_error (
                 "Total truncation: Indices size not a multiple of dimension"
@@ -35,24 +39,24 @@ namespace BasisFunctions {
         auto i = 0;
         while ( true ) {
 
-            if ( i >= nTupple ) break;
+            if ( i >= nSet ) break;
 
             if ( std::accumulate (
 
-                    MultiIndex.begin() + i,
-                    MultiIndex.begin() + i + dim,
+                    Indices.begin() + i,
+                    Indices.begin() + i + SetSize,
                     0
 
-                 ) <= SumPMax 
+                 ) <= MaxSum 
 
-            ) { i += dim; continue; }
+            ) { i += SetSize; continue; }
 
-            MultiIndex.erase (
-                MultiIndex.begin() + i,
-                MultiIndex.begin() + i + dim
+            Indices.erase (
+                Indices.begin() + i,
+                Indices.begin() + i + SetSize
             );
 
-            nTupple -= dim;
+            nSet -= SetSize;
 
         }
 

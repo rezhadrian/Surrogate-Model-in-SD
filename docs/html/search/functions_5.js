@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['hermitepolynomial_0',['HermitePolynomial',['../_hermite_polynomials__imp_8hpp.html#ac33420561b5a575e549aa650598e8385',1,'BasisFunctions']]],
-  ['hermitepolynomials_1',['HermitePolynomials',['../_basis_functions_8hpp.html#a268b02adbc6ad3b2b0f443ba4a3a1f41',1,'BasisFunctions']]]
+  ['multiindex_0',['MultiIndex',['../a00056.html#a1aeee47e2f4ca18ed3fd1b2308fde5af',1,'BasisFunctions']]]
 ];

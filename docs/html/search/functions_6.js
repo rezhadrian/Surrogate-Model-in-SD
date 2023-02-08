@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lhs_0',['LHS',['../_monte_carlo_8hpp.html#abc80de9d8a1c9a20814d3df169f66a20',1,'MonteCarlo']]]
+  ['totaltruncation_0',['TotalTruncation',['../a00056.html#a86cdcf8b37d92d8c3b5875f5c605799a',1,'BasisFunctions']]]
 ];

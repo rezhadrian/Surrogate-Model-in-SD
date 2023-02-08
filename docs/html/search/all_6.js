@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['hermitepolynomial_0',['HermitePolynomial',['../_hermite_polynomials__imp_8hpp.html#ac33420561b5a575e549aa650598e8385',1,'BasisFunctions']]],
-  ['hermitepolynomials_1',['HermitePolynomials',['../_basis_functions_8hpp.html#a268b02adbc6ad3b2b0f443ba4a3a1f41',1,'BasisFunctions']]],
-  ['hermitepolynomials_5fimp_2ehpp_2',['HermitePolynomials_imp.hpp',['../_hermite_polynomials__imp_8hpp.html',1,'']]],
-  ['hermitepolynomials_5ftest_2ecpp_3',['HermitePolynomials_test.cpp',['../_hermite_polynomials__test_8cpp.html',1,'']]]
+  ['latinhypercubesampling_5fimp_2ehpp_0',['LatinHypercubeSampling_imp.hpp',['../a00014.html',1,'']]],
+  ['latinhypercubesampling_5ftest_2ecpp_1',['LatinHypercubeSampling_test.cpp',['../a00008.html',1,'']]],
+  ['lhs_2',['LHS',['../a00057.html#af8495b74682bed4d4c5699f023285890',1,'MonteCarlo']]],
+  ['librariesloader_5fbf_2ehpp_3',['LibrariesLoader_BF.hpp',['../a00053.html',1,'']]],
+  ['librariesloader_5fmc_2ehpp_4',['LibrariesLoader_MC.hpp',['../a00023.html',1,'']]]
 ];

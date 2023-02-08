@@ -1,9 +1,11 @@
 /**
   * @file BasisFunctions.hpp 
   *
-  * @brief declarations of all functions needed to generate basis functions 
-  *
-  * @author Rezha Adrian Tanuharja
+  * @brief 
+  * Declarations of all functions needed to generate basis functions. 
+  * 
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
@@ -12,119 +14,105 @@
 
 #include "LibrariesLoader_BF.hpp" 
 
-
-template < typename T >
-using Vector = std::vector <T>;
-
-
-// Implemented in MultiIndex_imp.hpp 
-
+/** 
+  * @namespace BasisFunctions 
+  * 
+  * @brief 
+  * Contains all functions needed to generate basis functions. 
+  * 
+  * @anchor _BasisFunctions_ 
+  */
 namespace BasisFunctions {
+
+    template < typename T >
+    using Vector = std::vector <T>;
 
     using Marker = std::vector <bool>;
 
 
     template < typename Z >
     /**
-      * Generate Indices of orthonormal polynomials 
+      * @brief 
+      * Generate sets of indices of univariate functions. 
+      * Sets with lowest indices sum is the first element in the vector. @n 
+      * Implemented in @ref _MultiIndex_imp_hpp_ 
       * 
       * @tparam Z a type of non-negative integer e.g. size_t 
       *
-      * @param  dim number of variables 
-      * @param  pMax maximum order of the polynomial 
-      * @return sequence of polynomial indices 
+      * @param  SetSize number of indices in a set 
+      * @param  iMax    largest allowable index 
+      * 
+      * @return vector of indices, size of which is a multiple of SetSize 
       */
-    Vector<Z> MultiIndex ( const Z dim, const Z pMax );
-
-    
-} // BasisFunctions : MultiIndex 
-
-
-// Implemented in Truncations_imp.hpp 
-
-namespace BasisFunctions {
+    Vector<Z> MultiIndex ( const Z SetSize, const Z iMax );
 
 
     template < typename Z >
     /**
-      * Remove tupples with sum larger than SumPMax 
+      * @brief 
+      * Remove sets of indices with sum of indices above certain treshold. 
+      * Operations are performed in-place, no new vector is generated. @n
+      * Implemented in @ref _Truncations_imp_hpp_ 
       * 
-      * @tparam T a type of integer e.g. size_t 
+      * @tparam Z a type of non-negative integer e.g. size_t 
       *
-      * @param MultiIndex tupples of indices of orthonormal polynomials 
-      * @param        dim number of elements inside each tupple 
-      * @param    SumPMax largest allowable sum of indices in each tupple 
+      * @param Indices vector of indices, size of which is a multiple of SetSize 
+      * @param SetSize number of indices in a set 
+      * @param MaxSum  largest allowable sum of indices in a set  
       */
     void TotalTruncation ( 
-        Vector<Z>& MultiIndex, const Z dim, const Z SumPMax 
+        Vector<Z>& Indices, const Z SetSize, const Z MaxSum 
     );
-
-
-} // BasisFunctions : Truncations 
-
-
-// Implemented in HermitePolynomials_imp.hpp 
-
-namespace BasisFunctions {
 
 
     template < typename Z, typename R, typename C >
     /**
-      * Evaluate tensor prod. of NORMALIZED probabilist Hermite polynomials.
+      * @brief 
+      * Evaluate probabilist Hermite polynomials and multiply polynomials
+      * from the same set. @n 
+      * Implemented in @ref _HermitePolynomials_imp_hpp_ 
       *
       * @tparam Z a type of non-negative integer e.g. size_t
+      * @tparam R a type of floating number e.g. double 
       * @tparam C a type of floating complex number e.g. std::complex<float> 
       *
-      * @param  indices tupples of indices for the polynomial 
-      * @param        X vector of arguments to evaluate the polynomial
-      * @param      dim define how many polynomials are multiplied together 
-      * @return vector of tensor products of Hermite polynomials
+      * @param Indices vector of indices of Hermite polynomial 
+      * @param Args    vector of arguments for Hermite polynomial 
+      * @param SetSize number of polynomials in a set 
+      * 
+      * @return vector of products of Hermite polynomials
       */
     Vector<C> HermitePolynomials (
-        const Vector<Z>& indices, const Vector<C>& X, const Z dim 
+        const Vector<Z>& Indices, const Vector<C>& Args, const Z SetSize  
     );
 
 
-} // BasisFunctions : HermitePolynomials 
-
-
-// Implemented in TripleHermite_imp.hpp 
-
-namespace BasisFunctions {
-
-
     template < typename Z, typename R > 
     /**
+      * @brief 
       * Compute expected value of products of three Hermite polynomials 
-      * 
-      * @tparam Z a type of non-negative integer e.g. size_t 
-      * @tparam R a type of floating number e.g. double 
-      * 
-      * @return E( H_i, H_j, H_k ) 
-      */
-    R ETripleHermite ( const Z i, const Z j, const Z k );
-
-
-    template < typename Z, typename R > 
-    /**
-      * Compute expected value of products of three Hermite polynomials 
-      * for all triplet pairs 
+      * for all triplet pairs. @n 
+      * Implemented in @ref _TripleHermite_imp_hpp_ 
       * 
       * @tparam Z a type of non-negative integer e.g size_t 
       * @tparam R a type of floating number e.g. double 
       * 
-      * @return vector containing Prod ( E(H_i,H_j,H_k) ) 
+      * @param Indices vector of indices of Hermite polynomial 
+      * @param SetSize number of polynomials in a set 
+      * @param k       index of the first polynomial in the triplet 
+      * 
+      * @return vector containing Prod ( E(H_k,H_i,H_j) ) 
       */
-    Vector<R> EMultiTripleHermite ( 
+    Vector<R> ExpHermiteTriples ( 
 
-        const Vector<Z>& indices, 
-        const Z dim, 
+        const Vector<Z>& Indices, 
+        const Z SetSize, 
         const Z k
 
     );
 
 
-} // BasisFunctions : TripleHermite 
+} // BasisFunctions 
 
 
 #ifndef MULTI_INDEX_IMPLEMENTATIONS 

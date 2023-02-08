@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['factorial_0',['Factorial',['../_hermite_polynomials__imp_8hpp.html#af5b301812a96da06ff5086489a9b7c44',1,'BasisFunctions']]]
+  ['generatervs_0',['GenerateRVs',['../a00057.html#acc8d3b4a6e5890cc696d1ca44f7e78d6',1,'MonteCarlo']]]
 ];

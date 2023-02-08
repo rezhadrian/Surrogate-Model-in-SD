@@ -1,9 +1,13 @@
 /**
   * @file VariableGeneration_imp.hpp
   *
-  * @brief implement function to generate correlated random variables 
+  * @brief 
+  * Implementations of functions to generate correlated random variables 
+  * 
+  * @anchor _VariableGeneration_imp_hpp_ 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
@@ -79,7 +83,7 @@ namespace MonteCarlo {
         Vector<R>& StdNormRVs, 
         const MatrixXT<R>& Correl, 
         const Vector< std::function<R(R)> >& ICDFs,
-        const size_t dim 
+        const Z dim 
 
     ) {
 

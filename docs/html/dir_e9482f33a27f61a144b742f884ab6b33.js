@@ -1,7 +1,7 @@
 var dir_e9482f33a27f61a144b742f884ab6b33 =
 [
-    [ "HermitePolynomials_imp.hpp", "_hermite_polynomials__imp_8hpp.html", "_hermite_polynomials__imp_8hpp" ],
-    [ "MultiIndex_imp.hpp", "_multi_index__imp_8hpp.html", "_multi_index__imp_8hpp" ],
-    [ "TripleHermite_imp.hpp", "_triple_hermite__imp_8hpp.html", "_triple_hermite__imp_8hpp" ],
-    [ "Truncations_imp.hpp", "_truncations__imp_8hpp.html", "_truncations__imp_8hpp" ]
+    [ "HermitePolynomials_imp.hpp", "a00044.html", "a00044" ],
+    [ "MultiIndex_imp.hpp", "a00041.html", "a00041" ],
+    [ "TripleHermite_imp.hpp", "a00050.html", "a00050" ],
+    [ "Truncations_imp.hpp", "a00047.html", "a00047" ]
 ];

@@ -1,9 +1,11 @@
 /**
   * @file TotalTruncations_test.cpp
   *
-  * @brief test functions to truncate polynomial indices 
+  * @brief 
+  * Tests of functions to truncate indices of univariate function 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 

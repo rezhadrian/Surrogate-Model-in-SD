@@ -1,9 +1,11 @@
 /**
   * @file MultiIndex_test.cpp
   *
-  * @brief test function to create multiindex of polynomial functions 
+  * @brief 
+  * Tests of functions to calculate indices of univariate function 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 

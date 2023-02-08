@@ -1,9 +1,11 @@
 /**
   * @file HermitePolynomials_test.cpp
   *
-  * @brief test functions to compute Hermite polynomial and basis functions 
+  * @brief 
+  * Tests of functions to calculate probabilist Hermite polynomials 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 

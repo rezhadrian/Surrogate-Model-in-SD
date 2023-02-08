@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sortlhs_0',['SortLHS',['../_latin_hypercube_sampling__imp_8hpp.html#ab0b52832baaf84e2e463378914919ea8',1,'MonteCarlo']]]
+  ['totaltruncation_0',['TotalTruncation',['../a00056.html#a86cdcf8b37d92d8c3b5875f5c605799a',1,'BasisFunctions']]],
+  ['transposerindices_1',['TransposerIndices',['../a00014.html#a072335c4801217585fec4a7f87d7de78',1,'MonteCarlo']]]
 ];

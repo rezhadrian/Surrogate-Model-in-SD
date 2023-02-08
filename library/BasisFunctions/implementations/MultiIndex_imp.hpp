@@ -1,9 +1,13 @@
 /**
   * @file MultiIndex_imp.hpp
   *
-  * @brief implement functions to calculate indices of orthonormal polynomials.
+  * @brief 
+  * Implementations of functions to calculate indices of univariate function. 
+  * 
+  * @anchor _MultiIndex_imp_hpp_ 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
@@ -19,9 +23,18 @@ namespace BasisFunctions {
 
     template < typename Z >
     /**
-      * Compute binomial coefficient nCk recursively 
+      * @private 
+      * 
+      * @brief 
+      * Compute binomial coefficient nCk recursively. @n 
+      * Used instead of boost implementation which return floating number. 
       *
       * @tparam Z a type of non-negative integer e.g. size_t 
+      * 
+      * @param n size of set to sample from 
+      * @param k size of subset 
+      * 
+      * @return number of distinct k-subset of n-set 
       */
     Z Binomial ( const Z n, const Z k );
 
@@ -32,16 +45,19 @@ namespace BasisFunctions {
 
     template < typename Z >
     /**
-      * Generate a unique tupple of indices for MultiIndex function. 
+      * @private 
       * 
-      * @tparam Z a type of non-negative integer e.g. size_t.
+      * @brief 
+      * Generate a new set of indices of univariate functions. 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
       *
-      * @param   nSet the tupple is generated from the first nSet integers.
-      * @param Subset save the tupple here. Also contains all previous tupples.
-      * @param Active track all previous tupples that have been saved.
+      * @param n      number of positive integers used to generate indices 
+      * @param Subset vector to save the new set 
+      * @param Active track all previous sets that have been saved.
       */
     void MultiIndexRecursive ( 
-        const Z nSet, Vector<Z>& Subset, Marker& Active 
+        const Z n, Vector<Z>& Subset, Marker& Active 
     );
 
 } // BasisFunctions : MultiIndexRecursive 
@@ -50,9 +66,9 @@ namespace BasisFunctions {
 namespace BasisFunctions {
 
     template < typename Z >
-    Vector<Z> MultiIndex ( const Z dim, const Z pMax ) {
+    Vector<Z> MultiIndex ( const Z SetSize, const Z iMax ) {
 
-        if ( dim <= 0 ) {
+        if ( SetSize <= 0 ) {
 
             throw std::runtime_error (
                 "MultiIndex: dimension must be positive integers"
@@ -60,7 +76,7 @@ namespace BasisFunctions {
 
         }
 
-        if ( pMax < 0 ) {
+        if ( iMax < 0 ) {
 
             throw std::runtime_error (
                 "MultiIndex: max order cannot be negative"
@@ -68,17 +84,17 @@ namespace BasisFunctions {
 
         }
 
-        Vector<Z> result ( dim, 0 );
-        result.reserve ( dim * Binomial<Z> (pMax + dim, dim) );
+        Vector<Z> result ( SetSize, 0 );
+        result.reserve ( SetSize * Binomial<Z> (iMax + SetSize, SetSize) );
     
-        for ( auto i = 0; i < pMax; i++ ) {
+        for ( auto i = 0; i < iMax; i++ ) {
 
-            auto jMax = Binomial<Z> ( dim + i, dim - 1 );
+            auto jMax = Binomial<Z> ( SetSize + i, SetSize - 1 );
 
-            Marker Active ( dim + i, false );
+            Marker Active ( SetSize + i, false );
             std::transform (
                 Active.begin(),
-                Active.begin() + dim - 1,
+                Active.begin() + SetSize - 1,
                 Active.begin(),
 
                 []( auto m ) {
@@ -89,7 +105,7 @@ namespace BasisFunctions {
 
             for ( auto j = 0; j < jMax; j++ ) {
 
-                MultiIndexRecursive<Z> ( dim + i, result, Active );
+                MultiIndexRecursive<Z> ( SetSize + i, result, Active );
 
             }
 
@@ -106,10 +122,10 @@ namespace BasisFunctions {
 
     template < typename Z >
     void MultiIndexRecursive ( 
-        const Z nSet, Vector<Z>& Subset, Marker& Active 
+        const Z n, Vector<Z>& Subset, Marker& Active 
     ) {
 
-        if ( Active.size() != nSet ) {
+        if ( Active.size() != n ) {
 
             throw std::runtime_error (
                 "MultiIndexRecursive: tracker size doesn't match nSet"
@@ -119,7 +135,7 @@ namespace BasisFunctions {
 
         Vector<Z> result;
 
-        Vector<Z> Set ( nSet );
+        Vector<Z> Set ( n );
         std::iota ( Set.begin(), Set.end(), 1 );
 
         std::next_permutation ( Active.begin(), Active.end() );
@@ -135,7 +151,7 @@ namespace BasisFunctions {
 
         }
 
-        result.push_back ( nSet + 1 );
+        result.push_back ( n + 1 );
 
         std::adjacent_difference ( 
             result.begin(), result.end(),

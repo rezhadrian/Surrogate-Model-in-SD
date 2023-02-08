@@ -1,9 +1,13 @@
 /**
   * @file TripleHermite_imp.hpp
   *
-  * @brief implement expectations of products of three Hermite polynomials 
+  * @brief 
+  * Implementations of functions to calculate exp value of Hermite triples 
+  * 
+  * @anchor _TripleHermite_imp_hpp_ 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
@@ -20,38 +24,30 @@
 namespace BasisFunctions {
 
     template < typename Z, typename R > 
-    R ETripleHermite ( const Z i, const Z j, const Z k ) {
+    /**
+      * @private 
+      * 
+      * @brief 
+      * Compute expected value of products of three Hermite polynomials. 
+      * 
+      * @tparam Z a type of non-negative integer e.g. size_t 
+      * @tparam R a type of floating number e.g. double 
+      * 
+      * @param i index of the first polynomial 
+      * @param j index of the second polynomial 
+      * @param k index of the third polynomial 
+      * 
+      * @return E( H_i, H_j, H_k ) 
+      */
+    R EHermiteTriple ( const Z i, const Z j, const Z k );
 
-        auto s = i + j + k;
-
-        if ( s % 2 != 0 )                  return 0.0;
-        if ( s < 2 * std::max( {i,j,k} ) ) return 0.0;
-
-        return 
-
-            std::sqrt ( 
-
-                boost::math::factorial<R> (i) * 
-                boost::math::factorial<R> (j) * 
-                boost::math::factorial<R> (k) 
-
-            ) / (
-
-                boost::math::factorial<R> ( s/2 - i ) * 
-                boost::math::factorial<R> ( s/2 - j ) * 
-                boost::math::factorial<R> ( s/2 - k ) 
-
-            );
-
-    }
-
-} // BasisFunctions : ETripleHermite 
+} // BasisFunctions : EHermiteTriple 
 
 
 namespace BasisFunctions {
 
     template < typename Z, typename R >
-    Vector<R> EMultiTripleHermite ( 
+    Vector<R> ExpHermiteTriples ( 
 
         const Vector<Z>& indices, 
         const Z dim, 
@@ -84,7 +80,7 @@ namespace BasisFunctions {
                     // Expected value of triple Hermite product 
                     [k]( const auto m, const auto n ) {
 
-                        return ETripleHermite<Z,R> ( m, n, k );
+                        return EHermiteTriple <Z,R> ( m, n, k );
 
                     }
 
@@ -99,7 +95,38 @@ namespace BasisFunctions {
 
     }
 
-} // BasisFunctions : EMultiTripleHermite 
+} // BasisFunctions : EHermiteTriples 
+
+
+namespace BasisFunctions {
+
+    template < typename Z, typename R > 
+    R EHermiteTriple ( const Z i, const Z j, const Z k ) {
+
+        auto s = i + j + k;
+
+        if ( s % 2 != 0 )                  return 0.0;
+        if ( s < 2 * std::max( {i,j,k} ) ) return 0.0;
+
+        return 
+
+            std::sqrt ( 
+
+                boost::math::factorial<R> (i) * 
+                boost::math::factorial<R> (j) * 
+                boost::math::factorial<R> (k) 
+
+            ) / (
+
+                boost::math::factorial<R> ( s/2 - i ) * 
+                boost::math::factorial<R> ( s/2 - j ) * 
+                boost::math::factorial<R> ( s/2 - k ) 
+
+            );
+
+    }
+
+} // BasisFunctions : EHermiteTriple  
 
 
 #endif // TRIPLE_HERMITE_IMPLEMENTATIONS 

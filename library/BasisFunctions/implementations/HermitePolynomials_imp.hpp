@@ -1,9 +1,13 @@
 /**
   * @file HermitePolynomials_imp.hpp
   *
-  * @brief implement functions to calculate probabilist Hermite polynomials.
+  * @brief 
+  * Implementations of functions to calculate probabilist Hermite polynomials.
+  * 
+  * @anchor _HermitePolynomials_imp_hpp_ 
   *
-  * @author Rezha Adrian Tanuharja
+  * @author 
+  * Rezha Adrian Tanuharja @n 
   * Contact: rezha.tanuharja@tum.de / rezhadr@outlook.com 
   */
 
@@ -20,7 +24,12 @@ namespace BasisFunctions {
 
     template < typename Z > 
     /**
-      * Compute n! recursively 
+      * @private 
+      * 
+      * @brief 
+      * Compute n! recursively. @n 
+      * Used instead of boost implementation which return floating number. 
+      * 
       * @tparam Z a type of non-negative integer e.g. size_t 
       */
     Z Factorial ( const Z n ); 
@@ -28,10 +37,13 @@ namespace BasisFunctions {
 
     template < typename Z, typename C >
     /**
+      * @private 
+      * 
+      * @brief 
       * Overload multiplication for integer and complex operand 
       *
       * @tparam Z a type of non-negative integer e.g. size_t 
-      * @tparam C a class comparable with std::complex 
+      * @tparam C a type of floating complex number e.g. std::complex<float> 
       */
     C operator* ( const Z integer, const C complex );
 
@@ -43,14 +55,18 @@ namespace BasisFunctions {
 
     template < typename Z, typename C >
     /**
+      * @private 
+      * 
+      * @brief 
       * Evaluate probabilist Hermite polynomial of given index at given position.
       * The polynomial is NOT normalized.
       *
       * @tparam Z a type of non-negative integer e.g. size_t
       * @tparam C a type of floating complex number e.g. std::complex<float> 
       * 
-      * @param  index indicates which polynomial to use 
-      * @param      x argument to evaluate the polynomial 
+      * @param index indicates which polynomial to use 
+      * @param x     argument to evaluate the polynomial 
+      * 
       * @return H_{idx} ( x ) 
       */
     C HermitePolynomial ( const Z index, const C x );
@@ -62,10 +78,10 @@ namespace BasisFunctions {
 
     template < typename Z, typename R, typename C >
     Vector<C> HermitePolynomials ( 
-        const Vector<Z>& indices, const Vector<C>& X, const Z dim 
+        const Vector<Z>& Indices, const Vector<C>& Args, const Z SetSize 
     ) {
 
-        if ( dim <= 0 ) {
+        if ( SetSize <= 0 ) {
 
             throw std::runtime_error (
                 "HermitePolynomials: dimension must be positive"
@@ -73,10 +89,10 @@ namespace BasisFunctions {
 
         }
 
-        auto nProducts = indices.size() / dim;
-        auto nSamples  =       X.size() / dim;
+        auto nProducts = Indices.size() / SetSize;
+        auto nSamples  =    Args.size() / SetSize;
 
-        if ( indices.size() - dim * nProducts != 0 ) {
+        if ( Indices.size() - SetSize * nProducts != 0 ) {
 
             throw std::runtime_error (
                 "HermitePolynomials: num of indices not multiple of dimension"
@@ -84,7 +100,7 @@ namespace BasisFunctions {
 
         }
 
-        if (       X.size() - dim * nSamples  != 0 ) {
+        if (    Args.size() - SetSize * nSamples  != 0 ) {
 
             throw std::runtime_error (
                 "HermitePolynomials: num of samples not multiple of dimension"
@@ -103,9 +119,9 @@ namespace BasisFunctions {
             result.push_back ( 
                 std::transform_reduce (
                 
-                    indices.begin() + j * dim,
-                    indices.begin() + j * dim + dim,
-                          X.begin() + i * dim,
+                    Indices.begin() + j * SetSize,
+                    Indices.begin() + j * SetSize + SetSize,
+                       Args.begin() + i * SetSize,
 
                     unity,
 
