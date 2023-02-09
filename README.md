@@ -35,5 +35,5 @@ ctest
 ## Links 
 
 <ul>
-    <li><a href="https://rezhadrian.github.io/Surrogate-Model-in-SD/docs/html/index.html">SMSD Tutorial</a></li>
+    <li><a href="https://rezhadrian.github.io/Surrogate-Model-in-SD/docs/html/index.html">SMSD Documentations</a></li>
 </ul>
