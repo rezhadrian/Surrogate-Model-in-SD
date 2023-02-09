@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPCE in Structural Dynamic: library/BasisFunctions/implementations/MultiIndex_imp.hpp File Reference</title>
+<title>RPCE in Structural Dynamic: library/BasisFunctions/test/MultiIndex_test.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,35 +90,66 @@ $(document).ready(function(){initNavTree('a00041.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">MultiIndex_imp.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">MultiIndex_test.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Implementations of functions to calculate indices of univariate function.  
+<p>Tests of functions to calculate indices of univariate function.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="a00038_source.html">BasisFunctions.hpp</a>&quot;</code><br />
-</div>
-<p><a href="a00041_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:a00056"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html">BasisFunctions</a></td></tr>
-<tr class="memdesc:a00056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all functions needed to generate basis functions. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="a00050_source.html">BasisFunctions.hpp</a>&quot;</code><br />
+<code>#include &lt;gtest/gtest.h&gt;</code><br />
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplParams" colspan="2">template&lt;typename Z &gt; </td></tr>
-<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Z &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00056.html#a1aeee47e2f4ca18ed3fd1b2308fde5af">BasisFunctions::MultiIndex</a> (const Z SetSize, const Z iMax)</td></tr>
-<tr class="memdesc:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate sets of indices of univariate functions. Sets with lowest indices sum is the first element in the vector. <br  />
- Implemented in <a class="el" href="a00041.html#_MultiIndex_imp_hpp_">_MultiIndex_imp_hpp_</a>.  <br /></td></tr>
-<tr class="separator:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7e103dce30e69d9131931fd5a68ac3"><td class="memItemLeft" align="right" valign="top"><a id="a7f7e103dce30e69d9131931fd5a68ac3" name="a7f7e103dce30e69d9131931fd5a68ac3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (BinomialCoefficient, TypicalInput)</td></tr>
+<tr class="separator:a7f7e103dce30e69d9131931fd5a68ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31a38bb77c95dfefb056845f87fe3364"><td class="memItemLeft" align="right" valign="top"><a id="a31a38bb77c95dfefb056845f87fe3364" name="a31a38bb77c95dfefb056845f87fe3364"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (BinomialCoefficient, BadInput)</td></tr>
+<tr class="separator:a31a38bb77c95dfefb056845f87fe3364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb166a876bb49dede0319260fd498da"><td class="memItemLeft" align="right" valign="top"><a id="a4bb166a876bb49dede0319260fd498da" name="a4bb166a876bb49dede0319260fd498da"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (BinomialCoefficient, UnacceptableInput)</td></tr>
+<tr class="separator:a4bb166a876bb49dede0319260fd498da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65b01753904514c9620d1cdbd83261fe"><td class="memItemLeft" align="right" valign="top"><a id="a65b01753904514c9620d1cdbd83261fe" name="a65b01753904514c9620d1cdbd83261fe"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Constant1D)</td></tr>
+<tr class="separator:a65b01753904514c9620d1cdbd83261fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f866177cf4ece1cf4cfdd6eba6bd4c"><td class="memItemLeft" align="right" valign="top"><a id="a44f866177cf4ece1cf4cfdd6eba6bd4c" name="a44f866177cf4ece1cf4cfdd6eba6bd4c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Constant2D)</td></tr>
+<tr class="separator:a44f866177cf4ece1cf4cfdd6eba6bd4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e0cd768b898b72e2842790cb840a383"><td class="memItemLeft" align="right" valign="top"><a id="a9e0cd768b898b72e2842790cb840a383" name="a9e0cd768b898b72e2842790cb840a383"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Constant3D)</td></tr>
+<tr class="separator:a9e0cd768b898b72e2842790cb840a383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd069b471c3d4435ccd094ad6ecd85eb"><td class="memItemLeft" align="right" valign="top"><a id="acd069b471c3d4435ccd094ad6ecd85eb" name="acd069b471c3d4435ccd094ad6ecd85eb"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Linear1D)</td></tr>
+<tr class="separator:acd069b471c3d4435ccd094ad6ecd85eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b2926df2859845a152775212389d5ce"><td class="memItemLeft" align="right" valign="top"><a id="a8b2926df2859845a152775212389d5ce" name="a8b2926df2859845a152775212389d5ce"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Linear2D)</td></tr>
+<tr class="separator:a8b2926df2859845a152775212389d5ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbab30fc00dac0078666babc759ebbd3"><td class="memItemLeft" align="right" valign="top"><a id="acbab30fc00dac0078666babc759ebbd3" name="acbab30fc00dac0078666babc759ebbd3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Linear3D)</td></tr>
+<tr class="separator:acbab30fc00dac0078666babc759ebbd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3ee904a34363296bad152619e84cdf5"><td class="memItemLeft" align="right" valign="top"><a id="ad3ee904a34363296bad152619e84cdf5" name="ad3ee904a34363296bad152619e84cdf5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Quadratic1D)</td></tr>
+<tr class="separator:ad3ee904a34363296bad152619e84cdf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf48ec452612731c97b73bc41490650a"><td class="memItemLeft" align="right" valign="top"><a id="aaf48ec452612731c97b73bc41490650a" name="aaf48ec452612731c97b73bc41490650a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Quadratic2D)</td></tr>
+<tr class="separator:aaf48ec452612731c97b73bc41490650a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a704c3e211cae48635c5352f64fdaf878"><td class="memItemLeft" align="right" valign="top"><a id="a704c3e211cae48635c5352f64fdaf878" name="a704c3e211cae48635c5352f64fdaf878"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, Quadratic3D)</td></tr>
+<tr class="separator:a704c3e211cae48635c5352f64fdaf878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b7a4f2418afbe0560f3496c562a3136"><td class="memItemLeft" align="right" valign="top"><a id="a1b7a4f2418afbe0560f3496c562a3136" name="a1b7a4f2418afbe0560f3496c562a3136"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, NegativePower)</td></tr>
+<tr class="separator:a1b7a4f2418afbe0560f3496c562a3136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae55fc88120fab69f673fa3134ef7caad"><td class="memItemLeft" align="right" valign="top"><a id="ae55fc88120fab69f673fa3134ef7caad" name="ae55fc88120fab69f673fa3134ef7caad"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, ZeroDimension)</td></tr>
+<tr class="separator:ae55fc88120fab69f673fa3134ef7caad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9c3f56e5722f2e7a9596256b58885f8"><td class="memItemLeft" align="right" valign="top"><a id="ae9c3f56e5722f2e7a9596256b58885f8" name="ae9c3f56e5722f2e7a9596256b58885f8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>TEST</b> (MultiIndex, NegativeDimension)</td></tr>
+<tr class="separator:ae9c3f56e5722f2e7a9596256b58885f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementations of functions to calculate indices of univariate function. </p>
-<p><a class="anchor" id="_MultiIndex_imp_hpp_"></a></p>
+<div class="textblock"><p>Tests of functions to calculate indices of univariate function. </p>
 <dl class="section author"><dt>Author</dt><dd>Rezha Adrian Tanuharja <br  />
  Contact: <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'.ta'+'nu'+'har'+'ja'+'@tu'+'m.'+'de'; return false;">rezha<span class="obfuscator">.nosp@m.</span>.tan<span class="obfuscator">.nosp@m.</span>uharj<span class="obfuscator">.nosp@m.</span>a@tu<span class="obfuscator">.nosp@m.</span>m.de</a> / <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'dr@'+'ou'+'tlo'+'ok'+'.co'+'m'; return false;">rezha<span class="obfuscator">.nosp@m.</span>dr@o<span class="obfuscator">.nosp@m.</span>utloo<span class="obfuscator">.nosp@m.</span>k.co<span class="obfuscator">.nosp@m.</span>m</a> </dd></dl>
 </div></div><!-- contents -->
@@ -126,7 +157,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e3d620c6b6fdb93ed3bc6186215bde2e.html">library</a></li><li class="navelem"><a class="el" href="dir_80c64a4aa09f020f960f7b9596519361.html">BasisFunctions</a></li><li class="navelem"><a class="el" href="dir_e9482f33a27f61a144b742f884ab6b33.html">implementations</a></li><li class="navelem"><a class="el" href="a00041.html">MultiIndex_imp.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_e3d620c6b6fdb93ed3bc6186215bde2e.html">library</a></li><li class="navelem"><a class="el" href="dir_80c64a4aa09f020f960f7b9596519361.html">BasisFunctions</a></li><li class="navelem"><a class="el" href="dir_5bda18cb5bff6b7a0d670e1d77d8ac10.html">test</a></li><li class="navelem"><a class="el" href="a00041.html">MultiIndex_test.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

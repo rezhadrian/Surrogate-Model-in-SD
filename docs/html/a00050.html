@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPCE in Structural Dynamic: library/BasisFunctions/implementations/TripleHermite_imp.hpp File Reference</title>
+<title>RPCE in Structural Dynamic: library/BasisFunctions/declarations/BasisFunctions.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -91,35 +91,63 @@ $(document).ready(function(){initNavTree('a00050.html',''); initResizable(); });
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
-  <div class="headertitle"><div class="title">TripleHermite_imp.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">BasisFunctions.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Implementations of functions to calculate exp value of Hermite triples.  
+<p>Declarations of all functions needed to generate basis functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="a00038_source.html">BasisFunctions.hpp</a>&quot;</code><br />
-<code>#include &lt;boost/math/special_functions/factorials.hpp&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00065_source.html">LibrariesLoader_BF.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00053_source.html">MultiIndex_imp.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00059_source.html">Truncations_imp.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00056_source.html">HermitePolynomials_imp.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="a00062_source.html">TripleHermite_imp.hpp</a>&quot;</code><br />
 </div>
 <p><a href="a00050_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00056"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00056.html">BasisFunctions</a></td></tr>
-<tr class="memdesc:a00056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all functions needed to generate basis functions. <br /></td></tr>
+<tr class="memitem:a00069"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.html">BasisFunctions</a></td></tr>
+<tr class="memdesc:a00069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all functions needed to generate basis functions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aaa849a97bcf9aee0bb6d946ba846cd52"><td class="memTemplParams" colspan="2"><a id="aaa849a97bcf9aee0bb6d946ba846cd52" name="aaa849a97bcf9aee0bb6d946ba846cd52"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aaa849a97bcf9aee0bb6d946ba846cd52"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>BasisFunctions::Vector</b> = std::vector&lt; T &gt;</td></tr>
+<tr class="separator:aaa849a97bcf9aee0bb6d946ba846cd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ef699b1eda6ec3ab2626dab5ac6b1a0"><td class="memItemLeft" align="right" valign="top"><a id="a2ef699b1eda6ec3ab2626dab5ac6b1a0" name="a2ef699b1eda6ec3ab2626dab5ac6b1a0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>BasisFunctions::Marker</b> = std::vector&lt; bool &gt;</td></tr>
+<tr class="separator:a2ef699b1eda6ec3ab2626dab5ac6b1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplParams" colspan="2">template&lt;typename Z &gt; </td></tr>
+<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Z &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00069.html#a1aeee47e2f4ca18ed3fd1b2308fde5af">BasisFunctions::MultiIndex</a> (const Z SetSize, const Z iMax)</td></tr>
+<tr class="memdesc:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate sets of indices of univariate functions. Sets with lowest indices sum is the first element in the vector. <br  />
+ Implemented in <a class="el" href="a00053.html#_MultiIndex_imp_hpp_">_MultiIndex_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="memTemplParams" colspan="2">template&lt;typename Z &gt; </td></tr>
+<tr class="memitem:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00069.html#a86cdcf8b37d92d8c3b5875f5c605799a">BasisFunctions::TotalTruncation</a> (Vector&lt; Z &gt; &amp;Indices, const Z SetSize, const Z MaxSum)</td></tr>
+<tr class="memdesc:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove sets of indices with sum of indices above certain treshold. Operations are performed in-place, no new vector is generated. <br  />
+Implemented in <a class="el" href="a00059.html#_Truncations_imp_hpp_">_Truncations_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R , typename C &gt; </td></tr>
+<tr class="memitem:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00069.html#add4da84fbaeb7a32da79dc02b3ce8b27">BasisFunctions::HermitePolynomials</a> (const Vector&lt; Z &gt; &amp;Indices, const Vector&lt; C &gt; &amp;Args, const Z SetSize)</td></tr>
+<tr class="memdesc:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate probabilist Hermite polynomials and multiply polynomials from the same set. <br  />
+ Implemented in <a class="el" href="a00056.html#_HermitePolynomials_imp_hpp_">_HermitePolynomials_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc15ce12cef4ab9e357f55afa565e369"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
-<tr class="memitem:afc15ce12cef4ab9e357f55afa565e369"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00056.html#afc15ce12cef4ab9e357f55afa565e369">BasisFunctions::ExpHermiteTriples</a> (const Vector&lt; Z &gt; &amp;Indices, const Z SetSize, const Z k)</td></tr>
+<tr class="memitem:afc15ce12cef4ab9e357f55afa565e369"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00069.html#afc15ce12cef4ab9e357f55afa565e369">BasisFunctions::ExpHermiteTriples</a> (const Vector&lt; Z &gt; &amp;Indices, const Z SetSize, const Z k)</td></tr>
 <tr class="memdesc:afc15ce12cef4ab9e357f55afa565e369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute expected value of products of three Hermite polynomials for all triplet pairs. <br  />
- Implemented in <a class="el" href="a00050.html#_TripleHermite_imp_hpp_">_TripleHermite_imp_hpp_</a>.  <br /></td></tr>
+ Implemented in <a class="el" href="a00062.html#_TripleHermite_imp_hpp_">_TripleHermite_imp_hpp_</a>.  <br /></td></tr>
 <tr class="separator:afc15ce12cef4ab9e357f55afa565e369"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementations of functions to calculate exp value of Hermite triples. </p>
-<p><a class="anchor" id="_TripleHermite_imp_hpp_"></a></p>
+<div class="textblock"><p>Declarations of all functions needed to generate basis functions. </p>
 <dl class="section author"><dt>Author</dt><dd>Rezha Adrian Tanuharja <br  />
  Contact: <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'.ta'+'nu'+'har'+'ja'+'@tu'+'m.'+'de'; return false;">rezha<span class="obfuscator">.nosp@m.</span>.tan<span class="obfuscator">.nosp@m.</span>uharj<span class="obfuscator">.nosp@m.</span>a@tu<span class="obfuscator">.nosp@m.</span>m.de</a> / <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'dr@'+'ou'+'tlo'+'ok'+'.co'+'m'; return false;">rezha<span class="obfuscator">.nosp@m.</span>dr@o<span class="obfuscator">.nosp@m.</span>utloo<span class="obfuscator">.nosp@m.</span>k.co<span class="obfuscator">.nosp@m.</span>m</a> </dd></dl>
 </div></div><!-- contents -->
@@ -127,7 +155,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e3d620c6b6fdb93ed3bc6186215bde2e.html">library</a></li><li class="navelem"><a class="el" href="dir_80c64a4aa09f020f960f7b9596519361.html">BasisFunctions</a></li><li class="navelem"><a class="el" href="dir_e9482f33a27f61a144b742f884ab6b33.html">implementations</a></li><li class="navelem"><a class="el" href="a00050.html">TripleHermite_imp.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_e3d620c6b6fdb93ed3bc6186215bde2e.html">library</a></li><li class="navelem"><a class="el" href="dir_80c64a4aa09f020f960f7b9596519361.html">BasisFunctions</a></li><li class="navelem"><a class="el" href="dir_4c554f58d8aef3529e843b20587b2e39.html">declarations</a></li><li class="navelem"><a class="el" href="a00050.html">BasisFunctions.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPCE in Structural Dynamic: library/BasisFunctions/utility/LibrariesLoader_BF.hpp File Reference</title>
+<title>RPCE in Structural Dynamic: library/BasisFunctions/implementations/MultiIndex_imp.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,22 +89,36 @@ $(document).ready(function(){initNavTree('a00053.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">LibrariesLoader_BF.hpp File Reference</div></div>
+  <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MultiIndex_imp.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Include all required headers for <a class="el" href="a00056.html#_BasisFunctions_">_BasisFunctions_</a>.  
+<p>Implementations of functions to calculate indices of univariate function.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;cmath&gt;</code><br />
-<code>#include &lt;complex&gt;</code><br />
-<code>#include &lt;numeric&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="a00050_source.html">BasisFunctions.hpp</a>&quot;</code><br />
 </div>
 <p><a href="a00053_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00069"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.html">BasisFunctions</a></td></tr>
+<tr class="memdesc:a00069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all functions needed to generate basis functions. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplParams" colspan="2">template&lt;typename Z &gt; </td></tr>
+<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Z &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00069.html#a1aeee47e2f4ca18ed3fd1b2308fde5af">BasisFunctions::MultiIndex</a> (const Z SetSize, const Z iMax)</td></tr>
+<tr class="memdesc:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate sets of indices of univariate functions. Sets with lowest indices sum is the first element in the vector. <br  />
+ Implemented in <a class="el" href="a00053.html#_MultiIndex_imp_hpp_">_MultiIndex_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Include all required headers for <a class="el" href="a00056.html#_BasisFunctions_">_BasisFunctions_</a>. </p>
+<div class="textblock"><p>Implementations of functions to calculate indices of univariate function. </p>
+<p><a class="anchor" id="_MultiIndex_imp_hpp_"></a></p>
 <dl class="section author"><dt>Author</dt><dd>Rezha Adrian Tanuharja <br  />
  Contact: <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'.ta'+'nu'+'har'+'ja'+'@tu'+'m.'+'de'; return false;">rezha<span class="obfuscator">.nosp@m.</span>.tan<span class="obfuscator">.nosp@m.</span>uharj<span class="obfuscator">.nosp@m.</span>a@tu<span class="obfuscator">.nosp@m.</span>m.de</a> / <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'dr@'+'ou'+'tlo'+'ok'+'.co'+'m'; return false;">rezha<span class="obfuscator">.nosp@m.</span>dr@o<span class="obfuscator">.nosp@m.</span>utloo<span class="obfuscator">.nosp@m.</span>k.co<span class="obfuscator">.nosp@m.</span>m</a> </dd></dl>
 </div></div><!-- contents -->
@@ -112,7 +126,7 @@ $(document).ready(function(){initNavTree('a00053.html',''); initResizable(); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e3d620c6b6fdb93ed3bc6186215bde2e.html">library</a></li><li class="navelem"><a class="el" href="dir_80c64a4aa09f020f960f7b9596519361.html">BasisFunctions</a></li><li class="navelem"><a class="el" href="dir_f6f98415bbb2a230d885d16ecf4df252.html">utility</a></li><li class="navelem"><a class="el" href="a00053.html">LibrariesLoader_BF.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_e3d620c6b6fdb93ed3bc6186215bde2e.html">library</a></li><li class="navelem"><a class="el" href="dir_80c64a4aa09f020f960f7b9596519361.html">BasisFunctions</a></li><li class="navelem"><a class="el" href="dir_e9482f33a27f61a144b742f884ab6b33.html">implementations</a></li><li class="navelem"><a class="el" href="a00053.html">MultiIndex_imp.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
