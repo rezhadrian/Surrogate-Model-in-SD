@@ -153,7 +153,7 @@ namespace Analytical {
 
     ) const {
 
-        Vector<R> result ( Dim_ * Dim_, 0.0 );
+        Vector<C> result ( Dim_ * Dim_, 0.0 );
 
         auto MMatrix = ComputeMassMatrix ();
         auto CMatrix = ComputeDampingMatrix ();
@@ -162,14 +162,28 @@ namespace Analytical {
         std::transform (
 
             MMatrix.begin(), MMatrix.end(), 
-            CMatrix.begin(), 
             KMatrix.begin(), 
 
             result.begin(), 
 
-            [omega](const auto m, const auto c, const auto k) {
+            [omega](const auto m, const auto k) {
 
-                return C ( k - omega * omega * m, omega * c );
+                return C ( k - omega * omega * m );
+
+            }
+
+        );
+
+        std::transform (
+
+            result.begin(), result.end(), 
+            CMatrix.begin(), 
+
+            result.begin(), 
+
+            [omega](const auto mk, const auto c) {
+
+                return mk + C ( 0.0, omega * c );
 
             }
 

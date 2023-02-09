@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>RPCE in Structural Dynamic: library/AnalyticalModel/declarations/AnalyticalModel.hpp Source File</title>
+<title>Surrogate Model in Structural Dynamics: library/AnalyticalModel/declarations/AnalyticalModel.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RPCE in Structural Dynamic
+   <div id="projectname">Surrogate Model in Structural Dynamics
    </div>
   </td>
  </tr>
@@ -109,58 +109,56 @@ $(document).ready(function(){initNavTree('a00029_source.html',''); initResizable
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">public</span>: </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">virtual</span> <a class="code hl_class" href="a00074.html">~Model</a> () = 0;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">   59</a></span>        <span class="keyword">virtual</span> Vector&lt;R&gt; <a class="code hl_function" href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">ComputeMassMatrix</a> () <span class="keyword">const</span> = 0; </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="a00074.html#a79de679b94bdef132a11fab4cd396320">   70</a></span>        <span class="keyword">virtual</span> Vector&lt;R&gt; <a class="code hl_function" href="a00074.html#a79de679b94bdef132a11fab4cd396320">ComputeDampingMatrix</a> () <span class="keyword">const</span> = 0; </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">   81</a></span>        <span class="keyword">virtual</span> Vector&lt;R&gt; <a class="code hl_function" href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">ComputeStiffnessMatrix</a> () <span class="keyword">const</span> = 0; </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="a00074.html#a192112a764f1c5f0fe5feb1998749cea">   93</a></span>        <span class="keyword">virtual</span> Vector&lt;C&gt; <a class="code hl_function" href="a00074.html#a192112a764f1c5f0fe5feb1998749cea">ComputeDynamicStiffness</a> ( <span class="keyword">const</span> R omega ) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">   57</a></span>        <span class="keyword">virtual</span> Vector&lt;R&gt; <a class="code hl_function" href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">ComputeMassMatrix</a> () <span class="keyword">const</span> = 0; </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="a00074.html#a79de679b94bdef132a11fab4cd396320">   68</a></span>        <span class="keyword">virtual</span> Vector&lt;R&gt; <a class="code hl_function" href="a00074.html#a79de679b94bdef132a11fab4cd396320">ComputeDampingMatrix</a> () <span class="keyword">const</span> = 0; </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">   79</a></span>        <span class="keyword">virtual</span> Vector&lt;R&gt; <a class="code hl_function" href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">ComputeStiffnessMatrix</a> () <span class="keyword">const</span> = 0; </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="a00074.html#a192112a764f1c5f0fe5feb1998749cea">   91</a></span>        <span class="keyword">virtual</span> Vector&lt;C&gt; <a class="code hl_function" href="a00074.html#a192112a764f1c5f0fe5feb1998749cea">ComputeDynamicStiffness</a> ( <span class="keyword">const</span> R omega ) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }; <span class="comment">// Model </span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }; <span class="comment">// Model </span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> Z, <span class="keyword">typename</span> R, <span class="keyword">typename</span> C &gt; </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="a00078.html">  110</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00078.html">MassSpringDamper</a> : <span class="keyword">public</span> <a class="code hl_class" href="a00074.html">Model</a>&lt;Z,R,C&gt; {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        Vector&lt;R&gt; Masses_;</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        Vector&lt;R&gt; Dampers_;</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        Vector&lt;R&gt; Springs_;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> Z, <span class="keyword">typename</span> R, <span class="keyword">typename</span> C &gt; </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="a00078.html">  108</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00078.html">MassSpringDamper</a> final : <span class="keyword">public</span> <a class="code hl_class" href="a00074.html">Model</a>&lt;Z,R,C&gt; {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        Vector&lt;R&gt; Masses_;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        Vector&lt;R&gt; Dampers_;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        Vector&lt;R&gt; Springs_;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        Z Dim_;</div>
 <div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        Z Dim_;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_class" href="a00078.html">MassSpringDamper</a> ( </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keyword">const</span> Vector&lt;R&gt; Masses, </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keyword">const</span> Vector&lt;R&gt; Dampers, </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <span class="keyword">const</span> Vector&lt;R&gt; Springs </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <a class="code hl_class" href="a00078.html">MassSpringDamper</a> ( </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            <span class="keyword">const</span> Vector&lt;R&gt; Masses, </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keyword">const</span> Vector&lt;R&gt; Dampers, </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keyword">const</span> Vector&lt;R&gt; Springs </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        );</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        );</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_class" href="a00078.html">~MassSpringDamper</a> () {} </div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <a class="code hl_class" href="a00078.html">~MassSpringDamper</a> ()<span class="keyword"> override </span>{};</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        Vector&lt;R&gt; <a class="code hl_function" href="a00078.html#a874d11123ebc1726a8951fd73633119d">ComputeMassMatrix</a> () <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        Vector&lt;R&gt; <a class="code hl_function" href="a00078.html#a16f412d9a8d39fb32a3da76b5e4ad114">ComputeDampingMatrix</a> () <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        Vector&lt;R&gt; <a class="code hl_function" href="a00078.html#a9be00e6124cf74627b0ed79cf64bd507">ComputeStiffnessMatrix</a> () <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        Vector&lt;C&gt; <a class="code hl_function" href="a00078.html#ad2b10b4e3b8a18e8a14df609f65c4b42">ComputeDynamicStiffness</a> ( <span class="keyword">const</span> R omega ) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        Vector&lt;R&gt; <a class="code hl_function" href="a00078.html#a874d11123ebc1726a8951fd73633119d">ComputeMassMatrix</a> () <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        Vector&lt;R&gt; <a class="code hl_function" href="a00078.html#a16f412d9a8d39fb32a3da76b5e4ad114">ComputeDampingMatrix</a> () <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        Vector&lt;R&gt; <a class="code hl_function" href="a00078.html#a9be00e6124cf74627b0ed79cf64bd507">ComputeStiffnessMatrix</a> () <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        Vector&lt;C&gt; <a class="code hl_function" href="a00078.html#ad2b10b4e3b8a18e8a14df609f65c4b42">ComputeDynamicStiffness</a> ( <span class="keyword">const</span> R omega ) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    };</div>
 <div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    };</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>} <span class="comment">// Analytical </span></div>
 <div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>} <span class="comment">// Analytical </span></div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span> </div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#ifndef MASS_SPRING_DAMPER_IMPLEMENTATIONS </span></div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="preprocessor">    #include &quot;<a class="code" href="a00032.html">MassSpringDamper_imp.hpp</a>&quot;</span> </div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#endif </span></div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="preprocessor">#ifndef MASS_SPRING_DAMPER_IMPLEMENTATIONS </span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="preprocessor">    #include &quot;<a class="code" href="a00032.html">MassSpringDamper_imp.hpp</a>&quot;</span> </div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#endif </span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="preprocessor">#endif </span><span class="comment">// ANALYTICAL_MODEL_DECLARATIONS </span></div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="preprocessor">#endif </span><span class="comment">// ANALYTICAL_MODEL_DECLARATIONS </span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
 <div class="ttc" id="aa00032_html"><div class="ttname"><a href="a00032.html">MassSpringDamper_imp.hpp</a></div><div class="ttdoc">Implementations of Mass-Spring-Damper model.</div></div>
 <div class="ttc" id="aa00035_html"><div class="ttname"><a href="a00035.html">LibrariesLoader_AM.hpp</a></div><div class="ttdoc">Include all required headers for _Analytical_.</div></div>
 <div class="ttc" id="aa00068_html"><div class="ttname"><a href="a00068.html">Analytical</a></div><div class="ttdoc">Contains a collection of analytical structural dynamic models.</div></div>
@@ -169,7 +167,7 @@ $(document).ready(function(){initNavTree('a00029_source.html',''); initResizable
 <div class="ttc" id="aa00074_html_a79de679b94bdef132a11fab4cd396320"><div class="ttname"><a href="a00074.html#a79de679b94bdef132a11fab4cd396320">Analytical::Model::ComputeDampingMatrix</a></div><div class="ttdeci">virtual Vector&lt; R &gt; ComputeDampingMatrix() const =0</div><div class="ttdoc">Compute damping matrix from structural dynamic model.   Pure virtual function.</div></div>
 <div class="ttc" id="aa00074_html_ac860b0a6d77716b2639b0d6bb2bd0ae8"><div class="ttname"><a href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">Analytical::Model::ComputeStiffnessMatrix</a></div><div class="ttdeci">virtual Vector&lt; R &gt; ComputeStiffnessMatrix() const =0</div><div class="ttdoc">Compute stiffness matrix from structural dynamic model.   Pure virtual function.</div></div>
 <div class="ttc" id="aa00074_html_ad0ed94e54bb606be80c8a1436c22b298"><div class="ttname"><a href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">Analytical::Model::ComputeMassMatrix</a></div><div class="ttdeci">virtual Vector&lt; R &gt; ComputeMassMatrix() const =0</div><div class="ttdoc">Compute mass matrix from structural dynamic model.   Pure virtual function.</div></div>
-<div class="ttc" id="aa00078_html"><div class="ttname"><a href="a00078.html">Analytical::MassSpringDamper</a></div><div class="ttdoc">SD model consisting of point masses, springs, and dampers.   Implemented in _MassSpringDamper_imp_hpp...</div><div class="ttdef"><b>Definition:</b> AnalyticalModel.hpp:110</div></div>
+<div class="ttc" id="aa00078_html"><div class="ttname"><a href="a00078.html">Analytical::MassSpringDamper</a></div><div class="ttdoc">SD model consisting of point masses, springs, and dampers.   Implemented in _MassSpringDamper_imp_hpp...</div><div class="ttdef"><b>Definition:</b> AnalyticalModel.hpp:108</div></div>
 <div class="ttc" id="aa00078_html_a16f412d9a8d39fb32a3da76b5e4ad114"><div class="ttname"><a href="a00078.html#a16f412d9a8d39fb32a3da76b5e4ad114">Analytical::MassSpringDamper::ComputeDampingMatrix</a></div><div class="ttdeci">Vector&lt; R &gt; ComputeDampingMatrix() const override</div><div class="ttdoc">Compute damping matrix from Mass-Spring-Damper model.</div><div class="ttdef"><b>Definition:</b> MassSpringDamper_imp.hpp:82</div></div>
 <div class="ttc" id="aa00078_html_a874d11123ebc1726a8951fd73633119d"><div class="ttname"><a href="a00078.html#a874d11123ebc1726a8951fd73633119d">Analytical::MassSpringDamper::ComputeMassMatrix</a></div><div class="ttdeci">Vector&lt; R &gt; ComputeMassMatrix() const override</div><div class="ttdoc">Compute mass matrix from Mass-Spring-Damper model.</div><div class="ttdef"><b>Definition:</b> MassSpringDamper_imp.hpp:66</div></div>
 <div class="ttc" id="aa00078_html_a9be00e6124cf74627b0ed79cf64bd507"><div class="ttname"><a href="a00078.html#a9be00e6124cf74627b0ed79cf64bd507">Analytical::MassSpringDamper::ComputeStiffnessMatrix</a></div><div class="ttdeci">Vector&lt; R &gt; ComputeStiffnessMatrix() const override</div><div class="ttdoc">Compute stiffness matrix from Mass-Spring-Damper model.</div><div class="ttdef"><b>Definition:</b> MassSpringDamper_imp.hpp:116</div></div>

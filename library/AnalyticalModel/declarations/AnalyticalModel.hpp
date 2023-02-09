@@ -45,8 +45,6 @@ namespace Analytical {
 
         public: 
 
-        virtual ~Model () = 0;
-
         /**
           * @brief 
           * Compute mass matrix from structural dynamic model. @n 
@@ -107,7 +105,7 @@ namespace Analytical {
       * @tparam R a type of floating number e.g. double 
       * @tparam C a type of floating complex number e.g. std::complex<float> 
       */
-    class MassSpringDamper : public Model<Z,R,C> {
+    class MassSpringDamper final : public Model<Z,R,C> {
 
         Vector<R> Masses_;
         Vector<R> Dampers_;
@@ -135,7 +133,7 @@ namespace Analytical {
 
         );
 
-        ~MassSpringDamper () override {};
+        ~MassSpringDamper () {} 
 
         /**
           * @brief 

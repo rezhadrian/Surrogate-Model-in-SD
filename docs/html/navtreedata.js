@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "RPCE in Structural Dynamic", "index.html", [
+  [ "Surrogate Model in Structural Dynamics", "index.html", [
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

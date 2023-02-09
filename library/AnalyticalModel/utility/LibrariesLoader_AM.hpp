@@ -13,6 +13,7 @@
 #define LIBRARIES_LOADER_AM 
 
 #include <algorithm> 
+#include <complex> 
 #include <vector> 
 
 #endif // LIBRARIES_LOADER_AM 
