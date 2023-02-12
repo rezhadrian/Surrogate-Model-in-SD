@@ -1,7 +1,11 @@
 var annotated_dup =
 [
-    [ "Analytical", "a00068.html", [
-      [ "MassSpringDamper", "a00078.html", "a00078" ],
-      [ "Model", "a00074.html", "a00074" ]
+    [ "Analytical", "a00077.html", [
+      [ "MassSpringDamper", "a00088.html", "a00088" ],
+      [ "Model", "a00084.html", "a00084" ]
+    ] ],
+    [ "Surrogate", "a00080.html", [
+      [ "Model", "a00092.html", "a00092" ],
+      [ "NonIntrusivePCE", "a00096.html", "a00096" ]
     ] ]
 ];

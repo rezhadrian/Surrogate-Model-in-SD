@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: Analytical::MassSpringDamper&lt; Z, R, C &gt; Class Template Reference</title>
+<title>Surrogate Model in Structural Dynamics: BasisFunctions Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,99 +90,77 @@ $(document).ready(function(){initNavTree('a00078.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00075.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Analytical::MassSpringDamper&lt; Z, R, C &gt; Class Template Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">BasisFunctions Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>SD model consisting of point masses, springs, and dampers. <br  />
- Implemented in <a class="el" href="a00032.html#_MassSpringDamper_imp_hpp_">_MassSpringDamper_imp_hpp_</a>.  
- <a href="a00078.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Analytical::MassSpringDamper&lt; Z, R, C &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="a00078.png" usemap="#Analytical::MassSpringDamper_3C_20Z_2C_20R_2C_20C_20_3E_map" alt=""/>
-  <map id="Analytical::MassSpringDamper_3C_20Z_2C_20R_2C_20C_20_3E_map" name="Analytical::MassSpringDamper_3C_20Z_2C_20R_2C_20C_20_3E_map">
-<area href="a00074.html" title="Abstract class of analytical structural dynamic model." alt="Analytical::Model&lt; Z, R, C &gt;" shape="rect" coords="0,0,253,24"/>
-  </map>
-</div></div>
+<p>Contains all functions needed to generate basis functions.  
+<a href="a00078.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a0f2d23fa5375146c089a3ebae7f2a8b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a0f2d23fa5375146c089a3ebae7f2a8b6">MassSpringDamper</a> (const Vector&lt; R &gt; Masses, const Vector&lt; R &gt; Dampers, const Vector&lt; R &gt; Springs)</td></tr>
-<tr class="memdesc:a0f2d23fa5375146c089a3ebae7f2a8b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a mass-spring-damper SD model.  <br /></td></tr>
-<tr class="separator:a0f2d23fa5375146c089a3ebae7f2a8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a874d11123ebc1726a8951fd73633119d"><td class="memItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a874d11123ebc1726a8951fd73633119d">ComputeMassMatrix</a> () const override</td></tr>
-<tr class="memdesc:a874d11123ebc1726a8951fd73633119d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute mass matrix from Mass-Spring-Damper model.  <br /></td></tr>
-<tr class="separator:a874d11123ebc1726a8951fd73633119d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16f412d9a8d39fb32a3da76b5e4ad114"><td class="memItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a16f412d9a8d39fb32a3da76b5e4ad114">ComputeDampingMatrix</a> () const override</td></tr>
-<tr class="memdesc:a16f412d9a8d39fb32a3da76b5e4ad114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute damping matrix from Mass-Spring-Damper model.  <br /></td></tr>
-<tr class="separator:a16f412d9a8d39fb32a3da76b5e4ad114"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9be00e6124cf74627b0ed79cf64bd507"><td class="memItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#a9be00e6124cf74627b0ed79cf64bd507">ComputeStiffnessMatrix</a> () const override</td></tr>
-<tr class="memdesc:a9be00e6124cf74627b0ed79cf64bd507"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute stiffness matrix from Mass-Spring-Damper model.  <br /></td></tr>
-<tr class="separator:a9be00e6124cf74627b0ed79cf64bd507"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2b10b4e3b8a18e8a14df609f65c4b42"><td class="memItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00078.html#ad2b10b4e3b8a18e8a14df609f65c4b42">ComputeDynamicStiffness</a> (const R omega) const override</td></tr>
-<tr class="memdesc:ad2b10b4e3b8a18e8a14df609f65c4b42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute dynamic stiffness from Mass-Spring-Damper model.  <br /></td></tr>
-<tr class="separator:ad2b10b4e3b8a18e8a14df609f65c4b42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0ed94e54bb606be80c8a1436c22b298"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">ComputeMassMatrix</a> () const =0</td></tr>
-<tr class="memdesc:ad0ed94e54bb606be80c8a1436c22b298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute mass matrix from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:ad0ed94e54bb606be80c8a1436c22b298"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79de679b94bdef132a11fab4cd396320"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#a79de679b94bdef132a11fab4cd396320">ComputeDampingMatrix</a> () const =0</td></tr>
-<tr class="memdesc:a79de679b94bdef132a11fab4cd396320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute damping matrix from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:a79de679b94bdef132a11fab4cd396320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac860b0a6d77716b2639b0d6bb2bd0ae8"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">ComputeStiffnessMatrix</a> () const =0</td></tr>
-<tr class="memdesc:ac860b0a6d77716b2639b0d6bb2bd0ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute stiffness matrix from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:ac860b0a6d77716b2639b0d6bb2bd0ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a192112a764f1c5f0fe5feb1998749cea"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#a192112a764f1c5f0fe5feb1998749cea">ComputeDynamicStiffness</a> (const R omega) const =0</td></tr>
-<tr class="memdesc:a192112a764f1c5f0fe5feb1998749cea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute dynamic stiffness from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:a192112a764f1c5f0fe5feb1998749cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aaa849a97bcf9aee0bb6d946ba846cd52"><td class="memTemplParams" colspan="2"><a id="aaa849a97bcf9aee0bb6d946ba846cd52" name="aaa849a97bcf9aee0bb6d946ba846cd52"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aaa849a97bcf9aee0bb6d946ba846cd52"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Vector</b> = std::vector&lt; T &gt;</td></tr>
+<tr class="separator:aaa849a97bcf9aee0bb6d946ba846cd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ef699b1eda6ec3ab2626dab5ac6b1a0"><td class="memItemLeft" align="right" valign="top"><a id="a2ef699b1eda6ec3ab2626dab5ac6b1a0" name="a2ef699b1eda6ec3ab2626dab5ac6b1a0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>Marker</b> = std::vector&lt; bool &gt;</td></tr>
+<tr class="separator:a2ef699b1eda6ec3ab2626dab5ac6b1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplParams" colspan="2">template&lt;typename Z &gt; </td></tr>
+<tr class="memitem:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; Z &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00078.html#a1aeee47e2f4ca18ed3fd1b2308fde5af">MultiIndex</a> (const Z SetSize, const Z iMax)</td></tr>
+<tr class="memdesc:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate sets of indices of univariate functions. Sets with lowest indices sum is the first element in the vector. <br  />
+ Implemented in <a class="el" href="a00053.html#_MultiIndex_imp_hpp_">_MultiIndex_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:a1aeee47e2f4ca18ed3fd1b2308fde5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="memTemplParams" colspan="2">template&lt;typename Z &gt; </td></tr>
+<tr class="memitem:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00078.html#a86cdcf8b37d92d8c3b5875f5c605799a">TotalTruncation</a> (Vector&lt; Z &gt; &amp;Indices, const Z SetSize, const Z MaxSum)</td></tr>
+<tr class="memdesc:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove sets of indices with sum of indices above certain treshold. Operations are performed in-place, no new vector is generated. <br  />
+Implemented in <a class="el" href="a00059.html#_Truncations_imp_hpp_">_Truncations_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:a86cdcf8b37d92d8c3b5875f5c605799a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R , typename C &gt; </td></tr>
+<tr class="memitem:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00078.html#add4da84fbaeb7a32da79dc02b3ce8b27">HermitePolynomials</a> (const Vector&lt; Z &gt; &amp;Indices, const Vector&lt; C &gt; &amp;Args, const Z SetSize)</td></tr>
+<tr class="memdesc:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate probabilist Hermite polynomials and multiply polynomials from the same set. <br  />
+ Implemented in <a class="el" href="a00056.html#_HermitePolynomials_imp_hpp_">_HermitePolynomials_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:add4da84fbaeb7a32da79dc02b3ce8b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc15ce12cef4ab9e357f55afa565e369"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
+<tr class="memitem:afc15ce12cef4ab9e357f55afa565e369"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00078.html#afc15ce12cef4ab9e357f55afa565e369">ExpHermiteTriples</a> (const Vector&lt; Z &gt; &amp;Indices, const Z SetSize, const Z k)</td></tr>
+<tr class="memdesc:afc15ce12cef4ab9e357f55afa565e369"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute expected value of products of three Hermite polynomials for all triplet pairs. <br  />
+ Implemented in <a class="el" href="a00062.html#_TripleHermite_imp_hpp_">_TripleHermite_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:afc15ce12cef4ab9e357f55afa565e369"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Z, typename R, typename C&gt;<br />
-class Analytical::MassSpringDamper&lt; Z, R, C &gt;</div><p>SD model consisting of point masses, springs, and dampers. <br  />
- Implemented in <a class="el" href="a00032.html#_MassSpringDamper_imp_hpp_">_MassSpringDamper_imp_hpp_</a>. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
-    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt; </td></tr>
-  </table>
-  </dd>
-</dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0f2d23fa5375146c089a3ebae7f2a8b6" name="a0f2d23fa5375146c089a3ebae7f2a8b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f2d23fa5375146c089a3ebae7f2a8b6">&#9670;&#160;</a></span>MassSpringDamper()</h2>
+<div class="textblock"><p>Contains all functions needed to generate basis functions. </p>
+<p><a class="anchor" id="_BasisFunctions_"></a> </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="afc15ce12cef4ab9e357f55afa565e369" name="afc15ce12cef4ab9e357f55afa565e369"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc15ce12cef4ab9e357f55afa565e369">&#9670;&#160;</a></span>ExpHermiteTriples()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
+template&lt;typename Z , typename R &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00078.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::MassSpringDamper </td>
+          <td class="memname">Vector&lt; R &gt; BasisFunctions::ExpHermiteTriples </td>
           <td>(</td>
-          <td class="paramtype">const Vector&lt; R &gt;&#160;</td>
-          <td class="paramname"><em>Masses</em>, </td>
+          <td class="paramtype">const Vector&lt; Z &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Indices</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Vector&lt; R &gt;&#160;</td>
-          <td class="paramname"><em>Dampers</em>, </td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>SetSize</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Vector&lt; R &gt;&#160;</td>
-          <td class="paramname"><em>Springs</em>&#160;</td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -192,180 +170,190 @@ template&lt;typename Z , typename R , typename C &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Generate a mass-spring-damper SD model. </p>
+<p>Compute expected value of products of three Hermite polynomials for all triplet pairs. <br  />
+ Implemented in <a class="el" href="a00062.html#_TripleHermite_imp_hpp_">_TripleHermite_imp_hpp_</a>. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g size_t </td></tr>
     <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">Masses</td><td>a vector of point masses </td></tr>
-    <tr><td class="paramname">Dampers</td><td>a vector of damping coefficient </td></tr>
-    <tr><td class="paramname">Springs</td><td>a vector of spring stiffness </td></tr>
+    <tr><td class="paramname">Indices</td><td>vector of indices of Hermite polynomial </td></tr>
+    <tr><td class="paramname">SetSize</td><td>number of polynomials in a set </td></tr>
+    <tr><td class="paramname">k</td><td>index of the first polynomial in the triplet</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>vector containing Prod ( E(H_k,H_i,H_j) ) </dd></dl>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a16f412d9a8d39fb32a3da76b5e4ad114" name="a16f412d9a8d39fb32a3da76b5e4ad114"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16f412d9a8d39fb32a3da76b5e4ad114">&#9670;&#160;</a></span>ComputeDampingMatrix()</h2>
+<a id="add4da84fbaeb7a32da79dc02b3ce8b27" name="add4da84fbaeb7a32da79dc02b3ce8b27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add4da84fbaeb7a32da79dc02b3ce8b27">&#9670;&#160;</a></span>HermitePolynomials()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Vector&lt; R &gt; <a class="el" href="a00078.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::ComputeDampingMatrix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute damping matrix from Mass-Spring-Damper model. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implements <a class="el" href="a00074.html#a79de679b94bdef132a11fab4cd396320">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<a id="ad2b10b4e3b8a18e8a14df609f65c4b42" name="ad2b10b4e3b8a18e8a14df609f65c4b42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2b10b4e3b8a18e8a14df609f65c4b42">&#9670;&#160;</a></span>ComputeDynamicStiffness()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector&lt; C &gt; <a class="el" href="a00078.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::ComputeDynamicStiffness </td>
+          <td class="memname">Vector&lt; C &gt; BasisFunctions::HermitePolynomials </td>
           <td>(</td>
-          <td class="paramtype">const R&#160;</td>
-          <td class="paramname"><em>omega</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const Vector&lt; Z &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector&lt; C &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>SetSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Compute dynamic stiffness from Mass-Spring-Damper model. </p>
+<p>Evaluate probabilist Hermite polynomials and multiply polynomials from the same set. <br  />
+ Implemented in <a class="el" href="a00056.html#_HermitePolynomials_imp_hpp_">_HermitePolynomials_imp_hpp_</a>. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
     <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
     <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt;</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implements <a class="el" href="a00074.html#a192112a764f1c5f0fe5feb1998749cea">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Indices</td><td>vector of indices of Hermite polynomial </td></tr>
+    <tr><td class="paramname">Args</td><td>vector of arguments for Hermite polynomial </td></tr>
+    <tr><td class="paramname">SetSize</td><td>number of polynomials in a set</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of products of Hermite polynomials </dd></dl>
 
 </div>
 </div>
-<a id="a874d11123ebc1726a8951fd73633119d" name="a874d11123ebc1726a8951fd73633119d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a874d11123ebc1726a8951fd73633119d">&#9670;&#160;</a></span>ComputeMassMatrix()</h2>
+<a id="a1aeee47e2f4ca18ed3fd1b2308fde5af" name="a1aeee47e2f4ca18ed3fd1b2308fde5af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aeee47e2f4ca18ed3fd1b2308fde5af">&#9670;&#160;</a></span>MultiIndex()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;typename Z &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Vector&lt; R &gt; <a class="el" href="a00078.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::ComputeMassMatrix</td>
+          <td class="memname">Vector&lt; Z &gt; BasisFunctions::MultiIndex </td>
+          <td>(</td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>SetSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>iMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Compute mass matrix from Mass-Spring-Damper model. </p>
+<p>Generate sets of indices of univariate functions. Sets with lowest indices sum is the first element in the vector. <br  />
+ Implemented in <a class="el" href="a00053.html#_MultiIndex_imp_hpp_">_MultiIndex_imp_hpp_</a>. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implements <a class="el" href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">SetSize</td><td>number of indices in a set </td></tr>
+    <tr><td class="paramname">iMax</td><td>largest allowable index</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of indices, size of which is a multiple of SetSize </dd></dl>
 
 </div>
 </div>
-<a id="a9be00e6124cf74627b0ed79cf64bd507" name="a9be00e6124cf74627b0ed79cf64bd507"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9be00e6124cf74627b0ed79cf64bd507">&#9670;&#160;</a></span>ComputeStiffnessMatrix()</h2>
+<a id="a86cdcf8b37d92d8c3b5875f5c605799a" name="a86cdcf8b37d92d8c3b5875f5c605799a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86cdcf8b37d92d8c3b5875f5c605799a">&#9670;&#160;</a></span>TotalTruncation()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+template&lt;typename Z &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">Vector&lt; R &gt; <a class="el" href="a00078.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::ComputeStiffnessMatrix</td>
+          <td class="memname">void BasisFunctions::TotalTruncation </td>
+          <td>(</td>
+          <td class="paramtype">Vector&lt; Z &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>SetSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>MaxSum</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Compute stiffness matrix from Mass-Spring-Damper model. </p>
+<p>Remove sets of indices with sum of indices above certain treshold. Operations are performed in-place, no new vector is generated. <br  />
+Implemented in <a class="el" href="a00059.html#_Truncations_imp_hpp_">_Truncations_imp_hpp_</a>. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implements <a class="el" href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Indices</td><td>vector of indices, size of which is a multiple of SetSize </td></tr>
+    <tr><td class="paramname">SetSize</td><td>number of indices in a set </td></tr>
+    <tr><td class="paramname">MaxSum</td><td>largest allowable sum of indices in a set <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>library/AnalyticalModel/declarations/<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a></li>
-<li>library/AnalyticalModel/implementations/<a class="el" href="a00032_source.html">MassSpringDamper_imp.hpp</a></li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00068.html">Analytical</a></li><li class="navelem"><a class="el" href="a00078.html">MassSpringDamper</a></li>
+    <li class="navelem"><a class="el" href="a00078.html">BasisFunctions</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

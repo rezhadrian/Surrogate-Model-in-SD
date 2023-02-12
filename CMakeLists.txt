@@ -12,6 +12,7 @@ elseif ( CMAKE_CXX_COMPILER_ID MATCHES "INTEL" )
 endif ()
 
 find_package ( Eigen3 3.4 REQUIRED NO_MODULE ) 
+find_package ( Boost 1.81 REQUIRED )
 # find_package ( OpenMP ) 
 # if ( OPENMP_FOUND ) 
 #     SET ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}" )
@@ -19,14 +20,40 @@ find_package ( Eigen3 3.4 REQUIRED NO_MODULE )
 # endif ()
 
 # Add interface libraries 
-add_subdirectory ( library )
+add_subdirectory ( modules )
+
+# Add shared library 
+add_library ( surrogatemodel SHARED 
+
+    declarations/SurrogateModel.hpp 
+
+    implementations/NonIntrusivePCE.cpp 
+    implementations/IntrusivePCE.cpp 
+
+)
+
+target_include_directories ( surrogatemodel PUBLIC 
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/declarations 
+    ${CMAKE_CURRENT_SOURCE_DIR}/utility  
+    ${Boost_INCLUDE_DIR} 
+
+)
+
+target_link_libraries ( surrogatemodel PUBLIC 
+
+    surrogatemodule 
+    analyticalmodel 
+    Eigen3::Eigen 
+    ${Boost_LIBRARIES} 
+
+)
 
 # Add executable 
 add_executable ( main driver/main.cpp ) 
 target_link_libraries ( main PUBLIC 
 
-    basisfunctions 
-    montecarlo 
+    surrogatemodel
     Eigen3::Eigen 
 
 )

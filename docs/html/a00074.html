@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: Analytical::Model&lt; Z, R, C &gt; Class Template Reference</title>
+<title>Surrogate Model in Structural Dynamics: Surrogate Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,225 +90,64 @@ $(document).ready(function(){initNavTree('a00074.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00071.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Analytical::Model&lt; Z, R, C &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
+  <div class="headertitle"><div class="title">Surrogate Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract class of analytical structural dynamic model.  
- <a href="a00074.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Analytical::Model&lt; Z, R, C &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="a00074.png" usemap="#Analytical::Model_3C_20Z_2C_20R_2C_20C_20_3E_map" alt=""/>
-  <map id="Analytical::Model_3C_20Z_2C_20R_2C_20C_20_3E_map" name="Analytical::Model_3C_20Z_2C_20R_2C_20C_20_3E_map">
-<area href="a00078.html" title="SD model consisting of point masses, springs, and dampers.   Implemented in _MassSpringDamper_imp_hpp..." alt="Analytical::MassSpringDamper&lt; Z, R, C &gt;" shape="rect" coords="0,56,253,80"/>
-  </map>
-</div></div>
+<p>Contains a collection of surrogate structural dynamic model.  
+<a href="a00074.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:ad0ed94e54bb606be80c8a1436c22b298"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#ad0ed94e54bb606be80c8a1436c22b298">ComputeMassMatrix</a> () const =0</td></tr>
-<tr class="memdesc:ad0ed94e54bb606be80c8a1436c22b298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute mass matrix from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:ad0ed94e54bb606be80c8a1436c22b298"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79de679b94bdef132a11fab4cd396320"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#a79de679b94bdef132a11fab4cd396320">ComputeDampingMatrix</a> () const =0</td></tr>
-<tr class="memdesc:a79de679b94bdef132a11fab4cd396320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute damping matrix from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:a79de679b94bdef132a11fab4cd396320"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac860b0a6d77716b2639b0d6bb2bd0ae8"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#ac860b0a6d77716b2639b0d6bb2bd0ae8">ComputeStiffnessMatrix</a> () const =0</td></tr>
-<tr class="memdesc:ac860b0a6d77716b2639b0d6bb2bd0ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute stiffness matrix from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:ac860b0a6d77716b2639b0d6bb2bd0ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a192112a764f1c5f0fe5feb1998749cea"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00074.html#a192112a764f1c5f0fe5feb1998749cea">ComputeDynamicStiffness</a> (const R omega) const =0</td></tr>
-<tr class="memdesc:a192112a764f1c5f0fe5feb1998749cea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute dynamic stiffness from structural dynamic model. <br  />
- Pure virtual function.  <br /></td></tr>
-<tr class="separator:a192112a764f1c5f0fe5feb1998749cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html">Model</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract class of surrogate structural dynamic model.  <a href="a00086.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00090.html">NonIntrusivePCE</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-intrusive surrogate model based on collocation method. <br  />
+ Implmented in _NonIntrusivePCE_cpp_.  <a href="a00090.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a17ad2e1fa8cbdccb82b9ef0326f6d647"><td class="memItemLeft" align="right" valign="top"><a id="a17ad2e1fa8cbdccb82b9ef0326f6d647" name="a17ad2e1fa8cbdccb82b9ef0326f6d647"></a>
+typedef size_t&#160;</td><td class="memItemRight" valign="bottom"><b>Z</b></td></tr>
+<tr class="separator:a17ad2e1fa8cbdccb82b9ef0326f6d647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37dbf3ddf739aeae2a0bd65984d13aa3"><td class="memItemLeft" align="right" valign="top"><a id="a37dbf3ddf739aeae2a0bd65984d13aa3" name="a37dbf3ddf739aeae2a0bd65984d13aa3"></a>
+typedef double&#160;</td><td class="memItemRight" valign="bottom"><b>R</b></td></tr>
+<tr class="separator:a37dbf3ddf739aeae2a0bd65984d13aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accd515df5fa19ea2e424294e440b3461"><td class="memItemLeft" align="right" valign="top"><a id="accd515df5fa19ea2e424294e440b3461" name="accd515df5fa19ea2e424294e440b3461"></a>
+typedef std::complex&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>C</b></td></tr>
+<tr class="separator:accd515df5fa19ea2e424294e440b3461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa747af79a6dad1ce076edee370afb4ef"><td class="memItemLeft" align="right" valign="top"><a id="aa747af79a6dad1ce076edee370afb4ef" name="aa747af79a6dad1ce076edee370afb4ef"></a>
+typedef std::vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorR</b></td></tr>
+<tr class="separator:aa747af79a6dad1ce076edee370afb4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd84d1245e689f049d96649ff0cd70d1"><td class="memItemLeft" align="right" valign="top"><a id="abd84d1245e689f049d96649ff0cd70d1" name="abd84d1245e689f049d96649ff0cd70d1"></a>
+typedef std::vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorC</b></td></tr>
+<tr class="separator:abd84d1245e689f049d96649ff0cd70d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad04067181891e0e6015015a7f1d9c172"><td class="memItemLeft" align="right" valign="top"><a id="ad04067181891e0e6015015a7f1d9c172" name="ad04067181891e0e6015015a7f1d9c172"></a>
+typedef std::vector&lt; Z &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorZ</b></td></tr>
+<tr class="separator:ad04067181891e0e6015015a7f1d9c172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58d3251e2d6c6ba9adb3beb1289e247f"><td class="memItemLeft" align="right" valign="top"><a id="a58d3251e2d6c6ba9adb3beb1289e247f" name="a58d3251e2d6c6ba9adb3beb1289e247f"></a>
+typedef <a class="el" href="a00078.html">Analytical::Model</a>&lt; Z, R, C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>AnalyticalModel</b></td></tr>
+<tr class="separator:a58d3251e2d6c6ba9adb3beb1289e247f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02a4f41450a27ffc9cb220fec2f2ab26"><td class="memItemLeft" align="right" valign="top"><a id="a02a4f41450a27ffc9cb220fec2f2ab26" name="a02a4f41450a27ffc9cb220fec2f2ab26"></a>
+typedef Eigen::Matrix&lt; C, Eigen::Dynamic, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MatrixXC</b></td></tr>
+<tr class="separator:a02a4f41450a27ffc9cb220fec2f2ab26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466cec2d0a95ba0be06599af35c27b74"><td class="memItemLeft" align="right" valign="top"><a id="a466cec2d0a95ba0be06599af35c27b74" name="a466cec2d0a95ba0be06599af35c27b74"></a>
+typedef Eigen::Vector&lt; C, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorXC</b></td></tr>
+<tr class="separator:a466cec2d0a95ba0be06599af35c27b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Z, typename R, typename C&gt;<br />
-class Analytical::Model&lt; Z, R, C &gt;</div><p>Abstract class of analytical structural dynamic model. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
-    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt;</td></tr>
-  </table>
-  </dd>
-</dl>
-<p><a class="anchor" id="_Model_"></a> </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a79de679b94bdef132a11fab4cd396320" name="a79de679b94bdef132a11fab4cd396320"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79de679b94bdef132a11fab4cd396320">&#9670;&#160;</a></span>ComputeDampingMatrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Vector&lt; R &gt; <a class="el" href="a00074.html">Analytical::Model</a>&lt; Z, R, C &gt;::ComputeDampingMatrix </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute damping matrix from structural dynamic model. <br  />
- Pure virtual function. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implemented in <a class="el" href="a00078.html#a16f412d9a8d39fb32a3da76b5e4ad114">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a192112a764f1c5f0fe5feb1998749cea" name="a192112a764f1c5f0fe5feb1998749cea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a192112a764f1c5f0fe5feb1998749cea">&#9670;&#160;</a></span>ComputeDynamicStiffness()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Vector&lt; C &gt; <a class="el" href="a00074.html">Analytical::Model</a>&lt; Z, R, C &gt;::ComputeDynamicStiffness </td>
-          <td>(</td>
-          <td class="paramtype">const R&#160;</td>
-          <td class="paramname"><em>omega</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute dynamic stiffness from structural dynamic model. <br  />
- Pure virtual function. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
-    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt;</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implemented in <a class="el" href="a00078.html#ad2b10b4e3b8a18e8a14df609f65c4b42">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<a id="ad0ed94e54bb606be80c8a1436c22b298" name="ad0ed94e54bb606be80c8a1436c22b298"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0ed94e54bb606be80c8a1436c22b298">&#9670;&#160;</a></span>ComputeMassMatrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Vector&lt; R &gt; <a class="el" href="a00074.html">Analytical::Model</a>&lt; Z, R, C &gt;::ComputeMassMatrix </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute mass matrix from structural dynamic model. <br  />
- Pure virtual function. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implemented in <a class="el" href="a00078.html#a874d11123ebc1726a8951fd73633119d">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<a id="ac860b0a6d77716b2639b0d6bb2bd0ae8" name="ac860b0a6d77716b2639b0d6bb2bd0ae8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac860b0a6d77716b2639b0d6bb2bd0ae8">&#9670;&#160;</a></span>ComputeStiffnessMatrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual Vector&lt; R &gt; <a class="el" href="a00074.html">Analytical::Model</a>&lt; Z, R, C &gt;::ComputeStiffnessMatrix </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute stiffness matrix from structural dynamic model. <br  />
- Pure virtual function. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>vector suitable for row-major matrix wrapper </dd></dl>
-
-<p>Implemented in <a class="el" href="a00078.html#a9be00e6124cf74627b0ed79cf64bd507">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>library/AnalyticalModel/declarations/<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a></li>
-</ul>
-</div><!-- contents -->
+<div class="textblock"><p>Contains a collection of surrogate structural dynamic model. </p>
+<p><a class="anchor" id="_Surrogate_"></a> </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00068.html">Analytical</a></li><li class="navelem"><a class="el" href="a00074.html">Model</a></li>
+    <li class="navelem"><a class="el" href="a00074.html">Surrogate</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

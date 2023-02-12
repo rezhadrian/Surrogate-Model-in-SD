@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['totaltruncation_0',['TotalTruncation',['../a00069.html#a86cdcf8b37d92d8c3b5875f5c605799a',1,'BasisFunctions']]]
+  ['nonintrusivepce_0',['NonIntrusivePCE',['../a00096.html#a3a1abf745ffcec9a7b395aa7794c864f',1,'Surrogate::NonIntrusivePCE']]]
 ];

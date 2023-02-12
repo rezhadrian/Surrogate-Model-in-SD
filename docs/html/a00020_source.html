@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: library/MonteCarlo/implementations/VariableGeneration_imp.hpp Source File</title>
+<title>Surrogate Model in Structural Dynamics: modules/MonteCarlo/implementations/VariableGeneration_imp.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -102,10 +102,10 @@ $(document).ready(function(){initNavTree('a00020_source.html',''); initResizable
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00070.html">MonteCarlo</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00079.html">MonteCarlo</a> {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> Z, <span class="keyword">typename</span> R &gt;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="a00070.html#ac5a3b4d632e4ff35da731d6e7129160d">   26</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="a00070.html#ac5a3b4d632e4ff35da731d6e7129160d">ConvertLHStoStdNorm</a> ( Vector&lt;R&gt;&amp; LHSResult ) {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="a00079.html#ac5a3b4d632e4ff35da731d6e7129160d">   26</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="a00079.html#ac5a3b4d632e4ff35da731d6e7129160d">ConvertLHStoStdNorm</a> ( Vector&lt;R&gt;&amp; LHSResult ) {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        boost::math::normal dist ( R(0.0), R(1.0) );</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
@@ -127,10 +127,10 @@ $(document).ready(function(){initNavTree('a00020_source.html',''); initResizable
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>} <span class="comment">// MonteCarlo : ConvertLHStoStdNorm </span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00070.html">MonteCarlo</a> {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00079.html">MonteCarlo</a> {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> R, <span class="keyword">typename</span> C &gt;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="a00070.html#a23c4961f7ba48f8939c434a99e6e11f2">   51</a></span>    Vector&lt;C&gt; <a class="code hl_function" href="a00070.html#a23c4961f7ba48f8939c434a99e6e11f2">CombineRVs</a> ( </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="a00079.html#a23c4961f7ba48f8939c434a99e6e11f2">   51</a></span>    Vector&lt;C&gt; <a class="code hl_function" href="a00079.html#a23c4961f7ba48f8939c434a99e6e11f2">CombineRVs</a> ( </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">const</span> MatrixXT&lt;R&gt;&amp; Correl, </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        Vector&lt;R&gt;&amp; RVs, </div>
@@ -157,10 +157,10 @@ $(document).ready(function(){initNavTree('a00020_source.html',''); initResizable
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>} <span class="comment">// MonteCarlo : CombineRVs </span></div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00070.html">MonteCarlo</a> {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00079.html">MonteCarlo</a> {</div>
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> Z, <span class="keyword">typename</span> R &gt;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="a00070.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">   81</a></span>    Vector&lt;R&gt; <a class="code hl_function" href="a00070.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">GenerateRVs</a> (</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="a00079.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">   81</a></span>    Vector&lt;R&gt; <a class="code hl_function" href="a00079.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">GenerateRVs</a> (</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        Vector&lt;R&gt;&amp; StdNormRVs, </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">const</span> MatrixXT&lt;R&gt;&amp; Correl, </div>
@@ -208,16 +208,16 @@ $(document).ready(function(){initNavTree('a00020_source.html',''); initResizable
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="preprocessor">#endif </span><span class="comment">// VARIABLE_GENERATION_IMPLEMENTATIONS  </span></div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
 <div class="ttc" id="aa00011_html"><div class="ttname"><a href="a00011.html">MonteCarlo.hpp</a></div><div class="ttdoc">Declarations of all functions required to run computer experiments.</div></div>
-<div class="ttc" id="aa00070_html"><div class="ttname"><a href="a00070.html">MonteCarlo</a></div><div class="ttdoc">Contains all functions needed to run computer experiments.</div></div>
-<div class="ttc" id="aa00070_html_a23c4961f7ba48f8939c434a99e6e11f2"><div class="ttname"><a href="a00070.html#a23c4961f7ba48f8939c434a99e6e11f2">MonteCarlo::CombineRVs</a></div><div class="ttdeci">Vector&lt; C &gt; CombineRVs(const MatrixXT&lt; R &gt; &amp;Correl, Vector&lt; R &gt; &amp;RVs, const size_t Dim)</div><div class="ttdoc">Combine uncorrelated RVs to generate correlated RVs.   Implemented in _VariableGeneration_imp_hpp_.</div><div class="ttdef"><b>Definition:</b> VariableGeneration_imp.hpp:51</div></div>
-<div class="ttc" id="aa00070_html_ac5a3b4d632e4ff35da731d6e7129160d"><div class="ttname"><a href="a00070.html#ac5a3b4d632e4ff35da731d6e7129160d">MonteCarlo::ConvertLHStoStdNorm</a></div><div class="ttdeci">void ConvertLHStoStdNorm(Vector&lt; R &gt; &amp;LHSResult)</div><div class="ttdoc">Convert LHS result to sets of standard normal random variables. Conversion is in place,...</div><div class="ttdef"><b>Definition:</b> VariableGeneration_imp.hpp:26</div></div>
-<div class="ttc" id="aa00070_html_acc8d3b4a6e5890cc696d1ca44f7e78d6"><div class="ttname"><a href="a00070.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">MonteCarlo::GenerateRVs</a></div><div class="ttdeci">Vector&lt; R &gt; GenerateRVs(Vector&lt; R &gt; &amp;StdNormRVs, const MatrixXT&lt; R &gt; &amp;Correl, const Vector&lt; std::function&lt; R(R)&gt; &gt; &amp;ICDFs, const Z Dim)</div><div class="ttdoc">Generate RVs with a given distribution from standard normal RVs.   Implemented in _VariableGeneration...</div><div class="ttdef"><b>Definition:</b> VariableGeneration_imp.hpp:81</div></div>
+<div class="ttc" id="aa00079_html"><div class="ttname"><a href="a00079.html">MonteCarlo</a></div><div class="ttdoc">Contains all functions needed to run computer experiments.</div></div>
+<div class="ttc" id="aa00079_html_a23c4961f7ba48f8939c434a99e6e11f2"><div class="ttname"><a href="a00079.html#a23c4961f7ba48f8939c434a99e6e11f2">MonteCarlo::CombineRVs</a></div><div class="ttdeci">Vector&lt; C &gt; CombineRVs(const MatrixXT&lt; R &gt; &amp;Correl, Vector&lt; R &gt; &amp;RVs, const size_t Dim)</div><div class="ttdoc">Combine uncorrelated RVs to generate correlated RVs.   Implemented in _VariableGeneration_imp_hpp_.</div><div class="ttdef"><b>Definition:</b> VariableGeneration_imp.hpp:51</div></div>
+<div class="ttc" id="aa00079_html_ac5a3b4d632e4ff35da731d6e7129160d"><div class="ttname"><a href="a00079.html#ac5a3b4d632e4ff35da731d6e7129160d">MonteCarlo::ConvertLHStoStdNorm</a></div><div class="ttdeci">void ConvertLHStoStdNorm(Vector&lt; R &gt; &amp;LHSResult)</div><div class="ttdoc">Convert LHS result to sets of standard normal random variables. Conversion is in place,...</div><div class="ttdef"><b>Definition:</b> VariableGeneration_imp.hpp:26</div></div>
+<div class="ttc" id="aa00079_html_acc8d3b4a6e5890cc696d1ca44f7e78d6"><div class="ttname"><a href="a00079.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">MonteCarlo::GenerateRVs</a></div><div class="ttdeci">Vector&lt; R &gt; GenerateRVs(Vector&lt; R &gt; &amp;StdNormRVs, const MatrixXT&lt; R &gt; &amp;Correl, const Vector&lt; std::function&lt; R(R)&gt; &gt; &amp;ICDFs, const Z Dim)</div><div class="ttdoc">Generate RVs with a given distribution from standard normal RVs.   Implemented in _VariableGeneration...</div><div class="ttdef"><b>Definition:</b> VariableGeneration_imp.hpp:81</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e3d620c6b6fdb93ed3bc6186215bde2e.html">library</a></li><li class="navelem"><a class="el" href="dir_3e8b8d873bdef3812c64be9ccbf2f77c.html">MonteCarlo</a></li><li class="navelem"><a class="el" href="dir_c3af6d933a6763213418739c10641c1d.html">implementations</a></li><li class="navelem"><a class="el" href="a00020.html">VariableGeneration_imp.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_e05d7e2b1ecd646af5bb94391405f3b5.html">modules</a></li><li class="navelem"><a class="el" href="dir_6cc896bc895338273fc343e02e941f06.html">MonteCarlo</a></li><li class="navelem"><a class="el" href="dir_a5cb3947158de392cde69d8ad21b9b7a.html">implementations</a></li><li class="navelem"><a class="el" href="a00020.html">VariableGeneration_imp.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
