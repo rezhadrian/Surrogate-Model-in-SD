@@ -186,6 +186,34 @@ namespace Analytical {
 
     } // DynamicStiffness 
 
+    template < typename Z, typename R, typename C >
+    Vector<C> MassSpringDamper<Z,R,C>::DynamicStiffness (
+
+        const R omega
+
+    ) const {
+
+        Vector<C> result ( Dim_ * Dim_, 0.0 );
+
+        for ( auto i = 0; i < result.size(); i++ ) {
+
+            result[i] = C (
+
+                StiffnessMatrix_[i] -
+                omega * omega * MassMatrix_[i]
+
+                , 
+
+                omega * DampingMatrix_[i]
+
+            );
+
+        }
+
+        return result;
+
+    } // DynamicStiffness 
+
 
     template < typename Z, typename R, typename C >
     Vector<C> MassSpringDamper<Z,R,C>::ComputeResponse ( 

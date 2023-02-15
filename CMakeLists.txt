@@ -28,6 +28,7 @@ add_library ( surrogatemodel SHARED
     declarations/SurrogateModel.hpp 
 
     implementations/NonIntrusivePCE.cpp 
+    implementations/NonIntrusiveRPCE.cpp 
     implementations/IntrusivePCE.cpp 
 
 )

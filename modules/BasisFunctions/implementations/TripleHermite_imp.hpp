@@ -60,33 +60,56 @@ namespace BasisFunctions {
         Vector<R> result;
         result.reserve ( nPoints * nPoints );
 
+        // Vector<R> KV ( indices.begin() + k*dim, indices.begin() + k*dim+dim);
 
         for ( auto i = 0; i < nPoints; i++ ) {
         for ( auto j = 0; j < nPoints; j++ ) {
 
-            result.push_back (
+            R acc = 1.0;
 
-                std::transform_reduce (
+            for ( auto m = 0; m < dim; m++ ) {
 
-                    indices.begin() + i * dim, 
-                    indices.begin() + i * dim + dim, 
-                    indices.begin() + j * dim, 
+                acc *= EHermiteTriple <Z,R> (
 
-                    1.0, 
+                    indices[i*dim+m], 
+                    indices[j*dim+m],
+                    // k
+                    indices[k*dim+m]
 
-                    // Expected values are multiplied point-wise 
-                    []( const auto E1, const auto E2 ) { return E1 * E2; }, 
+                );
 
-                    // Expected value of triple Hermite product 
-                    [k]( const auto m, const auto n ) {
+            }
 
-                        return EHermiteTriple <Z,R> ( m, n, k );
+            result.push_back ( acc );
 
-                    }
-
-                )
-
-            );
+            // result.push_back (
+            //
+            //     std::inner_product (
+            //
+            //         indices.begin() + i * dim, 
+            //         indices.begin() + i * dim + dim, 
+            //         indices.begin() + j * dim, 
+            //         indices.begin() + k * dim, 
+            //
+            //         1.0, 
+            //
+            //         std::multiplies<>(), 
+            //
+            //         // Expected values are multiplied point-wise 
+            //         // []( const auto acc, const auto E1, const auto E2 ) { 
+            //         //     return acc + E1 * E2;  
+            //         // }, 
+            //
+            //         // Expected value of triple Hermite product 
+            //         []( const auto m, const auto n, const auto o) {
+            //
+            //             return EHermiteTriple <Z,R> ( m, n, o );
+            //
+            //         }
+            //
+            //     )
+            //
+            // );
 
         }
         }

@@ -27,11 +27,7 @@ namespace Surrogate {
 
 namespace Surrogate {
 
-    void NonIntrusivePCE::SetIndices ( 
-
-        Z iMax, Z MaxSum 
-
-    ) {
+    void NonIntrusivePCE::SetIndices ( Z iMax, Z MaxSum ) {
 
         // Obtain sets of indices with max index <= iMax 
         auto Indices = BasisFunctions::MultiIndex<size_t> ( Dim(), iMax );
@@ -86,7 +82,11 @@ namespace Surrogate {
 
 namespace Surrogate {
 
-    void NonIntrusivePCE::Train ( const VectorC& Load, const VectorR& TrainSet ) {
+    void NonIntrusivePCE::Train ( 
+
+        const VectorC& Load, const VectorR& TrainSet 
+
+    ) {
 
         auto nPoints = TrainSet.size() / Dim ();
 

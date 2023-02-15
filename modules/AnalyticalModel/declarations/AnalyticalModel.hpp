@@ -69,6 +69,10 @@ namespace Analytical {
 
         virtual Z Dim () const = 0;
  
+        virtual Vector<R> StiffnessMatrix ( const Vector<R>& Springs ) const = 0;
+
+        virtual Vector<C> DynamicStiffness ( const R omega ) const = 0;
+
     }; // Model 
 
 
@@ -137,12 +141,14 @@ namespace Analytical {
 
         ) const override;
 
+        Vector<R> StiffnessMatrix ( const Vector<R>& Springs ) const override;
+
+        Vector<C> DynamicStiffness ( const R omega ) const override;
 
         private: 
 
         Vector<R> MassMatrix      ( const Vector<R>& Masses  ) const;
         Vector<R> DampingMatrix   ( const Vector<R>& Dampers ) const;
-        Vector<R> StiffnessMatrix ( const Vector<R>& Springs ) const;
 
         Vector<C> DynamicStiffness ( 
             const R omega, const Vector<R>& AdditionalSprings 
