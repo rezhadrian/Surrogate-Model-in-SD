@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['massspringdamper_0',['MassSpringDamper',['../a00088.html',1,'Analytical']]],
-  ['model_1',['Model',['../a00084.html',1,'Analytical::Model&lt; Z, R, C &gt;'],['../a00092.html',1,'Surrogate::Model']]]
+  ['intrusivemodel_0',['IntrusiveModel',['../a00107.html',1,'Surrogate']]],
+  ['intrusivepce_1',['IntrusivePCE',['../a00111.html',1,'Surrogate']]]
 ];

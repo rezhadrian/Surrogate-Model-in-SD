@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: Surrogate Namespace Reference</title>
+<title>Surrogate Model in Structural Dynamics: implementations/IntrusivePCE.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,64 +90,32 @@ $(document).ready(function(){initNavTree('a00074.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
-  <div class="headertitle"><div class="title">Surrogate Namespace Reference</div></div>
+<a href="#namespaces">Namespaces</a>  </div>
+  <div class="headertitle"><div class="title">IntrusivePCE.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Contains a collection of surrogate structural dynamic model.  
-<a href="a00074.html#details">More...</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html">Model</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract class of surrogate structural dynamic model.  <a href="a00086.html#details">More...</a><br /></td></tr>
+<p>Implementations of intrusive PCE model.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="a00068_source.html">SurrogateModel.hpp</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00083"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00083.html">Surrogate</a></td></tr>
+<tr class="memdesc:a00083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains a collection of surrogate structural dynamic model. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00090.html">NonIntrusivePCE</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-intrusive surrogate model based on collocation method. <br  />
- Implmented in _NonIntrusivePCE_cpp_.  <a href="a00090.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a17ad2e1fa8cbdccb82b9ef0326f6d647"><td class="memItemLeft" align="right" valign="top"><a id="a17ad2e1fa8cbdccb82b9ef0326f6d647" name="a17ad2e1fa8cbdccb82b9ef0326f6d647"></a>
-typedef size_t&#160;</td><td class="memItemRight" valign="bottom"><b>Z</b></td></tr>
-<tr class="separator:a17ad2e1fa8cbdccb82b9ef0326f6d647"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37dbf3ddf739aeae2a0bd65984d13aa3"><td class="memItemLeft" align="right" valign="top"><a id="a37dbf3ddf739aeae2a0bd65984d13aa3" name="a37dbf3ddf739aeae2a0bd65984d13aa3"></a>
-typedef double&#160;</td><td class="memItemRight" valign="bottom"><b>R</b></td></tr>
-<tr class="separator:a37dbf3ddf739aeae2a0bd65984d13aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accd515df5fa19ea2e424294e440b3461"><td class="memItemLeft" align="right" valign="top"><a id="accd515df5fa19ea2e424294e440b3461" name="accd515df5fa19ea2e424294e440b3461"></a>
-typedef std::complex&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>C</b></td></tr>
-<tr class="separator:accd515df5fa19ea2e424294e440b3461"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa747af79a6dad1ce076edee370afb4ef"><td class="memItemLeft" align="right" valign="top"><a id="aa747af79a6dad1ce076edee370afb4ef" name="aa747af79a6dad1ce076edee370afb4ef"></a>
-typedef std::vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorR</b></td></tr>
-<tr class="separator:aa747af79a6dad1ce076edee370afb4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd84d1245e689f049d96649ff0cd70d1"><td class="memItemLeft" align="right" valign="top"><a id="abd84d1245e689f049d96649ff0cd70d1" name="abd84d1245e689f049d96649ff0cd70d1"></a>
-typedef std::vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorC</b></td></tr>
-<tr class="separator:abd84d1245e689f049d96649ff0cd70d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad04067181891e0e6015015a7f1d9c172"><td class="memItemLeft" align="right" valign="top"><a id="ad04067181891e0e6015015a7f1d9c172" name="ad04067181891e0e6015015a7f1d9c172"></a>
-typedef std::vector&lt; Z &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorZ</b></td></tr>
-<tr class="separator:ad04067181891e0e6015015a7f1d9c172"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58d3251e2d6c6ba9adb3beb1289e247f"><td class="memItemLeft" align="right" valign="top"><a id="a58d3251e2d6c6ba9adb3beb1289e247f" name="a58d3251e2d6c6ba9adb3beb1289e247f"></a>
-typedef <a class="el" href="a00078.html">Analytical::Model</a>&lt; Z, R, C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>AnalyticalModel</b></td></tr>
-<tr class="separator:a58d3251e2d6c6ba9adb3beb1289e247f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02a4f41450a27ffc9cb220fec2f2ab26"><td class="memItemLeft" align="right" valign="top"><a id="a02a4f41450a27ffc9cb220fec2f2ab26" name="a02a4f41450a27ffc9cb220fec2f2ab26"></a>
-typedef Eigen::Matrix&lt; C, Eigen::Dynamic, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MatrixXC</b></td></tr>
-<tr class="separator:a02a4f41450a27ffc9cb220fec2f2ab26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a466cec2d0a95ba0be06599af35c27b74"><td class="memItemLeft" align="right" valign="top"><a id="a466cec2d0a95ba0be06599af35c27b74" name="a466cec2d0a95ba0be06599af35c27b74"></a>
-typedef Eigen::Vector&lt; C, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>VectorXC</b></td></tr>
-<tr class="separator:a466cec2d0a95ba0be06599af35c27b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains a collection of surrogate structural dynamic model. </p>
-<p><a class="anchor" id="_Surrogate_"></a> </p>
+<div class="textblock"><p>Implementations of intrusive PCE model. </p>
+<p><a class="anchor" id="_IntrusivePCE_cpp_"></a></p>
+<dl class="section author"><dt>Author</dt><dd>Rezha Adrian Tanuharja <br  />
+ Contact: <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'.ta'+'nu'+'har'+'ja'+'@tu'+'m.'+'de'; return false;">rezha<span class="obfuscator">.nosp@m.</span>.tan<span class="obfuscator">.nosp@m.</span>uharj<span class="obfuscator">.nosp@m.</span>a@tu<span class="obfuscator">.nosp@m.</span>m.de</a> / <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'dr@'+'ou'+'tlo'+'ok'+'.co'+'m'; return false;">rezha<span class="obfuscator">.nosp@m.</span>dr@o<span class="obfuscator">.nosp@m.</span>utloo<span class="obfuscator">.nosp@m.</span>k.co<span class="obfuscator">.nosp@m.</span>m</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00074.html">Surrogate</a></li>
+    <li class="navelem"><a class="el" href="dir_d12a494b5868c3171ad5a86c7563cf73.html">implementations</a></li><li class="navelem"><a class="el" href="a00074.html">IntrusivePCE.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

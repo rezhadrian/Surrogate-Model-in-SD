@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: Member List</title>
+<title>Surrogate Model in Structural Dynamics: Analytical::Model&lt; Z, R, C &gt; Class Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('a00090.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('a00087.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,21 +89,134 @@ $(document).ready(function(){initNavTree('a00090.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Surrogate::NonIntrusivePCE Member List</div></div>
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="a00084.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">Analytical::Model&lt; Z, R, C &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="a00090.html">Surrogate::NonIntrusivePCE</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="a00090.html#a16d954e78f03c3f84151032af0dcb898">ComputeResponse</a>(const VectorC &amp;X) const override</td><td class="entry"><a class="el" href="a00090.html">Surrogate::NonIntrusivePCE</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="a00090.html#a3a1abf745ffcec9a7b395aa7794c864f">NonIntrusivePCE</a>(const AnalyticalModel *SDModel, const R omega)</td><td class="entry"><a class="el" href="a00090.html">Surrogate::NonIntrusivePCE</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00090.html#abd3d416d816476a57c6f91cd37b39b51">SetIndices</a>(Z SetSize, Z iMax, Z MaxSum)</td><td class="entry"><a class="el" href="a00090.html">Surrogate::NonIntrusivePCE</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="a00090.html#ab690b2a1f0edd64bbadc451fc758cd9a">Train</a>(const VectorC &amp;Load, const VectorR &amp;TrainSet) override</td><td class="entry"><a class="el" href="a00090.html">Surrogate::NonIntrusivePCE</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-</table></div><!-- contents -->
+<p>Abstract class of analytical structural dynamic model.  
+ <a href="a00087.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Analytical::Model&lt; Z, R, C &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="a00087.png" usemap="#Analytical::Model_3C_20Z_2C_20R_2C_20C_20_3E_map" alt=""/>
+  <map id="Analytical::Model_3C_20Z_2C_20R_2C_20C_20_3E_map" name="Analytical::Model_3C_20Z_2C_20R_2C_20C_20_3E_map">
+<area href="a00091.html" title="SD model consisting of point masses, springs, and dampers.   Implemented in _MassSpringDamper_imp_hpp..." alt="Analytical::MassSpringDamper&lt; Z, R, C &gt;" shape="rect" coords="0,56,253,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8eaa1860e64dd3a800b0b05aba2b9f67"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.html#a8eaa1860e64dd3a800b0b05aba2b9f67">ComputeResponse</a> (const Vector&lt; C &gt; &amp;Force, const R omega, const typename Vector&lt; R &gt;::const_iterator FirstSpring, const typename Vector&lt; R &gt;::const_iterator LastSpring) const =0</td></tr>
+<tr class="memdesc:a8eaa1860e64dd3a800b0b05aba2b9f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute structure response to harmonic load.  <br /></td></tr>
+<tr class="separator:a8eaa1860e64dd3a800b0b05aba2b9f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a132dab6e19309629e60a0b437dc528f3"><td class="memItemLeft" align="right" valign="top"><a id="a132dab6e19309629e60a0b437dc528f3" name="a132dab6e19309629e60a0b437dc528f3"></a>
+virtual Z&#160;</td><td class="memItemRight" valign="bottom"><b>Dim</b> () const =0</td></tr>
+<tr class="separator:a132dab6e19309629e60a0b437dc528f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419ab01ca4be85ad0fc355a1d0dfd4e6"><td class="memItemLeft" align="right" valign="top"><a id="a419ab01ca4be85ad0fc355a1d0dfd4e6" name="a419ab01ca4be85ad0fc355a1d0dfd4e6"></a>
+virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>StiffnessMatrix</b> (const Vector&lt; R &gt; &amp;Springs) const =0</td></tr>
+<tr class="separator:a419ab01ca4be85ad0fc355a1d0dfd4e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af03eacaf8a6df6924e7636c9bf335e80"><td class="memItemLeft" align="right" valign="top"><a id="af03eacaf8a6df6924e7636c9bf335e80" name="af03eacaf8a6df6924e7636c9bf335e80"></a>
+virtual Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DynamicStiffness</b> (const R omega) const =0</td></tr>
+<tr class="separator:af03eacaf8a6df6924e7636c9bf335e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Z, typename R, typename C&gt;<br />
+class Analytical::Model&lt; Z, R, C &gt;</div><p>Abstract class of analytical structural dynamic model. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
+    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
+    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt;</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a class="anchor" id="_Model_"></a> </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a8eaa1860e64dd3a800b0b05aba2b9f67" name="a8eaa1860e64dd3a800b0b05aba2b9f67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8eaa1860e64dd3a800b0b05aba2b9f67">&#9670;&#160;</a></span>ComputeResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Z , typename R , typename C &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Vector&lt; C &gt; <a class="el" href="a00087.html">Analytical::Model</a>&lt; Z, R, C &gt;::ComputeResponse </td>
+          <td>(</td>
+          <td class="paramtype">const Vector&lt; C &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Force</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const R&#160;</td>
+          <td class="paramname"><em>omega</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename Vector&lt; R &gt;::const_iterator&#160;</td>
+          <td class="paramname"><em>FirstSpring</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename Vector&lt; R &gt;::const_iterator&#160;</td>
+          <td class="paramname"><em>LastSpring</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compute structure response to harmonic load. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
+    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt;</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Force</td><td>harmonic load vector </td></tr>
+    <tr><td class="paramname">omega</td><td>angular velocity </td></tr>
+    <tr><td class="paramname">AdditionalSprings</td><td>offset to default springs</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>displacement vector </dd></dl>
+
+<p>Implemented in <a class="el" href="a00091.html#a758a4785ea7fe4480f0ee49c283fa2f7">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>modules/AnalyticalModel/declarations/<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a></li>
+</ul>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="a00080.html">Analytical</a></li><li class="navelem"><a class="el" href="a00087.html">Model</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

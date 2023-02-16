@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('a00068_source.html',''); initResizable
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="a00029.html">AnalyticalModel.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;LibrariesLoader_SM.hpp&quot;</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00080.html">Surrogate</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">namespace </span><a class="code hl_namespace" href="a00083.html">Surrogate</a> {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">typedef</span> <span class="keywordtype">size_t</span>          Z;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">typedef</span> <span class="keywordtype">double</span>          R;</div>
@@ -111,66 +111,151 @@ $(document).ready(function(){initNavTree('a00068_source.html',''); initResizable
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">typedef</span> std::vector&lt;C&gt; VectorC; </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">typedef</span> std::vector&lt;Z&gt; VectorZ; </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">typedef</span> <a class="code hl_class" href="a00084.html">Analytical::Model&lt;Z,R,C&gt;</a> AnalyticalModel;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">typedef</span> <a class="code hl_class" href="a00087.html">Analytical::Model&lt;Z,R,C&gt;</a> AnalyticalModel;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">typedef</span> Eigen::Matrix&lt;C, Eigen::Dynamic, Eigen::Dynamic&gt; MatrixXC;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">typedef</span> Eigen::Vector&lt;C, Eigen::Dynamic&gt; VectorXC;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">typedef</span> Eigen::Matrix&lt;R, Eigen::Dynamic, Eigen::Dynamic&gt; MatrixXR;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">typedef</span> Eigen::Matrix&lt;C, Eigen::Dynamic, Eigen::Dynamic&gt; MatrixXC;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="a00092.html">   52</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00092.html">Model</a> {</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">public</span>: </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keyword">virtual</span> Z Dim () <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="a00092.html#a40a7e43c9d6f5737cf378b184a1e7948">   66</a></span>        <span class="keyword">virtual</span> VectorC <a class="code hl_function" href="a00092.html#a40a7e43c9d6f5737cf378b184a1e7948">ComputeResponse</a> ( <span class="keyword">const</span> VectorC&amp; X ) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="a00092.html#abe4757698f42d4bf4b434c00b9294b92">   75</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="a00092.html#abe4757698f42d4bf4b434c00b9294b92">Train</a> ( <span class="keyword">const</span> VectorC&amp; Load, <span class="keyword">const</span> VectorR&amp; TrainSet ) = 0;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }; <span class="comment">// Model </span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="a00096.html">   87</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00096.html">NonIntrusivePCE</a> final : <span class="keyword">public</span> <a class="code hl_class" href="a00092.html">Model</a> {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keyword">const</span> <a class="code hl_class" href="a00084.html">AnalyticalModel</a>* SDModel_;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        VectorZ Indices_;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        VectorC Coeffs_;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        R omega_;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        Z Dim_;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">public</span>: </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">typedef</span> Eigen::Vector&lt;C, Eigen::Dynamic&gt; VectorXC;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">typedef</span> Eigen::DiagonalMatrix&lt;C,Eigen::Dynamic&gt; DiagMatrixXC;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="a00095.html">   57</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00095.html">NonIntrusiveModel</a> {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keyword">public</span>: </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keyword">virtual</span> Z Dim () <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="a00095.html#a3df4d0e67f3b378897b5fee100eda4d8">   71</a></span>        <span class="keyword">virtual</span> VectorC <a class="code hl_function" href="a00095.html#a3df4d0e67f3b378897b5fee100eda4d8">ComputeResponse</a> ( <span class="keyword">const</span> VectorC&amp; X ) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="a00095.html#ab948182e5a9c373d2e3ce1df7bdb3e19">   80</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="a00095.html#ab948182e5a9c373d2e3ce1df7bdb3e19">Train</a> ( <span class="keyword">const</span> VectorC&amp; Load, <span class="keyword">const</span> VectorR&amp; TrainSet ) = 0;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }; <span class="comment">// Model </span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="a00099.html">   92</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00099.html">NonIntrusivePCE</a> final : <span class="keyword">public</span> <a class="code hl_class" href="a00095.html">NonIntrusiveModel</a> {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keyword">const</span> <a class="code hl_class" href="a00087.html">AnalyticalModel</a>* SDModel_;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        VectorZ Indices_;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        VectorC Coeffs_;</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        Z Dim ()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> Dim_; }</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_class" href="a00096.html">NonIntrusivePCE</a> ( <span class="keyword">const</span> <a class="code hl_class" href="a00084.html">AnalyticalModel</a>* SDModel, <span class="keyword">const</span> R omega );</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00096.html#ab20f6ab6a7e4759a5557506a612880c3">SetIndices</a> ( Z iMax, Z MaxSum );</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        VectorC <a class="code hl_function" href="a00096.html#a16d954e78f03c3f84151032af0dcb898">ComputeResponse</a> ( <span class="keyword">const</span> VectorC&amp; X ) <span class="keyword">const override</span>;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00096.html#ab690b2a1f0edd64bbadc451fc758cd9a">Train</a> ( <span class="keyword">const</span> VectorC&amp; Load, <span class="keyword">const</span> VectorR&amp; TrainSet ) <span class="keyword">override</span>; </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordtype">void</span> PrintCoeffs () <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    };</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>} <span class="comment">// Surrogate </span></div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="preprocessor">#endif </span><span class="comment">// SURROGATE_MODEL_DECLARATIONS </span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        R omega_;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        Z Dim_;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keyword">public</span>: </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        Z Dim ()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> Dim_; }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <a class="code hl_class" href="a00099.html">NonIntrusivePCE</a> ( <span class="keyword">const</span> <a class="code hl_class" href="a00087.html">AnalyticalModel</a>* SDModel, <span class="keyword">const</span> R omega );</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00099.html#ab20f6ab6a7e4759a5557506a612880c3">SetIndices</a> ( Z iMax, Z MaxSum );</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        VectorC <a class="code hl_function" href="a00099.html#a16d954e78f03c3f84151032af0dcb898">ComputeResponse</a> ( <span class="keyword">const</span> VectorC&amp; X ) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00099.html#ab690b2a1f0edd64bbadc451fc758cd9a">Train</a> ( <span class="keyword">const</span> VectorC&amp; Load, <span class="keyword">const</span> VectorR&amp; TrainSet ) <span class="keyword">override</span>; </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        <span class="keywordtype">void</span> PrintCoeffs () <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    };</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="a00103.html">  157</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00103.html">NonIntrusiveRPCE</a> final : <span class="keyword">public</span> <a class="code hl_class" href="a00095.html">NonIntrusiveModel</a> {</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keyword">const</span> <a class="code hl_class" href="a00087.html">AnalyticalModel</a>* SDModel_;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        VectorZ NumIndices_;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        VectorZ DenIndices_;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        VectorC NumCoeffs_;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        VectorC DenCoeffs_;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        R omega_;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        Z Dim_;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keyword">public</span>: </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        Z Dim ()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> Dim_; }</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <a class="code hl_class" href="a00103.html">NonIntrusiveRPCE</a> ( <span class="keyword">const</span> <a class="code hl_class" href="a00087.html">AnalyticalModel</a>* SDModel, <span class="keyword">const</span> R omega );</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00103.html#ab53888697e4437498c371b248f31aee9">SetNumIndices</a> ( Z iMax, Z MaxSum );</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00103.html#a01b5befa20aabbdeba02fca244ef16e4">SetDenIndices</a> ( Z iMax, Z MaxSum );</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        VectorC <a class="code hl_function" href="a00103.html#ad1a52507d99caaddbb26b968c2f5d259">ComputeResponse</a> ( <span class="keyword">const</span> VectorC&amp; X ) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00103.html#aea667dd82f95a0664e0c43c6cfbfac09">Train</a> ( <span class="keyword">const</span> VectorC&amp; Load, <span class="keyword">const</span> VectorR&amp; TrainSet ) <span class="keyword">override</span>; </div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="keywordtype">void</span> PrintCoeffs () <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    };</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno"><a class="line" href="a00107.html">  233</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00107.html">IntrusiveModel</a> {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span> </div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        <span class="keyword">public</span>: </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <span class="keyword">virtual</span> Z Dim () <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="a00107.html#a1beb3d5322738d5607d934daaae77132">  247</a></span>        <span class="keyword">virtual</span> VectorC <a class="code hl_function" href="a00107.html#a1beb3d5322738d5607d934daaae77132">ComputeResponse</a> ( <span class="keyword">const</span> VectorC&amp; X ) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno"><a class="line" href="a00107.html#a2bd16007ef8412267f59386e5c77f303">  256</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="a00107.html#a2bd16007ef8412267f59386e5c77f303">Train</a> ( <span class="keyword">const</span> VectorC&amp; Load ) = 0;</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>    }; <span class="comment">// IntrusiveModel </span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno"><a class="line" href="a00111.html">  267</a></span>    <span class="keyword">class </span><a class="code hl_class" href="a00111.html">IntrusivePCE</a> final : <span class="keyword">public</span> <a class="code hl_class" href="a00107.html">IntrusiveModel</a> {</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keyword">const</span> <a class="code hl_class" href="a00087.html">AnalyticalModel</a>* SDModel_;</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>        VectorZ Indices_;</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        VectorC Coeffs_;</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        R omega_;</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        Z Dim_;</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <span class="keyword">public</span>: </div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        Z Dim ()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> Dim_; }</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <a class="code hl_class" href="a00111.html">IntrusivePCE</a> ( <span class="keyword">const</span> <a class="code hl_class" href="a00087.html">AnalyticalModel</a>* SDModel, <span class="keyword">const</span> R omega );</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00111.html#a071d93fdd8b5b325679dd6c3050fc67f">SetIndices</a> ( Z iMax, Z MaxSum );</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>        VectorC <a class="code hl_function" href="a00111.html#a1da3e2b6f69d75b9ad72811fbaf989bc">ComputeResponse</a> ( <span class="keyword">const</span> VectorC&amp; X ) <span class="keyword">const override</span>;</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="a00111.html#a0cd5670e9a7d9c59d5e07a8a43214c32">Train</a> ( <span class="keyword">const</span> VectorC&amp; Load ) <span class="keyword">override</span>; </div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>        <span class="keywordtype">void</span> PrintCoeffs () <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span> </div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    };</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span> </div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>} <span class="comment">// Surrogate </span></div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span> </div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span><span class="preprocessor">#endif </span><span class="comment">// SURROGATE_MODEL_DECLARATIONS </span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span> </div>
 <div class="ttc" id="aa00011_html"><div class="ttname"><a href="a00011.html">MonteCarlo.hpp</a></div><div class="ttdoc">Declarations of all functions required to run computer experiments.</div></div>
 <div class="ttc" id="aa00029_html"><div class="ttname"><a href="a00029.html">AnalyticalModel.hpp</a></div><div class="ttdoc">Declarations of collection of analytical models.</div></div>
 <div class="ttc" id="aa00050_html"><div class="ttname"><a href="a00050.html">BasisFunctions.hpp</a></div><div class="ttdoc">Declarations of all functions needed to generate basis functions.</div></div>
-<div class="ttc" id="aa00080_html"><div class="ttname"><a href="a00080.html">Surrogate</a></div><div class="ttdoc">Contains a collection of surrogate structural dynamic model.</div></div>
-<div class="ttc" id="aa00084_html"><div class="ttname"><a href="a00084.html">Analytical::Model</a></div><div class="ttdoc">Abstract class of analytical structural dynamic model.</div><div class="ttdef"><b>Definition:</b> AnalyticalModel.hpp:44</div></div>
-<div class="ttc" id="aa00092_html"><div class="ttname"><a href="a00092.html">Surrogate::Model</a></div><div class="ttdoc">Abstract class of surrogate structural dynamic model.</div><div class="ttdef"><b>Definition:</b> SurrogateModel.hpp:52</div></div>
-<div class="ttc" id="aa00092_html_a40a7e43c9d6f5737cf378b184a1e7948"><div class="ttname"><a href="a00092.html#a40a7e43c9d6f5737cf378b184a1e7948">Surrogate::Model::ComputeResponse</a></div><div class="ttdeci">virtual VectorC ComputeResponse(const VectorC &amp;X) const =0</div><div class="ttdoc">Evaluate surrogate model output for a given parameter.   Pure virtual function.</div></div>
-<div class="ttc" id="aa00092_html_abe4757698f42d4bf4b434c00b9294b92"><div class="ttname"><a href="a00092.html#abe4757698f42d4bf4b434c00b9294b92">Surrogate::Model::Train</a></div><div class="ttdeci">virtual void Train(const VectorC &amp;Load, const VectorR &amp;TrainSet)=0</div><div class="ttdoc">Train surrogate model with given training data set.   Pure virtual function.</div></div>
-<div class="ttc" id="aa00096_html"><div class="ttname"><a href="a00096.html">Surrogate::NonIntrusivePCE</a></div><div class="ttdoc">Non-intrusive surrogate model based on collocation method.   Implemented in _NonIntrusivePCE_cpp_.</div><div class="ttdef"><b>Definition:</b> SurrogateModel.hpp:87</div></div>
-<div class="ttc" id="aa00096_html_a16d954e78f03c3f84151032af0dcb898"><div class="ttname"><a href="a00096.html#a16d954e78f03c3f84151032af0dcb898">Surrogate::NonIntrusivePCE::ComputeResponse</a></div><div class="ttdeci">VectorC ComputeResponse(const VectorC &amp;X) const override</div><div class="ttdoc">Approximate response of analytical model to given RVs.</div><div class="ttdef"><b>Definition:</b> NonIntrusivePCE.cpp:51</div></div>
-<div class="ttc" id="aa00096_html_ab20f6ab6a7e4759a5557506a612880c3"><div class="ttname"><a href="a00096.html#ab20f6ab6a7e4759a5557506a612880c3">Surrogate::NonIntrusivePCE::SetIndices</a></div><div class="ttdeci">void SetIndices(Z iMax, Z MaxSum)</div><div class="ttdoc">Set indices of Hermite polynomials to create basis functions.</div><div class="ttdef"><b>Definition:</b> NonIntrusivePCE.cpp:30</div></div>
-<div class="ttc" id="aa00096_html_ab690b2a1f0edd64bbadc451fc758cd9a"><div class="ttname"><a href="a00096.html#ab690b2a1f0edd64bbadc451fc758cd9a">Surrogate::NonIntrusivePCE::Train</a></div><div class="ttdeci">void Train(const VectorC &amp;Load, const VectorR &amp;TrainSet) override</div><div class="ttdoc">Compute coefficients of basis functions using given training set.</div><div class="ttdef"><b>Definition:</b> NonIntrusivePCE.cpp:89</div></div>
+<div class="ttc" id="aa00083_html"><div class="ttname"><a href="a00083.html">Surrogate</a></div><div class="ttdoc">Contains a collection of surrogate structural dynamic model.</div></div>
+<div class="ttc" id="aa00087_html"><div class="ttname"><a href="a00087.html">Analytical::Model</a></div><div class="ttdoc">Abstract class of analytical structural dynamic model.</div><div class="ttdef"><b>Definition:</b> AnalyticalModel.hpp:44</div></div>
+<div class="ttc" id="aa00095_html"><div class="ttname"><a href="a00095.html">Surrogate::NonIntrusiveModel</a></div><div class="ttdef"><b>Definition:</b> SurrogateModel.hpp:57</div></div>
+<div class="ttc" id="aa00095_html_a3df4d0e67f3b378897b5fee100eda4d8"><div class="ttname"><a href="a00095.html#a3df4d0e67f3b378897b5fee100eda4d8">Surrogate::NonIntrusiveModel::ComputeResponse</a></div><div class="ttdeci">virtual VectorC ComputeResponse(const VectorC &amp;X) const =0</div><div class="ttdoc">Evaluate surrogate model output for a given parameter.   Pure virtual function.</div></div>
+<div class="ttc" id="aa00095_html_ab948182e5a9c373d2e3ce1df7bdb3e19"><div class="ttname"><a href="a00095.html#ab948182e5a9c373d2e3ce1df7bdb3e19">Surrogate::NonIntrusiveModel::Train</a></div><div class="ttdeci">virtual void Train(const VectorC &amp;Load, const VectorR &amp;TrainSet)=0</div><div class="ttdoc">Train surrogate model with given training data set.   Pure virtual function.</div></div>
+<div class="ttc" id="aa00099_html"><div class="ttname"><a href="a00099.html">Surrogate::NonIntrusivePCE</a></div><div class="ttdoc">Non-intrusive surrogate model based on collocation method.   Implemented in _NonIntrusivePCE_cpp_.</div><div class="ttdef"><b>Definition:</b> SurrogateModel.hpp:92</div></div>
+<div class="ttc" id="aa00099_html_a16d954e78f03c3f84151032af0dcb898"><div class="ttname"><a href="a00099.html#a16d954e78f03c3f84151032af0dcb898">Surrogate::NonIntrusivePCE::ComputeResponse</a></div><div class="ttdeci">VectorC ComputeResponse(const VectorC &amp;X) const override</div><div class="ttdoc">Approximate response of analytical model to given RVs.</div><div class="ttdef"><b>Definition:</b> NonIntrusivePCE.cpp:47</div></div>
+<div class="ttc" id="aa00099_html_ab20f6ab6a7e4759a5557506a612880c3"><div class="ttname"><a href="a00099.html#ab20f6ab6a7e4759a5557506a612880c3">Surrogate::NonIntrusivePCE::SetIndices</a></div><div class="ttdeci">void SetIndices(Z iMax, Z MaxSum)</div><div class="ttdoc">Set indices of Hermite polynomials to create basis functions.</div><div class="ttdef"><b>Definition:</b> NonIntrusivePCE.cpp:30</div></div>
+<div class="ttc" id="aa00099_html_ab690b2a1f0edd64bbadc451fc758cd9a"><div class="ttname"><a href="a00099.html#ab690b2a1f0edd64bbadc451fc758cd9a">Surrogate::NonIntrusivePCE::Train</a></div><div class="ttdeci">void Train(const VectorC &amp;Load, const VectorR &amp;TrainSet) override</div><div class="ttdoc">Compute coefficients of basis functions using given training set.</div><div class="ttdef"><b>Definition:</b> NonIntrusivePCE.cpp:85</div></div>
+<div class="ttc" id="aa00103_html"><div class="ttname"><a href="a00103.html">Surrogate::NonIntrusiveRPCE</a></div><div class="ttdoc">Non-intrusive surrogate model based on collocation method.   Implemented in _NonIntrusiveRPCE_cpp_.</div><div class="ttdef"><b>Definition:</b> SurrogateModel.hpp:157</div></div>
+<div class="ttc" id="aa00103_html_a01b5befa20aabbdeba02fca244ef16e4"><div class="ttname"><a href="a00103.html#a01b5befa20aabbdeba02fca244ef16e4">Surrogate::NonIntrusiveRPCE::SetDenIndices</a></div><div class="ttdeci">void SetDenIndices(Z iMax, Z MaxSum)</div><div class="ttdoc">Set indices for denominator of basis functions.</div><div class="ttdef"><b>Definition:</b> NonIntrusiveRPCE.cpp:47</div></div>
+<div class="ttc" id="aa00103_html_ab53888697e4437498c371b248f31aee9"><div class="ttname"><a href="a00103.html#ab53888697e4437498c371b248f31aee9">Surrogate::NonIntrusiveRPCE::SetNumIndices</a></div><div class="ttdeci">void SetNumIndices(Z iMax, Z MaxSum)</div><div class="ttdoc">Set indices for numerator of basis functions.</div><div class="ttdef"><b>Definition:</b> NonIntrusiveRPCE.cpp:30</div></div>
+<div class="ttc" id="aa00103_html_ad1a52507d99caaddbb26b968c2f5d259"><div class="ttname"><a href="a00103.html#ad1a52507d99caaddbb26b968c2f5d259">Surrogate::NonIntrusiveRPCE::ComputeResponse</a></div><div class="ttdeci">VectorC ComputeResponse(const VectorC &amp;X) const override</div><div class="ttdoc">Approximate response of analytical model to given RVs.</div><div class="ttdef"><b>Definition:</b> NonIntrusiveRPCE.cpp:64</div></div>
+<div class="ttc" id="aa00103_html_aea667dd82f95a0664e0c43c6cfbfac09"><div class="ttname"><a href="a00103.html#aea667dd82f95a0664e0c43c6cfbfac09">Surrogate::NonIntrusiveRPCE::Train</a></div><div class="ttdeci">void Train(const VectorC &amp;Load, const VectorR &amp;TrainSet) override</div><div class="ttdoc">Compute coefficients of basis functions using given training set.</div><div class="ttdef"><b>Definition:</b> NonIntrusiveRPCE.cpp:117</div></div>
+<div class="ttc" id="aa00107_html"><div class="ttname"><a href="a00107.html">Surrogate::IntrusiveModel</a></div><div class="ttdoc">Abstract class of surrogate structural dynamic model.</div><div class="ttdef"><b>Definition:</b> SurrogateModel.hpp:233</div></div>
+<div class="ttc" id="aa00107_html_a1beb3d5322738d5607d934daaae77132"><div class="ttname"><a href="a00107.html#a1beb3d5322738d5607d934daaae77132">Surrogate::IntrusiveModel::ComputeResponse</a></div><div class="ttdeci">virtual VectorC ComputeResponse(const VectorC &amp;X) const =0</div><div class="ttdoc">Evaluate surrogate model output for a given parameter.   Pure virtual function.</div></div>
+<div class="ttc" id="aa00107_html_a2bd16007ef8412267f59386e5c77f303"><div class="ttname"><a href="a00107.html#a2bd16007ef8412267f59386e5c77f303">Surrogate::IntrusiveModel::Train</a></div><div class="ttdeci">virtual void Train(const VectorC &amp;Load)=0</div><div class="ttdoc">Train surrogate model with given training data set.   Pure virtual function.</div></div>
+<div class="ttc" id="aa00111_html"><div class="ttname"><a href="a00111.html">Surrogate::IntrusivePCE</a></div><div class="ttdoc">Non-intrusive surrogate model based on collocation method.   Implemented in _IntrusivePCE_cpp_.</div><div class="ttdef"><b>Definition:</b> SurrogateModel.hpp:267</div></div>
+<div class="ttc" id="aa00111_html_a071d93fdd8b5b325679dd6c3050fc67f"><div class="ttname"><a href="a00111.html#a071d93fdd8b5b325679dd6c3050fc67f">Surrogate::IntrusivePCE::SetIndices</a></div><div class="ttdeci">void SetIndices(Z iMax, Z MaxSum)</div><div class="ttdoc">Set indices for PCE basis functions.</div><div class="ttdef"><b>Definition:</b> IntrusivePCE.cpp:30</div></div>
+<div class="ttc" id="aa00111_html_a0cd5670e9a7d9c59d5e07a8a43214c32"><div class="ttname"><a href="a00111.html#a0cd5670e9a7d9c59d5e07a8a43214c32">Surrogate::IntrusivePCE::Train</a></div><div class="ttdeci">void Train(const VectorC &amp;Load) override</div><div class="ttdoc">Compute coefficients of basis functions using given training set.</div><div class="ttdef"><b>Definition:</b> IntrusivePCE.cpp:87</div></div>
+<div class="ttc" id="aa00111_html_a1da3e2b6f69d75b9ad72811fbaf989bc"><div class="ttname"><a href="a00111.html#a1da3e2b6f69d75b9ad72811fbaf989bc">Surrogate::IntrusivePCE::ComputeResponse</a></div><div class="ttdeci">VectorC ComputeResponse(const VectorC &amp;X) const override</div><div class="ttdoc">Approximate response of analytical model to given RVs.</div><div class="ttdef"><b>Definition:</b> IntrusivePCE.cpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

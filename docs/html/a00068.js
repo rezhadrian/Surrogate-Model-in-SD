@@ -1,5 +1,8 @@
 var a00068 =
 [
-    [ "Surrogate::Model", "a00092.html", "a00092" ],
-    [ "Surrogate::NonIntrusivePCE", "a00096.html", "a00096" ]
+    [ "Surrogate::NonIntrusiveModel", "a00095.html", "a00095" ],
+    [ "Surrogate::NonIntrusivePCE", "a00099.html", "a00099" ],
+    [ "Surrogate::NonIntrusiveRPCE", "a00103.html", "a00103" ],
+    [ "Surrogate::IntrusiveModel", "a00107.html", "a00107" ],
+    [ "Surrogate::IntrusivePCE", "a00111.html", "a00111" ]
 ];

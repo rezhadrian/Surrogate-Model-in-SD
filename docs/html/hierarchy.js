@@ -1,9 +1,14 @@
 var hierarchy =
 [
-    [ "Analytical::Model< Z, R, C >", "a00084.html", [
-      [ "Analytical::MassSpringDamper< Z, R, C >", "a00088.html", null ]
+    [ "Surrogate::IntrusiveModel", "a00107.html", [
+      [ "Surrogate::IntrusivePCE", "a00111.html", null ]
     ] ],
-    [ "Surrogate::Model", "a00092.html", [
-      [ "Surrogate::NonIntrusivePCE", "a00096.html", null ]
+    [ "Analytical::Model< Z, R, C >", "a00087.html", [
+      [ "Analytical::MassSpringDamper< Z, R, C >", "a00091.html", null ]
+    ] ],
+    [ "Model", "a00115.html", null ],
+    [ "Surrogate::NonIntrusiveModel", "a00095.html", [
+      [ "Surrogate::NonIntrusivePCE", "a00099.html", null ],
+      [ "Surrogate::NonIntrusiveRPCE", "a00103.html", null ]
     ] ]
 ];

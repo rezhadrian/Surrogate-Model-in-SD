@@ -23,8 +23,8 @@ int main () {
     // Define analytical model 
 
     VectorF Masses { 2.0, 2.0 };
-    VectorF Damper { 1.0, 0.5 };
-    VectorF Spring { 2.0, 1.0 };
+    VectorF Damper { 5.0, 2.5 };
+    VectorF Spring { 20.0, 10.0 };
 
     AnalyticalModel SDModel ( Masses, Damper, Spring );
 
@@ -40,7 +40,8 @@ int main () {
     SurrogateModel NPCE ( &SDModel, Omega );
 
     NPCE.SetIndices (
-        10, 10
+        10,  // max index 
+        10   // max sum of indices 
     );
 
     NPCE.Train ( Force );
@@ -50,10 +51,12 @@ int main () {
 
     VectorC RandomParts { 
 
-        1.0, 0.0  // point #1
+        0.0, 0.0  // point #1
         // 0.0, 2.0   // point #2
 
     };
+
+    NPCE.PrintCoeffs();
 
     auto dispResult = NPCE.ComputeResponse ( RandomParts );
 

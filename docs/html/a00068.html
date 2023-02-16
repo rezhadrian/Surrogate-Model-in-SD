@@ -108,18 +108,28 @@ $(document).ready(function(){initNavTree('a00068.html',''); initResizable(); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00092.html">Surrogate::Model</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract class of surrogate structural dynamic model.  <a href="a00092.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00095.html">Surrogate::NonIntrusiveModel</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00096.html">Surrogate::NonIntrusivePCE</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00099.html">Surrogate::NonIntrusivePCE</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-intrusive surrogate model based on collocation method. <br  />
- Implemented in <a class="el" href="a00071.html#_NonIntrusivePCE_cpp_">_NonIntrusivePCE_cpp_</a>.  <a href="a00096.html#details">More...</a><br /></td></tr>
+ Implemented in <a class="el" href="a00071.html#_NonIntrusivePCE_cpp_">_NonIntrusivePCE_cpp_</a>.  <a href="a00099.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00103.html">Surrogate::NonIntrusiveRPCE</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-intrusive surrogate model based on collocation method. <br  />
+ Implemented in <a class="el" href="a00077.html#_NonIntrusiveRPCE_cpp_">_NonIntrusiveRPCE_cpp_</a>.  <a href="a00103.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00107.html">Surrogate::IntrusiveModel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract class of surrogate structural dynamic model.  <a href="a00107.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00111.html">Surrogate::IntrusivePCE</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-intrusive surrogate model based on collocation method. <br  />
+ Implemented in <a class="el" href="a00074.html#_IntrusivePCE_cpp_">_IntrusivePCE_cpp_</a>.  <a href="a00111.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00080"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.html">Surrogate</a></td></tr>
-<tr class="memdesc:a00080"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains a collection of surrogate structural dynamic model. <br /></td></tr>
+<tr class="memitem:a00083"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00083.html">Surrogate</a></td></tr>
+<tr class="memdesc:a00083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains a collection of surrogate structural dynamic model. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -143,14 +153,20 @@ typedef std::vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom
 typedef std::vector&lt; Z &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Surrogate::VectorZ</b></td></tr>
 <tr class="separator:ad04067181891e0e6015015a7f1d9c172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d3251e2d6c6ba9adb3beb1289e247f"><td class="memItemLeft" align="right" valign="top"><a id="a58d3251e2d6c6ba9adb3beb1289e247f" name="a58d3251e2d6c6ba9adb3beb1289e247f"></a>
-typedef <a class="el" href="a00084.html">Analytical::Model</a>&lt; Z, R, C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Surrogate::AnalyticalModel</b></td></tr>
+typedef <a class="el" href="a00087.html">Analytical::Model</a>&lt; Z, R, C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Surrogate::AnalyticalModel</b></td></tr>
 <tr class="separator:a58d3251e2d6c6ba9adb3beb1289e247f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1572baf026952016d980ede5fdd73e0"><td class="memItemLeft" align="right" valign="top"><a id="ac1572baf026952016d980ede5fdd73e0" name="ac1572baf026952016d980ede5fdd73e0"></a>
+typedef Eigen::Matrix&lt; R, Eigen::Dynamic, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Surrogate::MatrixXR</b></td></tr>
+<tr class="separator:ac1572baf026952016d980ede5fdd73e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02a4f41450a27ffc9cb220fec2f2ab26"><td class="memItemLeft" align="right" valign="top"><a id="a02a4f41450a27ffc9cb220fec2f2ab26" name="a02a4f41450a27ffc9cb220fec2f2ab26"></a>
 typedef Eigen::Matrix&lt; C, Eigen::Dynamic, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Surrogate::MatrixXC</b></td></tr>
 <tr class="separator:a02a4f41450a27ffc9cb220fec2f2ab26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a466cec2d0a95ba0be06599af35c27b74"><td class="memItemLeft" align="right" valign="top"><a id="a466cec2d0a95ba0be06599af35c27b74" name="a466cec2d0a95ba0be06599af35c27b74"></a>
 typedef Eigen::Vector&lt; C, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Surrogate::VectorXC</b></td></tr>
 <tr class="separator:a466cec2d0a95ba0be06599af35c27b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c940c6295ec8134cd1a6b1a0c304b98"><td class="memItemLeft" align="right" valign="top"><a id="a9c940c6295ec8134cd1a6b1a0c304b98" name="a9c940c6295ec8134cd1a6b1a0c304b98"></a>
+typedef Eigen::DiagonalMatrix&lt; C, Eigen::Dynamic &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Surrogate::DiagMatrixXC</b></td></tr>
+<tr class="separator:a9c940c6295ec8134cd1a6b1a0c304b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Declarations of collection of surrogate models. </p>

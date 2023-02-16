@@ -1,5 +1,5 @@
 var a00029 =
 [
-    [ "Analytical::Model< Z, R, C >", "a00084.html", "a00084" ],
-    [ "Analytical::MassSpringDamper< Z, R, C >", "a00088.html", "a00088" ]
+    [ "Analytical::Model< Z, R, C >", "a00087.html", "a00087" ],
+    [ "Analytical::MassSpringDamper< Z, R, C >", "a00091.html", "a00091" ]
 ];
