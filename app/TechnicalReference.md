@@ -67,11 +67,12 @@ $$
 \phantom{x}
 {U}_{i}(\mathbf{x})
 \approx 
-\frac{
+\left(
     \sum_{p=0}^{P-1} \Psi_{p}(\mathbf{x}) {Y}_{pi}
-}{
+\right) / 
+\left(
     \sum_{q=0}^{Q-1} \Psi_{q}(\mathbf{x}) {Y}_{qi}
-}
+\right)
 $$
 
 <br>

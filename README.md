@@ -35,6 +35,6 @@ ctest
 ## Links 
 
 <ul>
-    <li><a href="./app/TechnicalReference.md">Technical Reference</a></li>
+    <li><a href="./app/TechnicalReference.ipynb">Technical Reference</a></li>
     <li><a href="https://rezhadrian.github.io/Surrogate-Model-in-SD/docs/html/index.html">SMSD Documentations</a></li>
 </ul>
