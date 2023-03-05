@@ -46,36 +46,42 @@ namespace Surrogate {
 
     VectorC IntrusivePCE::ComputeResponse ( const VectorC& X ) const {
 
-        // X contains number of points x dimension of each point 
-        auto nPoints = X.size() / Dim ();
+        auto nPoints = X.size() / Dim();
 
-        // Compute basis functions with X as arguments 
-        auto Basis = 
-            BasisFunctions::HermitePolynomials<Z,R,C> (
+        // Compute basis functions with random inputs as arguments 
+        auto Basis = BasisFunctions::HermitePolynomials<Z,R,C> (
 
-                Indices_, X, Dim ()
+                Indices_, X, Dim()
 
         );
 
-        // Map vectors to eigen object for linear algebra operations 
+        VectorC Response ( nPoints * Dim () );
 
-        Eigen::Map<MatrixXC> Psi ( 
+
+        // ===================================================================
+        // Map vectors to eigen objects for linear algebra operations 
+        // ===================================================================
+
+        Eigen::Map<MatrixXC> basis ( 
             Basis.data(), Indices_.size() / Dim (), nPoints
         );
 
-        Eigen::Map<const MatrixXC> Coeffs (
+        Eigen::Map<const MatrixXC> coeffs (
             Coeffs_.data(), Dim (), Indices_.size() / Dim ()
         );
 
-        VectorC result ( nPoints * Dim () );
+        Eigen::Map<MatrixXC> response ( 
+            Response.data(), Dim (), nPoints 
+        );
 
-        Eigen::Map<MatrixXC> Result ( result.data(), Dim (), nPoints );
 
-        // std::cout << Psi << std::endl; 
+        // ===================================================================
+        // Approximate response as linear combination of basis functions 
+        // ===================================================================
 
-        Result = Coeffs * Psi;
+        response = coeffs * basis;
 
-        return result;
+        return Response;
 
     }
 
@@ -86,18 +92,15 @@ namespace Surrogate {
 
     void IntrusivePCE::Train (
 
-        const VectorC& Load
+        const VectorC& Load  
 
     ) {
 
-        auto P = Indices_.size() / Dim ();
+        auto nBasis = Indices_.size() / Dim();
 
-        MatrixXC H = MatrixXC::Zero ( P * Dim(), P * Dim() );
+        auto DynamicStiffness = SDModel_ -> DynamicStiffness ( omega_ );
 
-        auto KD = SDModel_ -> DynamicStiffness ( omega_ );
-        // VectorC KD ( Dim () );
-
-        auto HermiteTriples = BasisFunctions::ExpHermiteTriples<Z,R> (
+        auto ExpHermiteTriples = BasisFunctions::ExpHermiteTriples<Z,R> (
 
             Indices_, 
             Dim(), 
@@ -105,29 +108,50 @@ namespace Surrogate {
 
         );
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> KDD ( KD.data(), Dim(), Dim() );
-        Eigen::Map<MatrixXR> HT ( HermiteTriples.data(), P, P );
 
-        // std::cout << HT << std::endl;
+        // ===================================================================
+        // Calculate deterministic part of modified dynamic stiffness matrix 
+        // ===================================================================
 
-        for ( auto i = 0; i < P; i++ ) {
-        for ( auto j = 0; j < P; j++ ) {
+        Eigen::Map<MatrixXC, Eigen::RowMajor> dynamicStiffness ( 
+            DynamicStiffness.data(), Dim(), Dim() 
+        );
 
-            H.block ( i*Dim(), j*Dim(), Dim(), Dim() ) +=
-                HT(i,j) * KDD;
+        Eigen::Map<MatrixXR> expHermiteTriples ( 
+            ExpHermiteTriples.data(), nBasis, nBasis 
+        );
+
+        MatrixXC modDynamicStiffness = 
+            MatrixXC::Zero ( nBasis * Dim(), nBasis * Dim() );
+
+        for ( auto i = 0; i < nBasis; i++ ) {
+        for ( auto j = 0; j < nBasis; j++ ) {
+
+            modDynamicStiffness.block ( 
+
+                i*Dim(), 
+                j*Dim(), 
+
+                Dim(), Dim() 
+
+            ) += expHermiteTriples(i,j) * dynamicStiffness;
 
         }
         }
+
+
+        // ===================================================================
+        // Calculate random part of modified dynamic stiffness matrix 
+        // ===================================================================
 
         for ( auto k = 0; k < Dim(); k++ ) {
 
-            VectorR Kkv ( Dim(), 0.0 );
-            Kkv[k] = 1.0;
+            VectorR RandomSprings ( Dim(), 0.0 );
+            RandomSprings[k] = 1.0;
 
-            auto Kks = SDModel_ -> StiffnessMatrix ( Kkv );
-            // VectorR Kks ( Dim () );
+            auto RandomStiffness = SDModel_->StiffnessMatrix ( RandomSprings );
 
-            auto HermiteTriples = BasisFunctions::ExpHermiteTriples<Z,R> (
+            auto EHermiteTriples = BasisFunctions::ExpHermiteTriples<Z,R> (
 
                 Indices_, 
                 Dim(), 
@@ -135,42 +159,51 @@ namespace Surrogate {
 
             );
 
-            // for ( auto ii = 0; ii < Indices_.size(); ii++ ) {
-            //
-            //     std::cout << Indices_[ii] << std::endl;
-            //    
-            // }
+            Eigen::Map<MatrixXR, Eigen::RowMajor> randomStiffness ( 
+                RandomStiffness.data(), Dim(), Dim() 
+            );
 
-            
+            Eigen::Map<MatrixXR> eHermiteTriples ( 
+                EHermiteTriples.data(), nBasis, nBasis 
+            );
 
-            Eigen::Map<MatrixXR, Eigen::RowMajor> KDD ( Kks.data(), Dim(), Dim() );
-            Eigen::Map<MatrixXR> HT ( HermiteTriples.data(), P, P );
+            for ( auto i = 0; i < nBasis; i++ ) {
+            for ( auto j = 0; j < nBasis; j++ ) {
 
-            // std::cout << HT << std::endl;
-            // std::cout << KDD << std::endl;
+                modDynamicStiffness.block ( 
 
-            for ( auto i = 0; i < P; i++ ) {
-            for ( auto j = 0; j < P; j++ ) {
+                    i*Dim(), 
+                    j*Dim(), 
 
-                H.block ( i*Dim(), j*Dim(), Dim(), Dim() ) +=
-                    HT(i,j) * KDD;
+                    Dim(), Dim() 
+
+                ) += eHermiteTriples(i,j) * randomStiffness;
 
             }
             }
+
         }
 
-        // std::cout << H << std::endl;
 
-        Coeffs_ = VectorC ( P * Dim (), 0.0 );
+        // ===================================================================
+        // Solve for coefficients of basis functions 
+        // ===================================================================
 
-        Eigen::Map<const VectorXC> Force ( Load.data(), Dim() );
+        Coeffs_ = VectorC ( nBasis * Dim(), 0.0 );
 
-        VectorXC F = VectorXC::Zero( P * Dim () );
-        F.segment ( 0, Dim() ) = Force;
+        VectorXC force = VectorXC::Zero( nBasis * Dim() );
 
-        Eigen::Map<VectorXC> Coeffs ( Coeffs_.data(), P * Dim () );
+        Eigen::Map<const VectorXC> load ( 
+            Load.data(), Dim() 
+        );
 
-        Coeffs = H.ldlt().solve(F);
+        Eigen::Map<VectorXC> coeffs ( 
+            Coeffs_.data(), nBasis * Dim () 
+        );
+
+        force.segment ( 0, Dim() ) = load;
+
+        coeffs = modDynamicStiffness.partialPivLu().solve(force);
 
     }
 
@@ -189,6 +222,17 @@ namespace Surrogate {
 
     }
 
-}
+} // Intrusive PCE PrintCoeffs 
+
+
+namespace Surrogate {
+
+    VectorC IntrusivePCE::Coeffs () const {
+
+        return Coeffs_;
+
+    }
+
+} // Intrusive PCE Coeffs 
 
 

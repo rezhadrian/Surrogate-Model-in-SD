@@ -1,0 +1,15 @@
+\subsection{Rational Polynomial Chaos Expansion}
+
+Another approach is to approximate the response as a ratio between two linear combinations of a set of basis functions:
+
+\begin{equation}
+    U_{i}(\omega,\mathbf{x}) =
+    \frac{
+        \sum_{p=1}^{P} U_{ip}(\omega) \cdot \Psi_{p}(\mathbf{x})
+    }{
+        \sum_{q=1}^{Q} U_{iq}(\omega) \cdot \Psi_{q}(\mathbf{x})
+    }
+\label{RPCE}
+\end{equation}
+
+The basis functions used in Rational Polynomial Chaos Expansion (RPCE) is the same functions used in PCE. 

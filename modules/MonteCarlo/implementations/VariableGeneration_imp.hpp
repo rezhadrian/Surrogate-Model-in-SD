@@ -47,6 +47,32 @@ namespace MonteCarlo {
 
 namespace MonteCarlo {
 
+    template < typename Z, typename R, typename C > 
+    Vector<C> RandomSampling ( const Z nPoints, const Z dim ) {
+
+        std::random_device device;
+
+        std::default_random_engine generator ( device() );
+
+        std::normal_distribution <R> RandomVariable ( 0.0, 1.0 );
+
+        Vector<C> result ( nPoints * dim );
+
+        for ( auto i = 0; i < result.size(); i++ ) {
+
+            result[i] = C(RandomVariable(generator));
+
+        }
+
+        return result;
+
+    }
+
+}
+
+
+namespace MonteCarlo {
+
     template < typename R, typename C >
     Vector<C> CombineRVs ( 
 

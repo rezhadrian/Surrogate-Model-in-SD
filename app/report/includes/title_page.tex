@@ -1,0 +1,35 @@
+% Header and TUM Logo
+\fancypagestyle{titlepage} {
+    \fancyhf{}
+    \fancyhead [R] {
+        \includegraphics[height=1.0cm]{TUM_Logo.png}
+    }
+    \fancyhead [C] {
+        \large{BGCE Honours Project} \\ \large{Winter Term 2022/23}
+    }
+    \headsep18mm
+}
+
+% Title and Authors
+\begin{center}
+    \large{\textbf{Surrogate Models in Structural Dynamics} }\\[11pt]
+\end{center}
+\begin{center}
+    Tanuharja, R.A.*,
+    Schneider, F.* \\[5pt]
+\end{center}
+
+% Footer
+\long\def\symbolfootnote[#1]#2{
+    \begingroup
+        \def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}
+    \endgroup
+}
+
+{
+    \let\thefootnote\relax\footnotetext {
+        * \textit{Technische Universit\"at M\"unchen}
+    }
+}
+
+

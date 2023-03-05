@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: Member List</title>
+<title>Surrogate Model in Structural Dynamics: MonteCarlo Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('a00088.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('a00085.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,20 +89,375 @@ $(document).ready(function(){initNavTree('a00088.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Analytical::MassSpringDamper&lt; Z, R, C &gt; Member List</div></div>
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">MonteCarlo Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="a00088.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="a00088.html#a758a4785ea7fe4480f0ee49c283fa2f7">ComputeResponse</a>(const Vector&lt; C &gt; &amp;Force, const R omega, const typename Vector&lt; R &gt;::const_iterator FirstSpring, const typename Vector&lt; R &gt;::const_iterator LastSpring) const override</td><td class="entry"><a class="el" href="a00088.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Dim</b>() const override (defined in <a class="el" href="a00088.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>)</td><td class="entry"><a class="el" href="a00088.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="a00088.html#a0f2d23fa5375146c089a3ebae7f2a8b6">MassSpringDamper</a>(const Vector&lt; R &gt; Masses, const Vector&lt; R &gt; Dampers, const Vector&lt; R &gt; Springs)</td><td class="entry"><a class="el" href="a00088.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<p>Contains all functions needed to run computer experiments.  
+<a href="a00085.html#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a01082db67887e56032989fe13da99ecd"><td class="memTemplParams" colspan="2"><a id="a01082db67887e56032989fe13da99ecd" name="a01082db67887e56032989fe13da99ecd"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a01082db67887e56032989fe13da99ecd"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Vector</b> = std::vector&lt; T &gt;</td></tr>
+<tr class="separator:a01082db67887e56032989fe13da99ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a066147a19409570698806874e690364e"><td class="memTemplParams" colspan="2"><a id="a066147a19409570698806874e690364e" name="a066147a19409570698806874e690364e"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a066147a19409570698806874e690364e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MatrixXT</b> = Eigen::Matrix&lt; T, Eigen::Dynamic, Eigen::Dynamic &gt;</td></tr>
+<tr class="separator:a066147a19409570698806874e690364e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af8495b74682bed4d4c5699f023285890"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
+<tr class="memitem:af8495b74682bed4d4c5699f023285890"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#af8495b74682bed4d4c5699f023285890">LHS</a> (const Z nPoints, const Z Dim)</td></tr>
+<tr class="memdesc:af8495b74682bed4d4c5699f023285890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform latin hypercube sampling with given dimension. <br  />
+ Implemented in <a class="el" href="a00014.html#_LatinHypercubeSampling_imp_hpp_">_LatinHypercubeSampling_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:af8495b74682bed4d4c5699f023285890"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5a3b4d632e4ff35da731d6e7129160d"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
+<tr class="memitem:ac5a3b4d632e4ff35da731d6e7129160d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#ac5a3b4d632e4ff35da731d6e7129160d">ConvertLHStoStdNorm</a> (Vector&lt; R &gt; &amp;LHSResult)</td></tr>
+<tr class="memdesc:ac5a3b4d632e4ff35da731d6e7129160d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert LHS result to sets of standard normal random variables. Conversion is in place, no new vector generated. <br  />
+ Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:ac5a3b4d632e4ff35da731d6e7129160d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f964dfeeebe493fd6ec970763572cb"><td class="memTemplParams" colspan="2"><a id="a74f964dfeeebe493fd6ec970763572cb" name="a74f964dfeeebe493fd6ec970763572cb"></a>
+template&lt;typename Z , typename R , typename C &gt; </td></tr>
+<tr class="memitem:a74f964dfeeebe493fd6ec970763572cb"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>RandomSampling</b> (const Z nPoints, const Z dim)</td></tr>
+<tr class="separator:a74f964dfeeebe493fd6ec970763572cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23c4961f7ba48f8939c434a99e6e11f2"><td class="memTemplParams" colspan="2">template&lt;typename R , typename C &gt; </td></tr>
+<tr class="memitem:a23c4961f7ba48f8939c434a99e6e11f2"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#a23c4961f7ba48f8939c434a99e6e11f2">CombineRVs</a> (const MatrixXT&lt; R &gt; &amp;Correl, Vector&lt; R &gt; &amp;RVs, const size_t Dim)</td></tr>
+<tr class="memdesc:a23c4961f7ba48f8939c434a99e6e11f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine uncorrelated RVs to generate correlated RVs. <br  />
+ Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:a23c4961f7ba48f8939c434a99e6e11f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
+<tr class="memitem:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">GenerateRVs</a> (Vector&lt; R &gt; &amp;StdNormRVs, const MatrixXT&lt; R &gt; &amp;Correl, const Vector&lt; std::function&lt; R(R)&gt; &gt; &amp;ICDFs, const Z Dim)</td></tr>
+<tr class="memdesc:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate RVs with a given distribution from standard normal RVs. <br  />
+ Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>.  <br /></td></tr>
+<tr class="separator:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44402428a5a904c478d5c9ca5b5a4f29"><td class="memTemplParams" colspan="2">template&lt;typename R , typename C &gt; </td></tr>
+<tr class="memitem:a44402428a5a904c478d5c9ca5b5a4f29"><td class="memTemplItemLeft" align="right" valign="top">C&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#a44402428a5a904c478d5c9ca5b5a4f29">EvaluateFRF</a> (const R omega, const Vector&lt; R &gt; &amp;params)</td></tr>
+<tr class="separator:a44402428a5a904c478d5c9ca5b5a4f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa27088a7b2366d73cec8b771dc8dfb75"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R , typename C , class Function &gt; </td></tr>
+<tr class="memitem:aa27088a7b2366d73cec8b771dc8dfb75"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#aa27088a7b2366d73cec8b771dc8dfb75">EvaluateModel</a> (const R omega, const Vector&lt; R &gt; &amp;RVs, const Function &amp;<a class="el" href="a00122.html">Model</a>, const Z dim)</td></tr>
+<tr class="separator:aa27088a7b2366d73cec8b771dc8dfb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Contains all functions needed to run computer experiments. </p>
+<p><a class="anchor" id="_MonteCarlo_"></a> </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a23c4961f7ba48f8939c434a99e6e11f2" name="a23c4961f7ba48f8939c434a99e6e11f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23c4961f7ba48f8939c434a99e6e11f2">&#9670;&#160;</a></span>CombineRVs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename C &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt; C &gt; MonteCarlo::CombineRVs </td>
+          <td>(</td>
+          <td class="paramtype">const MatrixXT&lt; R &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Correl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector&lt; R &gt; &amp;&#160;</td>
+          <td class="paramname"><em>RVs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>Dim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Combine uncorrelated RVs to generate correlated RVs. <br  />
+ Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
+    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt;</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Correl</td><td>correlation matrix </td></tr>
+    <tr><td class="paramname">RVs</td><td>vector of uncorrelated random variables </td></tr>
+    <tr><td class="paramname">Dim</td><td>number of random variables that will be correlated</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of correlated random variables casted as complex </dd></dl>
+
+</div>
+</div>
+<a id="ac5a3b4d632e4ff35da731d6e7129160d" name="ac5a3b4d632e4ff35da731d6e7129160d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5a3b4d632e4ff35da731d6e7129160d">&#9670;&#160;</a></span>ConvertLHStoStdNorm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Z , typename R &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void MonteCarlo::ConvertLHStoStdNorm </td>
+          <td>(</td>
+          <td class="paramtype">Vector&lt; R &gt; &amp;&#160;</td>
+          <td class="paramname"><em>LHSResult</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert LHS result to sets of standard normal random variables. Conversion is in place, no new vector generated. <br  />
+ Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Z</td><td>a type of non=negative integer e.g. size_t </td></tr>
+    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">LHSResult</td><td>vector output of <a class="el" href="a00085.html#_LHS_">_LHS_</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a44402428a5a904c478d5c9ca5b5a4f29" name="a44402428a5a904c478d5c9ca5b5a4f29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44402428a5a904c478d5c9ca5b5a4f29">&#9670;&#160;</a></span>EvaluateFRF()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename R , typename C &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">C MonteCarlo::EvaluateFRF </td>
+          <td>(</td>
+          <td class="paramtype">const R&#160;</td>
+          <td class="paramname"><em>omega</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector&lt; R &gt; &amp;&#160;</td>
+          <td class="paramname"><em>params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Example model to evaluate FRF for a given E and Mu</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">R</td><td>a type of floating point e.g. double </td></tr>
+    <tr><td class="paramname">C</td><td>a type compatible with std::complex&lt;R&gt;</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">omega</td><td>excitation angular velocity </td></tr>
+    <tr><td class="paramname">params</td><td>a vector { E, Mu } </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa27088a7b2366d73cec8b771dc8dfb75" name="aa27088a7b2366d73cec8b771dc8dfb75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa27088a7b2366d73cec8b771dc8dfb75">&#9670;&#160;</a></span>EvaluateModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Z , typename R , typename C , class Function &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt; C &gt; MonteCarlo::EvaluateModel </td>
+          <td>(</td>
+          <td class="paramtype">const R&#160;</td>
+          <td class="paramname"><em>omega</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector&lt; R &gt; &amp;&#160;</td>
+          <td class="paramname"><em>RVs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Function &amp;&#160;</td>
+          <td class="paramname"><em>Model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>dim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Evaluate model result for a set of parameters set</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
+    <tr><td class="paramname">R</td><td>a type of floating point e.g. double </td></tr>
+    <tr><td class="paramname">C</td><td>a type compatible with std::complex&lt;R&gt; </td></tr>
+    <tr><td class="paramname">Function</td><td>compatible with C(const R, const Vector&lt;R&gt;&amp;)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dim</td><td>number of variable argument for the model </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acc8d3b4a6e5890cc696d1ca44f7e78d6" name="acc8d3b4a6e5890cc696d1ca44f7e78d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc8d3b4a6e5890cc696d1ca44f7e78d6">&#9670;&#160;</a></span>GenerateRVs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Z , typename R &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt; R &gt; MonteCarlo::GenerateRVs </td>
+          <td>(</td>
+          <td class="paramtype">Vector&lt; R &gt; &amp;&#160;</td>
+          <td class="paramname"><em>StdNormRVs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const MatrixXT&lt; R &gt; &amp;&#160;</td>
+          <td class="paramname"><em>Correl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Vector&lt; std::function&lt; R(R)&gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>ICDFs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>Dim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generate RVs with a given distribution from standard normal RVs. <br  />
+ Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
+    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">StdNormRVs</td><td>vector of standard normal random variables </td></tr>
+    <tr><td class="paramname">Correl</td><td>correlation matrix </td></tr>
+    <tr><td class="paramname">ICDFs</td><td>vector of inverse cummulative distribution functions </td></tr>
+    <tr><td class="paramname">Dim</td><td>number of distributions</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of new randow variables </dd></dl>
+
+</div>
+</div>
+<a id="af8495b74682bed4d4c5699f023285890" name="af8495b74682bed4d4c5699f023285890"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8495b74682bed4d4c5699f023285890">&#9670;&#160;</a></span>LHS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Z , typename R &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt; R &gt; MonteCarlo::LHS </td>
+          <td>(</td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>nPoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Z&#160;</td>
+          <td class="paramname"><em>Dim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Perform latin hypercube sampling with given dimension. <br  />
+ Implemented in <a class="el" href="a00014.html#_LatinHypercubeSampling_imp_hpp_">_LatinHypercubeSampling_imp_hpp_</a>. </p>
+<p><a class="anchor" id="_LHS_"></a></p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
+    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nPoints</td><td>number of sampled points </td></tr>
+    <tr><td class="paramname">Dim</td><td>dimension of each point</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector { Point1, Point2, ... } </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="a00085.html">MonteCarlo</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

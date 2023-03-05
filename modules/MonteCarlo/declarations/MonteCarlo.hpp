@@ -65,6 +65,10 @@ namespace MonteCarlo {
     void ConvertLHStoStdNorm ( Vector<R>& LHSResult );
 
 
+    template < typename Z, typename R, typename C >
+    Vector<C> RandomSampling ( const Z nPoints, const Z dim );
+
+
     template < typename R, typename C >
     /**
       * @brief 

@@ -17,6 +17,7 @@
 #ifndef ANALYTICAL_MODEL_DECLARATIONS 
     #include "AnalyticalModel.hpp" 
 #endif 
+#include <iostream>
 
 
 namespace Analytical {
@@ -207,6 +208,8 @@ namespace Analytical {
                 omega * DampingMatrix_[i]
 
             );
+
+            // std::cout << result[i] << std::endl;
 
         }
 

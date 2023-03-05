@@ -1,0 +1,45 @@
+\newpage
+\section{Random Dynamic System}
+
+The steady-state response of a Linear Time-Invariant (LTI) structural dynamic system can be found through solving the discretized equation of motion in the frequency domain instead of time domain.
+The equation of motion in time and frequency domain are given below. 
+
+\begin{equation}
+    \mathbf{M}\ddot{\mathbf{u}}(t) +
+    \mathbf{C}\dot{ \mathbf{u}}(t) +
+    \mathbf{K}      \mathbf{u} (t)  =
+    \mathbf{f}(t)
+    \phantom{x}
+    \xrightarrow{
+        \phantom{x}
+        \mathscr{F}
+        \phantom{x}
+    }
+    \phantom{x}
+    \left(
+        \mathbf{K} - \omega^{2}\mathbf{M} +
+        j\omega \mathbf{C}
+    \right)
+    \mathbf{U}(\omega) =
+    \mathbf{F}(\omega)
+\label{EoM}
+\end{equation}
+
+Equation \ref{EoM} depends on structural and load parameters, which are subject to uncertainties. 
+To account for this, the problem can be stated in a probabilistic setting, and the system of equations is reformulated as a function of a set of random variables $\mathbf{x}$: 
+
+\begin{equation}
+    \left[
+        \mathbf{K}(\mathbf{x}) - 
+        \omega^{2}\mathbf{M}(\mathbf{x}) +
+        j\omega \mathbf{C}(\mathbf{x})
+    \right]
+    \mathbf{U}(\omega,\mathbf{x}) =
+    \mathbf{F}(\omega,\mathbf{x})
+\label{Random EoM}
+\end{equation}
+
+One can obtain distribution of $\mathbf{U}(\omega,\mathbf{x})$ using Monte Carlo Simulation (MCS) i.e. to solve the equations multiple times, each time using a different sample of $\mathbf{x}$. 
+For large and complex system, the computational cost of MCS is too high. 
+Thus, one usually create a meta / surrogate model that approximate the response and is cheaper to compute. 
+

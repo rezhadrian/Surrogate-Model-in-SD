@@ -257,11 +257,12 @@ namespace Surrogate {
 
     }; // IntrusiveModel 
 
+
     /**
       * @class IntrusivePCE  
       *
       * @brief 
-      * Non-intrusive surrogate model based on collocation method. @n 
+      * Intrusive surrogate model based on polynomial chaos expansion. 
       * Implemented in @ref _IntrusivePCE_cpp_ 
       */
     class IntrusivePCE final : public IntrusiveModel {
@@ -307,19 +308,94 @@ namespace Surrogate {
 
         /**
           * @brief 
-          * Compute coefficients of basis functions using given training set 
+          * Compute coefficients of basis functions 
           * 
-          * @param Load     harmonic load vector 
-          * @param TrainSet vector of random variables 
+          * @param Load harmonic load vector 
           */
         void Train ( const VectorC& Load ) override; 
+
+        /** 
+          * @brief 
+          * Gives coefficients of basis functions 
+          */
+        VectorC Coeffs () const;
 
         /**
           * @private 
           */
         void PrintCoeffs () const;
 
-    };
+    }; // IntrusivePCE 
+
+    
+    /**
+      * @class IntrusiveRPCE  
+      *
+      * @brief 
+      * Intrusive surrogate model based on polynomial chaos expansion. 
+      * Implemented in @ref _IntrusiveRPCE_cpp_ 
+      */
+    class IntrusiveRPCE final : public IntrusiveModel {
+
+        const AnalyticalModel* SDModel_;
+        VectorZ NumIndices_;
+        VectorZ DenIndices_;
+        VectorC NumCoeffs_;
+        VectorC DenCoeffs_;
+
+        R omega_;
+        Z Dim_;
+
+        public:
+
+        Z Dim () const override { return Dim_; }
+
+        /**
+          * @brief 
+          * Create RPCE model for given SD model and angular velocity 
+          * 
+          * @param SDModel address of analytical structural dynamic model 
+          * @param omega   angular velocity of harmonic load 
+          */
+        IntrusiveRPCE ( const AnalyticalModel* SDModel, const R omega );
+
+        /**
+          * @brief 
+          * Set indices for RPCE basis functions in the numerator 
+          * 
+          * @param iMax   largest allowable individual index 
+          * @param MaxSum largest allowable sum of indices in a set 
+          */
+        void SetNumIndices ( const Z iMax, const Z MaxSum );
+
+        /**
+          * @brief 
+          * Set indices for RPCE basis functions in the denominator 
+          * 
+          * @param iMax   largest allowable individual index 
+          * @param MaxSum largest allowable sum of indices in a set 
+          */
+        void SetDenIndices ( const Z iMax, const Z MaxSum );
+
+        /**
+          * @brief 
+          * Approximate response of analytical model to given random input 
+          * 
+          * @param X random variables added to model's springs 
+          * 
+          * @return harmonic displacement vector 
+          */
+        VectorC ComputeResponse ( const VectorC& X ) const override;
+
+        /**
+          * @brief 
+          * Compute coefficients of basis functions 
+          * 
+          * @param Load harmonic load vector 
+          */
+        void Train ( const VectorC& Load ) override;
+
+    }; // IntrusiveRPCE 
 
 
 } // Surrogate 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: Analytical Namespace Reference</title>
+<title>Surrogate Model in Structural Dynamics: implementations/NonIntrusiveRPCE.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,50 +90,32 @@ $(document).ready(function(){initNavTree('a00080.html',''); initResizable(); });
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
-  <div class="headertitle"><div class="title">Analytical Namespace Reference</div></div>
+<a href="#namespaces">Namespaces</a>  </div>
+  <div class="headertitle"><div class="title">NonIntrusiveRPCE.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Contains a collection of analytical structural dynamic models.  
-<a href="a00080.html#details">More...</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html">MassSpringDamper</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">SD model consisting of point masses, springs, and dampers. <br  />
- Implemented in <a class="el" href="a00032.html#_MassSpringDamper_imp_hpp_">_MassSpringDamper_imp_hpp_</a>.  <a href="a00091.html#details">More...</a><br /></td></tr>
+<p>Implementations of non-intrusive RPCE model.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="a00068_source.html">SurrogateModel.hpp</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:a00086"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00086.html">Surrogate</a></td></tr>
+<tr class="memdesc:a00086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains a collection of surrogate structural dynamic model. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.html">Model</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract class of analytical structural dynamic model.  <a href="a00087.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a06c2a69284f830f2ac2a09f00c8fc446"><td class="memTemplParams" colspan="2"><a id="a06c2a69284f830f2ac2a09f00c8fc446" name="a06c2a69284f830f2ac2a09f00c8fc446"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a06c2a69284f830f2ac2a09f00c8fc446"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Vector</b> = std::vector&lt; T &gt;</td></tr>
-<tr class="separator:a06c2a69284f830f2ac2a09f00c8fc446"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50d8bc6b6f680c0c649f77ad27b8c564"><td class="memTemplParams" colspan="2"><a id="a50d8bc6b6f680c0c649f77ad27b8c564" name="a50d8bc6b6f680c0c649f77ad27b8c564"></a>
-template&lt;typename C &gt; </td></tr>
-<tr class="memitem:a50d8bc6b6f680c0c649f77ad27b8c564"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MatrixXC</b> = Eigen::Matrix&lt; C, Eigen::Dynamic, Eigen::Dynamic &gt;</td></tr>
-<tr class="separator:a50d8bc6b6f680c0c649f77ad27b8c564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5147c877a465c5f4176c579ca36e03db"><td class="memTemplParams" colspan="2"><a id="a5147c877a465c5f4176c579ca36e03db" name="a5147c877a465c5f4176c579ca36e03db"></a>
-template&lt;typename C &gt; </td></tr>
-<tr class="memitem:a5147c877a465c5f4176c579ca36e03db"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>VectorXC</b> = Eigen::Vector&lt; C, Eigen::Dynamic &gt;</td></tr>
-<tr class="separator:a5147c877a465c5f4176c579ca36e03db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains a collection of analytical structural dynamic models. </p>
-<p><a class="anchor" id="_Analytical_"></a> <br  />
- </p>
+<div class="textblock"><p>Implementations of non-intrusive RPCE model. </p>
+<p><a class="anchor" id="_NonIntrusiveRPCE_cpp_"></a></p>
+<dl class="section author"><dt>Author</dt><dd>Rezha Adrian Tanuharja <br  />
+ Contact: <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'.ta'+'nu'+'har'+'ja'+'@tu'+'m.'+'de'; return false;">rezha<span class="obfuscator">.nosp@m.</span>.tan<span class="obfuscator">.nosp@m.</span>uharj<span class="obfuscator">.nosp@m.</span>a@tu<span class="obfuscator">.nosp@m.</span>m.de</a> / <a href="#" onclick="location.href='mai'+'lto:'+'rez'+'ha'+'dr@'+'ou'+'tlo'+'ok'+'.co'+'m'; return false;">rezha<span class="obfuscator">.nosp@m.</span>dr@o<span class="obfuscator">.nosp@m.</span>utloo<span class="obfuscator">.nosp@m.</span>k.co<span class="obfuscator">.nosp@m.</span>m</a> </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00080.html">Analytical</a></li>
+    <li class="navelem"><a class="el" href="dir_d12a494b5868c3171ad5a86c7563cf73.html">implementations</a></li><li class="navelem"><a class="el" href="a00080.html">NonIntrusiveRPCE.cpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

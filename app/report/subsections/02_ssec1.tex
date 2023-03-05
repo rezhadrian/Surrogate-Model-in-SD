@@ -1,0 +1,24 @@
+\subsection{Polynomial Chaos Expansion}
+
+Polynomial Chaos Expansion (PCE) approximates the response as a linear combination of a set of basis functions: 
+
+\begin{equation}
+    \mathbf{U}(\omega,\mathbf{x}) =
+    \sum_{p=1}^{P} \mathbf{U}_{p}(\omega)\cdot\Psi_{p}(\mathbf{x})
+\label{PCE}
+\end{equation}
+
+The basis functions are products of polynomial functions. 
+The polynomials are chosen such that each pair is statistically independent. 
+In addition, the polynomials can be normalised such that their covariance is the identity matrix.
+
+\begin{equation}
+    \Psi_{p}(\mathbf{x}) = 
+    \prod_{\alpha=1}^{d} \psi_{p_{\alpha}} \left(x_{\alpha}\right)
+    \phantom{x}
+    ;
+    \phantom{x}
+    \int_{\Omega_{x}} \psi_{i}(x)\phantom{.}\psi_{j}(x) \cdot f_{X}(x) \phantom{.} dx =
+    \delta_{ij}
+\label{PCE Basis}
+\end{equation}

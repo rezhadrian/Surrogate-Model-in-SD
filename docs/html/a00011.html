@@ -108,8 +108,8 @@ $(document).ready(function(){initNavTree('a00011.html',''); initResizable(); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:a00082"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00082.html">MonteCarlo</a></td></tr>
-<tr class="memdesc:a00082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all functions needed to run computer experiments. <br /></td></tr>
+<tr class="memitem:a00085"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.html">MonteCarlo</a></td></tr>
+<tr class="memdesc:a00085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all functions needed to run computer experiments. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -126,30 +126,34 @@ template&lt;typename T &gt; </td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af8495b74682bed4d4c5699f023285890"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
-<tr class="memitem:af8495b74682bed4d4c5699f023285890"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00082.html#af8495b74682bed4d4c5699f023285890">MonteCarlo::LHS</a> (const Z nPoints, const Z Dim)</td></tr>
+<tr class="memitem:af8495b74682bed4d4c5699f023285890"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#af8495b74682bed4d4c5699f023285890">MonteCarlo::LHS</a> (const Z nPoints, const Z Dim)</td></tr>
 <tr class="memdesc:af8495b74682bed4d4c5699f023285890"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform latin hypercube sampling with given dimension. <br  />
  Implemented in <a class="el" href="a00014.html#_LatinHypercubeSampling_imp_hpp_">_LatinHypercubeSampling_imp_hpp_</a>.  <br /></td></tr>
 <tr class="separator:af8495b74682bed4d4c5699f023285890"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5a3b4d632e4ff35da731d6e7129160d"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
-<tr class="memitem:ac5a3b4d632e4ff35da731d6e7129160d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00082.html#ac5a3b4d632e4ff35da731d6e7129160d">MonteCarlo::ConvertLHStoStdNorm</a> (Vector&lt; R &gt; &amp;LHSResult)</td></tr>
+<tr class="memitem:ac5a3b4d632e4ff35da731d6e7129160d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#ac5a3b4d632e4ff35da731d6e7129160d">MonteCarlo::ConvertLHStoStdNorm</a> (Vector&lt; R &gt; &amp;LHSResult)</td></tr>
 <tr class="memdesc:ac5a3b4d632e4ff35da731d6e7129160d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert LHS result to sets of standard normal random variables. Conversion is in place, no new vector generated. <br  />
  Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>.  <br /></td></tr>
 <tr class="separator:ac5a3b4d632e4ff35da731d6e7129160d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f964dfeeebe493fd6ec970763572cb"><td class="memTemplParams" colspan="2"><a id="a74f964dfeeebe493fd6ec970763572cb" name="a74f964dfeeebe493fd6ec970763572cb"></a>
+template&lt;typename Z , typename R , typename C &gt; </td></tr>
+<tr class="memitem:a74f964dfeeebe493fd6ec970763572cb"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>MonteCarlo::RandomSampling</b> (const Z nPoints, const Z dim)</td></tr>
+<tr class="separator:a74f964dfeeebe493fd6ec970763572cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23c4961f7ba48f8939c434a99e6e11f2"><td class="memTemplParams" colspan="2">template&lt;typename R , typename C &gt; </td></tr>
-<tr class="memitem:a23c4961f7ba48f8939c434a99e6e11f2"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00082.html#a23c4961f7ba48f8939c434a99e6e11f2">MonteCarlo::CombineRVs</a> (const MatrixXT&lt; R &gt; &amp;Correl, Vector&lt; R &gt; &amp;RVs, const size_t Dim)</td></tr>
+<tr class="memitem:a23c4961f7ba48f8939c434a99e6e11f2"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#a23c4961f7ba48f8939c434a99e6e11f2">MonteCarlo::CombineRVs</a> (const MatrixXT&lt; R &gt; &amp;Correl, Vector&lt; R &gt; &amp;RVs, const size_t Dim)</td></tr>
 <tr class="memdesc:a23c4961f7ba48f8939c434a99e6e11f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine uncorrelated RVs to generate correlated RVs. <br  />
  Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>.  <br /></td></tr>
 <tr class="separator:a23c4961f7ba48f8939c434a99e6e11f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R &gt; </td></tr>
-<tr class="memitem:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00082.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">MonteCarlo::GenerateRVs</a> (Vector&lt; R &gt; &amp;StdNormRVs, const MatrixXT&lt; R &gt; &amp;Correl, const Vector&lt; std::function&lt; R(R)&gt; &gt; &amp;ICDFs, const Z Dim)</td></tr>
+<tr class="memitem:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#acc8d3b4a6e5890cc696d1ca44f7e78d6">MonteCarlo::GenerateRVs</a> (Vector&lt; R &gt; &amp;StdNormRVs, const MatrixXT&lt; R &gt; &amp;Correl, const Vector&lt; std::function&lt; R(R)&gt; &gt; &amp;ICDFs, const Z Dim)</td></tr>
 <tr class="memdesc:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate RVs with a given distribution from standard normal RVs. <br  />
  Implemented in <a class="el" href="a00020.html#_VariableGeneration_imp_hpp_">_VariableGeneration_imp_hpp_</a>.  <br /></td></tr>
 <tr class="separator:acc8d3b4a6e5890cc696d1ca44f7e78d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44402428a5a904c478d5c9ca5b5a4f29"><td class="memTemplParams" colspan="2">template&lt;typename R , typename C &gt; </td></tr>
-<tr class="memitem:a44402428a5a904c478d5c9ca5b5a4f29"><td class="memTemplItemLeft" align="right" valign="top">C&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00082.html#a44402428a5a904c478d5c9ca5b5a4f29">MonteCarlo::EvaluateFRF</a> (const R omega, const Vector&lt; R &gt; &amp;params)</td></tr>
+<tr class="memitem:a44402428a5a904c478d5c9ca5b5a4f29"><td class="memTemplItemLeft" align="right" valign="top">C&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#a44402428a5a904c478d5c9ca5b5a4f29">MonteCarlo::EvaluateFRF</a> (const R omega, const Vector&lt; R &gt; &amp;params)</td></tr>
 <tr class="separator:a44402428a5a904c478d5c9ca5b5a4f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa27088a7b2366d73cec8b771dc8dfb75"><td class="memTemplParams" colspan="2">template&lt;typename Z , typename R , typename C , class Function &gt; </td></tr>
-<tr class="memitem:aa27088a7b2366d73cec8b771dc8dfb75"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00082.html#aa27088a7b2366d73cec8b771dc8dfb75">MonteCarlo::EvaluateModel</a> (const R omega, const Vector&lt; R &gt; &amp;RVs, const Function &amp;<a class="el" href="a00115.html">Model</a>, const Z dim)</td></tr>
+<tr class="memitem:aa27088a7b2366d73cec8b771dc8dfb75"><td class="memTemplItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00085.html#aa27088a7b2366d73cec8b771dc8dfb75">MonteCarlo::EvaluateModel</a> (const R omega, const Vector&lt; R &gt; &amp;RVs, const Function &amp;<a class="el" href="a00122.html">Model</a>, const Z dim)</td></tr>
 <tr class="separator:aa27088a7b2366d73cec8b771dc8dfb75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Surrogate Model in Structural Dynamics: Analytical::MassSpringDamper&lt; Z, R, C &gt; Class Template Reference</title>
+<title>Surrogate Model in Structural Dynamics: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('a00091.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('a00094.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,291 +89,22 @@ $(document).ready(function(){initNavTree('a00091.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00088.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Analytical::MassSpringDamper&lt; Z, R, C &gt; Class Template Reference<span class="mlabels"><span class="mlabel">final</span></span></div></div>
+  <div class="headertitle"><div class="title">Analytical::MassSpringDamper&lt; Z, R, C &gt; Member List</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>SD model consisting of point masses, springs, and dampers. <br  />
- Implemented in <a class="el" href="a00032.html#_MassSpringDamper_imp_hpp_">_MassSpringDamper_imp_hpp_</a>.  
- <a href="a00091.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for Analytical::MassSpringDamper&lt; Z, R, C &gt;:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="a00091.png" usemap="#Analytical::MassSpringDamper_3C_20Z_2C_20R_2C_20C_20_3E_map" alt=""/>
-  <map id="Analytical::MassSpringDamper_3C_20Z_2C_20R_2C_20C_20_3E_map" name="Analytical::MassSpringDamper_3C_20Z_2C_20R_2C_20C_20_3E_map">
-<area href="a00087.html" title="Abstract class of analytical structural dynamic model." alt="Analytical::Model&lt; Z, R, C &gt;" shape="rect" coords="0,0,253,24"/>
-  </map>
-</div></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a0f2d23fa5375146c089a3ebae7f2a8b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a0f2d23fa5375146c089a3ebae7f2a8b6">MassSpringDamper</a> (const Vector&lt; R &gt; Masses, const Vector&lt; R &gt; Dampers, const Vector&lt; R &gt; Springs)</td></tr>
-<tr class="memdesc:a0f2d23fa5375146c089a3ebae7f2a8b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a mass-spring-damper SD model.  <br /></td></tr>
-<tr class="separator:a0f2d23fa5375146c089a3ebae7f2a8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a562faaa1fdea1a6725aa9a8c07f2c4a0"><td class="memItemLeft" align="right" valign="top">Z&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a562faaa1fdea1a6725aa9a8c07f2c4a0">Dim</a> () const override</td></tr>
-<tr class="separator:a562faaa1fdea1a6725aa9a8c07f2c4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a758a4785ea7fe4480f0ee49c283fa2f7"><td class="memItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a758a4785ea7fe4480f0ee49c283fa2f7">ComputeResponse</a> (const Vector&lt; C &gt; &amp;Force, const R omega, const typename Vector&lt; R &gt;::const_iterator FirstSpring, const typename Vector&lt; R &gt;::const_iterator LastSpring) const override</td></tr>
-<tr class="memdesc:a758a4785ea7fe4480f0ee49c283fa2f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute structure response to harmonic load.  <br /></td></tr>
-<tr class="separator:a758a4785ea7fe4480f0ee49c283fa2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00122041151caf121d332603e800e82c"><td class="memItemLeft" align="right" valign="top">Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a00122041151caf121d332603e800e82c">StiffnessMatrix</a> (const Vector&lt; R &gt; &amp;Springs) const override</td></tr>
-<tr class="separator:a00122041151caf121d332603e800e82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63fac1fd75c06cf717c91a71384563bd"><td class="memItemLeft" align="right" valign="top">Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00091.html#a63fac1fd75c06cf717c91a71384563bd">DynamicStiffness</a> (const R omega) const override</td></tr>
-<tr class="separator:a63fac1fd75c06cf717c91a71384563bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eaa1860e64dd3a800b0b05aba2b9f67"><td class="memItemLeft" align="right" valign="top">virtual Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.html#a8eaa1860e64dd3a800b0b05aba2b9f67">ComputeResponse</a> (const Vector&lt; C &gt; &amp;Force, const R omega, const typename Vector&lt; R &gt;::const_iterator FirstSpring, const typename Vector&lt; R &gt;::const_iterator LastSpring) const =0</td></tr>
-<tr class="memdesc:a8eaa1860e64dd3a800b0b05aba2b9f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute structure response to harmonic load.  <br /></td></tr>
-<tr class="separator:a8eaa1860e64dd3a800b0b05aba2b9f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a132dab6e19309629e60a0b437dc528f3"><td class="memItemLeft" align="right" valign="top"><a id="a132dab6e19309629e60a0b437dc528f3" name="a132dab6e19309629e60a0b437dc528f3"></a>
-virtual Z&#160;</td><td class="memItemRight" valign="bottom"><b>Dim</b> () const =0</td></tr>
-<tr class="separator:a132dab6e19309629e60a0b437dc528f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a419ab01ca4be85ad0fc355a1d0dfd4e6"><td class="memItemLeft" align="right" valign="top"><a id="a419ab01ca4be85ad0fc355a1d0dfd4e6" name="a419ab01ca4be85ad0fc355a1d0dfd4e6"></a>
-virtual Vector&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>StiffnessMatrix</b> (const Vector&lt; R &gt; &amp;Springs) const =0</td></tr>
-<tr class="separator:a419ab01ca4be85ad0fc355a1d0dfd4e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af03eacaf8a6df6924e7636c9bf335e80"><td class="memItemLeft" align="right" valign="top"><a id="af03eacaf8a6df6924e7636c9bf335e80" name="af03eacaf8a6df6924e7636c9bf335e80"></a>
-virtual Vector&lt; C &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>DynamicStiffness</b> (const R omega) const =0</td></tr>
-<tr class="separator:af03eacaf8a6df6924e7636c9bf335e80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename Z, typename R, typename C&gt;<br />
-class Analytical::MassSpringDamper&lt; Z, R, C &gt;</div><p>SD model consisting of point masses, springs, and dampers. <br  />
- Implemented in <a class="el" href="a00032.html#_MassSpringDamper_imp_hpp_">_MassSpringDamper_imp_hpp_</a>. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">Z</td><td>a type of non-negative integer e.g. size_t </td></tr>
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
-    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt; </td></tr>
-  </table>
-  </dd>
-</dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0f2d23fa5375146c089a3ebae7f2a8b6" name="a0f2d23fa5375146c089a3ebae7f2a8b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f2d23fa5375146c089a3ebae7f2a8b6">&#9670;&#160;</a></span>MassSpringDamper()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="a00091.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::MassSpringDamper </td>
-          <td>(</td>
-          <td class="paramtype">const Vector&lt; R &gt;&#160;</td>
-          <td class="paramname"><em>Masses</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Vector&lt; R &gt;&#160;</td>
-          <td class="paramname"><em>Dampers</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Vector&lt; R &gt;&#160;</td>
-          <td class="paramname"><em>Springs</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Generate a mass-spring-damper SD model. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Masses</td><td>a vector of point masses </td></tr>
-    <tr><td class="paramname">Dampers</td><td>a vector of damping coefficient </td></tr>
-    <tr><td class="paramname">Springs</td><td>a vector of spring stiffness </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a758a4785ea7fe4480f0ee49c283fa2f7" name="a758a4785ea7fe4480f0ee49c283fa2f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a758a4785ea7fe4480f0ee49c283fa2f7">&#9670;&#160;</a></span>ComputeResponse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector&lt; C &gt; <a class="el" href="a00091.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::ComputeResponse </td>
-          <td>(</td>
-          <td class="paramtype">const Vector&lt; C &gt; &amp;&#160;</td>
-          <td class="paramname"><em>Force</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const R&#160;</td>
-          <td class="paramname"><em>omega</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const typename Vector&lt; R &gt;::const_iterator&#160;</td>
-          <td class="paramname"><em>FirstSpring</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const typename Vector&lt; R &gt;::const_iterator&#160;</td>
-          <td class="paramname"><em>LastSpring</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute structure response to harmonic load. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">R</td><td>a type of floating number e.g. double </td></tr>
-    <tr><td class="paramname">C</td><td>a type of floating complex number e.g. std::complex&lt;float&gt;</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Force</td><td>harmonic load vector </td></tr>
-    <tr><td class="paramname">omega</td><td>angular velocity </td></tr>
-    <tr><td class="paramname">FirstSpring</td><td>iterator of a vector of springs </td></tr>
-    <tr><td class="paramname">LastSpring</td><td>iterator of a vector of springs</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>displacement vector </dd></dl>
-
-<p>Implements <a class="el" href="a00087.html#a8eaa1860e64dd3a800b0b05aba2b9f67">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a562faaa1fdea1a6725aa9a8c07f2c4a0" name="a562faaa1fdea1a6725aa9a8c07f2c4a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a562faaa1fdea1a6725aa9a8c07f2c4a0">&#9670;&#160;</a></span>Dim()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Z <a class="el" href="a00091.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::Dim </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="a00087.html">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a63fac1fd75c06cf717c91a71384563bd" name="a63fac1fd75c06cf717c91a71384563bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63fac1fd75c06cf717c91a71384563bd">&#9670;&#160;</a></span>DynamicStiffness()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector&lt; C &gt; <a class="el" href="a00091.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::DynamicStiffness </td>
-          <td>(</td>
-          <td class="paramtype">const R&#160;</td>
-          <td class="paramname"><em>omega</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="a00087.html">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<a id="a00122041151caf121d332603e800e82c" name="a00122041151caf121d332603e800e82c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00122041151caf121d332603e800e82c">&#9670;&#160;</a></span>StiffnessMatrix()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Z , typename R , typename C &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector&lt; R &gt; <a class="el" href="a00091.html">Analytical::MassSpringDamper</a>&lt; Z, R, C &gt;::StiffnessMatrix </td>
-          <td>(</td>
-          <td class="paramtype">const Vector&lt; R &gt; &amp;&#160;</td>
-          <td class="paramname"><em>Springs</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implements <a class="el" href="a00087.html">Analytical::Model&lt; Z, R, C &gt;</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>modules/AnalyticalModel/declarations/<a class="el" href="a00029_source.html">AnalyticalModel.hpp</a></li>
-<li>modules/AnalyticalModel/implementations/<a class="el" href="a00032_source.html">MassSpringDamper_imp.hpp</a></li>
-</ul>
-</div><!-- contents -->
+<p>This is the complete list of members for <a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>, including all inherited members.</p>
+<table class="directory">
+  <tr class="even"><td class="entry"><a class="el" href="a00094.html#a758a4785ea7fe4480f0ee49c283fa2f7">ComputeResponse</a>(const Vector&lt; C &gt; &amp;Force, const R omega, const typename Vector&lt; R &gt;::const_iterator FirstSpring, const typename Vector&lt; R &gt;::const_iterator LastSpring) const override</td><td class="entry"><a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Dim</b>() const override (defined in <a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>)</td><td class="entry"><a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>DynamicStiffness</b>(const R omega) const override (defined in <a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>)</td><td class="entry"><a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="a00094.html#a0f2d23fa5375146c089a3ebae7f2a8b6">MassSpringDamper</a>(const Vector&lt; R &gt; Masses, const Vector&lt; R &gt; Dampers, const Vector&lt; R &gt; Springs)</td><td class="entry"><a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>StiffnessMatrix</b>(const Vector&lt; R &gt; &amp;Springs) const override (defined in <a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a>)</td><td class="entry"><a class="el" href="a00094.html">Analytical::MassSpringDamper&lt; Z, R, C &gt;</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+</table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00080.html">Analytical</a></li><li class="navelem"><a class="el" href="a00091.html">MassSpringDamper</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

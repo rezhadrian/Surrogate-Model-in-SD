@@ -1,15 +1,16 @@
 var annotated_dup =
 [
-    [ "Analytical", "a00080.html", [
-      [ "MassSpringDamper", "a00091.html", "a00091" ],
-      [ "Model", "a00087.html", "a00087" ]
+    [ "Analytical", "a00083.html", [
+      [ "MassSpringDamper", "a00094.html", "a00094" ],
+      [ "Model", "a00090.html", "a00090" ]
     ] ],
-    [ "Surrogate", "a00083.html", [
-      [ "IntrusiveModel", "a00107.html", "a00107" ],
-      [ "IntrusivePCE", "a00111.html", "a00111" ],
-      [ "NonIntrusiveModel", "a00095.html", "a00095" ],
-      [ "NonIntrusivePCE", "a00099.html", "a00099" ],
-      [ "NonIntrusiveRPCE", "a00103.html", "a00103" ]
+    [ "Surrogate", "a00086.html", [
+      [ "IntrusiveModel", "a00110.html", "a00110" ],
+      [ "IntrusivePCE", "a00114.html", "a00114" ],
+      [ "IntrusiveRPCE", "a00118.html", "a00118" ],
+      [ "NonIntrusiveModel", "a00098.html", "a00098" ],
+      [ "NonIntrusivePCE", "a00102.html", "a00102" ],
+      [ "NonIntrusiveRPCE", "a00106.html", "a00106" ]
     ] ],
-    [ "Model", "a00115.html", null ]
+    [ "Model", "a00122.html", null ]
 ];

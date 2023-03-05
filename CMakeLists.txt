@@ -30,6 +30,7 @@ add_library ( surrogatemodel SHARED
     implementations/NonIntrusivePCE.cpp 
     implementations/NonIntrusiveRPCE.cpp 
     implementations/IntrusivePCE.cpp 
+    implementations/IntrusiveRPCE.cpp 
 
 )
 
