@@ -83,12 +83,12 @@ namespace Surrogate {
 
         );
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> NumPsi ( 
-            NumBasis.data(), nPoints, NumIndices_.size() / Dim ()
+        Eigen::Map<MatrixXC> NumPsi ( 
+            NumBasis.data(), NumIndices_.size() / Dim (), nPoints
         );
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> DenPsi ( 
-            DenBasis.data(), nPoints, DenIndices_.size() / Dim ()
+        Eigen::Map<MatrixXC> DenPsi ( 
+            DenBasis.data(), DenIndices_.size() / Dim (), nPoints
         );
 
         Eigen::Map<const MatrixXC> NumCoeffs (
@@ -101,9 +101,16 @@ namespace Surrogate {
 
         VectorC result ( nPoints * Dim () );
 
-        Eigen::Map<MatrixXC> Result ( result.data(), nPoints, Dim () );
+        Eigen::Map<MatrixXC> Result ( result.data(), Dim (), nPoints );
 
-        Result = ( NumPsi * NumCoeffs ).array() / ( DenPsi * DenCoeffs ).array();
+        Result = ( NumCoeffs.transpose() * NumPsi ).array() / 
+                 ( DenCoeffs.transpose() * DenPsi ).array();
+
+        // std::cout << Result << std::endl;
+
+        // for ( auto i = 0; i < result.size(); i++ ) {
+        //     std::cout << result[i] << std::endl;
+        // }
 
         return result;
 
@@ -177,13 +184,17 @@ namespace Surrogate {
         auto nP = NumIndices_.size() / Dim();
         auto nQ = DenIndices_.size() / Dim();
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> NumPsi ( 
-            NumBasis.data(), nPoints, NumIndices_.size() / Dim ()
+        Eigen::Map<MatrixXC> NumPsi ( 
+            NumBasis.data(), NumIndices_.size() / Dim (), nPoints
         );
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> DenPsi ( 
-            DenBasis.data(), nPoints, DenIndices_.size() / Dim ()
+        // std::cout << NumPsi << std::endl << std::endl;
+
+        Eigen::Map<MatrixXC> DenPsi ( 
+            DenBasis.data(), DenIndices_.size() / Dim (), nPoints 
         );
+
+        // std::cout << DenPsi << std::endl << std::endl;
 
         Eigen::Map<MatrixXC> Coeffs (
             NDCoeffs.data(), 
@@ -191,40 +202,52 @@ namespace Surrogate {
             Dim ()
         );
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> Result (
-            Response.data(), nPoints , Dim ()
+        Eigen::Map<MatrixXC> Result (
+            Response.data(), Dim (), nPoints 
         );
+
+        // std::cout << Result << std::endl;
 
         NumCoeffs_ = VectorC ( NumIndices_.size(), 0.0 );
         DenCoeffs_ = VectorC ( DenIndices_.size(), 0.0 );
 
         for ( auto i = 0; i < Dim(); i++ ) {
 
-            DiagMatrixXC M  = Result.col(i).asDiagonal();
-            DiagMatrixXC Mh = Result.col(i).conjugate().asDiagonal();
+            DiagMatrixXC M  = Result.row(i).asDiagonal();
+            DiagMatrixXC Mh = Result.row(i).conjugate().asDiagonal();
 
             MatrixXC Aupper ( nP, nP + nQ );
-            Aupper << ( NumPsi.transpose() * NumPsi ),
-                      ( -NumPsi.transpose() * M * DenPsi );
+            Aupper << ( NumPsi * NumPsi.transpose() ),
+                      ( -NumPsi * M * DenPsi.transpose() );
+
+            // std::cout << Aupper << std::endl << std::endl;
 
             MatrixXC Alower ( nQ, nP + nQ );
-            Alower << ( -DenPsi.transpose() * Mh * NumPsi ), 
-                      ( DenPsi.transpose() * Mh * M * DenPsi );
+            Alower << ( -DenPsi * Mh * NumPsi.transpose() ), 
+                      ( DenPsi * Mh * M * DenPsi.transpose() );
+
+            // std::cout << Alower << std::endl << std::endl;
 
             MatrixXC A ( nP + nQ, nP + nQ );
             A << Aupper, Alower;
 
+            // std::cout << A << std::endl << std::endl;
+
             MatrixXC V = A.bdcSvd( Eigen::ComputeFullV ).matrixV();
-            VectorXC U = A.bdcSvd( Eigen::ComputeFullU ).singularValues();
 
-            if ( i == 1 ) {
-                std::cout << V << std::endl; 
-                std::cout << std::endl << std::endl;
-                std::cout << U << std::endl; 
+            VectorXC U = A.bdcSvd( 
+                Eigen::ComputeFullV | Eigen::ComputeFullU 
+            ).singularValues();
 
-            }
+            // if ( i == 1 ) {
+            //     // std::cout << V << std::endl; 
+            //     // std::cout << std::endl << std::endl;
+            //     std::cout << U << std::endl; 
+            //
+            // }
 
             VectorXC r = V.col(V.cols() - 1);
+            // std::cout << U(V.cols() -1) << std::endl;
 
             for ( auto j = 0; j < nP; j++ ) {
 

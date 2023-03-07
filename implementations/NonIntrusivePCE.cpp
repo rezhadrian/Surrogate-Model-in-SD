@@ -12,6 +12,7 @@
   */
 
 #include "SurrogateModel.hpp" 
+#include <iostream>
 
 
 namespace Surrogate {
@@ -59,8 +60,8 @@ namespace Surrogate {
 
         // Map vectors to eigen object for linear algebra operations 
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> Psi ( 
-            Basis.data(), nPoints, Indices_.size() / Dim ()
+        Eigen::Map<MatrixXC> Psi ( 
+            Basis.data(), Indices_.size() / Dim (), nPoints
         );
 
         Eigen::Map<const MatrixXC> Coeffs (
@@ -69,9 +70,18 @@ namespace Surrogate {
 
         VectorC result ( nPoints * Dim () );
 
-        Eigen::Map<MatrixXC> Result ( result.data(), nPoints, Dim () );
+        // Eigen::Map<MatrixXC> Result ( result.data(), nPoints, Dim () );
+        Eigen::Map<MatrixXC> Result ( 
+            result.data(),  Dim(), nPoints 
+        );
 
-        Result = Psi * Coeffs;
+        Result = Coeffs.transpose() * Psi;
+
+        // std::cout << Result << std::endl;
+
+        // for ( auto i = 0; i < result.size(); i++ ) {
+        //     std::cout << result[i] << std::endl;
+        // }
 
         return result;
 
@@ -90,6 +100,10 @@ namespace Surrogate {
 
         auto nPoints = TrainSet.size() / Dim ();
 
+        // for ( auto i = 0; i < TrainSet.size(); i++ ) {
+        //     std::cout << TrainSet[i] << std::endl;
+        // }
+
         VectorC Response ( TrainSet.size() );
 
         // Compute response for each point 
@@ -101,6 +115,12 @@ namespace Surrogate {
             auto Disp = SDModel_ -> ComputeResponse ( 
                 Load, omega_, start, end 
             );
+
+            // for ( auto ii = 0; ii < Disp.size(); ii++ ) {
+            //
+            //     std::cout << Disp[ii] << std::endl;
+            //
+            // }
 
             auto source_start = Disp.begin(); 
             auto source_end   = Disp.end(); 
@@ -137,20 +157,28 @@ namespace Surrogate {
 
         Coeffs_ = VectorC ( Indices_.size() , 0.0 );
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> Psi ( 
-            Basis.data(), nPoints, Indices_.size() / Dim ()
+        Eigen::Map<MatrixXC> Psi ( 
+            Basis.data(), Indices_.size() / Dim (), nPoints 
         );
+
+        // std::cout << Psi << std::endl << std::endl;
 
         Eigen::Map<MatrixXC> Coeffs (
             Coeffs_.data(), Indices_.size() / Dim (), Dim ()
         );
 
-        Eigen::Map<MatrixXC, Eigen::RowMajor> Result (
-            Response.data(), nPoints, Dim ()
+        Eigen::Map<MatrixXC> Result (
+            Response.data(), Dim (), nPoints 
         );
 
-        Coeffs = (Psi.transpose() * Psi).ldlt().solve ( 
-                Psi.transpose() * Result );
+        // std::cout << Result << std::endl << std::endl;;
+
+        // std::cout << Result << std::endl;
+
+        Coeffs = (Psi * Psi.transpose()).partialPivLu().solve ( 
+                Psi * Result.transpose() );
+
+        // std::cout << Coeffs << std::endl << std::endl;
 
     }
 

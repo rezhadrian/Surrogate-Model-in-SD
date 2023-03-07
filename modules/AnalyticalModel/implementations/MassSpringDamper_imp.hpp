@@ -243,7 +243,7 @@ namespace Analytical {
         Eigen::Map<const VectorXC<C>> Load ( Force.data(), Dim_ );
         Eigen::Map<VectorXC<C>> Disp ( result.data(), Dim_ );
 
-        Disp = KD.ldlt().solve ( Load );
+        Disp = KD.partialPivLu().solve ( Load );
 
         return result;
 
