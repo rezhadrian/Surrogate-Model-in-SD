@@ -144,11 +144,11 @@ namespace Analytical {
         Vector<R> StiffnessMatrix ( const Vector<R>& Springs ) const override;
 
         Vector<C> DynamicStiffness ( const R omega ) const override;
+        Vector<R> MassMatrix      ( const Vector<R>& Masses  ) const;
+        Vector<R> DampingMatrix   ( const Vector<R>& Dampers ) const;
 
         private: 
 
-        Vector<R> MassMatrix      ( const Vector<R>& Masses  ) const;
-        Vector<R> DampingMatrix   ( const Vector<R>& Dampers ) const;
 
         Vector<C> DynamicStiffness ( 
             const R omega, const Vector<R>& AdditionalSprings 

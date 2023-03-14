@@ -1,104 +1,48 @@
 cmake_minimum_required ( VERSION 3.25 ) 
+project ( SMSD CXX ) 
+
 set ( CMAKE_CXX_STANDARD 17 ) 
 
-project ( SurrogateModelling CXX ) 
 
-if     ( CMAKE_CXX_COMPILER_ID MATCHES "Clang" ) 
-    add_compile_options ( -Wno-deprecated-declarations )
-elseif ( CMAKE_CXX_COMPILER_ID MATCHES "GNU"   ) 
-    add_compile_options ( -O3 -fopenmp -Wno-deprecated-declarations )
-elseif ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC"  )
-elseif ( CMAKE_CXX_COMPILER_ID MATCHES "INTEL" )
+# ----- Add compile options based on compiler id 
+
+if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang" ) 
+    add_compile_options ( -Wno-deprecated-declarations ) 
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "GNU" ) 
+    add_compile_options ( -Wno-deprecated-declarations ) 
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "MSVC" ) 
+elseif ( CMAKE_CXX_COMPILER_ID MATCHES "INTEL" ) 
 endif ()
 
-find_package ( Eigen3 3.4 REQUIRED NO_MODULE ) 
-find_package ( Boost 1.81 REQUIRED )
-# find_package ( OpenMP ) 
-# if ( OPENMP_FOUND ) 
-#     SET ( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}" )
-#     SET ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}" )
-# endif ()
 
-# Add interface libraries 
-add_subdirectory ( modules )
+# ----- Set up install path 
 
-# Add shared library 
-add_library ( surrogatemodel SHARED 
+if ( CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT )
 
-    declarations/SurrogateModel.hpp 
-
-    implementations/NonIntrusivePCE.cpp 
-    implementations/NonIntrusiveRPCE.cpp 
-    implementations/IntrusivePCE.cpp 
-    implementations/IntrusiveRPCE.cpp 
-
-)
-
-target_include_directories ( surrogatemodel PUBLIC 
-
-    ${CMAKE_CURRENT_SOURCE_DIR}/declarations 
-    ${CMAKE_CURRENT_SOURCE_DIR}/utility  
-    ${Boost_INCLUDE_DIR} 
-
-)
-
-target_link_libraries ( surrogatemodel PUBLIC 
-
-    surrogatemodule 
-    analyticalmodel 
-    Eigen3::Eigen 
-    ${Boost_LIBRARIES} 
-
-)
-
-# Add executable 
-add_executable ( main driver/main.cpp ) 
-target_link_libraries ( main PUBLIC 
-
-    surrogatemodel
-    Eigen3::Eigen 
-
-)
-
-# Unit Test using Google Test 
-option ( PROJECT_TEST "Enable Google Test for whole project" ON )
-
-if ( PROJECT_TEST ) 
-
-    if ( NOT SMSD_GTEST )
-
-        include ( FetchContent )
-
-        FetchContent_Declare(
-            googletest
-            URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
-        )
-        
-        set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-        FetchContent_MakeAvailable ( googletest ) 
-       
-    endif ()
-
-    set ( SMSD_GTEST ON )
-
-    enable_testing ()
-
-    add_executable ( OverallTestrunner 
-
-        test/testrunner.cpp 
-
+    set ( 
+            CMAKE_INSTALL_PREFIX 
+            "${CMAKE_BINARY_DIR}/install" 
+            CACHE 
+            PATH 
+            "default install path" 
+            FORCE 
     )
 
-    target_link_libraries ( OverallTestrunner PUBLIC 
+endif( )
 
-        basisfunctions 
-        montecarlo 
-        GTest::gtest_main 
+SET( CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}" )
 
-    ) 
 
-    include ( GoogleTest ) 
-    gtest_discover_tests ( OverallTestrunner ) 
+# ----- Add "SMSD_kernel" subdirectory, contains main library 
 
-endif ()
+add_subdirectory ( SMSD_kernel ) 
+
+
+# ----- Set python bindings 
+
+set(PYBIND11_CPP_STANDARD -std=c++17)
+set(PYBIND11_INSTALL ON CACHE BOOL "Enable pybind11 install" )
+
+add_subdirectory( external/pybind11 )
+add_subdirectory( python )
 
